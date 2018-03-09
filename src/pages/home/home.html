@@ -45,6 +45,8 @@
       </ion-row>
     </ion-grid>
   </div>
+  <section class="interval"></section>
+
   <!-- 促销资讯 -->
   <div class="index-trumpet">
     <div class="title">
@@ -65,29 +67,31 @@
         </li>
         <li>
           <span class="label">
-              新资讯
-            </span>
+            新资讯
+          </span>
           <span class="value">
-              yyy正式上线
-            </span>
+            yyy正式上线
+          </span>
           <span class="more">
-              更多
-            </span>
+            更多
+          </span>
         </li>
         <li>
           <span class="label">
-                新资讯
-              </span>
+            新资讯
+          </span>
           <span class="value">
-                xxx正式上线
-              </span>
+            xxx正式上线
+          </span>
           <span class="more">
-                更多
-              </span>
+            更多
+          </span>
         </li>
       </ul>
     </div>
   </div>
+  <section class="interval"></section>
+
   <!-- 促销倒计时 -->
   <div class="promotion">
     <img src="assets/imgs/mao_title.jpg" alt="">
@@ -97,14 +101,26 @@
       </span>
       时
       <span class="time">
-          {{promoMin}}
-        </span>
-        分
-        <span class="second">
-            {{promoSec}}
-          </span>
-          秒
+        {{promoMin}}
+      </span>
+      分
+      <span class="second">
+        {{promoSec}}
+      </span>
+      秒
     </div>
+    <ion-scroll scrollX="true" style="height:135px;" >
+      <ul [style.width]="100*promoList.length + 'px'" class="promo-list clear">
+          <li *ngFor="let promo of promoList">
+              <img src="assets/imgs/test.jpg" alt="">
+              <p>啊啊啊啊啊啊啊</p>
+              <div>¥ 5.00</div>
+            </li>
+           
+      </ul>
+    </ion-scroll>
+    <section class="interval"></section>
+
   </div>
   <div class="content"></div>
 </ion-content>

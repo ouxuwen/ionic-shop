@@ -23,6 +23,7 @@ export class HomePage {
   promoMin: any;
   promoSec: any;
   promoTime:any = 47*3500000+50000;
+  promoList=[1,2,3,4,5,6,7];
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 

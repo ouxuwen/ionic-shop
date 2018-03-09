@@ -75,3 +75,14 @@ div{
     }
 }
 
+.clear{
+    &:after{
+        clear: both;
+        display: block;
+        content:"";
+    }
+}
+.interval{
+    height:5px;
+    background: #EFF4FA;
+}

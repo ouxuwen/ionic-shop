@@ -49,7 +49,7 @@ page-home {
     .function{
         text-align: center;
         padding-bottom: 5px;
-        border-bottom: 1px solid #eeeeee;
+       // border-bottom: 1px solid #eeeeee;
         ion-grid{
             padding:0;
         }
@@ -67,7 +67,7 @@ page-home {
         height: 1000px;
     }
     .index-trumpet{
-        border-bottom: 1px solid #eeeeee;
+       // border-bottom: 1px solid #eeeeee;
         height: 50px;
         &:after{
             content:"";
@@ -162,6 +162,30 @@ page-home {
             padding:3px 5px;
             border-radius: 3px;
             color:#ffffff;
+        }
+    }
+    .promo-list{
+        margin-top:5px;
+        li{
+            float:left;
+            font-size: 12px;
+            padding:0 5px;
+            max-width: 100px;
+            img{
+                width: 90px;
+            }
+            p{
+                white-space:nowrap;
+                word-wrap:break-word;
+                word-break:break-all;
+                overflow : hidden;
+                text-overflow: ellipsis;
+            }
+            div{
+                text-align: center  ;
+                color:red;
+                font-size: 14px;
+            }
         }
     }
 }

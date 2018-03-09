@@ -1,0 +1,110 @@
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <div class="search-bar" [style.opacity]="headerOpacity"></div>
+  <div class="input-bar" [style.background]="'rgba(255,255,255,'+(1-headerOpacity/2)+')'">
+    <ion-icon name="search" [style.color]="'rgb('+headerOpacity*255+','+headerOpacity*255+','+headerOpacity*255+')'"></ion-icon>
+    <span [style.color]="'rgb('+(headerOpacity*55+200)+','+(headerOpacity*55+200)+','+(headerOpacity*55+200)+')'">请输入你想搜索的 商品 / 品牌</span>
+  </div>
+</ion-header>
+<ion-content>
+  <ion-refresher (ionPull)="doPull($event)" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="md-arrow-down" pullingText="下拉刷新..." refreshingSpinner="ios" refreshingText="正在刷新...">
+
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-slides autoplay control='true' loop="true" style="height: auto;">
+    <ion-slide *ngFor="let image of [2,3,4,5]">
+      <img src="assets/imgs/slide.png">
+    </ion-slide>
+  </ion-slides>
+  <!-- 功能 -->
+  <div class="function">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-3>
+          <img src="assets/imgs/order.png" alt="">
+          <p>订单</p>
+        </ion-col>
+        <ion-col col-3>
+          <img src="assets/imgs/fav.png" alt="">
+          <p>收藏</p>
+        </ion-col>
+        <ion-col col-3>
+          <img src="assets/imgs/camera.png" alt="">
+          <p>拍照</p>
+        </ion-col>
+        <ion-col col-3>
+          <img src="assets/imgs/glasses.png" alt="">
+          <p>加工</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <!-- 促销资讯 -->
+  <div class="index-trumpet">
+    <div class="title">
+      <img src="assets/imgs/123.png" alt="">
+    </div>
+    <div class="roll-box">
+      <ul>
+        <li>
+          <span class="label">
+            新资讯
+          </span>
+          <span class="value">
+            xxx正式上线
+          </span>
+          <span class="more">
+            更多
+          </span>
+        </li>
+        <li>
+          <span class="label">
+              新资讯
+            </span>
+          <span class="value">
+              yyy正式上线
+            </span>
+          <span class="more">
+              更多
+            </span>
+        </li>
+        <li>
+          <span class="label">
+                新资讯
+              </span>
+          <span class="value">
+                xxx正式上线
+              </span>
+          <span class="more">
+                更多
+              </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- 促销倒计时 -->
+  <div class="promotion">
+    <img src="assets/imgs/mao_title.jpg" alt="">
+    <div>
+      <span class="time">
+        {{promoHour}}
+      </span>
+      时
+      <span class="time">
+          {{promoMin}}
+        </span>
+        分
+        <span class="second">
+            {{promoSec}}
+          </span>
+          秒
+    </div>
+  </div>
+  <div class="content"></div>
+</ion-content>

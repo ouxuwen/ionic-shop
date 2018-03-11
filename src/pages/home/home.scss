@@ -63,9 +63,7 @@ page-home {
             margin:0;
         }
     }
-    .content{
-        height: 1000px;
-    }
+    
     .index-trumpet{
        // border-bottom: 1px solid #eeeeee;
         height: 50px;
@@ -188,4 +186,31 @@ page-home {
             }
         }
     }
+    .special{
+        img{
+            width:100%;
+            display: block;
+        }
+        ion-grid{
+            padding:0;
+        }
+    }
+    .hot{
+        img{
+            width:100%;
+            display: block;
+        }
+        ion-grid{
+            padding:0;
+        }
+        ion-col:not(:last-child){
+            border-right:1px solid #eee;
+        }
+        ion-row:not(:last-child){
+            ion-col{
+                border-bottom:1px solid #eee;
+            }
+        }
+    }
+    
 }

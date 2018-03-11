@@ -109,18 +109,117 @@
       </span>
       秒
     </div>
-    <ion-scroll scrollX="true" style="height:135px;" >
+    <ion-scroll scrollX="true" style="height:135px;">
       <ul [style.width]="100*promoList.length + 'px'" class="promo-list clear">
-          <li *ngFor="let promo of promoList">
-              <img src="assets/imgs/test.jpg" alt="">
-              <p>啊啊啊啊啊啊啊</p>
-              <div>¥ 5.00</div>
-            </li>
-           
+        <li *ngFor="let promo of promoList">
+          <img src="assets/imgs/test.jpg" alt="">
+          <p>啊啊啊啊啊啊啊</p>
+          <div>¥ 5.00</div>
+        </li>
       </ul>
     </ion-scroll>
-    <section class="interval"></section>
+    
 
   </div>
-  <div class="content"></div>
+  <section class="interval"></section>
+  <!-- 精品汇 -->
+  <div class="special">
+    <img src="assets/imgs/weipinhui.jpg" alt="">
+    <img src="assets/imgs/ad4.png" alt="">
+    <div class="special-box">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 class="br">
+            <p class="title"></p>
+            <p class="price"></p>
+            <img src="assets/imgs/book.jpg" alt="">
+          </ion-col>
+          <ion-col col-6 class="pd0">
+            <ion-grid>
+              <ion-row class="bb">
+                <ion-col col-6>
+                  <img src="assets/imgs/book.jpg" alt="">
+                  
+                </ion-col>
+                <ion-col col-6>
+                  <p>xxx sss  ss s s s s s s s s s</p>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-6 >
+                  <img src="assets/imgs/book.jpg" alt="">
+                  
+                </ion-col>
+                <ion-col col-6>
+                  <p>xxx</p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-col>
+        </ion-row>
+      
+      </ion-grid>
+    </div>
+  </div>
+  <section class="interval"></section>
+  <!-- 热门汇 -->
+  <div class="hot">
+    <img src="assets/imgs/remenhui.jpg" alt="">
+    <img src="assets/imgs/ad1.png" alt="">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4>
+          <img src="assets/imgs/book.jpg" alt="">
+          <p>xxx xxx sss  ss s s s s s s s s s</p>
+          <p>¥ 0.000</p>
+        </ion-col>
+        <ion-col col-4>
+          <img src="assets/imgs/book.jpg" alt="">
+          <p>xxx</p>
+          <p>¥ 0.000</p>
+        </ion-col>
+        <ion-col col-4>
+          <img src="assets/imgs/book.jpg" alt="">
+          <p>xxx</p>
+          <p>¥ 0.000</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-4>
+          <img src="assets/imgs/book.jpg" alt="">
+          <p>xxx</p>
+          <p>¥ 0.000</p>
+        </ion-col>
+        <ion-col col-4>
+          <img src="assets/imgs/book.jpg" alt="">
+          <p>xxx</p>
+          <p>¥ 0.000</p>
+        </ion-col>
+        <ion-col col-4>
+          <img src="assets/imgs/book.jpg" alt="">
+          <p>xxx</p>
+          <p>¥ 0.000</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-4>
+          <img src="assets/imgs/book.jpg" alt="">
+          <p>xxx</p>
+          <p>¥ 0.000</p>
+        </ion-col>
+        <ion-col col-4>
+          <img src="assets/imgs/book.jpg" alt="">
+          <p>xxx</p>
+          <p>¥ 0.000</p>
+        </ion-col>
+        <ion-col col-4>
+          <img src="assets/imgs/book.jpg" alt="">
+          <p>xxx</p>
+          <p>¥ 0.000</p>
+        </ion-col>
+      </ion-row>
+      
+    </ion-grid>
+  </div>
+  
 </ion-content>

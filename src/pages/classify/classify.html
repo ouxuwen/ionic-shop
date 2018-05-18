@@ -9,12 +9,41 @@
   <div class="search-bar"></div>
   <div class="input-bar">
     <ion-icon name="search"></ion-icon>
-    <span>请输入你想搜索的 商品 / 品牌</span>
+    <!-- <span>请输入你想搜索的 商品 / 品牌</span> -->
   </div>
 
 </ion-header>
 
 
 <ion-content>
+  <div class="category_container">
+    <ion-scroll class="first_category" scrollY="true">
+      <ul>
+        <li class="active">
+          一级分类
+        </li>
+        <li>
+          一级分类
+        </li>
+      </ul>
+    </ion-scroll>
+    <ion-scroll class="second_category" scrollY="true">
+      <ul class="clear">
+        <li>
+          <div>
+            <img class="center" src="assets/imgs/no03.png" alt="">
+          </div>
+          <span>二级级分类</span>
 
+        </li>
+        <li>
+          <div>
+            <img class="center"  src="assets/imgs/no03.png" alt="">
+          </div>
+          <span>二级级分类</span>
+        </li>
+
+      </ul>
+    </ion-scroll>
+  </div>
 </ion-content>

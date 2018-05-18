@@ -9,7 +9,7 @@ page-classify {
             height: 45px;
             padding:5px 10px;
             background: linear-gradient(to right, #347eff, #af45ff);
-          
+
         }
         .input-bar{
             position: absolute;
@@ -26,7 +26,7 @@ page-classify {
             ion-icon{
                 font-size: 20px;
                 color:#333;
-               
+
             }
             span{
                 position: relative;
@@ -35,5 +35,72 @@ page-classify {
                 color:#aaa;
             }
         }
+    }
+    ion-content{
+      .category_container{
+        display: flex;
+        height: 100%;
+        .first_category{
+          width:120px;
+
+          height: 100%;
+          background: #F6F6F6;
+          ul{
+             li{
+               height: 38px;
+               line-height: 38px;
+               text-align: center;
+               font-size: 16px;
+
+               &.active{
+                 background: #ffffff;
+                 border-left: 3px solid #377CFF;
+                 border-bottom: none;
+               }
+             }
+
+          }
+        }
+        .second_category{
+          flex: 1;
+          height: 100%;
+          ul{
+            li{
+              float: left;
+              width:50%;
+              box-sizing: border-box;
+              border-bottom: 1px solid #D8D8D8;
+              text-align: center;
+              border-right: 1px solid transparent;
+              div{
+                padding:50% 0;
+                position: relative;
+                img{
+
+                  width: 90%;
+                  height: 90%;
+                  position: absolute;
+                  top:50%;
+                  left: 50%;
+                  transform: translate(-50%,-50%);
+
+                }
+              }
+              &:nth-child(2n-1){
+                border-right:1px solid #D8D8D8;
+              }
+
+            }
+            span{
+              height: 30px;
+              background: #ffffff;
+              display: block;
+              line-height: 30px;
+              font-size: 14px;
+              margin:0 3px;
+            }
+          }
+        }
+      }
     }
 }

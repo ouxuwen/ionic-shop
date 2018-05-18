@@ -1,3 +1,96 @@
 page-person {
+  ion-content{
+     background: #F8F8F8 !important;
+  }
+
+  .person_box{
+    position: relative;
+    img{
+      width:100%;
+    }
+    .avator{
+      display: flex;
+      align-items: center;
+      text-align: center;
+      flex-direction:column;
+      img{
+        width:90px;
+        height: 90px;
+        border:2px solid #ffffff;
+        border-radius: 50%;
+
+      }
+      .login_btn{
+        color:#ffffff;
+        font-size: 14px;
+        border:1px solid #fff;
+        height: 30px;
+        line-height: 30px;
+        border-radius:30px;
+        width: 100px;
+        margin-top:5px;
+      }
+      .name{
+        height: 30px;
+        line-height: 30px;
+        font-size: 14px;
+        color: #fff;
+        margin-top:5px;
+      }
+    }
+  }
+  .order{
+    margin:10px 0;
+    background: #fff;
+    .my{
+      height: 40px;
+      line-height: 40px;
+      padding:0 10px;
+      position: relative;
+      border-bottom: 1px solid #eeeeee;
+      &:before{
+        content: "";
+        width: 4px;
+        height: 20px;
+        background: #21BC88;
+        position: absolute;
+        left: 0;
+        top:15px;
+      }
+      .all_order{
+        float: right;
+      }
+    }
+    .order_list{
+      display: flex;
+      div{
+        text-align: center;
+        flex: 1;
+        padding:5px 0;
+      }
+    }
+  }
+  .function_list{
+    margin-top:5px;
+    background: #fff;
+    ul{
+      li{
+        height: 44px;
+        line-height: 44px;
+        font-size: 16px;
+        border-bottom: 1px solid #eeeeee;
+        padding:0 5px;
+        ion-icon{
+          float: right;
+          margin-top: 10px;
+        }
+        img{
+          width: 28px;
+          margin-right: 10px;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
 
 }

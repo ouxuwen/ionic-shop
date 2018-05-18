@@ -5,7 +5,7 @@
     url('/assets/font/iconfont.ttf?t=1520582843882') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
     url('/assets/font/iconfont.svg?t=1520582843882#iconfont') format('svg'); /* iOS 4.1- */
   }
-  
+
   .iconfont {
     font-family:"iconfont" !important;
     font-size:16px;
@@ -13,27 +13,89 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
+
   .icon-qunfengcaozuojilu:before { content: "\e769"; }
-  
+
   .icon-shoucang:before { content: "\e61a"; }
-  
+
   .icon-dingdan:before { content: "\e621"; }
-  
+
   .icon-jilu2:before { content: "\e61d"; }
-  
+
   .icon-zhaoxiangji:before { content: "\e6e5"; }
-  
+
   .icon-shuju:before { content: "\e613"; }
-  
+
   .icon-meijin:before { content: "\e614"; }
-  
+
   .icon-bianqianzhi:before { content: "\e618"; }
-  
+
   .icon-biaoqian:before { content: "\e619"; }
-  
+
   .icon-meijinquan:before { content: "\e61f"; }
-  
+
   .icon-yanjing:before { content: "\e608"; }
-  
-  
+
+  @mixin iconFont_fontFace($fontName, $fontNum){
+    font-family: $fontName;
+    src: url('../assets/font/' + $fontName + '.eot?t=' + $fontNum); /* IE9*/
+    src: url('../assets/font/' + $fontName + '.eot?t=' + $fontNum +'#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../assets/font/' + $fontName + '.woff?t=' + $fontNum) format('woff'), /* chrome, firefox */
+    url('../assets/font/' + $fontName + '.ttf?t=' + $fontNum) format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+    url('../assets/font/' + $fontName + '.svg?t=' + $fontNum +'#'+ $fontName) format('svg'); /* iOS 4.1- */
+  }
+
+//其他图标
+.appIcon{
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+  @font-face {
+    @include iconFont_fontFace(icon-profile,ujpfmy);
+  }
+
+  [class^="icon-profile-"] {
+    font-family: 'icon-profile' !important;
+    font-size: 28px;
+    @extend .appIcon;
+  }
+
+  .icon-profile-about_us:before {
+    content: "\e901";
+  }
+  .icon-profile-confirm_booking:before {
+    content: "\e902";
+  }
+  .icon-profile-contact_us:before {
+    content: "\e903";
+  }
+  .icon-profile-expired_coupon:before {
+    content: "\e904";
+  }
+  .icon-profile-passenger_info:before {
+    content: "\e905";
+  }
+  .icon-profile-past_booking:before {
+    content: "\e906";
+  }
+  .icon-profile-pending_payment:before {
+    content: "\e907";
+  }
+  .icon-profile-setting:before {
+    content: "\e908";
+  }
+  .icon-profile-unused_coupon:before {
+    content: "\e909";
+  }
+  .icon-profile-used_coupon:before {
+    content: "\e90a";
+  }
+
+

@@ -1,0 +1,109 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-content>
+
+  <img class="bg" src="assets/imgs/timg.jpg" alt="">
+  <div class="container">
+    <ion-slides>
+      <ion-slide>
+        <div class="form_box">
+          <h1>登 录</h1>
+          <form [formGroup]="loginForm" novalidate [class.invalidForm]='invalidForm'>
+            <div class="input_box">
+              <label>
+                  <ion-icon name="ios-phone-portrait"> </ion-icon>
+              </label>
+              <input type="text" class="error" formControlName="mobileNum" placeholder='手机号码'>
+              <p>手机格式有误</p>
+            </div>
+            <div class="input_box">
+              <label>
+                  <ion-icon name="ios-lock-outline"> </ion-icon>
+              </label>
+              <input type="password" formControlName="password" placeholder='密 码'>
+            </div>
+          </form>
+          <button ion-button full>登 录</button>
+        </div>
+
+
+      </ion-slide>
+      <ion-slide>
+        <div class="form_box">
+          <h1>注 册</h1>
+          <form [formGroup]="registerForm" novalidate [class.invalidForm]='invalidForm'>
+            <div class="input_box">
+              <label>
+                    <ion-icon name="ios-phone-portrait"> </ion-icon>
+                </label>
+              <input type="text" formControlName="mobileNum" placeholder='手机号码'>
+            </div>
+            <div class="input_box">
+              <label>
+                 <ion-icon name="ios-calendar-outline"> </ion-icon>
+              </label>
+              <input type="text" formControlName="phoneCode" placeholder='验证码'>
+            </div>
+            <div class="input_box">
+              <label>
+                 <ion-icon name="ios-person-outline"> </ion-icon>
+              </label>
+              <input type="text" formControlName="userName" placeholder='姓 名'>
+            </div>
+            <div class="input_box">
+              <label>
+                <ion-icon name="ios-lock-outline"> </ion-icon>
+              </label>
+              <input type="password" formControlName="password" placeholder='密 码'>
+            </div>
+            <div class="input_box">
+              <label>
+                <ion-icon name="ios-unlock"> </ion-icon>
+              </label>
+              <input type="password" formControlName="rePassword" placeholder='再次确认密码'>
+            </div>
+          </form>
+          <button ion-button full>注 册</button>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="form_box">
+          <h1>找回密码</h1>
+          <form [formGroup]="findPsdForm" novalidate [class.invalidForm]='invalidForm'>
+            <div class="input_box">
+              <label>
+                      <ion-icon name="ios-phone-portrait"> </ion-icon>
+                  </label>
+              <input type="text" formControlName="mobileNum" placeholder='手机号码'>
+            </div>
+            <div class="input_box">
+              <label>
+                   <ion-icon name="ios-calendar-outline"> </ion-icon>
+                </label>
+              <input type="text" formControlName="phoneCode" placeholder='验证码'>
+            </div>
+            <div class="input_box">
+              <label>
+                  <ion-icon name="ios-lock-outline"> </ion-icon>
+                </label>
+              <input type="password" formControlName="password" placeholder='密 码'>
+            </div>
+            <div class="input_box">
+              <label>
+                  <ion-icon name="ios-unlock"> </ion-icon>
+                </label>
+              <input type="password" formControlName="rePassword" placeholder='再次确认密码'>
+            </div>
+          </form>
+          <button ion-button full>找回密码</button>
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+</ion-content>

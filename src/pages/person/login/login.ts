@@ -1,0 +1,97 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ViewChild } from '@angular/core';
+import { Slides } from 'ionic-angular';
+import { FormBuilder } from '@angular/forms';
+import { Validators } from "../../../validators/validators";
+/**
+ * Generated class for the LoginPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage()
+@Component({
+  selector: 'page-login',
+  templateUrl: 'login.html',
+})
+export class LoginPage {
+  @ViewChild(Slides) slides: Slides;
+  loginForm: any;
+  registerForm: any;
+  findPsdForm: any;
+  loginErrors = {
+    'mobileNum': '',
+    'password': '',
+  };
+  validationMessages: any = {
+    'password': {
+      'required': "请输入密码"
+    },
+    'mobileNum': {
+      'required': "请输入手机号码",
+      'phone': "手机号码格式有误"
+    },
+    'phoneCode': {
+      'required': "请输入手机验证码"
+    },
+    'userName': {
+      'required': "请输入姓名"
+    },
+    'rePassword': {
+      'required': "请再次输入密码"
+    },
+  };;
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public formBuilder: FormBuilder) {
+  }
+
+  ngOnInit() {
+    this.initForm();
+
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad LoginPage');
+  }
+
+  // 初始化表单控件
+  initForm() {
+    this.loginForm = this.formBuilder.group({
+      mobileNum: ["", [Validators.required, Validators.phone]],
+      password: ["", [Validators.required]]
+    });
+    this.loginForm.valueChanges.subscribe(data => this.onValueChanged(data,this.loginErrors));
+    this.registerForm = this.formBuilder.group({
+      mobileNum: ["", [Validators.required, Validators.phone]],
+      userName: ["", [Validators.required]],
+      password: ["", [Validators.required]],
+      rePassword: ["", [Validators.required]],
+      phoneCode: ["", [Validators.required]]
+    });
+    this.findPsdForm = this.formBuilder.group({
+      mobileNum: ["", [Validators.required, Validators.phone]],
+      password: ["", [Validators.required]],
+      rePassword: ["", [Validators.required]],
+      phoneCode: ["", [Validators.required]]
+    });
+  }
+
+  //监控错误
+  onValueChanged(data,formError) {
+    for (const field in formError) {
+     formError[field] = '';
+      const control = this.loginForm.get(field);
+      if (control && control.dirty && !control.valid) {//表单字段已修改或无效
+        const messages = this.validationMessages[field];//取出对应字段可能的错误信息
+        for (const key in control.errors) { //从errors里取出错误类型，再拼上该错误对应的信息
+          messages[key] && (formError[field] += messages[key] + '');
+        }
+      }
+    }
+
+  }
+}

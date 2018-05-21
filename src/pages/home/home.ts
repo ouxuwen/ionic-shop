@@ -40,7 +40,7 @@ export class HomePage {
 
   doPull(refresher) {
     console.log(refresher.state);
-    
+
 
   }
   doRefresh(refresher) {
@@ -70,7 +70,7 @@ export class HomePage {
 
 
   formatTime(value) {
-   
+
     var hour = Math.floor(value / 3600000);
     var minute = Math.floor((value % 3600000) / 60000);
     var second = Math.floor((value % 3600000 % 60000) / 1000);;
@@ -83,6 +83,8 @@ export class HomePage {
 
   }
 
-
+  openGoodsList(){
+    this.navCtrl.push("GoodsListPage");
+  }
 
 }

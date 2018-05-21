@@ -1,0 +1,38 @@
+<!--
+  Generated template for the GoodsListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <div class="header">
+        <ion-searchbar
+        [(ngModel)]="myInput"
+        (ionInput)="onInput($event)"
+        [placeholder]="'请输入你想搜索的内容'"
+        ></ion-searchbar>
+        <span class="search_btn">搜 索</span>
+    </div>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="apps">
+      <ion-segment-button value="paid">
+        销 量
+      </ion-segment-button>
+      <ion-segment-button value="free">
+        价 格
+      </ion-segment-button>
+      <ion-segment-button value="top">
+        好 评
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-content>

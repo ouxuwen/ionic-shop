@@ -14,12 +14,18 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp,{
+      //mode: 'ios',
+      tabsHideOnSubPages: 'true',
+      backButtonText: '',
+      iconMode: 'ios',
+    }),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     TabsPage
+
   ],
   providers: [
     StatusBar,

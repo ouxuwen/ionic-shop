@@ -8,7 +8,7 @@ page-home {
             width:100%;
             height: 45px;
             padding:5px 10px;
-            background: linear-gradient(to right, #347eff, #af45ff);
+            background: linear-gradient(to right,  #347eff, #1ea3ff);
             opacity: 0;
         }
         .input-bar{
@@ -26,7 +26,7 @@ page-home {
             ion-icon{
                 font-size: 20px;
                 color:#333;
-               
+
             }
             span{
                 position: relative;
@@ -42,7 +42,7 @@ page-home {
     .has-refresher > .scroll-content{
         border-top:none;
     }
-    
+
     .slider{
         margin-top:45px;
     }
@@ -63,7 +63,7 @@ page-home {
             margin:0;
         }
     }
-    
+
     .index-trumpet{
        // border-bottom: 1px solid #eeeeee;
         height: 50px;
@@ -212,5 +212,5 @@ page-home {
             }
         }
     }
-    
+
 }

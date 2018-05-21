@@ -1,0 +1,25 @@
+page-goods-list {
+  .header-ios .toolbar-ios:last-child .toolbar-background-ios{
+    border: none;
+  }
+  .header{
+    display: flex;
+    .toolbar  .searchbar-input{
+      background: #fff;
+    }
+    .search_btn{
+      color:#fff;
+      width: 40px;
+      display: flex;
+      align-items: center;
+    }
+
+  }
+
+
+  ion-content{
+    .toolbar-background-ios, .toolbar-background-md{
+      background: #fff;
+    }
+  }
+}

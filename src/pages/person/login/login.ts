@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ViewChild } from '@angular/core';
-import { Slides } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+
 import { FormBuilder } from '@angular/forms';
 import { Validators } from "../../../validators/validators";
 /**
@@ -17,7 +16,7 @@ import { Validators } from "../../../validators/validators";
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  @ViewChild(Slides) slides: Slides;
+
   loginForm: any;
   registerForm: any;
   findPsdForm: any;
@@ -46,7 +45,10 @@ export class LoginPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public formBuilder: FormBuilder) {
+    public formBuilder: FormBuilder,
+    public viewCtrl: ViewController
+
+  ) {
   }
 
   ngOnInit() {
@@ -64,26 +66,14 @@ export class LoginPage {
       mobileNum: ["", [Validators.required, Validators.phone]],
       password: ["", [Validators.required]]
     });
-    this.loginForm.valueChanges.subscribe(data => this.onValueChanged(data,this.loginErrors));
-    this.registerForm = this.formBuilder.group({
-      mobileNum: ["", [Validators.required, Validators.phone]],
-      userName: ["", [Validators.required]],
-      password: ["", [Validators.required]],
-      rePassword: ["", [Validators.required]],
-      phoneCode: ["", [Validators.required]]
-    });
-    this.findPsdForm = this.formBuilder.group({
-      mobileNum: ["", [Validators.required, Validators.phone]],
-      password: ["", [Validators.required]],
-      rePassword: ["", [Validators.required]],
-      phoneCode: ["", [Validators.required]]
-    });
+    this.loginForm.valueChanges.subscribe(data => this.onValueChanged(data, this.loginErrors));
+
   }
 
   //监控错误
-  onValueChanged(data,formError) {
+  onValueChanged(data, formError) {
     for (const field in formError) {
-     formError[field] = '';
+      formError[field] = '';
       const control = this.loginForm.get(field);
       if (control && control.dirty && !control.valid) {//表单字段已修改或无效
         const messages = this.validationMessages[field];//取出对应字段可能的错误信息
@@ -93,5 +83,17 @@ export class LoginPage {
       }
     }
 
+  }
+
+  register() {
+    this.navCtrl.push("RegisterPage");
+  }
+
+  findPassword() {
+    this.navCtrl.push("FindPasswordPage");
+  }
+
+  close() {
+    this.viewCtrl.dismiss();
   }
 }

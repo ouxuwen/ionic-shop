@@ -7,12 +7,44 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>shoppingCar</ion-title>
+    <ion-title>购 物 车</ion-title>
+    <span class="manger_btn">管理</span>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <div class="no_data" *ngIf="cartData.length === 0">
+    <ion-icon name="ios-cart-outline"></ion-icon>
+    <div>购物车空空如也~~</div>
+  </div>
+  <div class="good_list">
+    <ion-list>
+      <ion-item-sliding *ngFor="let ele of cartData " #item>
+        <ion-item>
+          <ion-checkbox [(ngModel)]="pepperoni"></ion-checkbox>
+          <ion-label>
+            <img tappable (click)='openDetail($event)' src="assets/imgs/book.jpg" alt="">
+            <div tappable (click)='openDetail($event)'>
+              <p class="name">商品：阿斯顿发送到发送到发送到发送到发送到发送到发送到发斯蒂芬</p>
+              <p class="type">规格：xxx</p>
+              <p class="price">价格：¥ 5.00</p>
+            </div>
+            <div class="num">
+              <ion-icon name="ios-remove-outline"></ion-icon>
+              <ion-input type="number" value="0" max="999" min="0"></ion-input>
+              <ion-icon name="ios-add-outline"></ion-icon>
+            </div>
+          </ion-label>
 
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button color="danger" (click)="delete(item)">删 除</button>
+        </ion-item-options>
+      </ion-item-sliding>
+
+    </ion-list>
+
+  </div>
 </ion-content>

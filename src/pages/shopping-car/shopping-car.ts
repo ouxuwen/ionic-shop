@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ItemSliding  } from 'ionic-angular';
 
 /**
  * Generated class for the ShoppingCarPage page.
@@ -14,7 +14,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'shopping-car.html',
 })
 export class ShoppingCarPage {
-
+  cartData:any = [1,1,2];
+  pepperoni:boolean = false;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -22,4 +23,17 @@ export class ShoppingCarPage {
     console.log('ionViewDidLoad ShoppingCarPage');
   }
 
+
+  delete( itemSliding: ItemSliding){
+    itemSliding.close();
+
+  }
+  openDetail(event){
+    event.stopPropagation();
+
+  }
+
+  changeNum(i){
+
+  }
 }

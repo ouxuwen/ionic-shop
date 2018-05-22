@@ -1,0 +1,32 @@
+
+number-input{
+  .num_box{
+    display: inline-block;
+  }
+  .num{
+    width:120px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    border:1px solid #ccc;
+    ion-input{
+      width:50px;
+      input{
+        margin:0;
+        text-align: center;
+      }
+      font-size: 12px;
+    }
+    ion-icon{
+      padding:3px 8px;
+      &:first-child{
+        border-right: 1px solid #ccc;
+      }
+      &:last-child{
+        border-left: 1px solid #ccc;
+      }
+    }
+    z-index: 999;
+  }
+
+}

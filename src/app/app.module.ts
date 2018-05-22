@@ -7,30 +7,33 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { PopoverPage } from '../pages/goods-detail/goods-detail';
+
 @NgModule({
   declarations: [
     MyApp,
-    TabsPage
+    TabsPage,
+    PopoverPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp,{
-      //mode: 'ios',
+    IonicModule.forRoot(MyApp, {
+      // mode: 'ios',
       tabsHideOnSubPages: 'true',
       backButtonText: '',
       iconMode: 'ios',
-    }),
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    TabsPage
-
+    TabsPage,
+    PopoverPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }

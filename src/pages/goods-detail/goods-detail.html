@@ -7,12 +7,90 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>goods-detail</ion-title>
+    <ion-title>商 品 详 情</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentPopover($event)">
+        <ion-icon name="md-more"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content>
+  <div class="pic_list">
+    <ion-slides [loop]="true" [autoplay]="3000" pager>
+      <ion-slide>
+        <img src="assets/imgs/book.jpg" alt="">
+      </ion-slide>
+      <ion-slide>
+        <img src="assets/imgs/book.jpg" alt="">
+      </ion-slide>
+      <ion-slide>
+        <img src="assets/imgs/book.jpg" alt="">
+      </ion-slide>
+    </ion-slides>
+  </div>
+  <div class="goods_intro">
+    <p class="name">史蒂芬周</p>
+    <p class="note">
+      <span>闪电发货</span>
+      <span>限时减价</span>
+      <span>正品保证</span>
+      <span>支持售后</span>
+    </p>
+    <p class="price">
+      <span>¥ 3.00</span>
+      <span>¥ 10.00</span>
+      <span>库存 ：9999</span>
+    </p>
+    <p class="star">
+      <ion-icon name="ios-star"></ion-icon>
+      <ion-icon name="ios-star"></ion-icon>
+      <ion-icon name="ios-star"></ion-icon>
+      <ion-icon name="ios-star"></ion-icon>
+      <ion-icon name="ios-star"></ion-icon>
+      <span> 100% 好评</span>
+    </p>
 
+  </div>
+  <div class="detail_nav">
+    <span [class.active]="navIndex == 1" (click)="changeIndex(1)">商 品</span>
+    <span [class.active]="navIndex == 2" (click)="changeIndex(2)">详 情</span>
+    <span [class.active]="navIndex == 3" (click)="changeIndex(3)">评 价</span>
+  </div>
+  <div class="goods">
+    <div class="rule">
+      选择规格：
+      <choose-model [selectList]='roleList' (selectResult)="getRoleResult($event)"></choose-model>
+    </div>
+    <div class="rule">
+      购买数量：
+      <number-input [min]='1' [max]='9999' [(numVal)]='numVals' (numValChange)="log($event)"></number-input>
+    </div>
+
+  </div>
+  <div class="detail">
+
+  </div>
+  <div class="commmon">
+
+  </div>
+
+  <footer class="footer">
+    <div class="favorite">
+      <ion-icon name="ios-heart"></ion-icon>
+      <p>收藏</p>
+    </div>
+    <div class="service">
+      <ion-icon name="ios-chatbubbles"></ion-icon>
+      <p>客服</p>
+    </div>
+    <div class="buy_now">
+      立即购买
+    </div>
+    <div class="add_cart">
+      加入购物车
+    </div>
+  </footer>
 </ion-content>

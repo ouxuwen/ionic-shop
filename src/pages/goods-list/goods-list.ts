@@ -24,4 +24,8 @@ export class GoodsListPage {
   onInput(event){
 
   }
+
+  goGoodsDetail(){
+    this.navCtrl.push('GoodsDetailPage');
+  }
 }

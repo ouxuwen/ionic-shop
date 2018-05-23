@@ -71,7 +71,9 @@ export class GoodsDetailPage {
 
   //切换显示
   changeIndex(i) {
-    this.navIndex = i;
+    this.navCtrl.push('ImgTextDetailPage',{"navIndex":i},{
+      direction:"switch"
+    })
   }
 
   log(e) {
@@ -80,6 +82,31 @@ export class GoodsDetailPage {
 
   getRoleResult(ev){
     console.log(ev)
+  }
+
+  choose(ev){
+    ev.stopPropagation();
+    document.getElementById('choose').click();
+  }
+
+
+  goToCart(){
+    //  this.navCtrl.popToRoot();
+    this.navCtrl.setRoot('ShoppingCarPage');
+  }
+
+  doInfinite(infiniteScroll){
+
+    setTimeout(() => {
+      this.navCtrl.push('ImgTextDetailPage',{"navIndex":2},{
+
+      })
+
+
+      infiniteScroll.complete();
+    }, 500);
+
+
   }
 }
 

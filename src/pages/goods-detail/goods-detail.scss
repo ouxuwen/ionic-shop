@@ -1,6 +1,9 @@
 page-goods-detail {
   .pic_list{
     height: 100vw;
+    ion-slide{
+      overflow: hidden;
+    }
   }
   .goods_intro{
     border-top:1px solid #eeeeee;
@@ -95,7 +98,21 @@ page-goods-detail {
       height: 44px;
       background: #fff;
       margin-top:10px;
+      padding:0 10px ;
+      choose-model{
+        display: inline-block;
+
+      }
+      .r{
+        font-size: 26px;
+        margin-top:9px;
+        color:#666;
+
+      }
     }
+  }
+  ion-infinite-scroll {
+    background: #eee;
   }
 
   .footer{
@@ -106,7 +123,7 @@ page-goods-detail {
     box-shadow: 0 0 3px 3px #ECECEC;
     display: flex;
     text-align: center;
-    .favorite,.service{
+    .favorite,.service,.cart{
       background: #fff;
       display: flex;
       width:60px;
@@ -127,6 +144,11 @@ page-goods-detail {
     .service{
       ion-icon{
         color:#29E386;
+      }
+    }
+    .cart{
+      ion-icon{
+        color:#FFCE44;
       }
     }
     .buy_now,.add_cart{

@@ -1,0 +1,78 @@
+<!--
+  Generated template for the ImgTextDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{navIndex === 2?"图 文 详 情":"商 品 评 论" }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="detail_nav">
+    <span tappable (click)="back()">商 品</span>
+    <span tappable [class.active]="navIndex == 2" (click)="changeIndex(2)">详 情</span>
+    <span tappable [class.active]="navIndex == 3" (click)="changeIndex(3)">评 价</span>
+  </div>
+  <div *ngIf="navIndex == 2" class="img_text">
+
+  </div>
+  <div *ngIf="navIndex == 3" class="comment">
+    <div class="j_tab_menu">
+      <ul class="clear">
+        <li class="selected">
+          全部 (3)
+        </li>
+        <li>
+          好评 (3)
+        </li>
+        <li>
+          中评 (0)
+        </li>
+        <li>
+          差评 (0)
+        </li>
+      </ul>
+    </div>
+    <div class="com_list">
+      <ul>
+        <li>
+          <div class="name">
+            <img src="assets/imgs/profile_icon.png" alt="">
+            <span class="tel">188******</span>
+            <div class="star">
+              <ion-icon name="ios-star"></ion-icon>
+              <ion-icon name="ios-star"></ion-icon>
+              <ion-icon name="ios-star"></ion-icon>
+              <ion-icon name="ios-star"></ion-icon>
+              <ion-icon name="ios-star"></ion-icon>
+              <span>5 分</span>
+            </div>
+          </div>
+          <p class="goods">商品：史提芬周</p>
+          <p class="txt">发货速度快，质量很好！！！</p>
+          <p class="time">2018-5-23 15:32</p>
+        </li>
+        <li>
+          <div class="name">
+            <img src="assets/imgs/profile_icon.png" alt="">
+            <span class="tel">188******</span>
+            <div class="star">
+              <ion-icon name="ios-star"></ion-icon>
+              <ion-icon name="ios-star"></ion-icon>
+              <ion-icon name="ios-star"></ion-icon>
+              <ion-icon name="ios-star"></ion-icon>
+              <ion-icon name="ios-star"></ion-icon>
+              <span>5 分</span>
+            </div>
+          </div>
+          <p class="goods">商品：史提芬周</p>
+          <p class="txt">发货速度快，质量很好！！！</p>
+          <p class="time">2018-5-23 15:32</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</ion-content>

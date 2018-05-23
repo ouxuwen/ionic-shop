@@ -25,6 +25,26 @@ export class PersonPage {
   login() {
     let profileModal = this.modalCtrl.create("LoginPage");
     profileModal.present();
+  }
 
+
+  goMyScore(){
+    this.navCtrl.push('MyScorePage');
+  }
+
+  goMyAddress(){
+    this.navCtrl.push('AddressManagementPage');
+  }
+
+  goMyCoupon(){
+    this.navCtrl.push('MyCouponPage');
+  }
+
+  goAboutStore(){
+    this.navCtrl.push('AboutStorePage');
+  }
+
+  goFeedback(){
+    this.navCtrl.push('FeedbackPage');
   }
 }

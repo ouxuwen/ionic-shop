@@ -15,7 +15,7 @@
   <ion-refresher (ionPull)="doPull($event)" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content pullingIcon="md-arrow-down" pullingText="下拉刷新..." refreshingSpinner="ios" refreshingText="正在刷新..."></ion-refresher-content>
   </ion-refresher>
-  <ion-slides autoplay control='true' loop="true" style="height: auto;">
+  <ion-slides autoplay pager control='true' loop="true" style="height: auto;">
     <ion-slide *ngFor="let image of [2,3,4,5]">
       <img src="assets/imgs/slide.png">
     </ion-slide>

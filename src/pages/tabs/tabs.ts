@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
 })
 export class TabsPage {
 
-  tab1Root = "GoodsListPage";
+  tab1Root = "HomePage";
   tab2Root = "ClassifyPage";
   tab3Root = "ShoppingCarPage";
   tab4Root = "PersonPage";

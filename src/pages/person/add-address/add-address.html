@@ -13,6 +13,31 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label color="primary" stacked>姓 名：</ion-label>
+      <ion-input type="text" placeholder="收货人"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>电 话：</ion-label>
+      <ion-input type="number" placeholder="手机号码"></ion-input>
+    </ion-item>
+    <ion-item>
+      <span>
+        省市区：<select-address (selectResult)="selectResult($event)"></select-address>
+      </span>
+    </ion-item>
+    <ion-item>
+        <ion-label color="primary" stacked>详 细 地 址：</ion-label>
+      <ion-textarea placeholder="详细地址" rows='5'></ion-textarea>
+    </ion-item>
+  </ion-list>
+
+  <div class="btn">
+      <button ion-button full>
+          添加
+        </button>
+  </div>
 
 </ion-content>

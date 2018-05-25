@@ -22,4 +22,7 @@ export class AddAddressPage {
     console.log('ionViewDidLoad AddAddressPage');
   }
 
+  selectResult(ev){
+
+  }
 }

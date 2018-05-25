@@ -10,14 +10,50 @@
     <ion-title>收 货 地 址 管 理</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="addAddress()">
-          <ion-icon name="md-add"></ion-icon>
-        </button>
+        <ion-icon name="md-add"></ion-icon>
+      </button>
     </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
 
-<ion-content>
-
+<ion-content class="bgs">
+  <ul class="address_list">
+    <li class="selected">
+      <p class="header">
+        <span class="name">達文西</span>
+        <span class="tel">18888888888</span>
+      </p>
+      <p class="body">
+        <span>廣東省深圳市福田區 罕相路18號</span>
+      </p>
+      <div class="footer">
+        <span class="auto">
+          设为默认收货地址
+        </span>
+        <p>
+          <span>编辑</span>
+          <span>删除</span>
+        </p>
+      </div>
+    </li>
+    <li>
+      <p class="header">
+        <span class="name">達文西</span>
+        <span class="tel">18888888888</span>
+      </p>
+      <p class="body">
+        <span>廣東省深圳市福田區 罕相路18號</span>
+      </p>
+      <div class="footer">
+        <span class="auto">
+          设为默认收货地址
+        </span>
+        <p>
+          <span>编辑</span>
+          <span>删除</span>
+        </p>
+      </div>
+    </li>
+  </ul>
 </ion-content>

@@ -1,3 +1,52 @@
 page-address-management {
+  ion-content.bgs{
+    background: #f5f5f5;
+  }
+  .address_list{
+    li{
+      border:5px solid transparent;
+      &.selected{
+        border-left-color: rgb(255, 60, 0);
+        .footer .auto{
+          color:rgb(255, 60, 0);
+          border-color:rgb(255, 60, 0);
+        }
+      }
+      padding:10px;
+      background: #fff;
+      margin-bottom:10px;
+      .header{
+        height: 20px;
+        line-height: 20px;
+        .tel{
+          margin-left: 20px;
+        }
+      }
+      .body{
+        padding:5px 0;
+        line-height: 20px;
+        border-bottom:1px solid #eee;
+      }
+      .footer{
+        font-size: 12px;
+        padding-top:10px;
+        .auto{
+          display:inline-block;
+          padding:3px 5px;
+          border:1px solid #666;
+          border-radius: 2px;
+          color:#666;
+        }
+        p{
+          float: right;
+          span{
+            margin:10px;
+            font-size: 12px;
+            color:rgb(0, 132, 255);
+          }
+        }
+      }
+    }
 
+  }
 }

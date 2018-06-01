@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import {ApiService} from '../../providers/api';
 /**
  * Generated class for the HomePage page.
  *
@@ -24,11 +24,22 @@ export class HomePage {
   promoSec: any;
   promoTime:any = 47*3500000+50000;
   promoList=[1,2,3,4,5,6,7];
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public api:ApiService
+
+  ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
+    this.api.index().subscribe(res=>{
+      console.log(res);
+    })
+    this.api.discount().subscribe(res=>{
+      console.log(res);
+    })
     setInterval(()=>{
       this.promoTime-= 1000;
       if(this.promoTime<0){

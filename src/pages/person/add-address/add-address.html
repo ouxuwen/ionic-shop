@@ -24,20 +24,19 @@
       <ion-input type="number" placeholder="手机号码"></ion-input>
     </ion-item>
     <ion-item>
-      <span>
-        省市区：<select-address (selectResult)="selectResult($event)"></select-address>
-      </span>
+      <ion-label color="primary" stacked>省市区:</ion-label>
+      <ion-multi-picker id="cities" item-content [multiPickerColumns]="cityColumns" [cancelText]="'取消'" [doneText]="'确定'" [(ngModel)] = "default" (ngModelChange)="selectResult($event)" [placeholder]="'省市区'"></ion-multi-picker>
     </ion-item>
     <ion-item>
-        <ion-label color="primary" stacked>详 细 地 址：</ion-label>
+      <ion-label color="primary" stacked>详 细 地 址：</ion-label>
       <ion-textarea placeholder="详细地址" rows='5'></ion-textarea>
     </ion-item>
   </ion-list>
 
   <div class="btn">
-      <button ion-button full>
-          添加
-        </button>
+    <button ion-button full>
+      添加
+    </button>
   </div>
 
 </ion-content>

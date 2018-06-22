@@ -109,10 +109,10 @@
     </div>
     <ion-scroll scrollX="true" style="height:135px;">
       <ul [style.width]="100*promoList.length + 'px'" class="promo-list clear">
-        <li *ngFor="let promo of promoList">
-          <img src="assets/imgs/test.jpg" alt="">
-          <p>啊啊啊啊啊啊啊</p>
-          <div>¥ 5.00</div>
+        <li *ngFor="let promo of discountList">
+          <image [src]="promo.picture.pic_cover_mid" alt=""></image>
+          <p>{{promo.goods_name}}</p>
+          <div>¥ {{promo.promotion_price}}</div>
         </li>
       </ul>
     </ion-scroll>

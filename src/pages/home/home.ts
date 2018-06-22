@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {ApiService} from '../../providers/api';
+
 /**
  * Generated class for the HomePage page.
  *
@@ -24,22 +25,20 @@ export class HomePage {
   promoSec: any;
   promoTime:any = 47*3500000+50000;
   promoList=[1,2,3,4,5,6,7];
+  discountList:any;
+
+
+
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public api:ApiService
-
   ) {
+    this.init();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
-    this.api.index().subscribe(res=>{
-      console.log(res);
-    })
-    this.api.discount().subscribe(res=>{
-      console.log(res);
-    })
     setInterval(()=>{
       this.promoTime-= 1000;
       if(this.promoTime<0){
@@ -49,11 +48,24 @@ export class HomePage {
     },1000);
   }
 
+  init(){
+    console.log('dj')
+    this.api.index().subscribe(res=>{
+
+      this.discountList = res['data'].discount_list;
+      console.log(res);
+    })
+  }
+
+
+  // 上拉
   doPull(refresher) {
     console.log(refresher.state);
-
-
   }
+
+
+
+  // 下拉刷新
   doRefresh(refresher) {
     this.fixContent.style.top = "0";
     this.header.style.display = "none";

@@ -7,7 +7,7 @@ import { IonicPage } from 'ionic-angular';
 })
 export class TabsPage {
 
-  tab1Root = "AddressManagementPage";
+  tab1Root = "HomePage";
   tab2Root = "ClassifyPage";
   tab3Root = "ShoppingCarPage";
   tab4Root = "PersonPage";

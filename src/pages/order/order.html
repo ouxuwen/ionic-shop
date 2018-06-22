@@ -1,0 +1,36 @@
+<!--
+  Generated template for the OrderPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>订单管理</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="orderType">
+      <ion-segment-button value="wait">
+        未付款
+      </ion-segment-button>
+      <ion-segment-button value="pay">
+        待发货
+      </ion-segment-button>
+      <ion-segment-button value="send">
+        已发货
+      </ion-segment-button>
+      <ion-segment-button value="done">
+        已完成
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+  <div class="order_list">
+
+  </div>
+</ion-content>

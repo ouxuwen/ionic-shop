@@ -1,10 +1,12 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler,IonicPageModule } from 'ionic-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { MyApp } from './app.component';
 import { TabsPage } from '../pages/tabs/tabs';
-
+import { TabsPageModule } from '../pages/tabs/tabs.module';
+import { WelcomePageModule } from '../pages/welcome/welcome.module';
+import { IonicStorageModule } from '@ionic/storage';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -14,7 +16,6 @@ import { ApiService } from '../providers/api';
 @NgModule({
   declarations: [
     MyApp,
-    TabsPage,
     PopoverPage
   ],
   imports: [
@@ -25,12 +26,14 @@ import { ApiService } from '../providers/api';
       backButtonText: '',
       iconMode: 'ios',
     }),
-    HttpClientModule
+    HttpClientModule,
+    WelcomePageModule,
+    TabsPageModule,
+    IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    TabsPage,
     PopoverPage
   ],
   providers: [

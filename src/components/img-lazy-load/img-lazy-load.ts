@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { API } from '../../app.config';
+import { URL } from '../../app.config';
 @Component({
   selector: 'image',
   templateUrl: 'img-lazy-load.html'
@@ -16,12 +16,12 @@ export class ImgLazyLoadComponent {
 
   ngOnInit() {
     let img = new Image();
-    img.src = API.imgPrefix + this.src;
+    img.src = URL.imgPrefix + this.src;
     img.onload = () => {
       //这里为了达到演示效果给了两秒的延迟，实际使用中不需要延迟
-      setTimeout(() => {
-        this.default =API.imgPrefix + this.src;
-      }, 2000)
+
+        this.default = URL.imgPrefix + this.src;
+
     }
   }
 }

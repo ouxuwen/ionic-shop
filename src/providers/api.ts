@@ -15,5 +15,9 @@ export  class ApiService {
   discount(){
     return this.base.post('/app/index/discount');
   }
+  //商品详情
+  goodsDetail(data){
+    return this.base.post('/app/Goods/goodsDetail',data);
+  }
 
 }

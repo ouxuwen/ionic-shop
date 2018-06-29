@@ -11,4 +11,4 @@ const FETCH = {
   }
 }
 
-export const API = FETCH[DEPLOY];
+export const URL = FETCH[DEPLOY];

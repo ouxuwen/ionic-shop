@@ -26,6 +26,8 @@ export class HomePage {
   promoTime:any = 47*3500000+50000;
   promoList=[1,2,3,4,5,6,7];
   discountList:any;
+  bannerList:any;
+  hotList:any;
 
 
 
@@ -49,12 +51,14 @@ export class HomePage {
   }
 
   init(){
-    console.log('dj')
+
     this.api.index().subscribe(res=>{
 
       this.discountList = res['data'].discount_list;
       console.log(res);
     })
+
+
   }
 
 

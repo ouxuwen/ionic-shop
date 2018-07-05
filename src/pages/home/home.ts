@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {ApiService} from '../../providers/api';
+import { ApiService } from '../../providers/api';
 
 /**
  * Generated class for the HomePage page.
@@ -23,11 +23,11 @@ export class HomePage {
   promoHour: any;
   promoMin: any;
   promoSec: any;
-  promoTime:any = 47*3500000+50000;
-  promoList=[1,2,3,4,5,6,7];
-  discountList:any;
-  bannerList:any;
-  hotList:any;
+  promoTime: any = 47 * 3500000 + 50000;
+  promoList = [1, 2, 3, 4, 5, 6, 7];
+  discountList: any;
+  bannerList: any;
+  hotList: any;
 
 
 
@@ -35,24 +35,24 @@ export class HomePage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public api:ApiService
+    public api: ApiService
   ) {
     this.init();
   }
 
   ionViewDidLoad() {
-    setInterval(()=>{
-      this.promoTime-= 1000;
-      if(this.promoTime<0){
-        this.promoTime = 48*3600000;
+    setInterval(() => {
+      this.promoTime -= 1000;
+      if (this.promoTime < 0) {
+        this.promoTime = 48 * 3600000;
       }
       this.formatTime(this.promoTime);
-    },1000);
+    }, 1000);
   }
 
-  init(){
+  init() {
 
-    this.api.index().subscribe(res=>{
+    this.api.index().subscribe(res => {
 
       this.discountList = res['data'].discount_list;
       console.log(res);
@@ -106,11 +106,11 @@ export class HomePage {
     var s = second > 9 ? second : "0" + second;
     this.promoHour = h;
     this.promoMin = m;
-    this.promoSec= s;
+    this.promoSec = s;
 
   }
 
-  openGoodsList(){
+  openGoodsList() {
     this.navCtrl.push("GoodsListPage");
   }
 

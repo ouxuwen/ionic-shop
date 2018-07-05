@@ -1,9 +1,10 @@
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, TimeoutError, Subscription } from "rxjs";
-import { LoadingController, AlertController } from 'ionic-angular';
+import { LoadingController, AlertController, NavController,App } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { URL } from '../app.config';
+
 /*
   Generated class for the BaseHttpProvider provider.
 
@@ -15,18 +16,20 @@ export class BaseHttpProvider {
   url: string = URL.urlPrefix;
   loading: any;
   token: any;
+  navCtrl:NavController;
   constructor(
     public http: HttpClient,
     public loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
-    public storage: Storage
+    public storage: Storage,
+    public appCtrl: App,
   ) {
     this.loading = this.loadingCtrl.create({
       spinner: "crescent",
       content: "加载中..."
     });
     this.token = localStorage.getItem("token");
-
+    this.navCtrl = this.appCtrl.getActiveNav();
   }
 
   errorHandler(res) {
@@ -38,7 +41,12 @@ export class BaseHttpProvider {
       });
       alert.present();
     } else if (res.code === 401) {
-      console.log('请重新登录~')
+      let alert = this.alertCtrl.create({
+        title: '温馨提示',
+        subTitle: res.message,
+        buttons: ['确 定']
+      });
+      this.navCtrl.setRoot("LoginPage");
     }
   }
 
@@ -64,9 +72,9 @@ export class BaseHttpProvider {
           observer.error(err);
         },
         () => {
-          try{
+          try {
             this.loading.dismiss();
-          }catch(err){
+          } catch (err) {
 
           }
 
@@ -77,7 +85,7 @@ export class BaseHttpProvider {
   post(api: string, body: any = null): Observable<Response> {
     let token = this.token ? this.token : "6ed20604fe946101be88e205ed5dbfa7"
     const params = new URLSearchParams();
-    body = {token,...body};
+    body = { token, ...body };
     if (body) {
       for (const n in body) {
         if (body.hasOwnProperty(n)) {

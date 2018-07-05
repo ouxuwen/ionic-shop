@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
 import { WelcomePage } from '../pages/welcome/welcome';
+import { LoginPage } from '../pages/person/login/login';
 import { Storage } from '@ionic/storage';
 @Component({
   templateUrl: 'app.html'
@@ -20,7 +21,7 @@ export class MyApp {
     });
     this.storage.get("notFirstEnter").then(res => {
       if (res) {
-        this.rootPage = TabsPage;
+        this.rootPage = LoginPage;
       } else {
         this.rootPage = WelcomePage;
         this.storage.set("notFirstEnter",true);

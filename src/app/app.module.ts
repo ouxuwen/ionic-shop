@@ -6,6 +6,7 @@ import { MyApp } from './app.component';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TabsPageModule } from '../pages/tabs/tabs.module';
 import { WelcomePageModule } from '../pages/welcome/welcome.module';
+import { LoginPageModule } from '../pages/person/login/login.module';
 import { IonicStorageModule } from '@ionic/storage';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -13,6 +14,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { PopoverPage } from '../pages/goods-detail/goods-detail';
 import { BaseHttpProvider } from '../providers/base-http';
 import { ApiService } from '../providers/api';
+import { PersonService } from '../providers/person';
 
 import { ComponentsModule } from '../components/components.module';
 @NgModule({
@@ -31,6 +33,7 @@ import { ComponentsModule } from '../components/components.module';
     HttpClientModule,
     WelcomePageModule,
     TabsPageModule,
+    LoginPageModule,
     IonicStorageModule.forRoot(),
     ComponentsModule
   ],
@@ -44,8 +47,8 @@ import { ComponentsModule } from '../components/components.module';
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     BaseHttpProvider,
-    ApiService
-
+    ApiService,
+    PersonService
   ]
 })
 export class AppModule { }

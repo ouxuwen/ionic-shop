@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 
 import { FormBuilder } from '@angular/forms';
 import { Validators } from "../../../validators/validators";
+import { PersonService } from '../../../providers/person';
 /**
  * Generated class for the LoginPage page.
  *
@@ -18,8 +19,7 @@ import { Validators } from "../../../validators/validators";
 export class LoginPage {
 
   loginForm: any;
-  registerForm: any;
-  findPsdForm: any;
+
   loginErrors = {
     'mobileNum': '',
     'password': '',
@@ -41,13 +41,13 @@ export class LoginPage {
     'rePassword': {
       'required': "请再次输入密码"
     },
-  };;
+  };
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public formBuilder: FormBuilder,
-    public viewCtrl: ViewController
-
+    public viewCtrl: ViewController,
+    public personService:PersonService
   ) {
   }
 
@@ -72,6 +72,7 @@ export class LoginPage {
 
   //监控错误
   onValueChanged(data, formError) {
+
     for (const field in formError) {
       formError[field] = '';
       const control = this.loginForm.get(field);
@@ -82,6 +83,18 @@ export class LoginPage {
         }
       }
     }
+
+  }
+
+  login() {
+    if(this.loginForm.invalid)return;
+    let params = {
+      // user_name:this.loginForm.controls['mobileNum'].value,
+      // password:this.loginForm.controls['password'].value
+    }
+    this.personService.login(params).subscribe(res=>{
+
+    })
 
   }
 

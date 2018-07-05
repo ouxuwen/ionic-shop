@@ -8,27 +8,28 @@
 <ion-content>
 
   <img class="bg" src="assets/imgs/lbg.png" alt="">
-  <ion-icon tappable (click)="close()" class="close" name="ios-close-circle"></ion-icon>
+  <!-- <ion-icon tappable (click)="close()" class="close" name="ios-close-circle"></ion-icon> -->
 
   <div class="container">
     <div class="form_box center">
       <h1>登 录</h1>
       <form [formGroup]="loginForm" novalidate [class.invalidForm]='invalidForm'>
-        <div class="input_box error">
+        <div class="input_box" [class.error]="loginErrors['mobileNum']">
           <label>
             <ion-icon name="ios-phone-portrait"> </ion-icon>
           </label>
-          <input type="text" class="error" formControlName="mobileNum" placeholder='手机号码'>
-          <p>手机格式有误</p>
+          <input type="text"  formControlName="mobileNum" placeholder='手机号码'>
+          <p *ngIf="loginErrors['mobileNum']">手机格式有误</p>
         </div>
-        <div class="input_box">
+        <div class="input_box" [class.error]="loginErrors['password']">
           <label>
             <ion-icon name="ios-lock-outline"> </ion-icon>
           </label>
           <input type="password" formControlName="password" placeholder='密 码'>
+          <p *ngIf="loginErrors['password']">{{loginErrors['password']}}</p>
         </div>
       </form>
-      <button ion-button full>登 录</button>
+      <button ion-button full tappable (click)="login()">登 录</button>
       <div class="btn_group">
         <span tappable (click)="findPassword()">找回密码</span>
         <span tappable (click)="register()">注册</span>

@@ -13,38 +13,45 @@
     <div class="form_box center">
       <h1>注 册</h1>
       <form [formGroup]="registerForm" novalidate [class.invalidForm]='invalidForm'>
-        <div class="input_box">
+        <div class="input_box" [class.error]="registerErrors['mobileNum']">
           <label>
-              <ion-icon name="ios-phone-portrait"> </ion-icon>
+            <ion-icon name="ios-phone-portrait"> </ion-icon>
           </label>
           <input type="text" formControlName="mobileNum" placeholder='手机号码'>
+          <p *ngIf="registerErrors['mobileNum']">{{registerErrors['mobileNum']}}</p>
         </div>
-        <div class="input_box">
+        <div class="input_box" [class.error]="registerErrors['phoneCode']">
           <label>
-           <ion-icon name="ios-calendar-outline"> </ion-icon>
-        </label>
+            <ion-icon name="ios-calendar-outline"></ion-icon>
+          </label>
           <input type="text" formControlName="phoneCode" placeholder='验证码'>
+          <span class="captcha_text" (click)="sendCaptcha()" tappable>{{captchaText}}</span>
+          <p *ngIf="registerErrors['phoneCode']">{{registerErrors['phoneCode']}}</p>
         </div>
-        <div class="input_box">
+        <div class="input_box" [class.error]="registerErrors['userName']">
           <label>
-           <ion-icon name="ios-person-outline"> </ion-icon>
-        </label>
+            <ion-icon name="ios-person-outline"> </ion-icon>
+          </label>
           <input type="text" formControlName="userName" placeholder='姓 名'>
+          <p *ngIf="registerErrors['userName']">{{registerErrors['userName']}}</p>
         </div>
-        <div class="input_box">
+        <div class="input_box" [class.error]="registerErrors['password']">
           <label>
-          <ion-icon name="ios-lock-outline"> </ion-icon>
-        </label>
+            <ion-icon name="ios-lock-outline"> </ion-icon>
+          </label>
           <input type="password" formControlName="password" placeholder='密 码'>
+          <p *ngIf="registerErrors['password']">{{registerErrors['password']}}</p>
         </div>
-        <div class="input_box">
+        <div class="input_box" [class.error]="registerErrors['rePassword']">
           <label>
-          <ion-icon name="ios-unlock"> </ion-icon>
-        </label>
+            <ion-icon name="ios-unlock"> </ion-icon>
+          </label>
           <input type="password" formControlName="rePassword" placeholder='再次确认密码'>
+          <p *ngIf="registerErrors['rePassword']">{{registerErrors['rePassword']}}</p>
+          <p *ngIf="registerForm.controls['rePassword'].value != registerForm.controls['password'].value  && registerForm.controls['rePassword'].dirty ">{{validationMessages['rePassword']['notMatch']}}</p>
         </div>
       </form>
-      <button ion-button full>注 册</button>
+      <button ion-button full tappable (click)="register()">注 册</button>
     </div>
   </div>
 </ion-content>

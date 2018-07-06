@@ -50,6 +50,13 @@
           <p *ngIf="registerErrors['rePassword']">{{registerErrors['rePassword']}}</p>
           <p *ngIf="registerForm.controls['rePassword'].value != registerForm.controls['password'].value  && registerForm.controls['rePassword'].dirty ">{{validationMessages['rePassword']['notMatch']}}</p>
         </div>
+        <div class="input_box" [class.error]="registerErrors['parentNum']">
+            <label>
+              <ion-icon name="ios-phone-portrait"></ion-icon>
+            </label>
+            <input type="text" formControlName="parentNum" placeholder='推荐人手机号码（非必填）'>
+            <p *ngIf="registerErrors['parentNum']">{{registerErrors['parentNum']}}</p>
+        </div>
       </form>
       <button ion-button full tappable (click)="register()">注 册</button>
     </div>

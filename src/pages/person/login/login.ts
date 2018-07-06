@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
-
+import { Storage } from '@ionic/storage';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from "../../../validators/validators";
 import { PersonService } from '../../../providers/person';
@@ -47,7 +47,8 @@ export class LoginPage {
     public navParams: NavParams,
     public formBuilder: FormBuilder,
     public viewCtrl: ViewController,
-    public personService:PersonService
+    public personService: PersonService,
+    public storage: Storage
   ) {
   }
 
@@ -87,12 +88,14 @@ export class LoginPage {
   }
 
   login() {
-    if(this.loginForm.invalid)return;
+    if (this.loginForm.invalid) return;
     let params = {
-      // user_name:this.loginForm.controls['mobileNum'].value,
-      // password:this.loginForm.controls['password'].value
+      user_name: this.loginForm.controls['mobileNum'].value,
+      password: this.loginForm.controls['password'].value
     }
-    this.personService.login(params).subscribe(res=>{
+    this.personService.login(params).subscribe(res => {
+      this.storage.set("userInfo", res['data']);
+      this.navCtrl.setRoot("TabsPage");
 
     })
 

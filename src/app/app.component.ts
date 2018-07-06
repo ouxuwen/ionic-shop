@@ -6,6 +6,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { LoginPage } from '../pages/person/login/login';
 import { Storage } from '@ionic/storage';
+import { BusinessLicensePage } from '../pages/person/business-license/business-license';
 @Component({
   templateUrl: 'app.html'
 })
@@ -21,9 +22,19 @@ export class MyApp {
     });
     this.storage.get("notFirstEnter").then(res => {
       if (res) {
-        this.rootPage = LoginPage;
+        this.rootPage = TabsPage;
       } else {
-        this.rootPage = WelcomePage;
+        this.storage.get("userInfo").then(res => {
+          if(res){
+            if(res.token){
+              this.rootPage = TabsPage;
+            }else{
+              this.rootPage = BusinessLicensePage;
+            }
+          }else{
+            this.rootPage = WelcomePage;
+          }
+        })
         this.storage.set("notFirstEnter",true);
       }
     })

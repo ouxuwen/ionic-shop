@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Storage } from '@ionic/storage';
+import {PersonService} from '../../../providers/person';
 /**
  * Generated class for the BusinessLicensePage page.
  *
@@ -18,21 +20,50 @@ export class BusinessLicensePage {
   isUpload: boolean = false;
   options: CameraOptions = {
     quality: 50,
-    destinationType: this.camera.DestinationType.DATA_URL ,
+    destinationType: this.camera.DestinationType.DATA_URL,
     encodingType: this.camera.EncodingType.JPEG,
     mediaType: this.camera.MediaType.PICTURE,
-    sourceType:1
+    sourceType: 1
   }
+  userInfo: any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public actionSheetCtrl: ActionSheetController,
-    private camera: Camera
+    private camera: Camera,
+    private storage:Storage,
+    private personService:PersonService
   ) {
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad BusinessLicensePage');
+  }
+
+  ionViewDidEnter(){
+
+  }
+
+  /**
+   * 检查账号审核状态
+   */
+  checkStatus(){
+    this.storage.get("userInfo").then(res =>{
+      if(res){
+        this.userInfo = res;
+        if(this.userInfo.license){
+          this.isUpload = true;
+          this.licenseImg = this.userInfo.license;
+          this.personService.login(this.userInfo).subscribe(res =>{
+            this.storage.set("userInfo",res['data']);
+            this.navCtrl.setRoot("TabsPage");
+          })
+        }
+      }else{
+        this.navCtrl.setRoot("LoginPage");
+      }
+    })
   }
 
 
@@ -46,21 +77,25 @@ export class BusinessLicensePage {
             this.camera.getPicture(this.options).then((imageData) => {
 
               let base64Image = 'data:image/jpeg;base64,' + imageData;
-             }, (err) => {
+              this.isUpload = false;
+              this.licenseImg = base64Image;
+            }, (err) => {
 
-             });
+            });
           }
         },
         {
           text: '打开相册',
           handler: () => {
-            this.options.sourceType =  0;
+            this.options.sourceType = 0;
             this.camera.getPicture(this.options).then((imageData) => {
 
               let base64Image = 'data:image/jpeg;base64,' + imageData;
-             }, (err) => {
+              this.isUpload = false;
+              this.licenseImg = base64Image;
+            }, (err) => {
 
-             });
+            });
           }
         },
         {
@@ -77,6 +112,14 @@ export class BusinessLicensePage {
   }
 
   upload() {
-
+    let params ={
+      uid:this.userInfo.uid,
+      other_info:this.licenseImg
+    }
+    this.personService.uploadLicense(params).subscribe(res =>{
+      this.isUpload = true;
+      this.userInfo['license'] = this.licenseImg;
+      this.storage.set("userInfo",this.userInfo);
+    })
   }
 }

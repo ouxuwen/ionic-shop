@@ -41,6 +41,7 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
+
     setInterval(() => {
       this.promoTime -= 1000;
       if (this.promoTime < 0) {

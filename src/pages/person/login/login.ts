@@ -58,7 +58,7 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+    console.log(this.navCtrl);
   }
 
   // 初始化表单控件
@@ -94,8 +94,11 @@ export class LoginPage {
       password: this.loginForm.controls['password'].value
     }
     this.personService.login(params).subscribe(res => {
-      this.storage.set("userInfo", res['data']);
-      this.navCtrl.setRoot("TabsPage");
+
+      this.storage.set("userInfo", res['data']).then((res)=>{
+        this.navCtrl.setRoot("TabsPage");
+      });
+
 
     })
 

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Storage } from '@ionic/storage';
-import {PersonService} from '../../../providers/person';
+import { PersonService } from '../../../providers/person';
 /**
  * Generated class for the BusinessLicensePage page.
  *
@@ -31,36 +31,37 @@ export class BusinessLicensePage {
     public navParams: NavParams,
     public actionSheetCtrl: ActionSheetController,
     private camera: Camera,
-    private storage:Storage,
-    private personService:PersonService
+    private storage: Storage,
+    private personService: PersonService
   ) {
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad BusinessLicensePage');
+    this.checkStatus();
   }
 
-  ionViewDidEnter(){
-
+  ionViewDidEnter() {
+    // this.checkStatus();
   }
 
   /**
    * 检查账号审核状态
    */
-  checkStatus(){
-    this.storage.get("userInfo").then(res =>{
-      if(res){
+  checkStatus() {
+    this.storage.get("userInfo").then(res => {
+      if (res) {
         this.userInfo = res;
-        if(this.userInfo.license){
+        if (this.userInfo.other_info) {
           this.isUpload = true;
-          this.licenseImg = this.userInfo.license;
-          this.personService.login(this.userInfo).subscribe(res =>{
-            this.storage.set("userInfo",res['data']);
+          this.licenseImg = this.userInfo.other_info;
+          this.personService.login({user_name:this.userInfo.user_name,password:this.userInfo.password}).subscribe(res => {
+            this.storage.set("userInfo", res['data']);
             this.navCtrl.setRoot("TabsPage");
           })
         }
-      }else{
+      } else {
         this.navCtrl.setRoot("LoginPage");
       }
     })
@@ -112,14 +113,24 @@ export class BusinessLicensePage {
   }
 
   upload() {
-    let params ={
-      uid:this.userInfo.uid,
-      other_info:this.licenseImg
+    let params = {
+      uid: this.userInfo.uid,
+      other_info: this.licenseImg
     }
-    this.personService.uploadLicense(params).subscribe(res =>{
+    this.personService.uploadLicense(params).subscribe(res => {
       this.isUpload = true;
       this.userInfo['license'] = this.licenseImg;
-      this.storage.set("userInfo",this.userInfo);
+      this.storage.set("userInfo", this.userInfo);
     })
+  }
+
+  back() {
+    this.storage.remove('userInfo').then(()=>{
+      this.navCtrl.setRoot("LoginPage").then(()=>{
+
+      });
+
+    });
+
   }
 }

@@ -32,16 +32,11 @@ export class BaseHttpProvider {
     }
 
     console.log(this.appCtrl.getActiveNav())
-    this.getToken();
 
   }
 
-  async getToken() {
-    let userInfo = await this.storage.get("userInfo");
-    if (userInfo) {
-      this.token = userInfo.token;
-    }
-
+  getToken() {
+    this.token = this.storage.get("token");
   }
 
   errorHandler(res, params) {
@@ -60,6 +55,7 @@ export class BaseHttpProvider {
       });
       alert.present();
       this.navCtrl.setRoot("LoginPage");
+      this.storage.remove('userInfo');
     } else if (res.code === 403) {
       let alert = this.alertCtrl.create({
         title: '温馨提示',
@@ -67,8 +63,20 @@ export class BaseHttpProvider {
         buttons: ['确 定']
       });
       alert.present();
-      this.storage.set('userInfo', params);
-      this.navCtrl.setRoot("BusinessLicensePage");
+      let pObj = {}
+      params.split("&").forEach(el => {
+        let arr = el.split('=');
+        pObj[arr[0]] = arr[1];
+      })
+      console.log({ ...res.data.userInfo, ...pObj })
+      this.storage.set('userInfo', { ...res.data.userInfo, ...pObj }).then(()=>{
+        let root:any = this.appCtrl.getActiveNav();
+        console.log(root.root.name);
+        if (root.root.name !== "BusinessLicensePage") {
+          this.navCtrl.setRoot("BusinessLicensePage");
+        }
+      });
+
     }
   }
 
@@ -106,24 +114,35 @@ export class BaseHttpProvider {
   }
 
   post(api: string, body: any = null): Observable<Response> {
-    let token = this.token //? this.token : "6ed20604fe946101be88e205ed5dbfa7"
-    const params = new URLSearchParams();
-    body = { token, ...body };
-    if (body) {
-      for (const n in body) {
-        if (body.hasOwnProperty(n)) {
-          params.append(n, body[n]);
+    let observer = Observable.create(obser => {
+      this.storage.get('userInfo').then(userInfo => {
+        let token = userInfo && userInfo.token ? userInfo.token : ''; //? this.token : "6ed20604fe946101be88e205ed5dbfa7"
+        const params = new URLSearchParams();
+        body = { token, ...body };
+        if (body) {
+          for (const n in body) {
+            if (body.hasOwnProperty(n)) {
+              params.append(n, body[n]);
+            }
+          }
         }
-      }
-    }
-    return this.request(api, {
-      //params:params,
-      body: params.toString(),
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-      },
+        this.request(api, {
+          //params:params,
+          body: params.toString(),
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+          },
+
+        }).subscribe(res => {
+          obser.next(res)
+        }, err => {
+          obser.error(err)
+        })
+      })
 
     })
+
+    return observer;
 
   }
 

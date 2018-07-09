@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ApiService } from '../../providers/api';
-
+import { Storage } from '@ionic/storage';
 /**
  * Generated class for the HomePage page.
  *
@@ -24,18 +24,23 @@ export class HomePage {
   promoMin: any;
   promoSec: any;
   promoTime: any = 47 * 3500000 + 50000;
-  promoList = [1, 2, 3, 4, 5, 6, 7];
+  promoList: any = [];
   discountList: any;
   bannerList: any;
-  hotList: any;
+  hotList1: any = [];
+  hotList2: any = [];
+  hotList3: any = [];
+  appInfo: any;
+  recommendList: any=[];
 
-
-
+  couponList: any;
+  notice: any;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public api: ApiService
+    public api: ApiService,
+    public storage: Storage
   ) {
     this.init();
   }
@@ -54,8 +59,18 @@ export class HomePage {
   init() {
 
     this.api.index().subscribe(res => {
+      let data = res['data'];
+      this.promoList = data.discount_list;
+      this.appInfo = data.web_info;
+      this.recommendList = data.goods_recommend_list;
+      this.hotList1 = data.goods_hot_list.slice(0, 3);
+      this.hotList2 = data.goods_hot_list.slice(3, 6);
+      this.hotList3 = data.goods_hot_list.slice(6, 9);
+      this.couponList = data.coupon_list;
+      this.notice = data.notice;
+      this.bannerList = data.plat_adv_list.adv_list;
 
-      this.discountList = res['data'].discount_list;
+      this.storage.set('appInfo', this.appInfo);
       console.log(res);
     })
 
@@ -74,6 +89,7 @@ export class HomePage {
   doRefresh(refresher) {
     this.fixContent.style.top = "0";
     this.header.style.display = "none";
+    this.init();
     setTimeout(() => {
       this.header.style.display = "block";
       refresher.complete();
@@ -113,6 +129,12 @@ export class HomePage {
 
   openGoodsList() {
     this.navCtrl.push("GoodsListPage");
+  }
+
+  openGoodsDetail(id) {
+    this.navCtrl.push("GoodsDetailPage", {
+      goods_id: id
+    });
   }
 
 }

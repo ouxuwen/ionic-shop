@@ -121,35 +121,34 @@
   </div>
   <section class="interval"></section>
   <!-- 精品汇 -->
-  <div class="special" (click)="openGoodsList()">
+  <div class="special" (click)="openGoodsDetail()">
     <img src="assets/imgs/weipinhui.jpg" alt="">
     <img src="assets/imgs/ad4.png" alt="">
     <div class="special-box">
       <ion-grid>
         <ion-row>
-          <ion-col col-6 class="br">
-            <p class="title"></p>
-            <p class="price"></p>
-            <img src="assets/imgs/book.jpg" alt="">
+          <ion-col col-6 class="br" tappable (click)="openGoodsDetail(recommendList[0].goods_id)">
+            <p class="title">{{recommendList[0].goods_name}}</p>
+            <p class="price">{{recommendList[0].price}}</p>
+            <img [src]="recommendList[0].pic_cover_mid" alt="">
           </ion-col>
           <ion-col col-6 class="pd0">
             <ion-grid>
-              <ion-row class="bb">
-                <ion-col col-6>
-                  <img src="assets/imgs/book.jpg" alt="">
+              <ion-row class="bb" tappable (click)="openGoodsDetail(recommendList[1].goods_id)">
+                <ion-col col-6 >
+                  <img [src]="recommendList[1].pic_cover_mid" alt="">
 
                 </ion-col>
                 <ion-col col-6>
-                  <p>xxx sss  ss s s s s s s s s s</p>
+                  <p>{{recommendList[1].goods_name}}</p>
                 </ion-col>
               </ion-row>
-              <ion-row>
+              <ion-row tappable (click)="openGoodsDetail(recommendList[2].goods_id)">
                 <ion-col col-6 >
-                  <img src="assets/imgs/book.jpg" alt="">
-
+                  <img [src]="recommendList[2].pic_cover_mid" alt="">
                 </ion-col>
                 <ion-col col-6>
-                  <p>xxx</p>
+                  <p>{{recommendList[2].goods_name}}</p>
                 </ion-col>
               </ion-row>
             </ion-grid>
@@ -166,54 +165,24 @@
     <img src="assets/imgs/ad1.png" alt="">
     <ion-grid>
       <ion-row>
-        <ion-col col-4>
-          <img src="assets/imgs/book.jpg" alt="">
-          <p>xxx xxx sss  ss s s s s s s s s s</p>
-          <p>¥ 0.000</p>
-        </ion-col>
-        <ion-col col-4>
-          <img src="assets/imgs/book.jpg" alt="">
-          <p>xxx</p>
-          <p>¥ 0.000</p>
-        </ion-col>
-        <ion-col col-4>
-          <img src="assets/imgs/book.jpg" alt="">
-          <p>xxx</p>
-          <p>¥ 0.000</p>
+        <ion-col col-4 *ngFor="let item of hotList1" (click)="openGoodsDetail(item.goods_id)">
+          <img [src]="item.pic_cover_mid" alt="">
+          <p>{{item.goods_name}}</p>
+          <p>¥ {{item.price}}</p>
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col col-4>
-          <img src="assets/imgs/book.jpg" alt="">
-          <p>xxx</p>
-          <p>¥ 0.000</p>
-        </ion-col>
-        <ion-col col-4>
-          <img src="assets/imgs/book.jpg" alt="">
-          <p>xxx</p>
-          <p>¥ 0.000</p>
-        </ion-col>
-        <ion-col col-4>
-          <img src="assets/imgs/book.jpg" alt="">
-          <p>xxx</p>
-          <p>¥ 0.000</p>
+        <ion-col col-4 *ngFor="let item of hotList2" (click)="openGoodsDetail(item.goods_id)">
+          <img [src]="item.pic_cover_mid" alt="">
+          <p>{{item.goods_name}}</p>
+          <p>¥ {{item.price}}</p>
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col col-4>
-          <img src="assets/imgs/book.jpg" alt="">
-          <p>xxx</p>
-          <p>¥ 0.000</p>
-        </ion-col>
-        <ion-col col-4>
-          <img src="assets/imgs/book.jpg" alt="">
-          <p>xxx</p>
-          <p>¥ 0.000</p>
-        </ion-col>
-        <ion-col col-4>
-          <img src="assets/imgs/book.jpg" alt="">
-          <p>xxx</p>
-          <p>¥ 0.000</p>
+        <ion-col col-4 *ngFor="let item of hotList3" (click)="openGoodsDetail(item.goods_id)">
+          <img [src]="item.pic_cover_mid" alt="">
+          <p>{{item.goods_name}}</p>
+          <p>¥ {{item.price}}</p>
         </ion-col>
       </ion-row>
 

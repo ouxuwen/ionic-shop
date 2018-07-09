@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Component,ViewChild } from '@angular/core';
+import { IonicApp, Platform, Nav, Keyboard, ToastController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -11,35 +11,87 @@ import { BusinessLicensePage } from '../pages/person/business-license/business-l
   templateUrl: 'app.html'
 })
 export class MyApp {
+  @ViewChild('myNav') nav: Nav;
   rootPage: any;
-
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private storage: Storage) {
-    platform.ready().then(() => {
+  backButtonPressed: boolean;
+  constructor(
+    public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
+    private storage: Storage,
+    private toastCtrl: ToastController,
+    public keyboard: Keyboard,
+    private ionicApp: IonicApp,
+  ) {
+    this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      statusBar.styleDefault();
-      splashScreen.hide();
+      this.statusBar.styleDefault();
+      this.splashScreen.hide();
+      this.registerBackButtonAction();
     });
     this.storage.get("notFirstEnter").then(res => {
       if (res) {
-        this.rootPage = TabsPage;
-      } else {
         this.storage.get("userInfo").then(res => {
-          if(res){
-            if(res.token){
+          if (res) {
+            if (res.token) {
               this.rootPage = TabsPage;
-            }else{
+            } else {
               this.rootPage = BusinessLicensePage;
             }
-          }else{
-            this.rootPage = WelcomePage;
+          } else {
+            this.rootPage = LoginPage;
           }
         })
-        this.storage.set("notFirstEnter",true);
+      } else {
+        this.rootPage = WelcomePage;
+
       }
     })
-
-
   }
+
+
+  registerBackButtonAction() {
+    this.platform.registerBackButtonAction(() => {
+      if (this.keyboard.isOpen()) {//如果键盘开启则隐藏键盘
+        this.keyboard.close();
+        return;
+      }
+      //如果想点击返回按钮隐藏toast或loading或Overlay就把下面加上
+      // this.ionicApp._toastPortal.getActive() ||this.ionicApp._loadingPortal.getActive()|| this.ionicApp._overlayPortal.getActive()
+      let activePortal = this.ionicApp._modalPortal.getActive() || this.ionicApp._loadingPortal.getActive();
+      if (activePortal) {
+        activePortal.dismiss();
+        return;
+      }
+      let navRoot = this.nav.getActive().id;
+      if (navRoot !== 'WelcomePage') {
+        let activeVC = this.nav.getActive();
+        let tabs = activeVC.instance.tabs;
+        let activeNav = tabs.getSelected();
+        return activeNav.canGoBack() ? activeNav.pop() : this.showExit();
+      } else {
+        this.showExit();
+      }
+    }, 101);
+  }
+
+  showExit() {
+
+    if (this.backButtonPressed) this.platform.exitApp();
+    else {
+      let toast = this.toastCtrl.create({
+        message: '再次点击返回退出',
+        duration: 2000,
+        position: 'bottom'
+      });
+      toast.present();
+      this.backButtonPressed = true;
+      setTimeout(() => {
+        this.backButtonPressed = false;
+      }, 2000);//2秒内没有再次点击返回则将触发标志标记为false
+    }
+  }
+
 
 }

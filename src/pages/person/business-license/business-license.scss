@@ -7,6 +7,14 @@ page-business-license {
     left: 0;
     top:0;
   }
+  .back{
+    position: absolute;
+    top:20px;
+    left: 20px;
+    opacity: 0.6;
+    font-size: 28px;
+    z-index: 10;
+  }
   .container{
     position: absolute;
     width:100vw;
@@ -36,15 +44,16 @@ page-business-license {
         color:#eee;
         position: relative;
         top:150px;
-        transform: translateY(-50%);
+        left:150px;
+        transform: translate(-50%,-50%);
       }
       .isUpload{
-        color:#17c751;
+        color:#1f7fec;
         position: absolute;
       }
       img{
         width:100%;
-        height: auto;
+        height: 300px;
       }
     }
     .btn_group{

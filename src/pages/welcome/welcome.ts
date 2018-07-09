@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { Storage } from '@ionic/storage';
 /**
  * Generated class for the WelcomePage page.
  *
@@ -32,7 +32,13 @@ export class WelcomePage {
       image: "assets/imgs/guidepage03.png",
     }
   ];
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public storage:Storage
+
+  ) {
+
   }
 
   ionViewDidLoad() {
@@ -40,7 +46,9 @@ export class WelcomePage {
   }
 
   skip() {
-    this.navCtrl.setRoot("TabsPage");
+    this.storage.set("notFirstEnter", true).then(()=>{
+      this.navCtrl.setRoot("LoginPage");
+    });
 
   }
 }

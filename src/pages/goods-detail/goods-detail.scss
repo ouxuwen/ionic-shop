@@ -124,6 +124,7 @@ page-goods-detail {
     display: flex;
     text-align: center;
     .favorite,.service,.cart{
+      position: relative;
       background: #fff;
       display: flex;
       width:60px;
@@ -134,6 +135,13 @@ page-goods-detail {
       color:#333;
       ion-icon{
         font-size: 30px;
+      }
+      ion-badge{
+        position: absolute;
+        top:0;
+        right: 0;
+        transform: translate(-50%,-50%);
+
       }
     }
     .favorite{

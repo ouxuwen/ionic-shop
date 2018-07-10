@@ -191,14 +191,26 @@ page-home {
             width:100%;
             display: block;
         }
+        .price{
+          color:#9b39e2;
+        }
         ion-grid{
             padding:0;
         }
+        p{
+          text-align: center;
+        }
     }
     .hot{
+      p{
+        text-align: center;
+      }
         img{
             width:100%;
             display: block;
+        }
+        .price{
+          color:#ef2933;
         }
         ion-grid{
             padding:0;

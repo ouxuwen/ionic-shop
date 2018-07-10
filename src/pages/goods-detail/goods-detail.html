@@ -16,22 +16,16 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content  *ngIf="goodsDetail">
   <div class="pic_list">
-    <ion-slides [loop]="true" [autoplay]="3000" pager>
-      <ion-slide>
-        <img src="assets/imgs/slide.png" alt="">
-      </ion-slide>
-      <ion-slide>
-        <img src="assets/imgs/book.jpg" alt="">
-      </ion-slide>
-      <ion-slide>
-        <img src="assets/imgs/book.jpg" alt="">
+    <ion-slides  [loop]="true" [autoplay]="3000" pager>
+      <ion-slide  *ngFor="let item of goodsDetail.img_list">
+        <image [src]="item.pic_cover_mid" alt=""></image>
       </ion-slide>
     </ion-slides>
   </div>
   <div class="goods_intro">
-    <p class="name">史蒂芬周</p>
+    <p class="name">{{goodsDetail.goods_name}}</p>
     <p class="note">
       <span>闪电发货</span>
       <span>限时减价</span>
@@ -39,9 +33,9 @@
       <span>支持售后</span>
     </p>
     <p class="price">
-      <span>¥ 3.00</span>
-      <span>¥ 10.00</span>
-      <span>库存 ：9999</span>
+      <span>¥ {{goodsDetail.price}}</span>
+      <span>¥ {{goodsDetail.market_price}}</span>
+      <span>已售 ：{{goodsDetail.sales}}</span>
     </p>
     <p class="star">
       <ion-icon name="ios-star"></ion-icon>
@@ -60,7 +54,7 @@
   </div>
 
   <div class="goods" [class.show]="navIndex == 1">
-    <div class="rule" tappable (click)="choose($event)">
+    <div class="rule" *ngIf="goodsDetail.goods_attribute_id==1" tappable (click)="choose($event)">
       选择规格：
       <choose-model id='choose' [selectList]='roleList' (selectResult)="getRoleResult($event)"></choose-model>
       <ion-icon class="r" name="ios-arrow-forward-outline"></ion-icon>
@@ -86,11 +80,12 @@
     <div class="cart" tappable (click)="goToCart()">
       <ion-icon name="md-cart"></ion-icon>
       <p>购物车</p>
+      <ion-badge color="danger" *ngIf="cartInfo.carcount>0">{{cartInfo.carcount}}</ion-badge>
     </div>
     <div class="buy_now">
       立即购买
     </div>
-    <div class="add_cart">
+    <div class="add_cart" tappable (click)="addCart()">
       加入购物车
     </div>
   </footer>

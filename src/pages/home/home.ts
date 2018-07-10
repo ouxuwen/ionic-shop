@@ -114,7 +114,6 @@ export class HomePage {
 
 
   formatTime(value) {
-
     var hour = Math.floor(value / 3600000);
     var minute = Math.floor((value % 3600000) / 60000);
     var second = Math.floor((value % 3600000 % 60000) / 1000);;
@@ -124,7 +123,6 @@ export class HomePage {
     this.promoHour = h;
     this.promoMin = m;
     this.promoSec = s;
-
   }
 
   openGoodsList() {

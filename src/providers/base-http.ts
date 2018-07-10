@@ -54,8 +54,10 @@ export class BaseHttpProvider {
         buttons: ['确 定']
       });
       alert.present();
-      this.navCtrl.setRoot("LoginPage");
-      this.storage.remove('userInfo');
+
+      this.storage.remove('userInfo').then(()=>{
+        this.navCtrl.setRoot("LoginPage");
+      });
     } else if (res.code === 403) {
       let alert = this.alertCtrl.create({
         title: '温馨提示',
@@ -69,8 +71,8 @@ export class BaseHttpProvider {
         pObj[arr[0]] = arr[1];
       })
       console.log({ ...res.data.userInfo, ...pObj })
-      this.storage.set('userInfo', { ...res.data.userInfo, ...pObj }).then(()=>{
-        let root:any = this.appCtrl.getActiveNav();
+      this.storage.set('userInfo', { ...res.data.userInfo, ...pObj }).then(() => {
+        let root: any = this.appCtrl.getActiveNav();
         console.log(root.root.name);
         if (root.root.name !== "BusinessLicensePage") {
           this.navCtrl.setRoot("BusinessLicensePage");
@@ -117,6 +119,7 @@ export class BaseHttpProvider {
     let observer = Observable.create(obser => {
       this.storage.get('userInfo').then(userInfo => {
         let token = userInfo && userInfo.token ? userInfo.token : ''; //? this.token : "6ed20604fe946101be88e205ed5dbfa7"
+        console.log(userInfo)
         const params = new URLSearchParams();
         body = { token, ...body };
         if (body) {

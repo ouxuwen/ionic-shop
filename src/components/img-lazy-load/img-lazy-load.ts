@@ -6,7 +6,7 @@ import { URL } from '../../app.config';
 })
 export class ImgLazyLoadComponent {
 
-  default: string = 'assets/images/default.png';
+  default: string = 'assets/images/no03.png';
 
   constructor() {
 
@@ -16,11 +16,16 @@ export class ImgLazyLoadComponent {
 
   ngOnInit() {
     let img = new Image();
-    img.src = URL.imgPrefix + this.src;
+    if(this.src.indexOf('http')>-1){
+      img.src = this.src;
+    }else{
+      img.src = URL.imgPrefix + this.src;
+    }
+
     img.onload = () => {
       //这里为了达到演示效果给了两秒的延迟，实际使用中不需要延迟
 
-        this.default = URL.imgPrefix + this.src;
+        this.default =  img.src;
 
     }
   }

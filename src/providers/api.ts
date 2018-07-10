@@ -20,4 +20,13 @@ export  class ApiService {
     return this.base.post('/app/Goods/goodsDetail',data);
   }
 
+  // 添加购物车
+  addCart(data){
+    return this.base.post('/app/Goods/addCart',data);
+  }
+
+  //购物车
+  cart(data){
+    return this.base.post('/app/Goods/cart',data);
+  }
 }

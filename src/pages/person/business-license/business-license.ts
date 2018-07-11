@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController ,AlertController} from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Storage } from '@ionic/storage';
 import { PersonService } from '../../../providers/person';
@@ -18,6 +18,7 @@ import { PersonService } from '../../../providers/person';
 export class BusinessLicensePage {
   licenseImg: any;
   isUpload: boolean = false;
+  notLogin:any;
   options: CameraOptions = {
     quality: 50,
     destinationType: this.camera.DestinationType.DATA_URL,
@@ -32,14 +33,18 @@ export class BusinessLicensePage {
     public actionSheetCtrl: ActionSheetController,
     private camera: Camera,
     private storage: Storage,
-    private personService: PersonService
+    private personService: PersonService,
+    private alertCtrl: AlertController,
   ) {
-
+    this.notLogin = this.navParams.get('notLogin') ;
+   
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad BusinessLicensePage');
     this.checkStatus();
+  
+   
   }
 
   ionViewDidEnter() {
@@ -50,15 +55,25 @@ export class BusinessLicensePage {
    * 检查账号审核状态
    */
   checkStatus() {
-    this.storage.get("userInfo").then(res => {
-      if (res) {
-        this.userInfo = res;
+    this.storage.get("userInfo").then(userInfo => {
+      if (userInfo) {
+        this.userInfo = userInfo;
         if (this.userInfo.other_info) {
           this.isUpload = true;
           this.licenseImg = this.userInfo.other_info;
+          console.log(this.notLogin)
+          if(this.notLogin){
+          
+            return;
+          }
           this.personService.login({user_name:this.userInfo.user_name,password:this.userInfo.password}).subscribe(res => {
-            this.storage.set("userInfo", res['data']);
-            this.navCtrl.setRoot("TabsPage");
+           
+            if(res['code']==1){
+              this.storage.set("userInfo", res['data']).then(res=>{
+                this.navCtrl.setRoot("TabsPage");
+              });
+            }
+           
           })
         }
       } else {
@@ -126,9 +141,9 @@ export class BusinessLicensePage {
 
   back() {
     this.storage.remove('userInfo').then(()=>{
-      this.navCtrl.setRoot("LoginPage").then(()=>{
-
-      });
+      this.navCtrl.setRoot("LoginPage",{},{},()=>{
+        console.log(this.navCtrl)
+      })
 
     });
 

@@ -11,7 +11,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { BusinessLicensePageModule } from '../pages/person/business-license/business-license.module';
-import { PopoverPage } from '../pages/goods-detail/goods-detail';
+import { PopoverPage } from '../pages/goods-detail/popover-page';
 import { BaseHttpProvider } from '../providers/base-http';
 import { ApiService } from '../providers/api';
 import { PersonService } from '../providers/person';

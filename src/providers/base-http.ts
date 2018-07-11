@@ -24,14 +24,15 @@ export class BaseHttpProvider {
     public storage: Storage,
     public appCtrl: App,
   ) {
-    let current = this.appCtrl.getActiveNav()
+    let current = this.appCtrl.getActiveNavs()[0];
+    console.log(this.appCtrl.getActiveNavs())
     if (current.parent) {
       this.navCtrl = current.parent
     } else {
       this.navCtrl = current;
     }
 
-    console.log(this.appCtrl.getActiveNav())
+    console.log(this.appCtrl.getActiveNavs())
 
   }
 
@@ -59,25 +60,19 @@ export class BaseHttpProvider {
         this.navCtrl.setRoot("LoginPage");
       });
     } else if (res.code === 403) {
+      
+      let pObj = {}
+      params.split("&").forEach(el => {
+        let arr = el.split('=');
+        pObj[arr[0]] = arr[1];
+      })
       let alert = this.alertCtrl.create({
         title: '温馨提示',
         subTitle: res.message,
         buttons: ['确 定']
       });
       alert.present();
-      let pObj = {}
-      params.split("&").forEach(el => {
-        let arr = el.split('=');
-        pObj[arr[0]] = arr[1];
-      })
-      console.log({ ...res.data.userInfo, ...pObj })
-      this.storage.set('userInfo', { ...res.data.userInfo, ...pObj }).then(() => {
-        let root: any = this.appCtrl.getActiveNav();
-        console.log(root.root.name);
-        if (root.root.name !== "BusinessLicensePage") {
-          this.navCtrl.setRoot("BusinessLicensePage");
-        }
-      });
+      this.storage.set('userInfo', { ...res.data.userInfo, ...pObj })
 
     }
   }
@@ -96,6 +91,9 @@ export class BaseHttpProvider {
           if (res['code'] != 1) {
             this.errorHandler(res, options.body);
           } else {
+            observer.next(res);
+          }
+          if((res['code'] == 403)){
             observer.next(res);
           }
 

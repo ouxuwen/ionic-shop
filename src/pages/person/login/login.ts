@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController ,App} from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from "../../../validators/validators";
@@ -48,7 +48,8 @@ export class LoginPage {
     public formBuilder: FormBuilder,
     public viewCtrl: ViewController,
     public personService: PersonService,
-    public storage: Storage
+    public storage: Storage,
+    public appCtrl: App,
   ) {
   }
 
@@ -58,7 +59,7 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
-    console.log(this.navCtrl);
+    console.log('login',this.navCtrl)
   }
 
   // 初始化表单控件
@@ -94,10 +95,14 @@ export class LoginPage {
       password: this.loginForm.controls['password'].value
     }
     this.personService.login(params).subscribe(res => {
-
-      this.storage.set("userInfo", res['data']).then((res)=>{
-        this.navCtrl.setRoot("TabsPage");
-      });
+      if(res['code'] ==1){
+        this.storage.set("userInfo", res['data']).then((res)=>{
+          this.navCtrl.setRoot("TabsPage");
+        });
+      }else{
+        this.navCtrl.setRoot("BusinessLicensePage",{'notLogin':1});
+      }
+      
 
 
     })

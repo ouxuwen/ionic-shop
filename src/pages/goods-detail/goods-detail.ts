@@ -1,23 +1,9 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, PopoverController, LoadingController, ToastController } from 'ionic-angular';
 import { ApiService } from '../../providers/api';
+import { PopoverPage} from './popover-page';
 
 
-@Component({
-  template: `
-    <ion-list class="popover-page">
-      <ion-item>微信分享</ion-item>
-      <ion-item>QQ 分享</ion-item>
-    </ion-list>
-  `
-})
-export class PopoverPage {
-  constructor(private navParams: NavParams) {
-
-  }
-  ngOnInit() {
-  }
-}
 /**
  * Generated class for the GoodsDetailPage page.
  *
@@ -61,7 +47,7 @@ export class GoodsDetailPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad GoodsDetailPage');
-
+   
   }
 
   presentPopover(ev) {

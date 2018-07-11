@@ -86,8 +86,13 @@ export class HomePage {
 
 
 
-
-
+  ionViewDidEnter() {
+   
+    
+  }
+  ionViewWillLeave(){
+    
+  }
 
   // 下拉刷新
   doRefresh(refresher) {
@@ -100,16 +105,22 @@ export class HomePage {
   ngAfterViewInit() {
     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
     //Add 'implements AfterViewInit' to the class.
+    this.scrollEvent();
+
+  }
+  
+  scrollEvent(){
     this.fixContent = document.querySelector("page-home ion-refresher");
     this.header = document.querySelector("page-home ion-header");
     this.scrollContent = document.querySelector("page-home .scroll-content");
+
+    console.log(this.headerOpacity)
     this.scrollContent.addEventListener("scroll", (e) => {
       this.headerOpacity = this.scrollContent.scrollTop / 90;
       if (this.headerOpacity > 1) {
         this.headerOpacity = 1;
       }
     })
-
   }
 
 

@@ -19,29 +19,19 @@
   <div class="category_container">
     <ion-scroll class="first_category" scrollY="true">
       <ul>
-        <li class="active">
-          一级分类
-        </li>
-        <li>
-          一级分类
+        <li *ngFor="let item of categoryList ; index as i" [class.active]="i == categoryId " tappable (click)="changeCategory(i)">
+          {{item.category_name}}
         </li>
       </ul>
     </ion-scroll>
     <ion-scroll class="second_category" scrollY="true">
       <ul class="clear">
-        <li>
+        <li *ngFor="let item of childList" tappable (click)="goodsList(item.category_id)">
           <div>
-            <img class="center" src="assets/imgs/no03.png" alt="">
+            <image class="center" [src]="item.category_pic" alt=""></image>
           </div>
-          <span>二级级分类</span>
+          <span>{{item.category_name}}</span>
         </li>
-        <li>
-          <div>
-            <img class="center"  src="assets/imgs/no03.png" alt="">
-          </div>
-          <span>二级级分类</span>
-        </li>
-
       </ul>
     </ion-scroll>
   </div>

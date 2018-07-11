@@ -19,6 +19,9 @@ page-goods-list {
     .toolbar-background-ios, .toolbar-background-md{
       background: #fff;
     }
+    .toolbar-ios .segment-button ion-icon,.toolbar-md .segment-button ion-icon{
+      font-size: 1.2rem;
+    }
     .goods_list{
       border-top:1px solid #f8f8f8;
       li{
@@ -48,13 +51,17 @@ page-goods-list {
             &.note{
               span{
                 display: inline-block;
-                padding:0 5px;
+                padding:2px 5px;
                 color:#fff;
                 font-size: 10px;
-                &:first-child{
+                border-radius: 2px;
+                &.hot{
+                  background: #F74C31;
+                }
+                &.rec{
                   background: #19A15E;
                 }
-                &:last-child{
+                &.new{
                   background: #4B8BF5;
                 }
               }

@@ -18,6 +18,7 @@ export class HomePage {
 
   fixContent;
   scrollContent;
+  refreshing = false;
   header;
   headerOpacity = 0;
   promoHour: any;
@@ -56,9 +57,15 @@ export class HomePage {
     }, 1000);
   }
 
-  init() {
+  init(refresher?) {
 
     this.api.index().subscribe(res => {
+      if(refresher){
+        this.refreshing = false;
+        refresher.complete();
+
+      }
+
       let data = res['data'];
       this.promoList = data.discount_list;
       this.appInfo = data.web_info;
@@ -78,22 +85,15 @@ export class HomePage {
   }
 
 
-  // 上拉
-  doPull(refresher) {
-    console.log(refresher.state);
-  }
+
 
 
 
   // 下拉刷新
   doRefresh(refresher) {
-    this.fixContent.style.top = "0";
-    this.header.style.display = "none";
-    this.init();
-    setTimeout(() => {
-      this.header.style.display = "block";
-      refresher.complete();
-    }, 2000)
+
+    this.refreshing = true;
+    this.init(refresher);
 
   }
 
@@ -134,5 +134,7 @@ export class HomePage {
       goods_id: id
     });
   }
+
+
 
 }

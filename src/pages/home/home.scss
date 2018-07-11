@@ -35,9 +35,19 @@ page-home {
                 color:#aaa;
             }
         }
+        .refresh{
+          background: linear-gradient(to right, #347eff, #1ea3ff);
+          opacity: 1;
+        }
+    }
+    .refresher-active{
+      top:0 !important;
     }
     .fixed-content,.scroll-content{
         margin-top:0 !important;
+    }
+    .refreshing{
+      margin-top:44px !important;
     }
     .has-refresher > .scroll-content{
         border-top:none;

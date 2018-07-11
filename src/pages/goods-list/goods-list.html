@@ -8,8 +8,8 @@
 
   <ion-navbar>
     <div class="header">
-      <ion-searchbar [(ngModel)]="myInput" (ionInput)="onInput($event)" [placeholder]="'请输入你想搜索的内容'"></ion-searchbar>
-      <span class="search_btn">搜 索</span>
+      <ion-searchbar [(ngModel)]="keyWrods" (ionInput)="onInput($event)" [placeholder]="'请输入你想搜索的内容'"></ion-searchbar>
+      <span class="search_btn" (click)="getGoodsList()">搜 索</span>
     </div>
 
   </ion-navbar>
@@ -18,31 +18,42 @@
 
 
 <ion-content>
+  <ion-refresher  (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="md-arrow-down" pullingText="下拉刷新..." refreshingSpinner="ios" refreshingText="正在刷新..."></ion-refresher-content>
+  </ion-refresher>
   <ion-toolbar no-border-top>
-    <ion-segment [(ngModel)]="apps">
-      <ion-segment-button value="paid">
+
+    <ion-segment [(ngModel)]="order" (ngModelChange)="orderChange($event)">
+      <ion-segment-button value="" (click)="reset()">
+        综 合
+      </ion-segment-button>
+      <ion-segment-button value="ng.sales" (click)="sort=sort=='asc'&& order=='ng.sales'?'desc':'asc';getGoodsList()">
         销 量
+        <ion-icon [name]="sort=='asc' && order=='ng.sales' ?'md-arrow-up':'md-arrow-down'"></ion-icon>
       </ion-segment-button>
-      <ion-segment-button value="free">
+      <ion-segment-button value="ng.is_new" (click)="sort=sort=='asc'&& order=='ng.is_new'?'desc':'asc';getGoodsList()">
+        新 品
+        <ion-icon [name]="sort=='asc' && order=='ng.is_new' ?'md-arrow-up':'md-arrow-down'"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="ng.price" (click)="sort=sort=='asc'&& order=='ng.price'?'desc':'asc';getGoodsList()">
         价 格
-      </ion-segment-button>
-      <ion-segment-button value="top">
-        好 评
+        <ion-icon [name]="sort=='asc' && order=='ng.price' ?'md-arrow-up':'md-arrow-down'"></ion-icon>
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
   <ul class="goods_list">
-    <li (click)="goGoodsDetail()">
-      <img src="assets/imgs/book.jpg" alt="">
+    <li *ngFor="let item of goodsList" (click)="goGoodsDetail(item.goods_id)">
+      <image [src]="item.pic_cover_mid" alt=""></image>
       <div>
-        <p class="name">史蒂芬周</p>
+        <p class="name">{{item.goods_name}}</p>
         <p class="note">
-          <span>质量保证</span>
-          <span>闪电发货</span>
+          <span class="hot" *ngIf="item.is_hot == 1">热销</span>
+          <span class="rec" *ngIf="item.is_recommend == 1">推荐</span>
+          <span class="new" *ngIf="item.is_new == 1">精品</span>
         </p>
         <p class="price">
-          <span>¥ 3.00</span>
-          <span>¥ 10.00</span>
+          <span>¥ {{item.price}}</span>
+          <span>¥ {{item.market_price}}</span>
         </p>
         <p class="star">
           <ion-icon name="ios-star"></ion-icon>
@@ -55,28 +66,9 @@
         <ion-icon name="md-cart"></ion-icon>
       </div>
     </li>
-    <li>
-      <img src="assets/imgs/book.jpg" alt="">
-      <div>
-        <p class="name">xxx</p>
-        <p class="note">
-          <span>质量保证</span>
-          <span>闪电发货</span>
-        </p>
-        <p class="price">
-          <span>¥ 3.00</span>
-          <span>¥ 10.00</span>
-        </p>
-        <p class="star">
-          <ion-icon name="ios-star"></ion-icon>
-          <ion-icon name="ios-star"></ion-icon>
-          <ion-icon name="ios-star"></ion-icon>
-          <ion-icon name="ios-star"></ion-icon>
-          <ion-icon name="ios-star"></ion-icon>
-          <span> 100% 好评</span>
-        </p>
-        <ion-icon name="md-cart"></ion-icon>
-      </div>
-    </li>
+
   </ul>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

@@ -67,8 +67,9 @@
 
 
   <footer class="footer">
-    <div class="favorite">
-      <ion-icon name="ios-heart"></ion-icon>
+    <div class="favorite" tappable  (click)="fav()">
+      <ion-icon *ngIf="isMemberFavGoods==0" name="ios-heart-outline"></ion-icon>
+      <ion-icon *ngIf="isMemberFavGoods!=0" class="fav" name="ios-heart"></ion-icon>
       <p>收藏</p>
     </div>
     <div class="service">
@@ -80,7 +81,7 @@
     <div class="cart" tappable (click)="goToCart()">
       <ion-icon name="md-cart"></ion-icon>
       <p>购物车</p>
-      <ion-badge color="danger" *ngIf="cartInfo.carcount>0">{{cartInfo.carcount}}</ion-badge>
+      <ion-badge color="danger" *ngIf="cartInfo.carcount>0">{{cartInfo.num}}</ion-badge>
     </div>
     <div class="buy_now">
       立即购买

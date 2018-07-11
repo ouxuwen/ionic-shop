@@ -82,17 +82,17 @@ export class BaseHttpProvider {
     }
   }
 
-  request(api, options): Observable<Response> {
-    console.log(this.appCtrl.getActiveNav())
+  request(api, options,needLoading): Observable<Response> {
+
     let loading = this.loadingCtrl.create({
       spinner: "crescent",
       content: "加载中..."
     });
     return Observable.create(observer => {
-      loading.present();
+      if(needLoading)loading.present();
       this.http.request("POST", this.url + api, options).subscribe(
         res => {
-          loading.dismiss();
+          if(needLoading)loading.dismiss();
           if (res['code'] != 1) {
             this.errorHandler(res, options.body);
           } else {
@@ -101,7 +101,7 @@ export class BaseHttpProvider {
 
         },
         err => {
-          loading.dismiss();
+          if(needLoading)loading.dismiss();
           let alert = this.alertCtrl.create({
             title: '温馨提示',
             subTitle: "网络故障，请稍后再试......",
@@ -115,7 +115,7 @@ export class BaseHttpProvider {
     })
   }
 
-  post(api: string, body: any = null): Observable<Response> {
+  post(api: string, body: any = null,needLoading:boolean = true): Observable<Response> {
     let observer = Observable.create(obser => {
       this.storage.get('userInfo').then(userInfo => {
         let token = userInfo && userInfo.token ? userInfo.token : ''; //? this.token : "6ed20604fe946101be88e205ed5dbfa7"
@@ -134,9 +134,8 @@ export class BaseHttpProvider {
           body: params.toString(),
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-          },
-
-        }).subscribe(res => {
+          }
+        },needLoading).subscribe(res => {
           obser.next(res)
         }, err => {
           obser.error(err)

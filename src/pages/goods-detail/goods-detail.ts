@@ -42,19 +42,10 @@ export class GoodsDetailPage {
   skuName: any;
   skuList: any;
   roleList: any = {
-    qiu: [
-      { text: "0.0", value: 1 },
-      { text: "1.0", value: 2 },
-      { text: "2.0", value: 3 },
-      { text: "3.0", value: 4 }
-    ],
-    zhu: [
-      { text: "1.0", value: 1 },
-      { text: "2.0", value: 2 },
-      { text: "3.0", value: 3 },
-      { text: "4.0", value: 4 }
-    ]
-  }
+    qiu: [],
+    zhu: []
+  };
+  isMemberFavGoods: any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -83,9 +74,14 @@ export class GoodsDetailPage {
 
   //切换显示
   changeIndex(i) {
-    this.navCtrl.push('ImgTextDetailPage', { "navIndex": i }, {
-      direction: "switch"
-    })
+    this.navCtrl.push('ImgTextDetailPage',
+      {
+        "navIndex": i,
+        'content': this.goodsDetail.description,
+        'goodsId':this.goodsId
+      }, {
+        direction: "switch"
+      })
   }
 
   log(e) {
@@ -132,6 +128,8 @@ export class GoodsDetailPage {
       this.cartInfo = data['cartInfo'];
       this.sellProvince = this.goodsDetail.sell_province;
       this.skuList = this.goodsDetail.sku_list;
+      this.isMemberFavGoods = data['is_member_fav_goods'];
+      //镜片类型
       if (this.goodsDetail.goods_attribute_id == 1) {
         this.roleList.zhu = [];
         this.roleList.qiu = [];
@@ -178,13 +176,57 @@ export class GoodsDetailPage {
     this.apiService.addCart({
       cart_detail: JSON.stringify(params)
     }).subscribe(res => {
+      this.cartInfo = res['data']['cart'];
       this.toastCtrl.create({
-        message: "添加购物车成功~",
-        duration: 1500
+        message: "添加购物车成功",
+        duration: 1500,
+        position: 'middle',
+        cssClass: 'toast-success'
       }).present()
 
     })
   }
+
+  fav() {
+    if (this.isMemberFavGoods == 0) {
+      this.addFav()
+    } else {
+      this.cancelFav()
+    }
+  }
+
+  // 收藏
+  addFav() {
+    this.apiService.addFavorites({
+      fav_id: this.goodsId,
+      fav_type: 'goods'
+    }).subscribe(res => {
+      this.isMemberFavGoods = 1;
+      this.toastCtrl.create({
+        message: "添加收藏成功",
+        duration: 1000,
+        position: 'middle',
+        cssClass: 'toast-success'
+      }).present()
+    })
+  }
+
+  //取消收藏
+  cancelFav() {
+    this.apiService.cancelFavorites({
+      fav_id: this.goodsId,
+      fav_type: 'goods'
+    }).subscribe(res => {
+      this.isMemberFavGoods = 0;
+      this.toastCtrl.create({
+        message: "取消收藏成功",
+        duration: 1000,
+        position: 'middle',
+        cssClass: 'toast-success'
+      }).present()
+    })
+  }
+
 
 
 

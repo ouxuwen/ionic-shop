@@ -5,14 +5,14 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <div class="search-bar" [style.opacity]="headerOpacity"></div>
-  <div class="input-bar" [style.background]="'rgba(255,255,255,'+(1-headerOpacity/2)+')'">
+  <div class="search-bar" [class.refresh]="refreshing" [style.opacity]="headerOpacity"></div>
+  <div class="input-bar"  (click)="openGoodsList()" [style.background]="'rgba(255,255,255,'+(1-headerOpacity/2)+')'">
     <ion-icon name="search" [style.color]="'rgb('+headerOpacity*255+','+headerOpacity*255+','+headerOpacity*255+')'"></ion-icon>
     <span [style.color]="'rgb('+(headerOpacity*55+200)+','+(headerOpacity*55+200)+','+(headerOpacity*55+200)+')'">请输入你想搜索的 商品 / 品牌</span>
   </div>
 </ion-header>
-<ion-content>
-  <ion-refresher (ionPull)="doPull($event)" (ionRefresh)="doRefresh($event)">
+<ion-content [class.refreshing]="refreshing">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content pullingIcon="md-arrow-down" pullingText="下拉刷新..." refreshingSpinner="ios" refreshingText="正在刷新..."></ion-refresher-content>
   </ion-refresher>
   <ion-slides autoplay pager control='true' loop="true" style="height: auto;">

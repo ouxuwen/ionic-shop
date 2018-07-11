@@ -16,7 +16,7 @@
     <span tappable [class.active]="navIndex == 2" (click)="changeIndex(2)">详 情</span>
     <span tappable [class.active]="navIndex == 3" (click)="changeIndex(3)">评 价</span>
   </div>
-  <div *ngIf="navIndex == 2" class="img_text">
+  <div *ngIf="navIndex == 2" class="img_text" [innerHtml]='htmlContent'>
 
   </div>
   <div *ngIf="navIndex == 3" class="comment">

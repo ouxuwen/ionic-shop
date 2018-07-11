@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ApiService } from '../../../providers/api';
 
 /**
  * Generated class for the ImgTextDetailPage page.
@@ -15,10 +16,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ImgTextDetailPage {
 
-  navIndex:number = 2;  //2:图文详情 3：评论
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  navIndex:number = 2;  //2:图文详情 3：评论,
+  htmlContent:any;
+  goodsId:any;
+  commType = 1; //1,2,3 好评，中评，差评
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public apiService:ApiService
+  ) {
     this.navIndex = this.navParams.get('navIndex');
-    console.log(this.navIndex)
+    this.htmlContent = this.navParams.get('content');
+    this.goodsId = this.navParams.get('goodsId');
+    if(this.navIndex == 3){
+      this.getGoodsComments();
+    }
+    console.log(this.navIndex);
   }
 
   ionViewDidLoad() {
@@ -32,5 +45,14 @@ export class ImgTextDetailPage {
 
   back(){
     this.navCtrl.pop();
+  }
+
+  getGoodsComments(){
+    this.apiService.getGoodsComments({
+      comments_type:this.commType,
+      goods_id:this.goodsId
+    }).subscribe(res=>{
+      console.log(res);
+    })
   }
 }

@@ -143,10 +143,14 @@ page-goods-detail {
         transform: translate(-50%,-50%);
 
       }
+
     }
     .favorite{
       ion-icon{
         color:#C7C6C6;
+      }
+      .fav{
+        color:#F5564B;
       }
     }
     .service{

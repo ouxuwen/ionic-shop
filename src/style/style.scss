@@ -19,3 +19,25 @@
 .loading-content{
   color:#347eff;
 }
+
+.toast-ios .toast-wrapper,.toast-md .toast-wrapper{
+  background:rgba(0, 0, 0, 0.6);
+}
+.toast-success{
+  .toast-wrapper{
+    background-color: #f0f9eb;
+    .toast-message{
+      color: #67c23a;
+    }
+
+  }
+}
+.toast-error{
+  .toast-wrapper{
+    background-color: #fef0f0;
+    .toast-message{
+      color: #f56c6c;
+    }
+
+  }
+}

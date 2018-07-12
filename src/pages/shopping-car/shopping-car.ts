@@ -69,15 +69,25 @@ export class ShoppingCarPage {
   // 修改数量
   changeNum(i, num) {
     this.cartData[i].num += num;
+    if(this.cartData[i].num <1){
+      this.cartData[i].num = 1;
+      return;
+    }
+    this.cartAdjustNum(i);
   }
 
   // 修改商品数量
-  cartAdjustNum(cartid, num) {
+  cartAdjustNum(i) {
+    if(this.cartData[i].num <1 || !this.cartData[i].num ){
+      this.cartData[i].num = 1;
+     
+    }
+    let num = parseInt(this.cartData[i].num);
     this.goodsService.cartAdjustNum({
-      cartid: cartid,
+      cartid: this.cartData[i].cart_id,
       num: num
     }).subscribe(res => {
-
+      this.calculatePrice();
     })
   }
 
@@ -117,14 +127,15 @@ export class ShoppingCarPage {
         duration: 1500,
         position: 'middle',
         cssClass: 'toast-success'
-      }).present()
+      }).present();
+      this.getCart(false)
     })
   }
 
   // 收藏
   addFav(itemSliding: ItemSliding, i) {
     this.goodsService.addFavorites({
-      fav_id: this.cartData[i].goods_id,
+      fav_id: i,
       fav_type: 'goods'
     }).subscribe(res => {
       itemSliding.close()
@@ -138,8 +149,8 @@ export class ShoppingCarPage {
   }
 
   //获取购物车内容
-  getCart() {
-    this.goodsService.cart({}).subscribe(res => {
+  getCart(bol=true) {
+    this.goodsService.cart({},bol).subscribe(res => {
       let data = res['data'];
       this.cartList = data.list;
       this.cartData = this.cartList['0,'];
@@ -185,6 +196,11 @@ export class ShoppingCarPage {
       ele.isChecked = e;
     });
     this.calculatePrice()
+  }
+
+  checkOut(){
+    let checkedList = this.cartData.filter(el=>el.isChecked);
+    this.navCtrl.push("CheckOutPage",{'cartData':checkedList})
   }
 
 }

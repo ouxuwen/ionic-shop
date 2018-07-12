@@ -8,6 +8,7 @@ page-goods-detail {
   .goods_intro{
     border-top:1px solid #eeeeee;
     border-bottom:1px solid #eeeeee;
+    padding:5px 10px;
     p{
       &.name{
         text-overflow: ellipsis;

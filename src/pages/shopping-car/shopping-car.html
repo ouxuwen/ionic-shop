@@ -27,7 +27,7 @@
           <ion-label>
             <image tappable (click)='openDetail($event,ele.goods_id)' [src]="ele.picture_info.pic_cover_mid" alt=""></image>
             <div>
-              <p class="name" tappable (click)='openDetail($event,ele.goods_id)'>商品：{{ele.goods_name}}</p>
+              <p class="name" tappable (click)='openDetail($event,ele.goods_id)'>{{ele.goods_name}}</p>
               <p class="type">规格：{{ele.sku_name}}</p>
               <p class="price">价格：¥ {{ele.price}}</p>
             </div>
@@ -35,7 +35,7 @@
             <ion-icon class="delete" name="ios-trash" (click)="deleteCartConfirm(ele.cart_id)"></ion-icon>
             <div class="num">
               <ion-icon name="ios-remove-outline" (click)="changeNum(i,-1)"></ion-icon>
-              <ion-input type="number" [ngModel]="ele.num" max="999" min="0" (ionBlur)="cartAdjustNum(ele.cart_id,ele.num)"></ion-input>
+              <ion-input type="number" [(ngModel)]="ele.num" max="999" min="1" (ionBlur)="cartAdjustNum(i)"></ion-input>
               <ion-icon name="ios-add-outline" (click)="changeNum(i,1)"></ion-icon>
             </div>
             <!-- <div class="nums" *ngIf = "!isEditing">
@@ -44,7 +44,7 @@
           </ion-label>
         </ion-item>
         <ion-item-options side="right">
-          <button ion-button color="private" (click)="addFav(item,ele.cart_id)">收 藏</button>
+          <button ion-button color="private" (click)="addFav(item,ele.goods_id)">收 藏</button>
           <button ion-button color="danger" (click)="delete(item,ele.cart_id)">删 除</button>
         </ion-item-options>
       </ion-item-sliding>
@@ -57,11 +57,11 @@
         全选
       </p>
       <span>
-        <i>不含运费 </i> 总 价：
+        <i>不含运费 </i> 总价:
         <b>¥ {{totalPrice}}</b>
       </span>
     </div>
-    <p>
+    <p (click)="checkOut()">
       结 算
       <span>({{selectNum}})</span>
     </p>

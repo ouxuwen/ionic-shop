@@ -1,9 +1,21 @@
 page-check-out {
+  .no_address{
+    display: flex;
+    height: 100px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    color:#aaa;
+    ion-icon{
+      font-size: 40px;
+      margin-right:15px; 
+    }
+    font-size: 20px
+  }
   .order_address{
-    border:5px solid transparent;
-    padding:10px;
+    padding:15px;
     background: #fff;
-    margin-bottom:10px;
+    padding-bottom: 0;
     .header{
       height: 20px;
       line-height: 20px;
@@ -22,9 +34,9 @@ page-check-out {
       .auto{
         display:inline-block;
         padding:3px 5px;
-        border:1px solid #666;
+        border:1px solid rgb(255, 60, 0);;
         border-radius: 2px;
-        color:#666;
+        color:rgb(255, 60, 0);
       }
       p{
         float: right;
@@ -40,6 +52,97 @@ page-check-out {
     img{
       width:100%;
       height: auto;
+    }
+  }
+  .goods_list{
+    .g_label{
+      img{
+        width:20px;
+        height: 20px;
+        vertical-align: middle;
+        margin-right: 10px;
+      }
+      padding:8px 10px;
+    }
+    ion-item{
+      position: relative;
+      background: #f9f9f9;
+      ion-label{
+        display: flex;
+        pointer-events: inherit;
+        max-width: none;
+        img{
+          width:  60px;
+          height: 60px;
+          margin-left: 5px;
+          z-index: 100;
+        }
+        >div{
+          padding-left: 5px;
+          p{
+            text-overflow: ellipsis;
+           
+            &.price{
+              color:red;
+            }
+            &.name{
+              color:#333;
+              z-index: 100;
+              max-width: 200px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+          }
+        }
+      }
+      
+      .nums{
+        position: absolute;
+        right:15px;
+        bottom:15px;
+        font-size: 12px;
+      }
+    }
+  }
+  .check_out{
+    height: 49px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left:0;
+    display: flex;
+    box-shadow:0px -1px 3px #a5a5a5;
+    >div{
+      flex:1;
+      align-items: center;
+      line-height: 49px;
+      height: 49px;
+      padding:0 10px;
+      span{
+        font-size: 12px;
+        float: left;
+      }
+      i{
+        font-size: 8px;
+        color:#707070;
+        font-style: normal;
+      }
+      b{
+        font-size: 14px;
+        color:red;
+      }
+    }
+    >p{
+      width:120px;
+      height: 49px;
+      line-height: 49px;
+      background: #FF5100;
+      color:#fff;
+      text-align: center;
+      font-size: 16px;
+      span{
+        font-size: 12px;
+      }
     }
   }
 }

@@ -13,6 +13,7 @@ page-shopping-car {
     flex-direction:column;
     ion-icon{
       font-size: 120px;
+      
     }
   }
   .good_list{
@@ -30,14 +31,19 @@ page-shopping-car {
         }
         >div{
           z-index: 100;
+          
           p{
             text-overflow: ellipsis;
+           
             &.price{
               color:red;
             }
             &.name{
               color:#333;
               z-index: 100;
+              max-width: 200px;
+              overflow: hidden;
+              text-overflow: ellipsis;
             }
           }
         }
@@ -47,7 +53,7 @@ page-shopping-car {
         right:10px;
         top:15px;
         color:#FF5100;
-
+        font-size: 24px;
       }
       .nums{
         position: absolute;
@@ -89,7 +95,7 @@ page-shopping-car {
     width: 100%;
     left:0;
     display: flex;
-    box-shadow:0px -1px 2px #7A7A7A;
+    box-shadow:0px -1px 3px #a5a5a5;
     >div{
       flex:1;
       align-items: center;
@@ -98,21 +104,22 @@ page-shopping-car {
       padding:0 10px;
       p{
         float: left;
+        font-size: 12px;
         ion-checkbox{
           vertical-align: middle;
         }
       }
       span{
-        font-size: 14px;
+        font-size: 12px;
         float: right;
       }
       i{
-        font-size: 10px;
+        font-size: 8px;
         color:#707070;
         font-style: normal;
       }
       b{
-        font-size: 16px;
+        font-size: 14px;
         color:red;
       }
     }

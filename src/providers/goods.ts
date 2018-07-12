@@ -26,8 +26,8 @@ export class GoodsService {
   }
 
   //购物车
-  cart(data) {
-    return this.base.post('/app/Goods/cart', data);
+  cart(data,bol=true) {
+    return this.base.post('/app/Goods/cart', data,bol);
   }
 
   //添加收藏

@@ -26,7 +26,7 @@ import { ComponentsModule } from '../components/components.module';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp, {
-      // mode: 'ios',
+      mode: 'ios',
       tabsHideOnSubPages: 'true',
       backButtonText: '',
       iconMode: 'ios',

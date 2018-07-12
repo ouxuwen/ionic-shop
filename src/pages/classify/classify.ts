@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ApiService } from '../../providers/api';
+import { GoodsService } from '../../providers/goods';
 
 /**
  * Generated class for the ClassifyPage page.
@@ -21,7 +21,7 @@ export class ClassifyPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public apiService: ApiService
+    public goodsService: GoodsService
   ) {
     this.goodsCategoryList()
   }
@@ -31,7 +31,7 @@ export class ClassifyPage {
   }
 
   goodsCategoryList(){
-    this.apiService.goodsCategoryList({}).subscribe(res=>{
+    this.goodsService.goodsCategoryList({}).subscribe(res=>{
       console.log(res);
       this.categoryList = res['data'];
       this.childList = this.categoryList[0].child_list;
@@ -44,12 +44,12 @@ export class ClassifyPage {
   }
 
   getCategoryChildGoods(id){
-    this.apiService.getCategoryChildGoods({id:id}).subscribe(res=>{
+    this.goodsService.getCategoryChildGoods({id:id}).subscribe(res=>{
       console.log(res)
     })
   }
 
-  goodsList(id){
+  goodsList(id?){
     this.navCtrl.push('GoodsListPage',{
       category_id:id
     })

@@ -13,8 +13,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { BusinessLicensePageModule } from '../pages/person/business-license/business-license.module';
 import { PopoverPage } from '../pages/goods-detail/popover-page';
 import { BaseHttpProvider } from '../providers/base-http';
-import { ApiService } from '../providers/api';
+import { GoodsService } from '../providers/goods';
 import { PersonService } from '../providers/person';
+import { OrderService } from '../providers/order';
 
 import { ComponentsModule } from '../components/components.module';
 @NgModule({
@@ -48,8 +49,9 @@ import { ComponentsModule } from '../components/components.module';
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     BaseHttpProvider,
-    ApiService,
+    GoodsService,
     PersonService,
+    OrderService,
     Nav
   ]
 })

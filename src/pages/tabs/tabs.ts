@@ -6,7 +6,7 @@ import { IonicPage } from 'ionic-angular';
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
-
+  cartCount:any = 0;
   tab1Root = "HomePage";
   tab2Root = "ClassifyPage";
   tab3Root = "ShoppingCarPage";

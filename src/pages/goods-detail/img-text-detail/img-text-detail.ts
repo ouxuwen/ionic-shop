@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ApiService } from '../../../providers/api';
+import { GoodsService } from '../../../providers/goods';
 
 /**
  * Generated class for the ImgTextDetailPage page.
@@ -23,7 +23,7 @@ export class ImgTextDetailPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public apiService:ApiService
+    public goodsService:GoodsService
   ) {
     this.navIndex = this.navParams.get('navIndex');
     this.htmlContent = this.navParams.get('content');
@@ -48,7 +48,7 @@ export class ImgTextDetailPage {
   }
 
   getGoodsComments(){
-    this.apiService.getGoodsComments({
+    this.goodsService.getGoodsComments({
       comments_type:this.commType,
       goods_id:this.goodsId
     }).subscribe(res=>{

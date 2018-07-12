@@ -1,0 +1,45 @@
+page-check-out {
+  .order_address{
+    border:5px solid transparent;
+    padding:10px;
+    background: #fff;
+    margin-bottom:10px;
+    .header{
+      height: 20px;
+      line-height: 20px;
+      .tel{
+        margin-left: 20px;
+      }
+    }
+    .body{
+      padding:5px 0;
+      line-height: 20px;
+      border-bottom:1px solid #eee;
+    }
+    .footer{
+      font-size: 12px;
+      padding-top:10px;
+      .auto{
+        display:inline-block;
+        padding:3px 5px;
+        border:1px solid #666;
+        border-radius: 2px;
+        color:#666;
+      }
+      p{
+        float: right;
+        span{
+          margin:10px;
+          font-size: 12px;
+          color:rgb(0, 132, 255);
+        }
+      }
+    }
+  }
+  .line{
+    img{
+      width:100%;
+      height: auto;
+    }
+  }
+}

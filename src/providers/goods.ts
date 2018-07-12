@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BaseHttpProvider } from './base-http';
 
 @Injectable()
-export class ApiService {
+export class GoodsService {
   constructor(
     public base: BaseHttpProvider
   ) { }
@@ -75,11 +75,14 @@ export class ApiService {
     return this.base.post('/app/Goods/goodsCategoryList', data);
   }
 
-  /**
-    * 购物车修改数量
-    */
+  //  购物车修改数量
   cartAdjustNum(data) {
-    return this.base.post('/app/Goods/cartAdjustNum', data);
+    return this.base.post('/app/Goods/cartAdjustNum', data,false);
+  }
+
+  // 删除购物车
+  cartDelete(data){
+    return this.base.post('/app/Goods/cartDelete', data,false);
   }
 
   // 功能：商品评论

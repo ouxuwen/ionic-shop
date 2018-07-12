@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, PopoverController, LoadingController, ToastController } from 'ionic-angular';
-import { ApiService } from '../../providers/api';
+import { GoodsService } from '../../providers/goods';
 import { PopoverPage} from './popover-page';
 
 
@@ -37,7 +37,7 @@ export class GoodsDetailPage {
     public navParams: NavParams,
     public popoverCtrl: PopoverController,
     public loadingCtrl: LoadingController,
-    public apiService: ApiService,
+    public goodsService: GoodsService,
     public toastCtrl: ToastController
   ) {
 
@@ -47,7 +47,7 @@ export class GoodsDetailPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad GoodsDetailPage');
-   
+
   }
 
   presentPopover(ev) {
@@ -108,7 +108,7 @@ export class GoodsDetailPage {
 
   // 商品详情
   getGoodsDetail() {
-    this.apiService.goodsDetail({ id: this.goodsId }).subscribe(res => {
+    this.goodsService.goodsDetail({ id: this.goodsId }).subscribe(res => {
       let data: any = res['data'];
       this.goodsDetail = data['goods_detail'];
       this.cartInfo = data['cartInfo'];
@@ -159,7 +159,7 @@ export class GoodsDetailPage {
       'cost_price': this.goodsDetail.cost_price,
       'picture': this.goodsDetail.picture
     }
-    this.apiService.addCart({
+    this.goodsService.addCart({
       cart_detail: JSON.stringify(params)
     }).subscribe(res => {
       this.cartInfo = res['data']['cart'];
@@ -183,7 +183,7 @@ export class GoodsDetailPage {
 
   // 收藏
   addFav() {
-    this.apiService.addFavorites({
+    this.goodsService.addFavorites({
       fav_id: this.goodsId,
       fav_type: 'goods'
     }).subscribe(res => {
@@ -199,7 +199,7 @@ export class GoodsDetailPage {
 
   //取消收藏
   cancelFav() {
-    this.apiService.cancelFavorites({
+    this.goodsService.cancelFavorites({
       fav_id: this.goodsId,
       fav_type: 'goods'
     }).subscribe(res => {

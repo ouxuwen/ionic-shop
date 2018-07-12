@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ApiService } from '../../providers/api';
+import { GoodsService } from '../../providers/goods';
 import { Storage } from '@ionic/storage';
 /**
  * Generated class for the HomePage page.
@@ -40,7 +40,7 @@ export class HomePage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public api: ApiService,
+    public goodsService: GoodsService,
     public storage: Storage
   ) {
     this.init();
@@ -59,7 +59,7 @@ export class HomePage {
 
   init(refresher?) {
 
-    this.api.index().subscribe(res => {
+    this.goodsService.index().subscribe(res => {
       if(refresher){
         this.refreshing = false;
         refresher.complete();
@@ -87,11 +87,11 @@ export class HomePage {
 
 
   ionViewDidEnter() {
-   
-    
+
+
   }
   ionViewWillLeave(){
-    
+
   }
 
   // 下拉刷新
@@ -108,7 +108,7 @@ export class HomePage {
     this.scrollEvent();
 
   }
-  
+
   scrollEvent(){
     this.fixContent = document.querySelector("page-home ion-refresher");
     this.header = document.querySelector("page-home ion-header");

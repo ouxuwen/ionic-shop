@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the OrderPage page.
+ * Generated class for the PayResultPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,22 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-order',
-  templateUrl: 'order.html',
+  selector: 'page-pay-result',
+  templateUrl: 'pay-result.html',
 })
-export class OrderPage {
+export class PayResultPage {
 
-  orderType: any;
-
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams
-
-  ) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad OrderPage');
+    console.log('ionViewDidLoad PayResultPage');
   }
 
 }

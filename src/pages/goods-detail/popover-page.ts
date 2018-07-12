@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, PopoverController, LoadingController, ToastController } from 'ionic-angular';
-import { ApiService } from '../../providers/api';
+import { GoodsService } from '../../providers/goods';
 
 @Component({
     template: `

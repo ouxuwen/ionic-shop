@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ApiService } from '../../providers/api';
+import { GoodsService } from '../../providers/goods';
 
 /**
  * Generated class for the GoodsListPage page.
@@ -35,7 +35,8 @@ export class GoodsListPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public apiService: ApiService
+    public goodsService: GoodsService,
+
   ) {
 
     this.categoryId = navParams.get('category_id') ? navParams.get('category_id') : '';
@@ -69,7 +70,7 @@ export class GoodsListPage {
       controlType: this.controlType
     }
 
-    this.apiService.goodsList(params).subscribe(res => {
+    this.goodsService.goodsList(params).subscribe(res => {
       if(refresher)refresher.complete();
       let data = res['data'];
       if (data.goods_list.lenght < 15) {

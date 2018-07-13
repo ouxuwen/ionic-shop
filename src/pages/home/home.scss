@@ -235,4 +235,60 @@ page-home {
         }
     }
 
+    .coupon_list{
+      background: #ffffff;
+      ul{
+        white-space: nowrap;
+      }
+      li{
+        padding:10px;
+        display: inline-block;
+        background:  linear-gradient(to right,  rgb(255, 51, 0), #FF5100);
+        margin:5px 0;
+        margin-left: 10px;
+        >div{
+          height: 60px;
+          border:1px dashed #ffffff;
+          color:#ffffff;
+          padding-top:5px;
+          >div{
+            display: inline-block;
+            vertical-align: middle;
+            height: 50px;
+          }
+          .price{
+            font-size: 16px;
+            line-height: 30px;
+            border-right: 1px solid #ffffff;
+            padding:0 5px;
+            text-align: center;
+            span{
+              font-size: 28px;
+            }
+            p{
+              line-height: 15px;
+              font-size: 12px;
+              text-align: center;
+            }
+          }
+          .get{
+            text-align: center;
+            font-size: 14px;
+            padding:0 5px;
+            span{
+              display: block;
+              line-height: 29px;
+            }
+            p{
+              border-top: 1px solid #ffffff;
+              line-height: 20px;
+              font-size: 12px;
+              display: inline-block;
+            }
+
+          }
+        }
+      }
+    }
+
 }

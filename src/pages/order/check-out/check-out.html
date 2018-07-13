@@ -30,45 +30,52 @@
     </div>
   </div>
   <div class="no_address" *ngIf="!hasAddress">
-    <ion-icon  name="ios-add" ></ion-icon>
+    <ion-icon name="ios-add"></ion-icon>
     添加收货地址
   </div>
   <div class="line">
     <img src="assets/imgs/line.jpg" alt="">
   </div>
   <div class="goods_list">
-    <p class="g_label"> <img src="assets/imgs/goods.jpg">订单商品：</p>
+    <p class="g_label">
+      <img src="assets/imgs/goods.jpg">订单商品：</p>
     <ion-list>
-        <ion-item-sliding *ngFor="let ele of cartData;index as i " #item>
-          <ion-item>
-            <ion-label>
-              <image tappable (click)='openDetail($event,ele.goods_id)' [src]="ele.picture_info.pic_cover_mid" alt=""></image>
-              <div>
-                <p class="name" tappable (click)='openDetail($event,ele.goods_id)'>{{ele.goods_name}}</p>
-                <p class="type">规格：{{ele.sku_name}}</p>
-                <p class="price">价格：¥ {{ele.price}}</p>
-              </div>
-              <div class="nums" >
-                  数量：{{ele.num}}
-              </div>
-            </ion-label>
-          </ion-item>
-          <ion-item-options side="right">
-            <button ion-button color="private" (click)="addFav(item,ele.goods_id)">收 藏</button>
-            <button ion-button color="danger" (click)="delete(item,ele.cart_id)">删 除</button>
-          </ion-item-options>
-        </ion-item-sliding>
-      </ion-list>
+      <ion-item-sliding *ngFor="let ele of cartData;index as i " #item>
+        <ion-item>
+          <ion-label>
+            <image tappable (click)='openDetail($event,ele.goods_id)' [src]="ele.picture_info.pic_cover_mid" alt=""></image>
+            <div>
+              <p class="name" tappable (click)='openDetail($event,ele.goods_id)'>{{ele.goods_name}}</p>
+              <p class="type">规格：{{ele.sku_name}}</p>
+              <p class="price">价格：¥ {{ele.price}}</p>
+            </div>
+            <div class="nums">
+              数量：{{ele.num}}
+            </div>
+          </ion-label>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button color="private" (click)="addFav(item,ele.goods_id)">收 藏</button>
+          <button ion-button color="danger" (click)="delete(item,ele.cart_id)">删 除</button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
   </div>
+
+
+
+
   <div class="check_out">
-      <div>
-        <span>
-          <i>含运费 </i> 总价:
-          <b>¥ {{totalPrice}}</b>
-        </span>
-      </div>
-      <p (click)="pay()">
-        提交订单
-      </p>
+    <div>
+      <span>
+        <i>含运费 </i> 总价:
+        <b>¥ {{totalPrice}}</b>
+      </span>
     </div>
+    <p (click)="pay()">
+      提交订单
+    </p>
+  </div>
+
+
 </ion-content>

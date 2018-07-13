@@ -19,41 +19,25 @@
 
 <ion-content class="bgs">
   <ul class="address_list">
-    <li class="selected">
-      <p class="header">
-        <span class="name">達文西</span>
-        <span class="tel">18888888888</span>
+    <li [class.selected]="item.is_default == 1" *ngFor="let item of addressList">
+      <p class="header" (click)="setDefault(item)">
+        <span class="name">{{item.consigner}}</span>
+        <span class="tel">{{item.mobile}}</span>
       </p>
-      <p class="body">
-        <span>廣東省深圳市福田區 罕相路18號</span>
+      <p class="body" (click)="setDefault(item)">
+        <span [innerHtml]="item.address_info"></span>
+        <span> {{item.address}}</span>
       </p>
       <div class="footer">
-        <span class="auto">
+        <span class="auto" (click)="setDefault(item)">
           设为默认收货地址
         </span>
         <p>
-          <span>编辑</span>
-          <span>删除</span>
+          <span (click)="editAddress(item)">编辑</span>
+          <span (click)="deleteAddress(item.id)">删除</span>
         </p>
       </div>
     </li>
-    <li>
-      <p class="header">
-        <span class="name">達文西</span>
-        <span class="tel">18888888888</span>
-      </p>
-      <p class="body">
-        <span>廣東省深圳市福田區 罕相路18號</span>
-      </p>
-      <div class="footer">
-        <span class="auto">
-          设为默认收货地址
-        </span>
-        <p>
-          <span>编辑</span>
-          <span>删除</span>
-        </p>
-      </div>
-    </li>
+
   </ul>
 </ion-content>

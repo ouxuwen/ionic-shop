@@ -14,5 +14,21 @@
 
 
 <ion-content padding>
-
+  <ul>
+      <li *ngFor="let coupon of couponList">
+          <div>
+            <div class="price">
+              ¥
+              <span>{{coupon.money}}</span>
+              <p>优惠券</p>
+            </div>
+            <div class="get">
+              <span *ngIf="coupon.at_least != '0.00'">满{{coupon.at_least}}使用</span>
+              <span *ngIf="coupon.at_least == '0.00'">无门槛使用</span>
+              <p>开始时间：{{coupon.start_time}}</p>
+              <p>结束时间：{{coupon.end_time}}</p>
+            </div>
+          </div>
+        </li>
+  </ul>
 </ion-content>

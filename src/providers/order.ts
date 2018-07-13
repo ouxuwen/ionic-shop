@@ -7,6 +7,10 @@ export  class OrderService {
     public base: BaseHttpProvider
   ) {}
 
+  // 订单信息
+  orderInfo(data){
+    return this.base.post('/app/Order/orderInfo', data);
+  }
 
   // 创建订单
   createOrder(data){

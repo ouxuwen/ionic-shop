@@ -60,7 +60,7 @@ export class BaseHttpProvider {
         this.navCtrl.setRoot("LoginPage");
       });
     } else if (res.code === 403) {
-      
+
       let pObj = {}
       params.split("&").forEach(el => {
         let arr = el.split('=');
@@ -114,6 +114,7 @@ export class BaseHttpProvider {
   }
 
   post(api: string, body: any = null,needLoading:boolean = true): Observable<Response> {
+
     let observer = Observable.create(obser => {
       this.storage.get('userInfo').then(userInfo => {
         let token = userInfo && userInfo.token ? userInfo.token : ''; //? this.token : "6ed20604fe946101be88e205ed5dbfa7"

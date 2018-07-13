@@ -59,7 +59,7 @@
   <div class="goods" [class.show]="navIndex == 1">
     <div class="rule" *ngIf="goodsDetail.goods_attribute_id==1" tappable (click)="choose($event)">
       选择规格：
-      <choose-model id='choose' [selectList]='roleList' (selectResult)="getRoleResult($event)"></choose-model>
+      <choose-model id='choose' [selectList]='roleList'   (selectResult)="getRoleResult($event)"></choose-model>
       <ion-icon class="r" name="ios-arrow-forward-outline"></ion-icon>
     </div>
     <div class="rule">

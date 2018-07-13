@@ -1,3 +1,55 @@
 page-my-coupon {
+  li{
+    background:  linear-gradient(to right,  rgb(255, 51, 0), #FF5100);
+    margin-bottom: 10px;
+    padding:10px;
+    >div{
+      height: 80px;
+      border:1px dashed #ffffff;
+      color:#ffffff;
+      display: flex;
+      padding:10px;
+      >div{
+        display: inline-block;
+        vertical-align: middle;
+        height: 60px;
+      }
+      .price{
+        font-size: 16px;
+        width:50%;
+        text-align: center;
+        span{
+          font-size: 32px;
+        }
+        line-height: 32px;
+        border-right: 1px solid #ffffff;
+        padding:0 5px;
+        p{
+          line-height: 20px;
+          font-size: 12px;
+          text-align: center;
+        }
+      }
+      .get{
+        width:50%;
+        text-align: center;
+        font-size: 14px;
+        padding:0 5px;
+        span{
+          display: block;
+          line-height: 29px;
+        }
+        p{
+          &:first-child{
+            border-top: 1px solid #ffffff;
+          }
+          line-height: 18px;
+          font-size: 12px;
+          display: inline-block;
+        }
+
+      }
+    }
+  }
 
 }

@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <div class="search-bars" [class.refresh]="refreshing" style="opacity:0" [style.opacity]="headerOpacity"></div>
-  <div class="input-bar"  (click)="openGoodsList()" [style.background]="'rgba(255,255,255,'+(1-headerOpacity/2)+')'">
+  <div class="input-bar" (click)="openGoodsList()" [style.background]="'rgba(255,255,255,'+(1-headerOpacity/2)+')'">
     <ion-icon name="search" [style.color]="'rgb('+headerOpacity*255+','+headerOpacity*255+','+headerOpacity*255+')'"></ion-icon>
     <span [style.color]="'rgb('+(headerOpacity*55+200)+','+(headerOpacity*55+200)+','+(headerOpacity*55+200)+')'">请输入你想搜索的 商品 / 品牌</span>
   </div>
@@ -44,7 +44,28 @@
     </ion-grid>
   </div>
   <section class="interval"></section>
-
+  <!-- 优惠券 -->
+  <div class="coupon_list" *ngIf="couponList.length>0">
+    <ion-scroll scrollX="true" style="height:90px;">
+      <ul class=" clear">
+        <li *ngFor="let coupon of couponList" (click)="bindCoupon(coupon)">
+          <div>
+            <div class="price">
+              ¥
+              <span>{{coupon.money}}</span>
+              <p>优惠券</p>
+            </div>
+            <div class="get">
+              <span *ngIf="coupon.at_least != '0.00'">满{{coupon.at_least}}使用</span>
+              <span *ngIf="coupon.at_least == '0.00'">无门槛使用</span>
+              <p>立即领取</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </ion-scroll>
+  </div>
+  <section class="interval" *ngIf="couponList.length>0"></section>
   <!-- 促销资讯 -->
   <div class="index-trumpet">
     <div class="title">
@@ -91,7 +112,7 @@
   <section class="interval"></section>
 
   <!-- 促销倒计时 -->
-  <div class="promotion">
+  <div class="promotion" *ngIf="promoList.length>0">
     <img src="assets/imgs/mao_title.jpg" alt="">
     <div>
       <span class="time">
@@ -119,9 +140,9 @@
 
 
   </div>
-  <section class="interval"></section>
+  <section class="interval" *ngIf="promoList.length>0"></section>
   <!-- 精品汇 -->
-  <div class="special" >
+  <div class="special">
     <img src="assets/imgs/weipinhui.jpg" alt="">
     <img src="assets/imgs/ad4.png" alt="">
     <div class="special-box">
@@ -135,7 +156,7 @@
           <ion-col col-6 class="pd0">
             <ion-grid>
               <ion-row *ngIf='recommendList[1]' class="bb" tappable (click)="openGoodsDetail(recommendList[1].goods_id)">
-                <ion-col col-6 >
+                <ion-col col-6>
                   <image [src]="recommendList[1].pic_cover_mid" alt=""></image>
                 </ion-col>
                 <ion-col col-6>
@@ -143,7 +164,7 @@
                 </ion-col>
               </ion-row>
               <ion-row *ngIf='recommendList[2]' tappable (click)="openGoodsDetail(recommendList[2].goods_id)">
-                <ion-col col-6 >
+                <ion-col col-6>
                   <image [src]="recommendList[2].pic_cover_mid" alt=""></image>
                 </ion-col>
                 <ion-col col-6>
@@ -171,14 +192,14 @@
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col col-4 *ngFor="let item of hotList2" tappable  (click)="openGoodsDetail(item.goods_id)">
+        <ion-col col-4 *ngFor="let item of hotList2" tappable (click)="openGoodsDetail(item.goods_id)">
           <image [src]="item.pic_cover_mid" alt=""></image>
           <p>{{item.goods_name}}</p>
           <p class="price">¥ {{item.price}}</p>
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col col-4 *ngFor="let item of hotList3" tappable  (click)="openGoodsDetail(item.goods_id)">
+        <ion-col col-4 *ngFor="let item of hotList3" tappable (click)="openGoodsDetail(item.goods_id)">
           <image [src]="item.pic_cover_mid" alt=""></image>
           <p>{{item.goods_name}}</p>
           <p class="price">¥ {{item.price}}</p>

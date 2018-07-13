@@ -10,16 +10,8 @@ import { PickerController } from 'ionic-angular';
 
 
 export class ChooseModelComponent {
-  selectValue = {
-    qiu: {
-      value:null,
-      text: ''
-    },
-    zhu: {
-      value: null,
-      text: ''
-    }
-  }
+  selectValue:any;
+  @Input() defaultValue:any;
   @Input() selectList: any;
   @Input() placeholder: string;
   @Input() CancelText: string = '取 消';
@@ -38,7 +30,10 @@ export class ChooseModelComponent {
         {
           text: this.CancelText,
           role: 'cancel',
-          handler: () => this.ionCancel.emit(null)
+          handler: () => {
+            this.ionCancel.emit(null);
+
+          }
         },
         {
           text: this.ConfirmText,
@@ -46,6 +41,7 @@ export class ChooseModelComponent {
             this.selectValue.qiu = data.qiu;
             this.selectValue.zhu = data.zhu;
             this.selectResult.emit(this.selectValue);
+
           }
         }
       ],
@@ -53,14 +49,14 @@ export class ChooseModelComponent {
         {
           name: 'qiu',
           align: 'center',
-          selectedIndex: this.selectValue.qiu.value,
+          //selectedIndex: this.selectValue.qiu.value,
           options: this.selectList.qiu,
           prefix: "球 镜："
         },
         {
           name: 'zhu',
           align: 'center',
-          selectedIndex: this.selectValue.zhu.value,
+         // selectedIndex: this.selectValue.zhu.value,
           options: this.selectList.zhu,
           prefix: "柱 镜："
         },
@@ -68,6 +64,23 @@ export class ChooseModelComponent {
     });
     picker.present();
 
+  }
+
+  ngOnInit(){
+    this.initData();
+	}
+
+  ngAfterContentChecked(){
+    this.initData();
+  }
+
+  initData(){
+
+    //是否有默认选中值，有则滑到默认值，没有=>是否有placeholder,有则显示placeholder text,没有则默认选中第一个
+    if( this.defaultValue ){
+
+      this.selectValue = this.defaultValue ;
+    }
   }
 
 

@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ToastController } from 'ionic-angular';
 import { GoodsService } from '../../providers/goods';
+import { PersonService } from '../../providers/person';
 import { Storage } from '@ionic/storage';
+
 /**
  * Generated class for the HomePage page.
  *
@@ -33,15 +35,16 @@ export class HomePage {
   hotList3: any = [];
   appInfo: any;
   recommendList: any=[];
-
-  couponList: any;
+  couponList: any = [];
   notice: any;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public goodsService: GoodsService,
-    public storage: Storage
+    public storage: Storage,
+    public personService:PersonService,
+    public toastCtrl: ToastController
   ) {
     this.init();
   }
@@ -63,7 +66,6 @@ export class HomePage {
       if(refresher){
         this.refreshing = false;
         refresher.complete();
-
       }
 
       let data = res['data'];
@@ -80,6 +82,7 @@ export class HomePage {
       this.storage.set('appInfo', this.appInfo);
       console.log(res);
     })
+
 
 
   }
@@ -109,12 +112,11 @@ export class HomePage {
 
   }
 
+  // 注册滚动事件
   scrollEvent(){
     this.fixContent = document.querySelector("page-home ion-refresher");
     this.header = document.querySelector("page-home ion-header");
     this.scrollContent = document.querySelector("page-home .scroll-content");
-
-    console.log(this.headerOpacity)
     this.scrollContent.addEventListener("scroll", (e) => {
       this.headerOpacity = this.scrollContent.scrollTop / 90;
       if (this.headerOpacity > 1) {
@@ -123,7 +125,7 @@ export class HomePage {
     })
   }
 
-
+  // 匹配倒计时
   formatTime(value) {
     var hour = Math.floor(value / 3600000);
     var minute = Math.floor((value % 3600000) / 60000);
@@ -135,17 +137,29 @@ export class HomePage {
     this.promoMin = m;
     this.promoSec = s;
   }
-
+  // 商品列表
   openGoodsList() {
     this.navCtrl.push("GoodsListPage");
   }
 
+  // 商品详情
   openGoodsDetail(id) {
     this.navCtrl.push("GoodsDetailPage", {
       goods_id: id
     });
   }
 
+  // 领取优惠券
+  bindCoupon(coupon){
+    this.personService.getCoupon({"coupon_type_id":coupon.coupon_type_id}).subscribe(res =>{
+      this.toastCtrl.create({
+        message: "领取成功",
+        duration: 1000,
+        position: 'middle',
+        cssClass: 'toast-success'
+      }).present()
+    })
+  }
 
 
 }

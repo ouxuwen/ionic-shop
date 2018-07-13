@@ -50,14 +50,22 @@ export class PersonService {
   }
   //添加地址
   addMemberAddress(data) {
-    return this.base.post('/app/member/memberAddressDelete', data);
+    return this.base.post('/app/member/addMemberAddress', data);
   }
   //修改会员地址
   updateMemberAddress(data) {
     return this.base.post('/app/member/updateMemberAddress', data);
   }
   //会员地址管理
-  memberAddress(data) {
-    return this.base.post('/app/member/memberAddress', data);
+  memberAddress(data, bol?) {
+    return this.base.post('/app/member/memberAddress', data, bol);
+  }
+  //领取优惠券
+  getCoupon(data){
+    return this.base.post('/app/index/getCoupon', data);
+  }
+  //我的优惠券
+  memberCoupon(data){
+    return this.base.post('/app/member/memberCoupon', data);
   }
 }

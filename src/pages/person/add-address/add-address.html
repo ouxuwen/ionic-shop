@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>添 加 地 址</ion-title>
+    <ion-title>{{enterType=='add'?'添 加 地 址':'编 辑 地 址'}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,26 +16,26 @@
 <ion-content>
   <ion-list>
     <ion-item>
-      <ion-label color="primary" stacked>姓 名：</ion-label>
-      <ion-input type="text" placeholder="收货人"></ion-input>
+      <ion-label color="primary" stacked><span>*</span> 姓 名：</ion-label>
+      <ion-input type="text" placeholder="收货人" [(ngModel)]="addressInfo.consigner" (ngModelChange)="checkValid()"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label color="primary" stacked>电 话：</ion-label>
-      <ion-input type="number" placeholder="手机号码"></ion-input>
+      <ion-label color="primary" stacked><span>*</span> 电 话：</ion-label>
+      <ion-input type="number" placeholder="手机号码" [(ngModel)]="addressInfo.mobile" (ngModelChange)="checkValid()"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label color="primary" stacked>省市区:</ion-label>
+      <ion-label color="primary" stacked><span>*</span> 省市区:</ion-label>
       <ion-multi-picker id="cities" item-content [multiPickerColumns]="cityColumns" [cancelText]="'取消'" [doneText]="'确定'" [(ngModel)] = "default" (ngModelChange)="selectResult($event)" [placeholder]="'省市区'"></ion-multi-picker>
     </ion-item>
     <ion-item>
-      <ion-label color="primary" stacked>详 细 地 址：</ion-label>
-      <ion-textarea placeholder="详细地址" rows='5'></ion-textarea>
+      <ion-label color="primary" stacked><span>*</span> 详 细 地 址：</ion-label>
+      <ion-textarea placeholder="详细地址" rows='5' [(ngModel)]="addressInfo.address" (ngModelChange)="checkValid()"></ion-textarea>
     </ion-item>
   </ion-list>
 
   <div class="btn">
-    <button ion-button full>
-      添加
+    <button ion-button full [disabled]="!canNextStep" (click)="nextStep()">
+        {{enterType=='add'?'添 加 地 址':'更 新 地 址'}}
     </button>
   </div>
 

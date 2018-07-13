@@ -18,6 +18,7 @@ import { PopoverPage} from './popover-page';
 
 })
 export class GoodsDetailPage {
+
   goodsId: any;
   navIndex: number = 1;
   numVals: number = 1;
@@ -76,13 +77,12 @@ export class GoodsDetailPage {
 
   getRoleResult(ev) {
     console.log(ev);
+    // this.selectValue = ev;
     this.skuList.forEach(el => {
       if (el.attr_value_items_format === ev.zhu.value + ';' + ev.qiu.value) {
         this.skuId = el.sku_id;
         this.skuName = el.sku_name
         console.log(this.skuId)
-
-
       }
     })
 
@@ -101,7 +101,7 @@ export class GoodsDetailPage {
 
   doInfinite(infiniteScroll) {
     setTimeout(() => {
-      this.navCtrl.push('ImgTextDetailPage', { "navIndex": 2, 'description': this.getGoodsDetail['description'] })
+      this.navCtrl.push('ImgTextDetailPage', { "navIndex": 2, 'description': this.goodsDetail['description'] })
       infiniteScroll.complete();
     }, 500);
   }

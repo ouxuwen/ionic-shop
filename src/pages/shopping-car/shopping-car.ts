@@ -80,7 +80,7 @@ export class ShoppingCarPage {
   cartAdjustNum(i) {
     if(this.cartData[i].num <1 || !this.cartData[i].num ){
       this.cartData[i].num = 1;
-     
+
     }
     let num = parseInt(this.cartData[i].num);
     this.goodsService.cartAdjustNum({
@@ -198,9 +198,16 @@ export class ShoppingCarPage {
     this.calculatePrice()
   }
 
+  // 结算
   checkOut(){
     let checkedList = this.cartData.filter(el=>el.isChecked);
-    this.navCtrl.push("CheckOutPage",{'cartData':checkedList})
+    let cartList = [];
+    this.cartData.forEach(el=>{
+      if(el.isChecked){
+        cartList.push(el.cart_id)
+      }
+    })
+    this.navCtrl.push("CheckOutPage",{'cartData':checkedList,'tag':'cart','cartList':cartList})
   }
 
 }

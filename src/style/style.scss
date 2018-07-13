@@ -25,16 +25,21 @@
 }
 .toast-success{
   .toast-wrapper{
-    background-color: #f0f9eb;
+    transform: translateY(70px);
+    background-color: #efffe7;
+
     .toast-message{
-      color: #67c23a;
+      color: #00a81c;
+      text-align: center;
     }
 
   }
 }
 .toast-error{
   .toast-wrapper{
+    transform: translateY(70px);
     background-color: #fef0f0;
+
     .toast-message{
       color: #f56c6c;
     }

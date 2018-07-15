@@ -154,7 +154,7 @@ export class ShoppingCarPage {
       let data = res['data'];
       this.cartList = data.list;
       this.cartData = this.cartList['0,'];
-      this.cartData.map(ele => {
+      this.cartData&&this.cartData.map(ele => {
         if (ele.goods_attribute_id == 1) {
           let sku = ele.sku_name.split(' ');
           ele.sku_name = `柱：${sku[0]} 球：${sku[1]}`
@@ -170,7 +170,7 @@ export class ShoppingCarPage {
   calculatePrice() {
     this.totalPrice = 0;
     this.selectNum = 0;
-    this.cartData.forEach(ele => {
+    this.cartData && this.cartData.forEach(ele => {
       if (ele.isChecked) {
         this.totalPrice += ele.num * ele.price;
         this.selectNum++;
@@ -207,7 +207,7 @@ export class ShoppingCarPage {
         cartList.push(el.cart_id)
       }
     })
-    this.navCtrl.push("CheckOutPage",{'cartData':checkedList,'tag':'cart','cartList':cartList})
+    this.navCtrl.push("CheckOutPage",{'cartData':checkedList,'tag':'cart','cartList':cartList,'goodsTotal': Number(this.totalPrice)})
   }
 
 }

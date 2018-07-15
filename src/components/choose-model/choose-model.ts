@@ -10,7 +10,10 @@ import { PickerController } from 'ionic-angular';
 
 
 export class ChooseModelComponent {
-  selectValue:any;
+  selectValue:any = {
+    qiu:{text:''},
+    zhu:{text:''}
+  };
   @Input() defaultValue:any;
   @Input() selectList: any;
   @Input() placeholder: string;
@@ -49,14 +52,14 @@ export class ChooseModelComponent {
         {
           name: 'qiu',
           align: 'center',
-          //selectedIndex: this.selectValue.qiu.value,
+          selectedIndex:this.defaultValue? this.defaultValue.qiu.index:0,
           options: this.selectList.qiu,
           prefix: "球 镜："
         },
         {
           name: 'zhu',
           align: 'center',
-         // selectedIndex: this.selectValue.zhu.value,
+          selectedIndex: this.defaultValue? this.defaultValue.zhu.index:0,
           options: this.selectList.zhu,
           prefix: "柱 镜："
         },

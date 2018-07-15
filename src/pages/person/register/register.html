@@ -24,7 +24,7 @@
           <label>
             <ion-icon name="ios-calendar-outline"></ion-icon>
           </label>
-          <input type="text" formControlName="phoneCode" placeholder='验证码'>
+          <input type="text" class="captcha_input" formControlName="phoneCode" placeholder='验证码'>
           <span class="captcha_text" (click)="sendCaptcha()" tappable>{{captchaText}}</span>
           <p *ngIf="registerErrors['phoneCode']">{{registerErrors['phoneCode']}}</p>
         </div>

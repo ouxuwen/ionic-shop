@@ -1,0 +1,9 @@
+<div class="back_ground" [class.shide]="isHide">
+  <div class='action'>
+    <div class="action_header">
+        {{title}}
+      <span (click)="close($event)">&times;</span>
+    </div>
+    <ng-content></ng-content>
+  </div>
+</div>

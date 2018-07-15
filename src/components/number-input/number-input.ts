@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter,SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'number-input',
@@ -16,7 +16,7 @@ export class NumberInputComponent {
   @Input() min: number = 0; //最小数值
   @Input() max: number = 9999;//最大数值
   @Input() numVal: number;
-
+  
   @Output() numValChange: EventEmitter<number> = new EventEmitter<number>();
 
   ngOnInit() {
@@ -41,5 +41,12 @@ export class NumberInputComponent {
   chaneNum(i) {
     this._numVal += i;
     this.checkNum();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes)
+    if ('numVal' in changes) {
+      this._numVal = Number( changes['numVal'].currentValue) ;
+    }   
   }
 }

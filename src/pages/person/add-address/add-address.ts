@@ -37,9 +37,7 @@ export class AddAddressPage {
     this.cityColumns = areasList;
     this.enterType = navParams.get('enterType') ? navParams.get('enterType') : 'add';
     if (navParams.get('addressInfo')) {
-
       this.addressInfo = navParams.get('addressInfo');
-
       this.default = `${this.addressInfo.province} ${this.addressInfo.city} ${this.addressInfo.district}`;
       this.checkValid();
     }

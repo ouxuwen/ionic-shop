@@ -179,6 +179,16 @@ page-home {
             font-size: 12px;
             padding:0 5px;
             max-width: 100px;
+            position: relative;
+            span{
+                position: absolute;
+                top:0;
+                right: 0;
+                padding:3px;
+                background: #FF5100;
+                color:#ffffff;
+                font-size: 10px;
+            }
             img{
                 width: 90px;
             }

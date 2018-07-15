@@ -59,12 +59,17 @@ page-register {
           border-color:red;
         }
       }
+      .captcha_input{
+        width:100px;
+      }
       .captcha_text{
         border:1px solid #2E88FF;
         color: #2E88FF;
         font-size: 10px;
         padding:3px 5px;
         border-radius: 2px;
+        float:right;
+        transform: translateY(-5px);
         .no{
           border:1px solid #eee;
           color: #aaa;

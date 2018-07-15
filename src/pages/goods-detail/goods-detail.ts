@@ -1,8 +1,8 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, PopoverController, LoadingController, ToastController } from 'ionic-angular';
 import { GoodsService } from '../../providers/goods';
-import { PopoverPage} from './popover-page';
-
+import { PopoverPage } from './popover-page';
+import { PersonService } from '../../providers/person';
 
 /**
  * Generated class for the GoodsDetailPage page.
@@ -18,7 +18,7 @@ import { PopoverPage} from './popover-page';
 
 })
 export class GoodsDetailPage {
-
+  selectValue:any ;
   goodsId: any;
   navIndex: number = 1;
   numVals: number = 1;
@@ -28,10 +28,12 @@ export class GoodsDetailPage {
   skuId: any;
   skuName: any;
   skuList: any;
+  couponList = [];
   roleList: any = {
     qiu: [],
     zhu: []
   };
+  hideDetail: boolean = true;
   isMemberFavGoods: any;
   constructor(
     public navCtrl: NavController,
@@ -39,7 +41,8 @@ export class GoodsDetailPage {
     public popoverCtrl: PopoverController,
     public loadingCtrl: LoadingController,
     public goodsService: GoodsService,
-    public toastCtrl: ToastController
+    public toastCtrl: ToastController,
+    public personService: PersonService,
   ) {
 
     this.goodsId = this.navParams.get('goods_id');
@@ -59,13 +62,15 @@ export class GoodsDetailPage {
     });
   }
 
+
+
   //切换显示
   changeIndex(i) {
     this.navCtrl.push('ImgTextDetailPage',
       {
         "navIndex": i,
         'content': this.goodsDetail.description,
-        'goodsId':this.goodsId
+        'goodsId': this.goodsId
       }, {
         direction: "switch"
       })
@@ -77,7 +82,7 @@ export class GoodsDetailPage {
 
   getRoleResult(ev) {
     console.log(ev);
-    // this.selectValue = ev;
+    this.selectValue = ev;
     this.skuList.forEach(el => {
       if (el.attr_value_items_format === ev.zhu.value + ';' + ev.qiu.value) {
         this.skuId = el.sku_id;
@@ -115,6 +120,7 @@ export class GoodsDetailPage {
       this.sellProvince = this.goodsDetail.sell_province;
       this.skuList = this.goodsDetail.sku_list;
       this.isMemberFavGoods = data['is_member_fav_goods'];
+      this.couponList = data['goods_coupon_list'];
       //镜片类型
       if (this.goodsDetail.goods_attribute_id == 1) {
         this.roleList.zhu = [];
@@ -141,7 +147,7 @@ export class GoodsDetailPage {
   //添加购物车
   addCart() {
     if (!this.skuId) {
-      document.getElementById('choose').click();
+      this.hideDetail = false;
       return;
     }
     if (this.numVals < 1) {

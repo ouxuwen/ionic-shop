@@ -15,11 +15,11 @@
 </ion-header>
 
 <ion-content>
-  <div class="no_data" *ngIf="cartData.length === 0">
+  <div class="no_data" *ngIf="!cartData">
     <ion-icon name="ios-cart-outline"></ion-icon>
     <div>购物车空空如也~~</div>
   </div>
-  <div class="good_list" *ngIf="cartData.length > 0">
+  <div class="good_list" *ngIf="cartData">
     <ion-list>
       <ion-item-sliding *ngFor="let ele of cartData;index as i " #item>
         <ion-item>
@@ -50,7 +50,7 @@
       </ion-item-sliding>
     </ion-list>
   </div>
-  <div class="check_out">
+  <div class="check_out" *ngIf="cartData">
     <div>
       <p>
         <ion-checkbox [(ngModel)]="checkedAll" (ngModelChange)="allChange($event)"></ion-checkbox>

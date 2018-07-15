@@ -1,7 +1,7 @@
 <div class="num_box">
     <div class="num">
         <ion-icon tappable name="ios-remove-outline" (click)='chaneNum(-1)'></ion-icon>
-        <ion-input type="number" ngDefaultControl [(ngModel)]="_numVal" (blur)="checkNum()" ></ion-input>
+        <ion-input type="number" ngDefaultControl [(ngModel)]="_numVal" (ionBlur)="checkNum()" (ngModelChange)="checkNum()" ></ion-input>
         <ion-icon tappable name="ios-add-outline" (click)='chaneNum(1)'></ion-icon>
       </div>
 </div>

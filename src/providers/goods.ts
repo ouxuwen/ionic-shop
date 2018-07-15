@@ -90,4 +90,9 @@ export class GoodsService {
     return this.base.post('/app/Goods/getGoodsComments', data);
   }
 
+  // 领取商品优惠券
+  getCoupon(data){
+    return this.base.post('/app/Goods/receiveGoodsCoupon', data);
+  }
+
 }

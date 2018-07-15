@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
-
+import { Storage } from '@ionic/storage';
 /**
  * Generated class for the PersonPage page.
  *
@@ -15,7 +15,12 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 })
 export class PersonPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public modalCtrl: ModalController,
+    public storage: Storage
+  ) {
   }
 
   ionViewDidLoad() {
@@ -28,23 +33,30 @@ export class PersonPage {
   }
 
 
-  goMyScore(){
+  goMyScore() {
     this.navCtrl.push('MyScorePage');
   }
 
-  goMyAddress(){
+  goMyAddress() {
     this.navCtrl.push('AddressManagementPage');
   }
 
-  goMyCoupon(){
+  goMyCoupon() {
     this.navCtrl.push('MyCouponPage');
   }
 
-  goAboutStore(){
+  goAboutStore() {
     this.navCtrl.push('AboutStorePage');
   }
 
-  goFeedback(){
+  goFeedback() {
     this.navCtrl.push('FeedbackPage');
+  }
+
+  logout() {
+    this.storage.remove('userInfo').then(()=>{
+      this.navCtrl.setRoot('LoginPage')
+    })
+  
   }
 }

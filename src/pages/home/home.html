@@ -130,7 +130,8 @@
     </div>
     <ion-scroll scrollX="true" style="height:135px;">
       <ul [style.width]="100*promoList.length + 'px'" class="promo-list clear">
-        <li *ngFor="let promo of discountList">
+        <li *ngFor="let promo of promoList" (click)="openGoodsDetail(promo.goods_id)">
+          <span>{{promo.discount}}折</span>
           <image [src]="promo.picture.pic_cover_mid" alt=""></image>
           <p>{{promo.goods_name}}</p>
           <div>¥ {{promo.promotion_price}}</div>
@@ -150,7 +151,7 @@
         <ion-row>
           <ion-col *ngIf='recommendList[0]' col-6 class="br" tappable (click)="openGoodsDetail(recommendList[0].goods_id)">
             <p class="title">{{recommendList[0].goods_name}}</p>
-            <p class="price">¥ {{recommendList[0].price}}</p>
+            <p class="price">¥ {{recommendList[0].promotion_price}}</p>
             <image [src]="recommendList[0].pic_cover_mid" alt=""></image>
           </ion-col>
           <ion-col col-6 class="pd0">
@@ -188,21 +189,21 @@
         <ion-col col-4 *ngFor="let item of hotList1" tappable (click)="openGoodsDetail(item.goods_id)">
           <image [src]="item.pic_cover_mid" alt=""></image>
           <p>{{item.goods_name}}</p>
-          <p class="price">¥ {{item.price}}</p>
+          <p class="price">¥ {{item.promotion_price}}</p>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col col-4 *ngFor="let item of hotList2" tappable (click)="openGoodsDetail(item.goods_id)">
           <image [src]="item.pic_cover_mid" alt=""></image>
           <p>{{item.goods_name}}</p>
-          <p class="price">¥ {{item.price}}</p>
+          <p class="price">¥ {{item.promotion_price}}</p>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col col-4 *ngFor="let item of hotList3" tappable (click)="openGoodsDetail(item.goods_id)">
           <image [src]="item.pic_cover_mid" alt=""></image>
           <p>{{item.goods_name}}</p>
-          <p class="price">¥ {{item.price}}</p>
+          <p class="price">¥ {{item.promotion_price}}</p>
         </ion-col>
       </ion-row>
 

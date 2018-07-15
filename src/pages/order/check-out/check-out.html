@@ -12,24 +12,25 @@
 
 
 <ion-content>
-  <div class="order_address" *ngIf="hasAddress">
+  <div class="order_address" *ngIf="addressDefault" (click)="selectAddress()">
     <p class="header">
-      <span class="name">達文西</span>
-      <span class="tel">18888888888</span>
+      <span class="name">{{addressDefault.consigner}}</span>
+      <span class="tel">{{addressDefault.mobile}}</span>
     </p>
     <p class="body">
-      <span>廣東省深圳市福田區 罕相路18號</span>
+      <span [innerHtml]="addressDefault.address_info"></span>
+      <span>{{addressDefault.address}}</span>
     </p>
     <div class="footer">
       <span class="auto">
         默认收货地址
       </span>
       <p>
-        <span>编辑</span>
+        <span (click)="editAddress(addressDefault)">编辑</span>
       </p>
     </div>
   </div>
-  <div class="no_address" *ngIf="!hasAddress">
+  <div class="no_address" *ngIf="!addressDefault">
     <ion-icon name="ios-add"></ion-icon>
     添加收货地址
   </div>
@@ -62,7 +63,48 @@
     </ion-list>
   </div>
 
+  <div class="total">
+    商品总价：
+    <span *ngIf="orderDetail"> ¥ {{orderDetail.count_money}}</span>
+    <p>商品总数：
+      <span>{{goodsCount}}</span>
+    </p>
+  </div>
 
+
+
+  <div class="rule" *ngIf="memberAccount" tappable>
+    <ion-checkbox [(ngModel)]="usePoint" (ngModelChange)="pointChange($event)"></ion-checkbox>使用积分： 抵扣
+    <span class="price">- ¥{{integral/20}}</span>
+
+    <span>可用积分：{{memberAccount.point}}</span>
+
+  </div>
+
+  <div class="rule" *ngIf="couponList" tappable (click)="hideCoupon=false">
+    使用优惠券：
+    <ion-icon class="r" name="ios-arrow-forward-outline"></ion-icon>
+    <span>{{showCoupon}}</span>
+
+  </div>
+  <div class="rule" *ngIf="expressCompanyList" tappable (click)="hideExpress=false">
+    选择物流：运费
+    <span class="price">¥ {{express}}</span>
+    <ion-icon class="r" name="ios-arrow-forward-outline"></ion-icon>
+    <span>{{showExpress}}</span>
+
+  </div>
+  <div class="rule " tappable>
+    支付方式：
+    <ion-icon class="r" name="ios-arrow-forward-outline"></ion-icon>
+    <span>支付宝</span>
+  </div>
+
+  <div class="last">
+    <ion-textarea [(ngModel)]="leavemessage" placeholder="买家留言">
+
+    </ion-textarea>
+  </div>
 
 
   <div class="check_out">
@@ -72,10 +114,30 @@
         <b>¥ {{totalPrice}}</b>
       </span>
     </div>
-    <p (click)="pay()">
+    <p (click)="createOrder()">
       提交订单
     </p>
   </div>
+  <coustom-action [(isHide)]="hideCoupon" title="选择优惠券">
+    <ion-list radio-group [(ngModel)]="selectCoupon" (ngModelChange)="getCoupon($event)">
+      <ion-item *ngFor="let coupon of couponList">
+        <ion-label>{{coupon.coupon_name}} {{coupon.coupon_name}}</ion-label>
+        <ion-radio [value]="coupon.coupon_id"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>不使用优惠券</ion-label>
+        <ion-radio value=""></ion-radio>
+      </ion-item>
+    </ion-list>
+  </coustom-action>
+  <coustom-action [(isHide)]="hideExpress" title="选择物流公司">
+    <ion-list radio-group [(ngModel)]="selectExpress" (ngModelChange)="getExpress($event)">
+      <ion-item *ngFor="let item of expressCompanyList">
+        <ion-label>{{item.company_name}}, 运费：{{item.express_fee}}</ion-label>
+        <ion-radio [value]="item.co_id"></ion-radio>
+      </ion-item>
 
+    </ion-list>
+  </coustom-action>
 
 </ion-content>

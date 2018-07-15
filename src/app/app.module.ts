@@ -16,12 +16,11 @@ import { BaseHttpProvider } from '../providers/base-http';
 import { GoodsService } from '../providers/goods';
 import { PersonService } from '../providers/person';
 import { OrderService } from '../providers/order';
-
 import { ComponentsModule } from '../components/components.module';
 @NgModule({
   declarations: [
     MyApp,
-    PopoverPage
+    PopoverPage,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +41,7 @@ import { ComponentsModule } from '../components/components.module';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    PopoverPage
+    PopoverPage,
   ],
   providers: [
     StatusBar,

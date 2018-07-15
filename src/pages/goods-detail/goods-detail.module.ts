@@ -6,14 +6,13 @@ import { ComponentsModule } from '../../components/components.module';
 @NgModule({
   declarations: [
     GoodsDetailPage,
-    
   ],
   imports: [
     IonicPageModule.forChild(GoodsDetailPage),
     ComponentsModule
   ],
 
-  entryComponents:[
+  entryComponents: [
     
   ]
 })

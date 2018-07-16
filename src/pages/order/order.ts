@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { OrderService } from '../../providers/order';
 /**
  * Generated class for the OrderPage page.
@@ -15,7 +15,7 @@ import { OrderService } from '../../providers/order';
 })
 export class OrderPage {
 
-  orderStatus = 0;
+  orderStatus = 'all';
   pageNo: number = 1;
   orderList: any;
   canLoadMore: boolean = true;
@@ -26,8 +26,7 @@ export class OrderPage {
     public alertCtrl: AlertController
 
   ) {
-    this.orderStatus = this.navParams.get('status') ? this.navParams.get('status') : 0;
-
+    this.orderStatus = this.navParams.get('status') ? this.navParams.get('status') : 'all';
     this.getOrder(true);
   }
 
@@ -51,8 +50,19 @@ export class OrderPage {
     }
     this.orderService.myOrderList(params).subscribe(res => {
       let data = res['data'];
-      if (bol) { this.orderList = data.data;
-      }else { this.orderList.concat(data) }
+      if (bol) {
+        this.orderList = data.data;
+      } else {
+        this.orderList.concat(data)
+      }
+      this.orderList.map(el => {
+        let count = 0;
+        el.order_item_list.forEach(go => {
+          count += Number(go.num);
+        })
+        el['goods_count'] = count;
+      })
+      console.log(this.orderList)
       if (data.length < 15) {
         this.canLoadMore = false;
       }
@@ -67,7 +77,7 @@ export class OrderPage {
     })
   }
 
-  deleteOrderConfirm(id){
+  deleteOrderConfirm(id) {
     let alert = this.alertCtrl.create({
       title: '温馨提示',
       message: '亲，你确定要删除吗?',
@@ -90,7 +100,7 @@ export class OrderPage {
     alert.present();
   }
 
-  deleteOrder(id){
+  deleteOrder(id) {
 
   }
 }

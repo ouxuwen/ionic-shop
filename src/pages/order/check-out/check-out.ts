@@ -92,7 +92,7 @@ export class CheckOutPage {
       this.couponList = data.coupon_list;
       this.expressCompanyList = data.express_company_list;
       this.cartData = data.itemlist;
-      if (this.couponList) {
+      if (this.couponList.length>0) {
         this.selectCoupon = this.couponList[0].coupon_id;
         this.showCoupon = this.couponList[0].coupon_name;
       } else {

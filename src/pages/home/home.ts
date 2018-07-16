@@ -160,6 +160,8 @@ export class HomePage {
       }).present()
     })
   }
-
+  myOrder(){
+    this.navCtrl.push('OrderPage');
+  }
 
 }

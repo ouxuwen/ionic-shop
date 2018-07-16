@@ -11,8 +11,10 @@
     <img src="assets/imgs/settingBg.png" alt="">
     <div class="avator center">
       <img src="assets/imgs/profile_icon.png" alt="">
-      <div class="login_btn" (click)='login()'>登录/注册</div>
+      <!-- <div class="login_btn" (click)='login()'>登录/注册</div> -->
+    
       <div class="name ">姓名 | 18888888888 </div>
+      <div></div>
     </div>
   </div>
   <div class="order">
@@ -24,15 +26,15 @@
       </span>
     </div>
     <div class="order_list">
-      <div (click)="myOrder(0)">
+      <div (click)="myOrder('0')">
         <i class="icon-profile-pending_payment"></i>
         <div>未付款</div>
       </div>
-      <div (click)="myOrder(1)">
+      <div (click)="myOrder('1')">
         <i class="icon-profile-confirm_booking"></i>
         <div>待收货</div>
       </div>
-      <div (click)="myOrder(2)">
+      <div (click)="myOrder('2')">
         <i class="icon-profile-past_booking"></i>
         <div>已完成</div>
       </div>

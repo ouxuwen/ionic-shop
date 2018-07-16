@@ -41,7 +41,7 @@
     <p class="g_label">
       <img src="assets/imgs/goods.jpg">订单商品：</p>
     <ion-list *ngIf="cartData">
-      <ion-item *ngFor="let ele of cartData" >
+      <ion-item *ngFor="let ele of cartData">
         <ion-label>
           <image tappable (click)='openDetail($event,ele.goods_id)' [src]="ele.picture_info.pic_cover_mid" alt=""></image>
           <div>
@@ -66,18 +66,18 @@
   </div>
 
 
+  <ng-container *ngIf="memberAccount">
+    <div class="rule" *ngIf="memberAccount.point>0" tappable>
+      <ion-checkbox [(ngModel)]="usePoint" (ngModelChange)="pointChange()"></ion-checkbox>使用积分:
+      <span class="price">¥ {{pointCut}}</span>
+      <span>可用积分：{{memberAccount.point}}
+        <i *ngIf='integral!=0'>{{integral}}</i>
+      </span>
+    </div>
+  </ng-container>
 
-  <div class="rule" *ngIf="memberAccount" tappable>
-    <ion-checkbox [(ngModel)]="usePoint" (ngModelChange)="pointChange()"></ion-checkbox>使用积分:
-    <span class="price">¥ {{pointCut}}</span>
 
-    <span>可用积分：{{memberAccount.point}}
-      <i *ngIf='integral!=0'>{{integral}}</i>
-    </span>
-
-  </div>
-
-  <div class="rule" *ngIf="couponList" tappable (click)="hideCoupon=false">
+  <div class="rule" *ngIf="couponList.length>0" tappable (click)="hideCoupon=false">
     使用优惠券：
     <span class="price" *ngIf="selectCoupon">¥ -{{couponCut}}</span>
     <ion-icon class="r" name="ios-arrow-forward-outline"></ion-icon>

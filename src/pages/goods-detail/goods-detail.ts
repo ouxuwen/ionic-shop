@@ -18,7 +18,7 @@ import { PersonService } from '../../providers/person';
 
 })
 export class GoodsDetailPage {
-  selectValue:any ;
+  selectValue: any;
   goodsId: any;
   navIndex: number = 1;
   numVals: number = 1;
@@ -35,6 +35,7 @@ export class GoodsDetailPage {
   };
   hideDetail: boolean = true;
   isMemberFavGoods: any;
+  tag = '';
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -146,6 +147,7 @@ export class GoodsDetailPage {
 
   //添加购物车
   addCart() {
+    this.tag = 'cart';
     if (!this.skuId) {
       this.hideDetail = false;
       return;
@@ -219,7 +221,31 @@ export class GoodsDetailPage {
     })
   }
 
+  //立即购买
+  buyNow() {
+    this.tag = 'buy_now';
+    if (!this.skuId) {
+      this.hideDetail = false;
+      return;
+    }
+    if (this.numVals < 1) {
+      return;
+    }
+    this.navCtrl.push('CheckOutPage', {
+      'tag':this.tag,
+      'goodsTotal': this.numVals * Number(this.goodsDetail.promotion_price),
+      'goodsList': [this.skuId],
+      'num': this.numVals
+    })
+  }
 
+  actionConfirm(){
+    if(this.tag == 'cart'){
+      this.addCart()
+    }else{
+      this.buyNow();
+    }
+  }
 
 
 

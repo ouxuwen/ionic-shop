@@ -16,7 +16,7 @@
     </div>
   </div>
   <div class="order">
-    <div class="my">
+    <div class="my" (click)="myOrder()">
       我的订单
       <span class="all_order">
         所有订单
@@ -24,15 +24,15 @@
       </span>
     </div>
     <div class="order_list">
-      <div>
+      <div (click)="myOrder(0)">
         <i class="icon-profile-pending_payment"></i>
         <div>未付款</div>
       </div>
-      <div>
+      <div (click)="myOrder(1)">
         <i class="icon-profile-confirm_booking"></i>
         <div>待收货</div>
       </div>
-      <div>
+      <div (click)="myOrder(2)">
         <i class="icon-profile-past_booking"></i>
         <div>已完成</div>
       </div>
@@ -62,9 +62,9 @@
       </li>
     </ul>
   </div>
-  
+
   <div padding>
     <button color="danger" ion-button full tappable (click)="logout()">安全退出</button>
   </div>
-  
+
 </ion-content>

@@ -53,10 +53,13 @@ export class PersonPage {
     this.navCtrl.push('FeedbackPage');
   }
 
+  myOrder(i?){
+    this.navCtrl.push('OrderPage',{status:i});
+  }
+
   logout() {
     this.storage.remove('userInfo').then(()=>{
       this.navCtrl.setRoot('LoginPage')
     })
-  
   }
 }

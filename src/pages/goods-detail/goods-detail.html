@@ -106,7 +106,7 @@
       <p>购物车</p>
       <ion-badge color="danger" *ngIf="cartInfo.carcount>0">{{cartInfo.num}}</ion-badge>
     </div>
-    <div class="buy_now">
+    <div class="buy_now" (click)="buyNow()">
       立即购买
     </div>
     <div class="add_cart" tappable (click)="addCart()">
@@ -131,6 +131,6 @@
         <number-input [min]='1' [max]='9999' [(numVal)]='numVals' (numValChange)="log($event)"></number-input>
       </div>
     </div>
-    <button ion-button full tappable >确 定</button>
+    <button ion-button full tappable (click)="actionConfirm()" >确 定</button>
   </coustom-action>
 </ion-content>

@@ -17,5 +17,11 @@ export  class OrderService {
     return this.base.post('/app/Order/orderCreate', data);
   }
 
+  //订单列表
+  myOrderList(data){
+    return this.base.post('/app/Order/myOrderList', data);
+  }
+
+
 
 }

@@ -40,26 +40,20 @@
   <div class="goods_list">
     <p class="g_label">
       <img src="assets/imgs/goods.jpg">订单商品：</p>
-    <ion-list>
-      <ion-item-sliding *ngFor="let ele of cartData;index as i " #item>
-        <ion-item>
-          <ion-label>
-            <image tappable (click)='openDetail($event,ele.goods_id)' [src]="ele.picture_info.pic_cover_mid" alt=""></image>
-            <div>
-              <p class="name" tappable (click)='openDetail($event,ele.goods_id)'>{{ele.goods_name}}</p>
-              <p class="type">规格：{{ele.sku_name}}</p>
-              <p class="price">价格：¥ {{ele.price}}</p>
-            </div>
-            <div class="nums">
-              数量：{{ele.num}}
-            </div>
-          </ion-label>
-        </ion-item>
-        <ion-item-options side="right">
-          <button ion-button color="private" (click)="addFav(item,ele.goods_id)">收 藏</button>
-          <button ion-button color="danger" (click)="delete(item,ele.cart_id)">删 除</button>
-        </ion-item-options>
-      </ion-item-sliding>
+    <ion-list *ngIf="cartData">
+      <ion-item *ngFor="let ele of cartData" >
+        <ion-label>
+          <image tappable (click)='openDetail($event,ele.goods_id)' [src]="ele.picture_info.pic_cover_mid" alt=""></image>
+          <div>
+            <p class="name" tappable (click)='openDetail($event,ele.goods_id)'>{{ele.goods_name}}</p>
+            <p class="type">规格：{{ele.sku_name}}</p>
+            <p class="price">价格：¥ {{ele.price}}</p>
+          </div>
+          <div class="nums">
+            数量：{{ele.num}}
+          </div>
+        </ion-label>
+      </ion-item>
     </ion-list>
   </div>
 
@@ -74,21 +68,24 @@
 
 
   <div class="rule" *ngIf="memberAccount" tappable>
-    <ion-checkbox [(ngModel)]="usePoint" (ngModelChange)="pointChange($event)"></ion-checkbox>使用积分： 抵扣
-    <span class="price">- ¥{{integral/20}}</span>
+    <ion-checkbox [(ngModel)]="usePoint" (ngModelChange)="pointChange()"></ion-checkbox>使用积分:
+    <span class="price">¥ {{pointCut}}</span>
 
-    <span>可用积分：{{memberAccount.point}}</span>
+    <span>可用积分：{{memberAccount.point}}
+      <i *ngIf='integral!=0'>{{integral}}</i>
+    </span>
 
   </div>
 
   <div class="rule" *ngIf="couponList" tappable (click)="hideCoupon=false">
     使用优惠券：
+    <span class="price" *ngIf="selectCoupon">¥ -{{couponCut}}</span>
     <ion-icon class="r" name="ios-arrow-forward-outline"></ion-icon>
     <span>{{showCoupon}}</span>
 
   </div>
   <div class="rule" *ngIf="expressCompanyList" tappable (click)="hideExpress=false">
-    选择物流：运费
+    选择物流：
     <span class="price">¥ {{express}}</span>
     <ion-icon class="r" name="ios-arrow-forward-outline"></ion-icon>
     <span>{{showExpress}}</span>
@@ -119,9 +116,11 @@
     </p>
   </div>
   <coustom-action [(isHide)]="hideCoupon" title="选择优惠券">
-    <ion-list radio-group [(ngModel)]="selectCoupon" (ngModelChange)="getCoupon($event)">
+    <ion-list radio-group [(ngModel)]="selectCoupon" (ngModelChange)="getCoupon()">
       <ion-item *ngFor="let coupon of couponList">
-        <ion-label>{{coupon.coupon_name}} {{coupon.coupon_name}}</ion-label>
+        <ion-label>{{coupon.coupon_name}}
+          <span>¥ -{{coupon.money}}</span>
+        </ion-label>
         <ion-radio [value]="coupon.coupon_id"></ion-radio>
       </ion-item>
       <ion-item>
@@ -133,7 +132,9 @@
   <coustom-action [(isHide)]="hideExpress" title="选择物流公司">
     <ion-list radio-group [(ngModel)]="selectExpress" (ngModelChange)="getExpress($event)">
       <ion-item *ngFor="let item of expressCompanyList">
-        <ion-label>{{item.company_name}}, 运费：{{item.express_fee}}</ion-label>
+        <ion-label>{{item.company_name}}, 运费：
+          <span>¥ {{item.express_fee}}</span>
+        </ion-label>
         <ion-radio [value]="item.co_id"></ion-radio>
       </ion-item>
 

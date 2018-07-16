@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
+import { OrderService } from '../../providers/order';
 /**
  * Generated class for the OrderPage page.
  *
@@ -15,17 +15,82 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class OrderPage {
 
-  orderType: any;
-
+  orderStatus = 0;
+  pageNo: number = 1;
+  orderList: any;
+  canLoadMore: boolean = true;
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams
+    public navParams: NavParams,
+    public orderService: OrderService,
+    public alertCtrl: AlertController
 
   ) {
+    this.orderStatus = this.navParams.get('status') ? this.navParams.get('status') : 0;
+
+    this.getOrder(true);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrderPage');
   }
 
+  statusChange() {
+    this.pageNo = 1;
+    this.canLoadMore = true;
+    this.getOrder(true);
+  }
+
+  getOrder(bol?) {
+    if (!this.canLoadMore) {
+      return;
+    }
+    let params = {
+      'status': this.orderStatus,
+      'page': this.pageNo
+    }
+    this.orderService.myOrderList(params).subscribe(res => {
+      let data = res['data'];
+      if (bol) { this.orderList = data.data;
+      }else { this.orderList.concat(data) }
+      if (data.length < 15) {
+        this.canLoadMore = false;
+      }
+    })
+  }
+
+  //商品详情
+  openDetail(event, id) {
+    event.stopPropagation();
+    this.navCtrl.push('GoodsDetailPage', {
+      goods_id: id
+    })
+  }
+
+  deleteOrderConfirm(id){
+    let alert = this.alertCtrl.create({
+      title: '温馨提示',
+      message: '亲，你确定要删除吗?',
+      buttons: [
+        {
+          text: '取消',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: '确定',
+          handler: () => {
+            this.deleteOrder(id);
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+  deleteOrder(id){
+
+  }
 }

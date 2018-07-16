@@ -15,22 +15,57 @@
 
 <ion-content>
   <ion-toolbar no-border-top>
-    <ion-segment [(ngModel)]="orderType">
-      <ion-segment-button value="wait">
+    <ion-segment [(ngModel)]="orderStatus" (ngModelChange)="statusChange()">
+      <ion-segment-button value="all">
+        全部
+      </ion-segment-button>
+      <ion-segment-button value="0">
         未付款
       </ion-segment-button>
-      <ion-segment-button value="pay">
+      <ion-segment-button value="1">
         待发货
       </ion-segment-button>
-      <ion-segment-button value="send">
-        已发货
+      <ion-segment-button value="2">
+        待收货
       </ion-segment-button>
-      <ion-segment-button value="done">
-        已完成
+      <ion-segment-button value="3">
+        待评价
       </ion-segment-button>
+
     </ion-segment>
   </ion-toolbar>
-  <div class="order_list">
-
+  <div class="order_list" *ngIf="orderList">
+    <div class="list_item" *ngFor="let order of orderList">
+      <p>订单编号：{{order.order_no}}
+        <ion-icon class="delete" name="ios-trash" (click)="deleteOrderConfirm(order.order_id)"></ion-icon>
+      </p>
+      <ion-list>
+        <ion-item *ngFor="let ele of order.order_item_list">
+          <ion-label>
+            <image tappable (click)='openDetail($event,ele.goods_id)' [src]="ele.picture.pic_cover_mid" alt=""></image>
+            <div>
+              <p class="name" tappable (click)='openDetail($event,ele.goods_id)'>{{ele.goods_name}}</p>
+              <p class="type">规格：{{ele.sku_name}}</p>
+              <p class="price">价格：¥ {{ele.price}}</p>
+            </div>
+            <div class="nums">
+              数量：{{ele.num}}
+            </div>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+      <div class="price">
+        共 件商品,合计 <span>¥</span> <i>(含运费)</i>
+      </div>
+      <div class="status" *ngIf="order.order_status == 0">
+        <span>付 款</span>
+      </div>
+      <div class="status" *ngIf="order.order_status == 1">
+        <span>取消订单</span>
+      </div>
+      <div class="status" *ngIf="order.order_status == 2">
+        <span>查看物流</span>
+      </div>
+    </div>
   </div>
 </ion-content>

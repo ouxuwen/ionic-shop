@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, PopoverController, LoadingControll
 import { GoodsService } from '../../providers/goods';
 import { PopoverPage } from './popover-page';
 import { PersonService } from '../../providers/person';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the GoodsDetailPage page.
@@ -44,10 +45,25 @@ export class GoodsDetailPage {
     public goodsService: GoodsService,
     public toastCtrl: ToastController,
     public personService: PersonService,
+    public storage: Storage,
   ) {
 
     this.goodsId = this.navParams.get('goods_id');
     this.getGoodsDetail();
+  }
+
+  setHistory(goods){
+    this.storage.get('historyGoods').then(res =>{
+      let historyGoods = []
+      if(res){
+        historyGoods = res;
+      }
+      historyGoods = historyGoods.filter(el=>{
+        return !el.goods_id == goods.goods_id;
+      })
+      historyGoods.unshift(goods);
+      this.storage.set('historyGoods',historyGoods);
+    })
   }
 
   ionViewDidLoad() {
@@ -142,6 +158,7 @@ export class GoodsDetailPage {
           }
         })
       }
+      this.setHistory(this.goodsDetail);
     })
   }
 

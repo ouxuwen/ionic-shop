@@ -41,10 +41,10 @@
       </p>
       <ion-list>
         <ion-item *ngFor="let ele of order.order_item_list">
-          <ion-label>
-            <image tappable (click)='openDetail($event,ele.goods_id)' [src]="ele.picture.pic_cover_mid" alt=""></image>
+          <ion-label (click)='openDetail($event,order)'>
+            <image tappable  [src]="ele.picture.pic_cover_mid" alt=""></image>
             <div>
-              <p class="name" tappable (click)='openDetail($event,ele.goods_id)'>{{ele.goods_name}}</p>
+              <p class="name" tappable>{{ele.goods_name}}</p>
               <p class="type">规格：{{ele.sku_name}}</p>
               <p class="price">价格：¥ {{ele.price}}</p>
             </div>

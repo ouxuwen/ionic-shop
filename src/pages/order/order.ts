@@ -70,10 +70,10 @@ export class OrderPage {
   }
 
   //商品详情
-  openDetail(event, id) {
+  openDetail(event, e) {
     event.stopPropagation();
-    this.navCtrl.push('GoodsDetailPage', {
-      goods_id: id
+    this.navCtrl.push('OrderDetailPage', {
+      orderDetail: e
     })
   }
 

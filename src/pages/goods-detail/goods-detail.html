@@ -15,48 +15,48 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content *ngIf="!goodsDetail">
 
-</ion-content>
+<ion-content>
+  <ng-container *ngIf="goodsDetail">
 
-<ion-content *ngIf="goodsDetail">
-  <div class="pic_list">
-    <ion-slides [loop]="true" [autoplay]="3000" pager>
-      <ion-slide *ngFor="let item of goodsDetail.img_list">
-        <image [src]="item.pic_cover_mid" alt=""></image>
-      </ion-slide>
-    </ion-slides>
-  </div>
-  <div class="goods_intro">
-    <p class="name">{{goodsDetail.goods_name}}</p>
 
-    <p class="price">
-      <span>¥ {{goodsDetail.promotion_price}}</span>
-      <span>¥ {{goodsDetail.market_price}}</span>
-      <span>已售 ：{{goodsDetail.sales}}</span>
-    </p>
-    <p class="star">
-      <ion-icon name="ios-star"></ion-icon>
-      <ion-icon name="ios-star"></ion-icon>
-      <ion-icon name="ios-star"></ion-icon>
-      <ion-icon name="ios-star"></ion-icon>
-      <ion-icon name="ios-star"></ion-icon>
-      <span> 100% 好评</span>
-    </p>
-    <p class="note">
-      <span>闪电发货</span>
-      <span>限时减价</span>
-      <span>正品保证</span>
-      <span>支持售后</span>
-    </p>
-  </div>
-  <div class="detail_nav">
-    <span class="active" (click)="hideDetail = false">商 品</span>
-    <span (click)="changeIndex(2)">详 情</span>
-    <span (click)="changeIndex(3)">评 价</span>
-  </div>
-  <!-- 优惠券 -->
-  <!-- <div class="coupon_list" *ngIf="couponList.length>0">
+    <div class="pic_list">
+      <ion-slides [loop]="true" [autoplay]="3000" pager>
+        <ion-slide *ngFor="let item of goodsDetail.img_list">
+          <image [src]="item.pic_cover_mid" alt=""></image>
+        </ion-slide>
+      </ion-slides>
+    </div>
+    <div class="goods_intro">
+      <p class="name">{{goodsDetail.goods_name}}</p>
+
+      <p class="price">
+        <span>¥ {{goodsDetail.promotion_price}}</span>
+        <span>¥ {{goodsDetail.market_price}}</span>
+        <span>已售 ：{{goodsDetail.sales}}</span>
+      </p>
+      <p class="star">
+        <ion-icon name="ios-star"></ion-icon>
+        <ion-icon name="ios-star"></ion-icon>
+        <ion-icon name="ios-star"></ion-icon>
+        <ion-icon name="ios-star"></ion-icon>
+        <ion-icon name="ios-star"></ion-icon>
+        <span> 100% 好评</span>
+      </p>
+      <p class="note">
+        <span>闪电发货</span>
+        <span>限时减价</span>
+        <span>正品保证</span>
+        <span>支持售后</span>
+      </p>
+    </div>
+    <div class="detail_nav">
+      <span class="active" (click)="hideDetail = false">商 品</span>
+      <span (click)="changeIndex(2)">详 情</span>
+      <span (click)="changeIndex(3)">评 价</span>
+    </div>
+    <!-- 优惠券 -->
+    <!-- <div class="coupon_list" *ngIf="couponList.length>0">
     <ion-scroll scrollX="true" style="height:90px;">
       <ul class=" clear">
         <li *ngFor="let coupon of couponList" (click)="bindCoupon(coupon)">
@@ -76,50 +76,6 @@
       </ul>
     </ion-scroll>
   </div> -->
-  <div class="goods" [class.show]="navIndex == 1">
-    <div class="rule" *ngIf="goodsDetail.goods_attribute_id==1" tappable (click)="choose($event)">
-      选择规格：
-      <choose-model id='choose' [selectList]='roleList' (selectResult)="getRoleResult($event)" [defaultValue]="selectValue"></choose-model>
-      <ion-icon class="r" name="ios-arrow-forward-outline"></ion-icon>
-    </div>
-    <div class="rule">
-      购买数量：
-      <number-input [min]='1' [max]='9999' [(numVal)]='numVals' (numValChange)="log($event)"></number-input>
-    </div>
-  </div>
-
-
-  <footer class="footer">
-    <div class="favorite" tappable (click)="fav()">
-      <ion-icon *ngIf="isMemberFavGoods==0" name="ios-heart-outline"></ion-icon>
-      <ion-icon *ngIf="isMemberFavGoods!=0" class="fav" name="ios-heart"></ion-icon>
-      <p>收藏</p>
-    </div>
-    <div class="service">
-      <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1584190734&site=qq&menu=yes">
-        <ion-icon name="ios-chatbubbles"></ion-icon>
-        <p>客服</p>
-      </a>
-    </div>
-    <div class="cart" tappable (click)="goToCart()">
-      <ion-icon name="md-cart"></ion-icon>
-      <p>购物车</p>
-      <ion-badge color="danger" *ngIf="cartInfo.carcount>0">{{cartInfo.num}}</ion-badge>
-    </div>
-    <div class="buy_now" (click)="buyNow()">
-      立即购买
-    </div>
-    <div class="add_cart" tappable (click)="addCart()">
-      加入购物车
-    </div>
-  </footer>
-  <coustom-action [(isHide)]="hideDetail" title="选择规格:">
-    <div class="coustom_intro">
-      <image [src]="goodsDetail.img_list[0].pic_cover_mid" alt=""></image>
-      <p>
-          {{goodsDetail.goods_name}}
-      </p>
-    </div>
     <div class="goods" [class.show]="navIndex == 1">
       <div class="rule" *ngIf="goodsDetail.goods_attribute_id==1" tappable (click)="choose($event)">
         选择规格：
@@ -131,6 +87,51 @@
         <number-input [min]='1' [max]='9999' [(numVal)]='numVals' (numValChange)="log($event)"></number-input>
       </div>
     </div>
-    <button ion-button full tappable (click)="actionConfirm()" >确 定</button>
-  </coustom-action>
+
+
+    <footer class="footer">
+      <div class="favorite" tappable (click)="fav()">
+        <ion-icon *ngIf="isMemberFavGoods==0" name="ios-heart-outline"></ion-icon>
+        <ion-icon *ngIf="isMemberFavGoods!=0" class="fav" name="ios-heart"></ion-icon>
+        <p>收藏</p>
+      </div>
+      <div class="service">
+        <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1584190734&site=qq&menu=yes">
+          <ion-icon name="ios-chatbubbles"></ion-icon>
+          <p>客服</p>
+        </a>
+      </div>
+      <div class="cart" tappable (click)="goToCart()">
+        <ion-icon name="md-cart"></ion-icon>
+        <p>购物车</p>
+        <ion-badge color="danger" *ngIf="cartInfo.carcount>0">{{cartInfo.num}}</ion-badge>
+      </div>
+      <div class="buy_now" (click)="buyNow()">
+        立即购买
+      </div>
+      <div class="add_cart" tappable (click)="addCart()">
+        加入购物车
+      </div>
+    </footer>
+    <coustom-action [(isHide)]="hideDetail" title="选择规格:">
+      <div class="coustom_intro">
+        <image [src]="goodsDetail.img_list[0].pic_cover_mid" alt=""></image>
+        <p>
+          {{goodsDetail.goods_name}}
+        </p>
+      </div>
+      <div class="goods" [class.show]="navIndex == 1">
+        <div class="rule" *ngIf="goodsDetail.goods_attribute_id==1" tappable (click)="choose($event)">
+          选择规格：
+          <choose-model id='choose' [selectList]='roleList' (selectResult)="getRoleResult($event)" [defaultValue]="selectValue"></choose-model>
+          <ion-icon class="r" name="ios-arrow-forward-outline"></ion-icon>
+        </div>
+        <div class="rule">
+          购买数量：
+          <number-input [min]='1' [max]='9999' [(numVal)]='numVals' (numValChange)="log($event)"></number-input>
+        </div>
+      </div>
+      <button ion-button full tappable (click)="actionConfirm()">确 定</button>
+    </coustom-action>
+  </ng-container>
 </ion-content>

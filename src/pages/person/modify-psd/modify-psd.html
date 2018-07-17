@@ -1,0 +1,46 @@
+<!--
+  Generated template for the ModifyPsdPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>修 改 密 码</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div class="form_box" padding>
+    <form [formGroup]="modPsdForm" novalidate [class.invalidForm]='invalidForm'>
+      <div class="input_box" [class.error]="modPsdErrors['oldPsd']">
+        <label>
+          <ion-icon name="ios-lock-outline"> </ion-icon>
+        </label>
+        <input type="password" formControlName="oldPsd" placeholder='旧 密 码'>
+        <p *ngIf="modPsdErrors['oldPsd']">{{modPsdErrors['oldPsd']}}</p>
+      </div>
+
+      <div class="input_box" [class.error]="modPsdErrors['password']">
+        <label>
+          <ion-icon name="ios-lock-outline"> </ion-icon>
+        </label>
+        <input type="password" formControlName="password" placeholder='密 码'>
+        <p *ngIf="modPsdErrors['password']">{{modPsdErrors['password']}}</p>
+      </div>
+      <div class="input_box" [class.error]="modPsdErrors['rePassword']">
+        <label>
+          <ion-icon name="ios-unlock"> </ion-icon>
+        </label>
+        <input type="password" formControlName="rePassword" placeholder='再次确认密码'>
+        <p *ngIf="modPsdErrors['rePassword']">{{modPsdErrors['rePassword']}}</p>
+        <p *ngIf="modPsdForm.controls['rePassword'].value != modPsdForm.controls['password'].value  && modPsdForm.controls['rePassword'].dirty ">{{validationMessages['rePassword']['notMatch']}}</p>
+      </div>
+    </form>
+    <button ion-button full tappable (click)="modifyPsd()">修改密码</button>
+  </div>
+
+</ion-content>

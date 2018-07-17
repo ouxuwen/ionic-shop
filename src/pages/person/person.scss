@@ -8,37 +8,71 @@ page-person {
     img{
       width:100%;
     }
-    .avator{
-      display: flex;
-      align-items: center;
-      text-align: center;
-      flex-direction:column;
-      img{
-        width:90px;
-        height: 90px;
-        border:2px solid #ffffff;
-        border-radius: 50%;
-        background: #fff
-      }
-      .login_btn{
-        color:#ffffff;
-        font-size: 14px;
-        border:1px solid #fff;
-        height: 30px;
-        line-height: 30px;
-        border-radius:30px;
-        width: 100px;
+    .bg_container{
+      position: absolute;
+      width:100%;
+      height: 100%;
+      top:0;
+      left: 0;
+      .avator{
+        display: flex;
+        width:100%;
+        padding:0 20px;
         margin-top:10px;
+        >img{
+          width:80px;
+          height: 80px;
+          border:2px solid #d4d3e6;
+          border-radius: 50%;
+          background: #fff
+        }
+        >div{
+          display: flex;
+          flex:1;
+          justify-content: space-around;
+          margin-left: 15px;
+          flex-direction: column;
+          position: relative;
+          .sign{
+            position: absolute;
+            top:10px;
+            left: 20px;
+            font-size: 14px;
+            margin-right:15px;
+            img{
+              width: 30px;
+              height: 30px;
+              vertical-align: middle;
+              margin-left: 15px;
+            }
+          }
+          .name{
+            font-size: 16px;
+            color: #fff;
+          }
+          .tel{
+            font-size: 12px;
+            color: #fff;
+          }
+          .level{
+            font-size: 12px;
+            color: #fff;
+          }
+        }
       }
-      .name{
-        height: 30px;
-        line-height: 30px;
-        font-size: 14px;
-        color: #fff;
-        margin-top:10px;
+      .fav{
+        width:100%;
+        display: flex;
+        justify-content: space-around;
+        color:#fff;
+        margin-top:20px;
+        >div{
+          text-align: center;
+        }
       }
     }
   }
+
   .order{
     margin:10px 0;
     background: #fff;
@@ -63,10 +97,16 @@ page-person {
     }
     .order_list{
       display: flex;
-      div{
+      >div{
         text-align: center;
         flex: 1;
         padding:5px 0;
+        position: relative;
+        ion-badge{
+          position: absolute;
+          top:0;
+          right: 5px;;
+        }
       }
     }
   }
@@ -80,6 +120,16 @@ page-person {
         font-size: 16px;
         border-bottom: 1px solid #eeeeee;
         padding:0 5px;
+        span{
+          float: right;
+          color:#FF5100;
+          margin-right: 10px;
+        }
+        ion-badge{
+          float: right;
+          margin-right: 10px;
+          margin-top: 10px;
+        }
         ion-icon{
           float: right;
           margin-top: 10px;

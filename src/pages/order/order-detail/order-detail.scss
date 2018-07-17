@@ -1,3 +1,106 @@
 page-order-detail {
+  .order_address{
+    padding:10px;
+    background: #fff;
+    padding-bottom: 0;
+    border:5px solid transparent;
+    .header{
+      height: 20px;
+      line-height: 20px;
+      .tel{
+        margin-left: 20px;
+      }
+    }
+    .body{
+      padding:5px 0;
+      line-height: 20px;
+      border-bottom:1px solid #eee;
+    }
+  }
+  .g_label{
+    img{
+      width:20px;
+      height: 20px;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+    padding:8px 10px;
+  }
+  .goods_list{
+    ion-item{
+      position: relative;
+      background: #f9f9f9;
+      ion-label{
+        display: flex;
+        pointer-events: inherit;
+        max-width: none;
+        font-size: 12px;
+        margin: 0;
+        img{
+          width:  60px;
+          height: 60px;
+          margin-left: 5px;
+          z-index: 100;
+        }
+        >div{
+          padding-left: 5px;
+          p{
+            text-overflow: ellipsis;
+            &.price{
+              color:red;
+            }
+            &.name{
+              color:#333;
+              z-index: 100;
+              max-width: 200px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+          }
+        }
+      }
+      .nums{
+        position: absolute;
+        right:15px;
+        bottom:15px;
+        font-size: 12px;
+      }
+    }
+  }
+  .total{
+    padding: 10px;
+    span{
+      color:#FF5100;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    p{
+      float: right;
+    }
+  }
+  .price_list{
+    padding: 10px;
+    p{
+      font-size: 12px;
+      color:#707070;
+      span{
+        float: right;
+        color:rgb(235, 117, 63);
+      }
+    }
+  }
+  .time_list{
+    padding: 10px;
+    p{
+      font-size: 12px;
+      color:#707070;
+      span{
+        float: right;
+        color:#333;
+      }
+    }
+  }
+  .shipping{
 
+  }
 }

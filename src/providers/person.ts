@@ -24,6 +24,11 @@ export class PersonService {
   personalData(data) {
     return this.base.post('/app/member/personalData', data);
   }
+  //分销资料
+  memberIndexFx(data){
+    return this.base.post('/app/member/memberIndex', data);
+  }
+
   //修改密码
   modifyPassword(data) {
     return this.base.post('/app/member/modifyPassword', data);
@@ -67,5 +72,10 @@ export class PersonService {
   //我的优惠券
   memberCoupon(data){
     return this.base.post('/app/member/memberCoupon', data);
+  }
+
+  //我的收藏
+  myCollection(data){
+    return this.base.post('/app/member/myCollection', data);
   }
 }

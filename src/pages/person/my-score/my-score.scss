@@ -1,3 +1,38 @@
 page-my-score {
+  .score_bar{
+    padding:15px;
+    text-align: center;
+    font-size: 12px;
+    color:#333;
+    .sum{
+      font-size: 30px;
+      font-weight: bold;
+      color:#1ea3ff;
+      padding:20px;
+    }
+    span{
+      font-size: 14px;
+      color:#f53d3d;
+    }
+  }
+  .p10{
+    padding:10px;
+  }
+  li{
+    padding:5px 10px;
+    span{
+      color:#707070;
 
+    }
+    span.r{
+      color:#1ea3ff;
+      float: right;
+    }
+    p{
+      color:#969696;
+      font-size: 12px;
+      margin-top:5px;
+    }
+    border-top:1px solid #f2f2f2;
+  }
 }

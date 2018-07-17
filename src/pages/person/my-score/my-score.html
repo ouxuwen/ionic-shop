@@ -12,7 +12,24 @@
 
 </ion-header>
 
-
-<ion-content padding>
-
+<ion-content>
+  <ng-container *ngIf="scoreDetail">
+    <div class="score_bar">
+      <div class="sum">{{scoreDetail.sum}}</div>
+      <div>每积分可以抵扣：
+        <span>{{scoreDetail.pointconfiginfo.convert_rate}}</span> 元</div>
+    </div>
+    <p class="p10">积分明细：</p>
+    <ul>
+      <li *ngFor="let item of scoreDetail.member_point_list.data">
+        <span>
+          {{item.type_name}}
+        </span>
+        <span class="r">
+          {{item.number}}
+        </span>
+        <p> {{item.create_time*1000 |  date:"yyyy-MM-dd hh:mm:ss"}}</p>
+      </li>
+    </ul>
+  </ng-container>
 </ion-content>

@@ -37,7 +37,7 @@
   <div class="order_list" *ngIf="orderList">
     <div class="list_item" *ngFor="let order of orderList">
       <p>订单编号：{{order.order_no}} <span>{{order.status_name}}</span>
-        <ion-icon class="delete" name="ios-trash" (click)="deleteOrderConfirm(order.order_id)"></ion-icon>
+        <ion-icon *ngIf="order.order_status != 1 && order.order_status != 2" class="delete" name="ios-trash" (click)="deleteOrderConfirm(order.order_id)"></ion-icon>
       </p>
       <ion-list>
         <ion-item *ngFor="let ele of order.order_item_list">
@@ -58,13 +58,19 @@
         共 <span>{{order.goods_count}}</span> 件商品,合计 <span> ¥{{order.pay_money}} </span> <i>  (含运费)</i>
       </div>
       <div class="status" *ngIf="order.order_status == 0">
-        <span>去 付 款</span>
+        <span>取消订单</span> <span>去 付 款</span>
       </div>
-      <div class="status" *ngIf="order.order_status == 1">
+      <div class="status" *ngIf="order.order_status == 1 ">
         <span>取消订单</span>
       </div>
-      <div class="status" *ngIf="order.order_status == 2">
-        <span>查看物流</span>
+      <div class="status" *ngIf="order.order_status == 2"  >
+          <span>退 货</span> <span tappable (click)='openDetail($event,order)'>查看物流</span>
+      </div>
+      <div class="status" *ngIf="order.order_status == 3">
+        <span>删除订单</span>   <span>去评价</span>
+      </div>
+      <div class="status" *ngIf="order.order_status == 4 || order.order_status == 5">
+        <span>删除订单</span>
       </div>
     </div>
   </div>

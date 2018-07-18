@@ -8,11 +8,48 @@
 
   <ion-navbar>
     <ion-title>浏 览 历 史</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="delete()">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-
+  <ng-container *ngIf="goodsList">
+    <ul class="goods_list">
+      <li *ngFor="let item of goodsList" (click)="goGoodsDetail(item.goods_id)">
+        <image [src]="item.picture_detail.pic_cover_mid" alt=""></image>
+        <div>
+          <p class="name">{{item.goods_name}}</p>
+          <p class="note">
+            <span class="hot" *ngIf="item.is_hot == 1">热销</span>
+            <span class="rec" *ngIf="item.is_recommend == 1">推荐</span>
+            <span class="new" *ngIf="item.is_new == 1">精品</span>
+          </p>
+          <p class="price">
+            <span>¥ {{item.price}}</span>
+            <span>¥ {{item.market_price}}</span>
+          </p>
+          <p class="star">
+            <ion-icon name="ios-star"></ion-icon>
+            <ion-icon name="ios-star"></ion-icon>
+            <ion-icon name="ios-star"></ion-icon>
+            <ion-icon name="ios-star"></ion-icon>
+            <ion-icon name="ios-star"></ion-icon>
+            <span> 100% 好评</span>
+          </p>
+          <ion-icon name="md-cart"></ion-icon>
+        </div>
+      </li>
+    </ul>
+  </ng-container>
+  <ng-container *ngIf="!goodsList">
+    <p class="no_data">
+      没有数据哦
+    </p>
+  </ng-container>
 </ion-content>

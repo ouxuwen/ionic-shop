@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { GoodsService } from '../../providers/goods';
 import { PersonService } from '../../providers/person';
 import { Storage } from '@ionic/storage';
@@ -34,7 +34,7 @@ export class HomePage {
   hotList2: any = [];
   hotList3: any = [];
   appInfo: any;
-  recommendList: any=[];
+  recommendList: any = [];
   couponList: any = [];
   notice: any;
 
@@ -43,7 +43,7 @@ export class HomePage {
     public navParams: NavParams,
     public goodsService: GoodsService,
     public storage: Storage,
-    public personService:PersonService,
+    public personService: PersonService,
     public toastCtrl: ToastController
   ) {
     this.init();
@@ -63,7 +63,7 @@ export class HomePage {
   init(refresher?) {
 
     this.goodsService.index().subscribe(res => {
-      if(refresher){
+      if (refresher) {
         this.refreshing = false;
         refresher.complete();
       }
@@ -93,7 +93,7 @@ export class HomePage {
 
 
   }
-  ionViewWillLeave(){
+  ionViewWillLeave() {
 
   }
 
@@ -113,7 +113,7 @@ export class HomePage {
   }
 
   // 注册滚动事件
-  scrollEvent(){
+  scrollEvent() {
     this.fixContent = document.querySelector("page-home ion-refresher");
     this.header = document.querySelector("page-home ion-header");
     this.scrollContent = document.querySelector("page-home .scroll-content");
@@ -150,8 +150,8 @@ export class HomePage {
   }
 
   // 领取优惠券
-  bindCoupon(coupon){
-    this.personService.getCoupon({"coupon_type_id":coupon.coupon_type_id}).subscribe(res =>{
+  bindCoupon(coupon) {
+    this.personService.getCoupon({ "coupon_type_id": coupon.coupon_type_id }).subscribe(res => {
       this.toastCtrl.create({
         message: "领取成功",
         duration: 1000,
@@ -160,8 +160,13 @@ export class HomePage {
       }).present()
     })
   }
-  myOrder(){
+  // 我的订单
+  myOrder() {
     this.navCtrl.push('OrderPage');
+  }
+  // 我的收藏
+  myFav() {
+    this.navCtrl.push('MyFavPage');
   }
 
 }

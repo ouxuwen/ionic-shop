@@ -73,7 +73,7 @@ export class OrderPage {
   openDetail(event, e) {
     event.stopPropagation();
     this.navCtrl.push('OrderDetailPage', {
-      orderDetail: e
+      orderId: e.order_id
     })
   }
 
@@ -101,6 +101,20 @@ export class OrderPage {
   }
 
   deleteOrder(id) {
+    this.orderService.deleteOrder({'order_id':id}).subscribe(res =>{
+      this.getOrder();
+    })
+  }
+
+  //退款
+  refund(){
 
   }
+
+  // 去支付
+  orderPay(){
+
+  }
+
+
 }

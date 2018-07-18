@@ -28,7 +28,7 @@
           <img src="assets/imgs/order.png" alt="">
           <p>订单</p>
         </ion-col>
-        <ion-col col-3>
+        <ion-col col-3 (click)="myFav()">
           <img src="assets/imgs/fav.png" alt="">
           <p>收藏</p>
         </ion-col>
@@ -210,4 +210,9 @@
     </ion-grid>
   </div>
 
+  <div class="notice">
+    <div class="content">
+      <ion-icon name="ios-close-circle"></ion-icon>
+    </div>
+  </div>
 </ion-content>

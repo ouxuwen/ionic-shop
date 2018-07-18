@@ -120,8 +120,6 @@ export class GoodsListPage {
   doRefresh(refresher) {
     this.pageNo = 1;
     this.getGoodsList(refresher);
-
-
   }
 
 

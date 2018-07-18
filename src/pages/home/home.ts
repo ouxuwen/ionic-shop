@@ -37,7 +37,7 @@ export class HomePage {
   recommendList: any = [];
   couponList: any = [];
   notice: any;
-
+  hideNotice:boolean = false;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,

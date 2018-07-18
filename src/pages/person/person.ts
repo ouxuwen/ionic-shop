@@ -35,6 +35,7 @@ export class PersonPage {
 
   ionViewDidEnter() {
     this.getPersonData();
+    this.getHistory()
   }
 
   getHistory(){

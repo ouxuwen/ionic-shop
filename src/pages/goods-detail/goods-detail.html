@@ -18,8 +18,6 @@
 
 <ion-content>
   <ng-container *ngIf="goodsDetail">
-
-
     <div class="pic_list">
       <ion-slides [loop]="true" [autoplay]="3000" pager>
         <ion-slide *ngFor="let item of goodsDetail.img_list">
@@ -29,7 +27,6 @@
     </div>
     <div class="goods_intro">
       <p class="name">{{goodsDetail.goods_name}}</p>
-
       <p class="price">
         <span>¥ {{goodsDetail.promotion_price}}</span>
         <span>¥ {{goodsDetail.market_price}}</span>

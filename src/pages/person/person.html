@@ -14,11 +14,11 @@
         <img [src]="userInfo.member_img!=0?userInfo.member_img:'assets/imgs/profile_icon.png'" alt="">
         <div>
           <div class="name">{{userInfo.member_info.user_info.user_name}}
-
+            <img src="assets/imgs/edit.png" alt="">
           </div>
           <div class="tel ">{{userInfo.member_info.user_info.user_tel}}</div>
-          <div class="level">{{userInfo.member_info.level_name}}</div>
-          <p class="sign"><img src="assets/imgs/sign.png" alt="">签 到</p>
+          <div class="level">{{userInfo.member_info.level_name}} </div>
+          <p class="sign"><img src="assets/imgs/sign.png" alt="">签到送积分</p>
         </div>
       </div>
       <div class="fav">
@@ -62,7 +62,7 @@
   <div class="function_list">
     <ul>
       <li tappable (click)="myTeam()">
-        <img src="assets/imgs/team.png" alt="">我的推广员
+        <img src="assets/imgs/team.png" alt=""> 我的推广员
         <ion-icon name="ios-arrow-forward-outline"></ion-icon>
       </li>
       <li tappable (click)="modifyPsd()">
@@ -95,7 +95,7 @@
     </ul>
   </div>
 
-  <div padding>
+  <div padding style="margin-bottom: 50px;">
     <button color="danger" ion-button full tappable (click)="logout()">安全退出</button>
   </div>
 

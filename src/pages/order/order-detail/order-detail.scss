@@ -1,60 +1,93 @@
 page-order-detail {
-  .order_address{
-    padding:10px;
-    background: #fff;
-    padding-bottom: 0;
-    border:5px solid transparent;
-    color:#707070;
-    .header{
-      height: 20px;
-      line-height: 20px;
-      .tel{
-        margin-left: 20px;
-      }
+  .order_status {
+    position: relative;
+    img {
+      width: 100%;
     }
-    .body{
-      padding:5px 0;
-      line-height: 20px;
-      border-bottom:1px solid #eee;
+    color: #fff;
+    ion-icon{
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      color: #fff;
+      font-size: 26px;
+    }
+    div {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+      font-size: 18px;
+      font-weight: bold;
+   
+    }
+    p {
+      position: absolute;
+      bottom: 13px;
+      left: 20px;
+      font-size: 26px;
+      font-weight: bold;
     }
   }
-  .g_label{
-    img{
-      width:20px;
+  .order_address {
+    padding: 0 15px;
+    background: #fff;
+    padding-bottom: 0;
+    color: #707070;
+    .header {
+      height: 24px;
+      line-height: 24px;
+      font-size: 12px;
+      span {
+        float: right;
+      }
+    }
+  }
+  .service{
+    text-align: center;
+    padding:5px;
+  }
+  .g_label {
+    img {
+      width: 20px;
       height: 20px;
       vertical-align: middle;
       margin-right: 10px;
     }
-    padding:8px 10px;
+    padding:8px 15px;
   }
-  .goods_list{
-    ion-list{
+  .goods_list {
+    ion-list {
       margin-bottom: 0;
     }
-    ion-item{
+    .item-block {
+      border-color: #fff !important;
+    }
+    ion-item {
       position: relative;
       background: #f9f9f9;
-      ion-label{
+      ion-label {
         display: flex;
         pointer-events: inherit;
         max-width: none;
         font-size: 12px;
         margin: 0;
-        img{
-          width:  60px;
+        img {
+          width: 60px;
           height: 60px;
           margin-left: 5px;
           z-index: 100;
         }
-        >div{
+        >div {
           padding-left: 5px;
-          p{
+          p {
             text-overflow: ellipsis;
-            &.price{
-              color:red;
+            &.price {
+              color: red;
             }
-            &.name{
-              color:#333;
+            &.name {
+              color: #333;
               z-index: 100;
               max-width: 200px;
               overflow: hidden;
@@ -63,125 +96,128 @@ page-order-detail {
           }
         }
       }
-      .nums{
+      .nums {
         position: absolute;
-        right:15px;
-        bottom:15px;
+        right: 15px;
+        bottom: 15px;
         font-size: 12px;
       }
     }
   }
-  .total{
-    padding: 10px;
-    span{
-      color:#FF5100;
+  .total {
+    padding: 5px 15px;
+    span {
+      color: #FF5100;
       font-weight: bold;
       font-size: 16px;
     }
-    p{
+    p {
       float: right;
     }
   }
-  .price_list{
-    padding:0 10px;
-    p{
+  .price_list {
+    padding: 0 15px;
+    p {
       font-size: 12px;
-      color:#707070;
-      span{
+      color: #707070;
+      height: 20px;
+      line-height: 20px;
+      span {
         float: right;
-        color:rgb(235, 117, 63);
+        color: rgb(235, 117, 63);
+        font-size: 14px;
       }
     }
   }
-  .time_list{
-    padding:0 10px;
-    p{
+  .time_list {
+    padding: 0 15px;
+    p {
       font-size: 12px;
-      color:#707070;
-      span{
+      color: #707070;
+      span {
         float: right;
-        color:#333;
+        color: #333;
       }
     }
   }
-  .shipping{
-    padding:0 10px;
-    p{
+  .shipping {
+    padding: 0 15px;
+    p {
       font-size: 12px;
-      color:#707070;
-      span{
+      color: #707070;
+      height: 20px;
+      line-height: 20px;
+      span {
         float: right;
-        color:#333;
+        color: #333;
       }
     }
   }
-  .traces{
-    padding:0 10px;
-    >p{
+  .traces {
+    padding: 0 15px;
+    >p {
       text-align: center;
-      color:#707070;
+      color: #707070;
     }
-    .time_line{
-      padding-left:25px;
-      .line_item{
+    .time_line {
+      padding-left: 25px;
+      .line_item {
         position: relative;
         padding-bottom: 15px;
-
-        .line_text{
+        .line_text {
           position: relative;
           top: -3px;
           font-size: 12px;
-          color:#969696;
-          p{
-            padding-top:5px;
-            color:#707070;
+          color: #969696;
+          p {
+            padding-top: 5px;
+            color: #707070;
           }
         }
-        &:first-child{
-
-          .line_point{
-            border-color:#32db64;
+        &:first-child {
+          .line_point {
+            border-color: #32db64;
           }
-          .line_line{
+          .line_line {
             background: #32db64;
           }
         }
-        .line_point{
+        .line_point {
           position: absolute;
-          top:0;
-          left:-20px;
-          width:8px;
+          top: 0;
+          left: -20px;
+          width: 8px;
           height: 8px;
           border-radius: 50%;
-          border:2px solid #488aff;
+          border: 2px solid #488aff;
           background: #fff;
           z-index: 10;
         }
-        .line_line{
+        .line_line {
           position: absolute;
-          top:0;
-          width:2px;
+          top: 0;
+          width: 2px;
           background: #488aff;
           left: -17px;
           height: 100%;
         }
-        &:last-child{
-          .line_line{
+        &:last-child {
+          .line_line {
             display: none;
           }
         }
       }
     }
   }
-  .btn_group{
-    padding:5px 10px;
-    height: 30px;
+  .btn_group {
+    padding: 5px 15px;
+    height: 40px;
     box-sizing: border-box;
-    span{
-      font-size: 10px;
-      padding:3px 10px;
+    span {
+      font-size: 14px;
+      padding: 3px 10px;
       background: #ff0505;
-      color:#fff;
+      color: #fff;
       border-radius: 12.5px;
       float: right;
       margin-right: 15px;

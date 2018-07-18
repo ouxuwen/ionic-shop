@@ -95,4 +95,8 @@ export class OrderDetailPage {
 
   }
 
+  back(){
+    this.navCtrl.pop();
+  }
+
 }

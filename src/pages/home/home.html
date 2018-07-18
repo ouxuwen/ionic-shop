@@ -210,9 +210,9 @@
     </ion-grid>
   </div>
 
-  <div class="notice">
+  <div class="notice" [class.hide]="hideNotice">
     <div class="content">
-      <ion-icon name="ios-close-circle"></ion-icon>
+      <ion-icon name="ios-close-circle" (click)="hideNotice = true"></ion-icon>
     </div>
   </div>
 </ion-content>

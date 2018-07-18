@@ -4,31 +4,48 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<!-- <ion-header>
 
   <ion-navbar>
     <ion-title>订 单 详 情</ion-title>
   </ion-navbar>
 
-</ion-header>
+</ion-header> -->
 
 
 <ion-content>
   <ng-container *ngIf="orderDetail">
     <div class="order_status">
-      {{orderDetail.status_name}}
+      <img src="assets/imgs/51.png" alt="">
+      <div>订单详情</div>
+      <ion-icon name="ios-arrow-dropleft-circle" (click)="back()"></ion-icon>
+      <p> {{orderDetail.status_name}}</p>
+    </div>
+    <div class="g_label">
+      <img src="assets/imgs/order1.png"> 订单信息：
     </div>
     <div class="order_address">
       <p class="header">
-        <span class="name">收货人：{{orderDetail.receiver_name}}</span>
-        <span class="tel">收货电话：{{orderDetail.receiver_mobile}}</span>
+        收货地址：{{orderDetail.receiver_name}} ，{{orderDetail.receiver_mobile}}， {{orderDetail.receiver_province_name}} {{orderDetail.receiver_city_name}}
+        {{orderDetail.receiver_district_name}} {{orderDetail.receiver_address}}
       </p>
-      <p class="body">
-        收货地址：
-        <span>
-          {{orderDetail.receiver_province_name}} {{orderDetail.receiver_city_name}} {{orderDetail.receiver_district_name}}
-        </span>
-        <span>{{orderDetail.receiver_address}}</span>
+      <p class="header">
+        买家留言：{{orderDetail.buyer_message}}
+      </p>
+      <p class="header">订单编号：
+        <span> {{orderDetail.order_no}}</span>
+      </p>
+      <p class="header">下单时间：
+        <span> {{orderDetail.create_time*1000 | date:"yyyy-MM-dd hh:mm:ss"}}</span>
+      </p>
+      <p class="header" *ngIf="orderDetail.pay_time !=0">支付时间：
+        <span> {{orderDetail.pay_time*1000 | date:"yyyy-MM-dd hh:mm:ss"}}</span>
+      </p>
+      <p class="header" *ngIf="orderDetail.consign_time !=0">发货时间：
+        <span> {{orderDetail.consign_time*1000 | date:"yyyy-MM-dd hh:mm:ss"}}</span>
+      </p>
+      <p class="header" *ngIf="orderDetail.finish_time !=0">完成时间：
+        <span> {{orderDetail.finish_time*1000 | date:"yyyy-MM-dd hh:mm:ss"}}</span>
       </p>
     </div>
     <section class="interval"></section>
@@ -80,7 +97,8 @@
       <span>取消订单</span>
     </div>
     <div class="btn_group" *ngIf="orderDetail.order_status == 2 ">
-        <span>退 货</span> <span>确认收货</span>
+      <span>退 货</span>
+      <span>确认收货</span>
     </div>
     <div class="btn_group" *ngIf="orderDetail.order_status == 3">
       <span>删除订单</span>
@@ -90,56 +108,48 @@
       <span>删除订单</span>
     </div>
     <section class="interval"></section>
-    <div class="g_label">
-      <img src="assets/imgs/time.png"> 订单信息：
+    <div class="service">
+      <button ion-button icon-start small>
+        <ion-icon name="md-ionitron"></ion-icon>
+        联系客服
+      </button>
+      <button ion-button icon-start small>
+        <ion-icon name="md-call"></ion-icon>
+        <a href="tel:0147-88469258">拨打电话</a>
+        
+      </button>
     </div>
-    <div class="time_list">
-      <p>订单号：
-        <span>{{orderDetail.order_no}}</span>
-      </p>
-      <p>下单时间：
-        <span>{{orderDetail.create_time*1000 | date:"yyyy-MM-dd hh:mm:ss"}}</span>
-      </p>
-      <p *ngIf="orderDetail.pay_time !=0">支付时间：
-        <span>{{orderDetail.pay_time*1000 | date:"yyyy-MM-dd hh:mm:ss"}}</span>
-      </p>
-      <p *ngIf="orderDetail.consign_time !=0">发货时间：
-        <span>{{orderDetail.consign_time*1000 | date:"yyyy-MM-dd hh:mm:ss"}}</span>
-      </p>
-      <p *ngIf="orderDetail.finish_time !=0">完成时间：
-        <span>{{orderDetail.finish_time*1000 | date:"yyyy-MM-dd hh:mm:ss"}}</span>
-      </p>
-    </div>
-    <section class="interval"></section>
-    <div class="g_label">
-      <img src="assets/imgs/icon_ship.png"> 物流信息：
-    </div>
-    <div class="shipping">
-      <p>物流公司：
-        <span>{{expressName}}</span>
-      </p>
-      <p>物流编号：
-        <span style="user-select:text !important;">{{expressCode}}</span>
-      </p>
-    </div>
-    <section class="interval"></section>
-    <div class="g_label">
-      <img src="assets/imgs/trace.png"> 订单跟踪：
-    </div>
-    <div class="traces">
-      <p *ngIf="!tracesStatus">暂无物流追踪信息</p>
-      <div class="time_line">
-        <div class="line_item" *ngFor="let item of traces">
-          <div class="line_text">
-            {{item.AcceptTime}}
-            <p>
-              {{item.AcceptStation}}
-            </p>
+
+
+    <ng-container *ngIf="expressName">
+      <section class="interval"></section>
+      <section class="interval"></section>
+      <div class="g_label">
+        <img src="assets/imgs/trace.png"> 订单跟踪：
+      </div>
+      <div class="shipping">
+        <p>物流公司：
+          <span>{{expressName}}</span>
+        </p>
+        <p>物流编号：
+          <span style="user-select:text !important;">{{expressCode}}</span>
+        </p>
+      </div>
+      <div class="traces">
+        <p *ngIf="!tracesStatus">暂无物流追踪信息</p>
+        <div class="time_line">
+          <div class="line_item" *ngFor="let item of traces">
+            <div class="line_text">
+              {{item.AcceptTime}}
+              <p>
+                {{item.AcceptStation}}
+              </p>
+            </div>
+            <div class="line_point"></div>
+            <div class="line_line"></div>
           </div>
-          <div class="line_point"></div>
-          <div class="line_line"></div>
         </div>
       </div>
-    </div>
+    </ng-container>
   </ng-container>
 </ion-content>

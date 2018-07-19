@@ -1,0 +1,15 @@
+page-order-comment {
+  .check_box{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    ionc-checkbox{
+      user-select: none;
+    }
+  }
+  .star{
+    .selected{
+      color:yellow;
+    }
+  }
+}

@@ -54,12 +54,15 @@
         <img src="assets/imgs/goods.jpg">订单商品：</p>
       <ion-list>
         <ion-item *ngFor="let ele of orderDetail.order_goods">
-          <ion-label tappable (click)='openDetail($event,ele.goods_id)'>
-            <image [src]="ele.picture_info.pic_cover_mid" alt=""></image>
-            <div>
+          <ion-label>
+            <image [src]="ele.picture_info.pic_cover_mid" alt="" tappable (click)='openDetail($event,ele.goods_id)'></image>
+            <div tappable (click)='openDetail($event,ele.goods_id)'>
               <p class="name" tappable>{{ele.goods_name}}</p>
               <p class="type">规格：{{ele.sku_name}}</p>
               <p class="price">价格：¥ {{ele.price}}</p>
+            </div>
+            <div class="refund" tappable (click)="refund($event,ele.goods_id)" *ngIf="orderDetail.order_status == 1 || orderDetail.order_status == 2">
+              退款/退货
             </div>
             <div class="nums">
               数量：{{ele.num}}
@@ -90,39 +93,36 @@
       </p>
     </div>
     <div class="btn_group" *ngIf="orderDetail.order_status == 0">
-      <span>取消订单</span>
+      <span tappable (click)="deleteOrder()">关闭订单</span>
       <span>去 付 款</span>
     </div>
-    <div class="btn_group" *ngIf="orderDetail.order_status == 1 ">
-      <span>取消订单</span>
+    <div class="btn_group" *ngIf="orderDetail.order_status == 1">
+      <span tappable (click)="orderTakeDelivery()">确认收货</span>
     </div>
     <div class="btn_group" *ngIf="orderDetail.order_status == 2 ">
-      <span>退 货</span>
-      <span>确认收货</span>
+      <span tappable (click)="orderTakeDelivery()">确认收货</span>
     </div>
     <div class="btn_group" *ngIf="orderDetail.order_status == 3">
-      <span>删除订单</span>
-      <span>去 评 价</span>
+      <span tappable (click)="deleteOrder()">删除订单</span>
+      <span tappable (click)="evaluate()">去 评 价</span>
     </div>
     <div class="btn_group" *ngIf="orderDetail.order_status == 4 || orderDetail.order_status == 5">
-      <span>删除订单</span>
+      <span tappable (click)="deleteOrder()">删除订单</span>
     </div>
     <section class="interval"></section>
     <div class="service">
       <button ion-button icon-start small>
         <ion-icon name="md-ionitron"></ion-icon>
-        联系客服
+        <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1584190734&site=qq&menu=yes">联系客服</a>
       </button>
       <button ion-button icon-start small>
         <ion-icon name="md-call"></ion-icon>
         <a href="tel:0147-88469258">拨打电话</a>
-        
       </button>
     </div>
 
 
     <ng-container *ngIf="expressName">
-      <section class="interval"></section>
       <section class="interval"></section>
       <div class="g_label">
         <img src="assets/imgs/trace.png"> 订单跟踪：

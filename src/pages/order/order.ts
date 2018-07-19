@@ -27,7 +27,7 @@ export class OrderPage {
 
   ) {
     this.orderStatus = this.navParams.get('status') ? this.navParams.get('status') : 'all';
-    this.getOrder(true);
+    this.getOrder();
   }
 
   ionViewDidLoad() {
@@ -37,10 +37,10 @@ export class OrderPage {
   statusChange() {
     this.pageNo = 1;
     this.canLoadMore = true;
-    this.getOrder(true);
+    this.getOrder();
   }
 
-  getOrder(bol?) {
+  getOrder(refresher?) {
     if (!this.canLoadMore) {
       return;
     }
@@ -49,11 +49,12 @@ export class OrderPage {
       'page': this.pageNo
     }
     this.orderService.myOrderList(params).subscribe(res => {
-      let data = res['data'];
-      if (bol) {
-        this.orderList = data.data;
+      let data = res['data']['data'];
+      if (refresher) {
+        this.orderList.concat(data);
+        refresher.complete();
       } else {
-        this.orderList.concat(data)
+        this.orderList = data;
       }
       this.orderList.map(el => {
         let count = 0;
@@ -62,7 +63,6 @@ export class OrderPage {
         })
         el['goods_count'] = count;
       })
-      console.log(this.orderList)
       if (data.length < 15) {
         this.canLoadMore = false;
       }
@@ -116,5 +116,11 @@ export class OrderPage {
 
   }
 
+  // 上拉
+  doInfinite(refresher) {
+    if (!this.canLoadMore) return;
+    this.pageNo++;
+    this.getOrder(refresher);
+  }
 
 }

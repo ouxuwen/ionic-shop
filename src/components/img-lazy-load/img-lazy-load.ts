@@ -6,7 +6,7 @@ import { URL } from '../../app.config';
 })
 export class ImgLazyLoadComponent {
 
-  default: string = 'assets/images/no03.png';
+  default: string = 'assets/imgs/no03.png';
 
   constructor() {
 

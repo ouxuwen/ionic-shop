@@ -5,6 +5,10 @@ page-goods-detail {
       overflow: hidden;
     }
   }
+  a{
+    color:#fff;
+    text-decoration: none;
+  }
   .goods_intro {
     border-top: 1px solid #eeeeee;
     border-bottom: 1px solid #eeeeee;
@@ -233,10 +237,10 @@ page-goods-detail {
       .rule{
         border-top:5px solid #f2f2f2;
         margin-top:0;
-       
+
       }
     }
-    
+
   }
   .coustom_intro {
     display: flex;

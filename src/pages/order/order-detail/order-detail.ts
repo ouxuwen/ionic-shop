@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { OrderService } from '../../../providers/order';
 /**
  * Generated class for the OrderDetailPage page.
@@ -20,18 +20,18 @@ export class OrderDetailPage {
   expressName: any;
   traces: any;
   tracesStatus = true;
-  orderId:any;
+  orderId: any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public orderService: OrderService,
+    public alertCtrl: AlertController
   ) {
     this.orderId = this.navParams.get('orderId');
-    this.init();
+
   }
 
   init() {
-
     this.orderService.orderDetail({ orderId: this.orderId }).subscribe(res => {
       let data = res['data']
       this.orderDetail = data.order;
@@ -46,13 +46,11 @@ export class OrderDetailPage {
           this.goodsCount += Number(el.num);
         })
       }
-
     })
-
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad OrderDetailPage');
+  ionViewDidEnter() {
+    this.init();
   }
 
   openDetail($event, id) {
@@ -72,31 +70,55 @@ export class OrderDetailPage {
   }
 
   // 收货
-  orderTakeDelivery(id){
-    this.orderService.orderTakeDelivery({'order_id':id}).subscribe(res =>{
+  orderTakeDelivery() {
+    this.orderService.orderTakeDelivery({ 'order_id': this.orderDetail.order_id }).subscribe(res => {
       this.init();
     })
   }
 
   // 删除订单
   deleteOrder() {
-    this.orderService.deleteOrder({'order_id':this.orderId}).subscribe(res =>{
-      this.navCtrl.pop();
-    })
+    let alert = this.alertCtrl.create({
+      title: '温馨提示',
+      message: '亲，您确定删除吗？',
+      buttons: [
+        {
+          text: '取消',
+          role: 'cancel'
+        },
+        {
+          text: '确定',
+          handler: () => {
+            this.orderService.deleteOrder({ 'order_id': this.orderId }).subscribe(res => {
+              this.navCtrl.pop();
+            })
+          }
+        }
+      ]
+    }).present();
+
   }
 
   //退款
-  refund(){
-
+  refund(e, goods_id) {
+    e.stopPropagation();
+    this.navCtrl.push('OrderRefundPage', { 'order_goods_id': goods_id, 'order_id': this.orderDetail.order_id, 'order_status': this.orderDetail.order_status })
   }
 
   // 去支付
-  orderPay(){
-
+  orderPay() {
+    this.orderService.orderPay({id:this.orderDetail.order_id}).subscribe(res=>{
+      this.navCtrl.push("PayPage",{'no':res['data']});
+    })
   }
 
-  back(){
+  back() {
     this.navCtrl.pop();
+  }
+
+  // 评论
+  evaluate() {
+    this.navCtrl.push('OrderCommentPage', { 'orderDetail': this.orderDetail });
   }
 
 }

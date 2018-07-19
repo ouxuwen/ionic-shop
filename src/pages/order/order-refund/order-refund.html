@@ -7,12 +7,33 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>order-refund</ion-title>
+    <ion-title>退货/退款</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label color="primary" stacked>退款金额</ion-label>
+      <ion-input type="number" [(ngModel)]="refundMoney" [placeholder]="'最大退款金额为:'+maxRefund"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="orderStatus ==2">
+      <ion-label color="primary" stacked>退货物流公司</ion-label>
+      <ion-input type="text" [(ngModel)]="refundExpressCompany" placeholder="退货物流公司"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="orderStatus ==2">
+      <ion-label color="primary" stacked>退货物流编号</ion-label>
+      <ion-input type="number" [(ngModel)]="refundShippingNo" placeholder="退货物流编号"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>退款原因</ion-label>
+      <ion-textarea type="text" [(ngModel)]="refundReason" placeholder="退款原因"></ion-textarea>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button full tappable *ngIf="!penning" (click)="confirm()">确 定</button>
+  <button ion-button full tappable *ngIf="penning">退款中...</button>
 
 </ion-content>

@@ -47,7 +47,7 @@ export class OrderRefundPage {
   getRefundDetail() {
     this.orderService.refundDetail({ order_goods_id: this.orderGoodsId }).subscribe(res => {
       this.refundDetail = res['data'];
-      this.maxRefund = Number(res['refund_money']);
+      this.maxRefund = Number(res['data']['refund_money']);
     })
   }
 
@@ -80,7 +80,7 @@ export class OrderRefundPage {
     let params = {
       order_id: this.orderId,
       order_goods_id: this.orderGoodsId,
-      refund_require_money: this.refundMoney,
+      refund_require_money: this.refundMoney?this.refundMoney:'',
       refund_reason: this.refundReason
     }
     this.orderService.orderGoodsRefundAskfor(params).subscribe(res => {
@@ -122,7 +122,7 @@ export class OrderRefundPage {
     let params = {
       order_id: this.orderId,
       order_goods_id: this.orderGoodsId,
-      refund_require_money: this.refundMoney,
+      refund_require_money: this.refundMoney?this.refundMoney:'',
       refund_reason: this.refundReason,
       refund_shipping_no: this.refundShippingNo,
       refund_express_company: this.refundExpressCompany

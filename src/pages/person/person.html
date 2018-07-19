@@ -4,9 +4,12 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-content *ngIf="!userInfo"></ion-content>
 
-<ion-content *ngIf="userInfo">
+
+<ion-content>
+  <ng-container *ngIf="userInfo">
+
+
   <div class="person_box">
     <img src="assets/imgs/settingBg.png" alt="">
     <div class="bg_container">
@@ -44,8 +47,8 @@
     <div class="order_list">
       <div (click)="myOrder('0')">
         <i class="icon-profile-pending_payment"></i>
-        <div>未付款</div>
-        <ion-badge color='danger'>{{userInfo.unpaidOrder}}</ion-badge>
+        <div>待付款</div>
+        <ion-badge color='danger' *ngIf="userInfo.unpaidOrder!=0">{{userInfo.unpaidOrder}}</ion-badge>
       </div>
       <div (click)="myOrder('1')">
         <i class="icon-profile-confirm_booking"></i>
@@ -55,7 +58,7 @@
       <div (click)="myOrder('2')">
         <i class="icon-profile-past_booking"></i>
         <div>待收货</div>
-        <ion-badge *ngIf="userInfo.shipmentPendingOrder!=0" color='danger'>{{userInfo.goodsNotReceivedOrder}}</ion-badge>
+        <ion-badge *ngIf="userInfo.goodsNotReceivedOrder!=0" color='danger'>{{userInfo.goodsNotReceivedOrder}}</ion-badge>
       </div>
     </div>
   </div>
@@ -98,5 +101,5 @@
   <div padding style="margin-bottom: 50px;">
     <button color="danger" ion-button full tappable (click)="logout()">安全退出</button>
   </div>
-
+</ng-container>
 </ion-content>

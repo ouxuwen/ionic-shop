@@ -37,6 +37,7 @@ export class GoodsDetailPage {
   hideDetail: boolean = true;
   isMemberFavGoods: any;
   tag = '';
+  evaluatesCount:any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -87,7 +88,8 @@ export class GoodsDetailPage {
       {
         "navIndex": i,
         'content': this.goodsDetail.description,
-        'goodsId': this.goodsId
+        'goodsId': this.goodsId,
+        'evaluatesCount':this.evaluatesCount
       }, {
         direction: "switch"
       })
@@ -138,6 +140,7 @@ export class GoodsDetailPage {
       this.skuList = this.goodsDetail.sku_list;
       this.isMemberFavGoods = data['is_member_fav_goods'];
       this.couponList = data['goods_coupon_list'];
+      this.evaluatesCount = data['evaluates_count'];
       //镜片类型
       if (this.goodsDetail.goods_attribute_id == 1) {
         this.roleList.zhu = [];

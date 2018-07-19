@@ -11,68 +11,54 @@
 </ion-header>
 
 <ion-content>
-  <div class="detail_nav">
-    <span tappable (click)="back()">商 品</span>
-    <span tappable [class.active]="navIndex == 2" (click)="changeIndex(2)">详 情</span>
-    <span tappable [class.active]="navIndex == 3" (click)="changeIndex(3)">评 价</span>
-  </div>
-  <div *ngIf="navIndex == 2" class="img_text" [innerHtml]='htmlContent'>
+  <ng-container *ngIf="commentList">
+    <div class="detail_nav">
+      <span tappable (click)="back()">商 品</span>
+      <span tappable [class.active]="navIndex == 2" (click)="changeIndex(2)">详 情</span>
+      <span tappable [class.active]="navIndex == 3" (click)="changeIndex(3)">评 价</span>
+    </div>
+    <div *ngIf="navIndex == 2" class="img_text" [innerHtml]='htmlContent'>
 
-  </div>
-  <div *ngIf="navIndex == 3" class="comment">
-    <div class="j_tab_menu">
-      <ul class="clear">
-        <li class="selected">
-          全部 (3)
-        </li>
-        <li>
-          好评 (3)
-        </li>
-        <li>
-          中评 (0)
-        </li>
-        <li>
-          差评 (0)
-        </li>
-      </ul>
     </div>
-    <div class="com_list">
-      <ul>
-        <li>
-          <div class="name">
-            <img src="assets/imgs/profile_icon.png" alt="">
-            <span class="tel">188******</span>
-            <div class="star">
-              <ion-icon name="ios-star"></ion-icon>
-              <ion-icon name="ios-star"></ion-icon>
-              <ion-icon name="ios-star"></ion-icon>
-              <ion-icon name="ios-star"></ion-icon>
-              <ion-icon name="ios-star"></ion-icon>
-              <span>5 分</span>
+    <div *ngIf="navIndex == 3" class="comment">
+      <div class="j_tab_menu">
+        <ul class="clear">
+          <li [class.selected]="commType==0" tappable (click)="commType=0;getGoodsComments()">
+            全部 ( {{evaluatesCount.evaluate_count}} )
+          </li>
+          <li [class.selected]="commType==1" tappable (click)="commType=1;getGoodsComments()">
+            好评 ( {{evaluatesCount.praise_count}} )
+          </li>
+          <li [class.selected]="commType==2" tappable (click)="commType=2;getGoodsComments()">
+            中评 ( {{evaluatesCount.center_count}} )
+          </li>
+          <li [class.selected]="commType==3" tappable (click)="commType=3;getGoodsComments()">
+            差评 ( {{evaluatesCount.bad_count}} )
+          </li>
+        </ul>
+      </div>
+      <div class="com_list">
+        <ul>
+          <li *ngFor="let item of commentList">
+            <div class="name">
+              <img src="assets/imgs/profile_icon.png" alt="">
+              <span class="tel">{{item.member_name}}</span>
+              <div class="star">
+                <ion-icon name="ios-star" *ngIf="item.scores>0"></ion-icon>
+                <ion-icon name="ios-star" *ngIf="item.scores>1"></ion-icon>
+                <ion-icon name="ios-star" *ngIf="item.scores>2"></ion-icon>
+                <ion-icon name="ios-star" *ngIf="item.scores>3"></ion-icon>
+                <ion-icon name="ios-star" *ngIf="item.scores>4"></ion-icon>
+                <span>{{item.scores}} 分</span>
+              </div>
             </div>
-          </div>
-          <p class="goods">商品：史提芬周</p>
-          <p class="txt">发货速度快，质量很好！！！</p>
-          <p class="time">2018-5-23 15:32</p>
-        </li>
-        <li>
-          <div class="name">
-            <img src="assets/imgs/profile_icon.png" alt="">
-            <span class="tel">188******</span>
-            <div class="star">
-              <ion-icon name="ios-star"></ion-icon>
-              <ion-icon name="ios-star"></ion-icon>
-              <ion-icon name="ios-star"></ion-icon>
-              <ion-icon name="ios-star"></ion-icon>
-              <ion-icon name="ios-star"></ion-icon>
-              <span>5 分</span>
-            </div>
-          </div>
-          <p class="goods">商品：史提芬周</p>
-          <p class="txt">发货速度快，质量很好！！！</p>
-          <p class="time">2018-5-23 15:32</p>
-        </li>
-      </ul>
+            <p class="goods">商品：{{item.goods_name}}</p>
+            <p class="txt">{{item.content}}</p>
+            <p class="time">{{item.addtime*1000 | date:"yyyy-MM-dd hh:mm:ss"}}</p>
+          </li>
+
+        </ul>
+      </div>
     </div>
-  </div>
+  </ng-container>
 </ion-content>

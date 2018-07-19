@@ -14,11 +14,11 @@ import { OrderService } from '../../../providers/order';
   templateUrl: 'order-comment.html',
 })
 export class OrderCommentPage {
-  ping = 'h';
+  ping = 1;
   commont: any;
   orderDetail: any;
   goodsEvaluate: any;
-  score:5;
+  score=5;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -26,6 +26,7 @@ export class OrderCommentPage {
 
   ) {
     this.orderDetail = this.navParams.get('orderDetail');
+    console.log( this.orderDetail)
   }
 
   ionViewDidLoad() {
@@ -33,10 +34,22 @@ export class OrderCommentPage {
   }
 
   submit() {
+    this.goodsEvaluate = [];
+    let goods = this.orderDetail['order_goods']?this.orderDetail['order_goods']:this.orderDetail['order_item_list'];
+    goods.forEach(el =>{
+      this.goodsEvaluate.push({
+        order_goods_id:el.order_goods_id,
+        explain_type:this.ping,
+        content:this.commont,
+        scores:this.score
+      })
+    })
+
+
     let params = {
       order_id: this.orderDetail.order_id,
       order_no: this.orderDetail.order_no,
-      goodsEvaluate: this.goodsEvaluate
+      goodsEvaluate:JSON.stringify(this.goodsEvaluate)
     }
     this.orderService.addGoodsEvaluate(params).subscribe(res => {
 

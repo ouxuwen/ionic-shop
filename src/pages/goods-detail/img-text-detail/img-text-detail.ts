@@ -19,7 +19,9 @@ export class ImgTextDetailPage {
   navIndex:number = 2;  //2:图文详情 3：评论,
   htmlContent:any;
   goodsId:any;
-  commType = 1; //1,2,3 好评，中评，差评
+  commType = 0; //1,2,3 好评，中评，差评
+  evaluatesCount:any;
+  commentList:any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -28,6 +30,8 @@ export class ImgTextDetailPage {
     this.navIndex = this.navParams.get('navIndex');
     this.htmlContent = this.navParams.get('content');
     this.goodsId = this.navParams.get('goodsId');
+    this.evaluatesCount = this.navParams.get('evaluatesCount');
+    console.log(this.navParams)
     if(this.navIndex == 3){
       this.getGoodsComments();
     }
@@ -53,6 +57,7 @@ export class ImgTextDetailPage {
       goods_id:this.goodsId
     }).subscribe(res=>{
       console.log(res);
+      this.commentList = res['data']['data'];
     })
   }
 }

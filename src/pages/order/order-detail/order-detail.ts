@@ -121,4 +121,8 @@ export class OrderDetailPage {
     this.navCtrl.push('OrderCommentPage', { 'orderDetail': this.orderDetail });
   }
 
+  refundDetail(){
+    
+  }
+
 }

@@ -3,13 +3,41 @@ page-order-comment {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    ionc-checkbox{
-      user-select: none;
+    
+    p{
+      position: relative;
+      flex: 1;
+      ion-checkbox{
+        user-select: none;
+        vertical-align: middle;
+      }
+      span{
+        text-align: center;
+        position: absolute;
+        top:0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        line-height: 21px;
+      }
     }
+  
+  
   }
   .star{
-    .selected{
-      color:yellow;
+    margin:10px 0;
+    font-size: 14px;
+    ion-icon{
+      font-size: 26px;
+      margin-left: 5px;
     }
+    .selected{
+      color:#f9e801;
+     
+
+    }
+  }
+  ion-textarea{
+    border:0.5px solid #f2f2f2;
   }
 }

@@ -106,10 +106,12 @@ export class OrderPage {
     })
   }
 
-  //退款
-  refund(){
-
-  }
+  // //退款
+  // refund(id){
+  //   this.orderService.deleteOrder({'order_id':id}).subscribe(res =>{
+  //     this.getOrder();
+  //   })
+  // }
 
   // 去支付
   orderPay(){
@@ -123,4 +125,8 @@ export class OrderPage {
     this.getOrder(refresher);
   }
 
+   // 评论
+   evaluate(e) {
+    this.navCtrl.push('OrderCommentPage', { 'orderDetail':e });
+  }
 }

@@ -61,9 +61,12 @@
               <p class="type">规格：{{ele.sku_name}}</p>
               <p class="price">价格：¥ {{ele.price}}</p>
             </div>
-            <div class="refund" tappable (click)="refund($event,ele.goods_id)" *ngIf="orderDetail.order_status == 1 || orderDetail.order_status == 2">
+            <div class="refund"  tappable (click)="refund($event,ele.order_goods_id)" *ngIf="(orderDetail.order_status == 1 || orderDetail.order_status == 2) && !ele.status_name">
               退款/退货
             </div>
+            <div class="refund"  tappable *ngIf="ele.status_name">
+                {{ele.status_name}}
+              </div>
             <div class="nums">
               数量：{{ele.num}}
             </div>
@@ -104,8 +107,12 @@
     </div>
     <div class="btn_group" *ngIf="orderDetail.order_status == 3">
       <span tappable (click)="deleteOrder()">删除订单</span>
-      <span tappable (click)="evaluate()">去 评 价</span>
+      <span *ngIf="orderDetail.is_evaluate!=1" tappable (click)="evaluate()">去 评 价</span>
     </div>
+    <div class="btn_group" *ngIf="orderDetail.order_status == -1">
+        <span tappable (click)="deleteOrder()">查看退款进度</span>
+        <span tappable (click)="evaluate()">取消退款</span>
+      </div>
     <div class="btn_group" *ngIf="orderDetail.order_status == 4 || orderDetail.order_status == 5">
       <span tappable (click)="deleteOrder()">删除订单</span>
     </div>

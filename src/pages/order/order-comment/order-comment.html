@@ -15,17 +15,20 @@
 
 <ion-content padding>
   <div class="check_box">
-    <p (click)="ping = 'h'">
-      <ion-checkbox [checked]="ping== 'h'"></ion-checkbox>
-      好评
+    <p (click)="ping = 1">
+      <ion-checkbox [checked]="ping== 1"></ion-checkbox>
+      <span>好评</span>
+      
     </p>
-    <p (click)="ping = 'z'">
-      <ion-checkbox [checked]="ping== 'z'"></ion-checkbox>
-      中评
+    <p (click)="ping = 2">
+      <ion-checkbox [checked]="ping== 2"></ion-checkbox>
+      <span>中评</span>
+      
     </p>
-    <p (click)="ping = 'c'">
-      <ion-checkbox [checked]="ping== 'c'"></ion-checkbox>
-      差评
+    <p (click)="ping = 3">
+      <ion-checkbox [checked]="ping== 3"></ion-checkbox>
+      <span>差评</span>
+      
     </p>
   </div>
   <div class="star">
@@ -37,7 +40,7 @@
     <ion-icon (click)="score=5"  [class.selected]="score>4" [name]="score>4?'ios-star':'ios-star-outline'"></ion-icon>
   </div>
   <div class="text">
-    <ion-textarea type="text" [(ngModel)]="commont" placeholder="文字评论"></ion-textarea>
+    <ion-textarea type="text" [(ngModel)]="commont" placeholder="文字评论" col='5'></ion-textarea>
   </div>
   <button ion-button full tappable (click)="submit()">提 交</button>
 </ion-content>

@@ -67,7 +67,7 @@
   </div>
   <section class="interval" *ngIf="couponList.length>0"></section>
   <!-- 促销资讯 -->
-  <div class="index-trumpet">
+  <div class="index-trumpet" (click)="article()">
     <div class="title">
       <img src="assets/imgs/123.png" alt="">
     </div>
@@ -78,7 +78,7 @@
             新资讯
           </span>
           <span class="value">
-            xxx正式上线
+            新版唯视APP正式上线
           </span>
           <span class="more">
             更多
@@ -100,7 +100,7 @@
             新资讯
           </span>
           <span class="value">
-            xxx正式上线
+            全场更多优惠
           </span>
           <span class="more">
             更多

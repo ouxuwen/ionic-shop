@@ -169,4 +169,8 @@ export class HomePage {
     this.navCtrl.push('MyFavPage');
   }
 
+  // 资讯中心
+  article(){
+    this.navCtrl.push('NoticeListPage');
+  }
 }

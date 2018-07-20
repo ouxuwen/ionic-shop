@@ -5,14 +5,26 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>notice-list</ion-title>
+    <ion-title>资 讯 列 表</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content>
+  <ion-segment *ngIf="pList && pList.length>1" mode='md' [(ngModel)]="pid" (ngModelChange)="getActicle()">
+    <ion-segment-button [value]="p.class_id" *ngFor="let p of pList">
+     {{p.name}}
+    </ion-segment-button>
+  </ion-segment>
+  <ion-list *ngIf="articleList">
+    <ion-item *ngFor="let item of articleList" (click)="view(item)">
+      <ion-thumbnail item-start>
+        <img [src]="item.image">
+      </ion-thumbnail>
+      <h2>{{item.title}}</h2>
+      <p>{{item.create_time*1000 | date:"yyyy-MM-dd hh:mm:ss"}}</p>
+      <button ion-button clear item-end>查看</button>
+    </ion-item>
+  </ion-list>
 </ion-content>

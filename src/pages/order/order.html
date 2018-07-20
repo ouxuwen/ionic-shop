@@ -15,7 +15,7 @@
 
 <ion-content>
   <ion-toolbar no-border-top>
-    <ion-segment [(ngModel)]="orderStatus" (ngModelChange)="statusChange()">
+    <ion-segment mode='md' [(ngModel)]="orderStatus" (ngModelChange)="statusChange()">
       <ion-segment-button value="all">
         全 部
       </ion-segment-button>
@@ -70,7 +70,7 @@
           <span tappable  (click)="deleteOrderConfirm(order.order_id)">删除订单</span>  <span *ngIf="order.is_evaluate!=1" tappable (click)="evaluate(order)">去评价</span>
         </div>
       <div class="status" *ngIf="order.order_status == 5">
-        <span tappable  (click)="deleteOrderConfirm(order.order_id)">删除订单</span>  
+        <span tappable  (click)="deleteOrderConfirm(order.order_id)">删除订单</span>
       </div>
       <div class="status" *ngIf="order.order_status == 4 ">
         <span tappable  (click)="deleteOrderConfirm(order.order_id)">删除订单</span>

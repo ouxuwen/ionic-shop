@@ -4,7 +4,7 @@ import { GoodsService } from '../../providers/goods';
 import { PopoverPage } from './popover-page';
 import { PersonService } from '../../providers/person';
 import { Storage } from '@ionic/storage';
-
+import { CartService } from '../../providers/cartService';
 /**
  * Generated class for the GoodsDetailPage page.
  *
@@ -47,6 +47,7 @@ export class GoodsDetailPage {
     public toastCtrl: ToastController,
     public personService: PersonService,
     public storage: Storage,
+    public cartService:CartService
   ) {
 
     this.goodsId = this.navParams.get('goods_id');
@@ -136,6 +137,7 @@ export class GoodsDetailPage {
       let data: any = res['data'];
       this.goodsDetail = data['goods_detail'];
       this.cartInfo = data['cartInfo'];
+      this.cartService.cartCount = this.cartInfo.num;
       this.sellProvince = this.goodsDetail.sell_province;
       this.skuList = this.goodsDetail.sku_list;
       this.isMemberFavGoods = data['is_member_fav_goods'];

@@ -1,0 +1,32 @@
+<!--
+  Generated template for the ModifyProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>修改个人资料</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div class="form_box" >
+
+      <div class="user_img" tappable (click)="select()">
+        <img [src]="userImg!=0?userImg:defaultImg" alt="">
+      </div>
+      <div class="input_box" [class.error]="!userName">
+        <label>
+          姓名：
+        </label>
+        <input type="text" [(ngModel)]="userName" placeholder='请输入姓名'>
+        <p *ngIf="!userName">请输入姓名</p>
+      </div>
+
+    <button ion-button full tappable (click)="modify()">确定修改</button>
+  </div>
+</ion-content>

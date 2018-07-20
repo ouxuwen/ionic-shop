@@ -92,6 +92,7 @@ export class ModifyPsdPage {
       new_password:this.modPsdForm.controls.password.value
     }
     this.personService.modifyPassword(params).subscribe(res =>{
+
       this.alertCtrl.create({
         title: '温馨提示',
         message: '修改成功！',
@@ -100,11 +101,11 @@ export class ModifyPsdPage {
             text: '确定',
             role: 'cancel',
             handler: () => {
-              console.log('Cancel clicked');
+              this.navCtrl.pop();
             }
           }
         ]
-      })
+      }).present();
     })
   }
 }

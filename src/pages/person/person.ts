@@ -101,6 +101,13 @@ export class PersonPage {
     this.navCtrl.push('MyHistoryPage');
   }
 
+  modifyProfile(){
+    this.navCtrl.push('ModifyProfilePage',{
+      'userInfo':this.userInfo.member_info.user_info.nick_name,
+      'memberImg':this.userInfo.member_img
+    });
+  }
+
   logout() {
     this.storage.remove('userInfo').then(()=>{
       this.navCtrl.setRoot('LoginPage')

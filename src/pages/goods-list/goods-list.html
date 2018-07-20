@@ -23,7 +23,7 @@
   </ion-refresher>
   <ion-toolbar no-border-top>
 
-    <ion-segment [(ngModel)]="order" (ngModelChange)="orderChange($event)">
+    <ion-segment mode='md' [(ngModel)]="order" (ngModelChange)="orderChange($event)">
       <ion-segment-button value="" (click)="reset()">
         综 合
       </ion-segment-button>

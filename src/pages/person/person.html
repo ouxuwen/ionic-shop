@@ -14,14 +14,14 @@
     <img src="assets/imgs/settingBg.png" alt="">
     <div class="bg_container">
       <div class="avator">
-        <img [src]="userInfo.member_img!=0?userInfo.member_img:'assets/imgs/profile_icon.png'" alt="">
+        <img  tappable (click)="modifyProfile()" [src]="userInfo.member_img!=0?userInfo.member_img:'assets/imgs/profile_icon.png'" alt="">
         <div>
-          <div class="name">{{userInfo.member_info.user_info.user_name}}
+          <div class="name" tappable (click)="modifyProfile()">{{userInfo.member_info.user_info.nick_name}}
             <img src="assets/imgs/edit.png" alt="">
           </div>
           <div class="tel ">{{userInfo.member_info.user_info.user_tel}}</div>
           <div class="level">{{userInfo.member_info.level_name}} </div>
-          <p class="sign"><img src="assets/imgs/sign.png" alt="">签到送积分</p>
+          <p class="sign" *ngIf="userInfo.integralconfig.sign_integral"><img src="assets/imgs/sign.png" alt="">{{userInfo.is_sign==0?'签到送积分':'已签到'}}</p>
         </div>
       </div>
       <div class="fav">

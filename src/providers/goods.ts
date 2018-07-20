@@ -26,18 +26,18 @@ export class GoodsService {
   }
 
   //购物车
-  cart(data,bol=true) {
-    return this.base.post('/app/Goods/cart', data,bol);
+  cart(data, bol = true) {
+    return this.base.post('/app/Goods/cart', data, bol);
   }
 
   //添加收藏
   addFavorites(data) {
-    return this.base.post('/app/Member/FavoritesGoodsorshop', data,false);
+    return this.base.post('/app/Member/FavoritesGoodsorshop', data, false);
   }
 
   //取消收藏
   cancelFavorites(data) {
-    return this.base.post('/app/Member/cancelFavorites', data,false);
+    return this.base.post('/app/Member/cancelFavorites', data, false);
   }
 
   // 获取商品分类下的商品
@@ -77,12 +77,12 @@ export class GoodsService {
 
   //  购物车修改数量
   cartAdjustNum(data) {
-    return this.base.post('/app/Goods/cartAdjustNum', data,false);
+    return this.base.post('/app/Goods/cartAdjustNum', data, false);
   }
 
   // 删除购物车
-  cartDelete(data){
-    return this.base.post('/app/Goods/cartDelete', data,false);
+  cartDelete(data) {
+    return this.base.post('/app/Goods/cartDelete', data, false);
   }
 
   // 功能：商品评论
@@ -91,8 +91,22 @@ export class GoodsService {
   }
 
   // 领取商品优惠券
-  getCoupon(data){
+  getCoupon(data) {
     return this.base.post('/app/Goods/receiveGoodsCoupon', data);
   }
 
+  //文章中心
+  articleCenter(data) {
+    return this.base.post('/app/Articlecenter/index', data);
+  }
+
+  // 文章分类
+  getArticleList(data) {
+    return this.base.post('/app/Articlecenter/getArticleList', data);
+  }
+
+  // 文章内容
+  articleContent(data) {
+    return this.base.post('/app/Articlecenter/articleContent', data);
+  }
 }

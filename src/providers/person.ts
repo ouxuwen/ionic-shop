@@ -78,4 +78,11 @@ export class PersonService {
   myCollection(data){
     return this.base.post('/app/member/myCollection', data);
   }
+
+  // 修改用户名
+  modifyProfile(data){
+    return this.base.post('/app/member/modifyProfile', data);
+  }
+
+
 }

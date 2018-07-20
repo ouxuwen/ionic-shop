@@ -16,6 +16,7 @@ import { BaseHttpProvider } from '../providers/base-http';
 import { GoodsService } from '../providers/goods';
 import { PersonService } from '../providers/person';
 import { OrderService } from '../providers/order';
+import { CartService } from '../providers/cartService';
 import { ComponentsModule } from '../components/components.module';
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ComponentsModule } from '../components/components.module';
     GoodsService,
     PersonService,
     OrderService,
-    Nav
+    Nav,
+    CartService
   ]
 })
 export class AppModule { }

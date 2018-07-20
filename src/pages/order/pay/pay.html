@@ -7,12 +7,30 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>付款</ion-title>
+    <ion-title>订单付款</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-    <button ion-button full tappable>付 款</button>
+  <div class="pay_money">
+    ¥{{payMoney}}
+  </div>
+
+
+  <div>
+    <ion-list radio-group [(ngModel)]="payMethod">
+      <ion-item>
+        <ion-label>
+          <img src="assets/imgs/alipay.png" alt="">支付宝
+        </ion-label>
+        <ion-radio value="ALIPAY"></ion-radio>
+      </ion-item>
+    </ion-list>
+  </div>
+
 </ion-content>
+<ion-footer>
+  <button ion-button full tappable (click)="pay()">付 款</button>
+</ion-footer>

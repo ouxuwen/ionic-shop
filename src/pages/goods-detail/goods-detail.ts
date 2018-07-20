@@ -38,6 +38,7 @@ export class GoodsDetailPage {
   isMemberFavGoods: any;
   tag = '';
   evaluatesCount:any;
+  appInfo:any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -49,7 +50,9 @@ export class GoodsDetailPage {
     public storage: Storage,
     public cartService:CartService
   ) {
-
+    this.storage.get('appInfo').then(res =>{
+      this.appInfo = res;
+    });
     this.goodsId = this.navParams.get('goods_id');
     this.getGoodsDetail();
   }

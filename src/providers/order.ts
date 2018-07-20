@@ -68,4 +68,9 @@ export class OrderService {
   addGoodsEvaluate(data){
     return this.base.post('/app/Order/addGoodsEvaluate', data);
   }
+
+  //pay
+  mobileAlipay(data){
+    return this.base.post('/app/pay/mobileAlipay', data);
+  }
 }

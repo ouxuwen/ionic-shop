@@ -198,12 +198,16 @@ export class CheckOutPage {
       integral: -this.integral,// 积分
       goods_sku_list: this.goods_sku_list, // 商品列表
       leavemessage: this.leavemessage,// 留言
-      pay_type: this.pay_type,// 支付方式
+      pay_type: 1,// 支付方式
       shipping_company_id: this.selectExpress,// 物流公司
       tag: this.tag,//'cart' 从购物车 'buy_now' 立即购买
     }
 
     this.orderService.createOrder(params).subscribe(res => {
+      this.navCtrl.push('PayPage',{
+        no:res['data'],
+        money:this.totalPrice
+      })
       console.log(res)
     })
   }

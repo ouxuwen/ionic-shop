@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { OrderService } from '../../../providers/order';
+import { Storage } from '@ionic/storage';
 /**
  * Generated class for the OrderDetailPage page.
  *
@@ -21,14 +22,18 @@ export class OrderDetailPage {
   traces: any;
   tracesStatus = true;
   orderId: any;
+  appInfo:any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public orderService: OrderService,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public storage: Storage,
   ) {
     this.orderId = this.navParams.get('orderId');
-
+    this.storage.get('appInfo').then(res =>{
+      this.appInfo = res;
+    });
   }
 
   init() {
@@ -122,7 +127,7 @@ export class OrderDetailPage {
   }
 
   refundDetail(){
-    
+
   }
 
 }

@@ -9,5 +9,8 @@ import { PayPage } from './pay';
   imports: [
     IonicPageModule.forChild(PayPage),
   ],
+  providers:[
+    
+  ]
 })
 export class PayPageModule {}

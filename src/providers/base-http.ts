@@ -147,5 +147,31 @@ export class BaseHttpProvider {
 
   }
 
+  postJson(api: string, body: any = null,needLoading:boolean = true): Observable<Response> {
+
+    let observer = Observable.create(obser => {
+      this.storage.get('userInfo').then(userInfo => {
+        let token = userInfo && userInfo.token ? userInfo.token : ''; //? this.token : "6ed20604fe946101be88e205ed5dbfa7"
+        console.log(userInfo)
+        const params = { token, ...body };
+        
+        this.request(api, {
+          //params:params,
+          body: {data:JSON.stringify(params)},
+          headers: {
+            'Content-Type': 'application/json; charset=UTF-8',
+          }
+        },needLoading).subscribe(res => {
+          obser.next(res)
+        }, err => {
+          obser.error(err)
+        })
+      })
+
+    })
+
+    return observer;
+
+  }
 
 }

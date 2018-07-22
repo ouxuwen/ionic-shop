@@ -58,7 +58,7 @@
         共 <span>{{order.goods_count}}</span> 件商品,合计 <span> ¥{{order.pay_money}} </span> <i>  (含运费)</i>
       </div>
       <div class="status" *ngIf="order.order_status == 0">
-        <span tappable  (click)="deleteOrderConfirm(order.order_id)">取消订单</span> <span>去 付 款</span>
+        <span tappable  (click)="deleteOrderConfirm(order.order_id)">取消订单</span> <span  tappable (click)="orderPay(order)">去 付 款</span>
       </div>
       <div class="status" *ngIf="order.order_status == 1 ">
         <span tappable  (click)="deleteOrderConfirm(order.order_id)">取消订单</span>

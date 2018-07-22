@@ -20,6 +20,7 @@
     "@angular/http": "5.0.3",
     "@angular/platform-browser": "5.0.3",
     "@angular/platform-browser-dynamic": "5.0.3",
+    "@ionic-native/alipay": "^4.10.0",
     "@ionic-native/camera": "^4.9.0",
     "@ionic-native/core": "4.4.0",
     "@ionic-native/splash-screen": "4.4.0",
@@ -29,6 +30,7 @@
     "cordova-android": "6.2.3",
     "cordova-browser": "5.0.3",
     "cordova-ios": "4.5.4",
+    "cordova-plugin-alipay": "git+https://github.com/ejiyuan/cordova-plugin-alipay.git",
     "cordova-plugin-camera": "^2.4.1",
     "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-device": "^2.0.2",
@@ -55,7 +57,11 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {},
-      "cordova-plugin-camera": {}
+      "cordova-plugin-camera": {},
+      "cordova-plugin-alipay": {
+        "APP_ID": "2016080500174369",
+        "SANDBOX_MODE": "true"
+      }
     },
     "platforms": [
       "android",

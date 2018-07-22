@@ -7,6 +7,7 @@ import { WelcomePage } from '../pages/welcome/welcome';
 import { LoginPage } from '../pages/person/login/login';
 import { Storage } from '@ionic/storage';
 import { BusinessLicensePage } from '../pages/person/business-license/business-license';
+
 @Component({
   templateUrl: 'app.html'
 })

@@ -97,7 +97,7 @@
     </div>
     <div class="btn_group" *ngIf="orderDetail.order_status == 0">
       <span tappable (click)="deleteOrder()">关闭订单</span>
-      <span>去 付 款</span>
+      <span  tappable (click)="orderPay(orderDetail)">去 付 款</span>
     </div>
     <div class="btn_group" *ngIf="orderDetail.order_status == 1">
       <span tappable (click)="orderTakeDelivery()">确认收货</span>

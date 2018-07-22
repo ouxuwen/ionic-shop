@@ -205,7 +205,7 @@ export class CheckOutPage {
 
     this.orderService.createOrder(params).subscribe(res => {
       this.navCtrl.push('PayPage',{
-        no:res['data'],
+        out_trade_no:res['data'],
         money:this.totalPrice
       })
       console.log(res)

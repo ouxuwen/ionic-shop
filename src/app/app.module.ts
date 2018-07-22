@@ -18,6 +18,7 @@ import { PersonService } from '../providers/person';
 import { OrderService } from '../providers/order';
 import { CartService } from '../providers/cartService';
 import { ComponentsModule } from '../components/components.module';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -53,7 +54,8 @@ import { ComponentsModule } from '../components/components.module';
     PersonService,
     OrderService,
     Nav,
-    CartService
+    CartService,
+    
   ]
 })
 export class AppModule { }

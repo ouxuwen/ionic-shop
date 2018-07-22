@@ -111,10 +111,20 @@ export class OrderDetailPage {
   }
 
   // 去支付
-  orderPay() {
-    this.orderService.orderPay({id:this.orderDetail.order_id}).subscribe(res=>{
-      this.navCtrl.push("PayPage",{'no':res['data']});
+   orderPay(e){
+    this.orderService.orderPay({
+      'id': e.order_id,
+      'out_trade_no': e.out_trade_no
+    }).subscribe(res => {
+      this.navCtrl.push('PayPage',{
+        'order_id':e.order_id,
+        'money':e.pay_money,
+        'out_trade_no':res['data'],
+        'payMethod':'REALIPAY',
+        'no':e.order_no
+      })
     })
+   
   }
 
   back() {

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController,App } from 'ionic-angular';
 
 /**
  * Generated class for the PayResultPage page.
@@ -14,12 +14,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'pay-result.html',
 })
 export class PayResultPage {
+  paySuccess: boolean;
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public appCtrl: App
+  ) {
+    this.paySuccess = this.navParams.get('paySuccess');
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PayResultPage');
+  }
+
+  orderDetail(){
+    this.appCtrl.getRootNav().push('OrderPage');
   }
 
 }

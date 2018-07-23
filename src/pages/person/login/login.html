@@ -18,14 +18,14 @@
           <label>
             <ion-icon name="ios-phone-portrait"> </ion-icon>
           </label>
-          <input type="text"  formControlName="mobileNum" placeholder='手机号码'>
+          <input type="text"  formControlName="mobileNum" [(ngModel)]="params.user_name" placeholder='手机号码'>
           <p *ngIf="loginErrors['mobileNum']">手机格式有误</p>
         </div>
         <div class="input_box" [class.error]="loginErrors['password']">
           <label>
             <ion-icon name="ios-lock-outline"> </ion-icon>
           </label>
-          <input type="password" formControlName="password" placeholder='密 码'>
+          <input type="password" formControlName="password" [(ngModel)]="params.password" placeholder='密 码'>
           <p *ngIf="loginErrors['password']">{{loginErrors['password']}}</p>
         </div>
       </form>

@@ -124,6 +124,7 @@ page-check-out {
       line-height: 49px;
       height: 49px;
       padding:0 10px;
+      white-space: nowrap;
       span{
         font-size: 12px;
         float: left;
@@ -146,6 +147,7 @@ page-check-out {
       color:#fff;
       text-align: center;
       font-size: 16px;
+      white-space: nowrap;
       span{
         font-size: 12px;
       }
@@ -164,6 +166,7 @@ page-check-out {
     }
     p{
       float: right;
+      white-space: nowrap;
     }
   }
   .rule {
@@ -173,6 +176,7 @@ page-check-out {
     padding: 0 10px;
     border-top:1px solid #f2f2f2;
     font-size: 12px;
+    white-space: nowrap;
     .price{
       float: none;
       color:#FF5100;

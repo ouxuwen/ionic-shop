@@ -51,6 +51,13 @@ export class RegisterPage {
       'phone': "手机号码格式有误"
     }
   };
+  params:any = {
+    username: "",
+    mobile:"",
+    password: "",
+    send_param: "",
+    parentNum: ""
+  }
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -106,16 +113,10 @@ export class RegisterPage {
 
   register() {
     if (this.registerForm.invalid || this.registerForm.controls.password.value != this.registerForm.controls.rePassword.value) return;
-    let params = {
-      username: this.registerForm.controls.userName.value,
-      mobile: this.registerForm.controls.mobileNum.value,
-      password: this.registerForm.controls.password.value,
-      send_param: this.registerForm.controls.phoneCode.value,
-      parentNum: this.registerForm.controls.parentNum.value
-    }
-    this.personService.register(params).subscribe(res => {
 
-      this.storage.set('userInfo',{uid:res['data'].uid,...params});
+    this.personService.register(this.params).subscribe(res => {
+
+      this.storage.set('userInfo',{uid:res['data'].uid,...this.params});
       this.navCtrl.setRoot("BusinessLicensePage");
     })
 

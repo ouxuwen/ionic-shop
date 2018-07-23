@@ -17,14 +17,14 @@
           <label>
             <ion-icon name="ios-phone-portrait"> </ion-icon>
           </label>
-          <input type="text" formControlName="mobileNum" placeholder='手机号码'>
+          <input type="text" formControlName="mobileNum" [(ngModel)]="params.mobile" placeholder='手机号码'>
           <p *ngIf="registerErrors['mobileNum']">{{registerErrors['mobileNum']}}</p>
         </div>
         <div class="input_box" [class.error]="registerErrors['phoneCode']">
           <label>
             <ion-icon name="ios-calendar-outline"></ion-icon>
           </label>
-          <input type="text" class="captcha_input" formControlName="phoneCode" placeholder='验证码'>
+          <input type="text" class="captcha_input" [(ngModel)]="params.send_param" formControlName="phoneCode" placeholder='验证码'>
           <span class="captcha_text" (click)="sendCaptcha()" tappable>{{captchaText}}</span>
           <p *ngIf="registerErrors['phoneCode']">{{registerErrors['phoneCode']}}</p>
         </div>
@@ -32,14 +32,14 @@
           <label>
             <ion-icon name="ios-person-outline"> </ion-icon>
           </label>
-          <input type="text" formControlName="userName" placeholder='姓 名'>
+          <input type="text" formControlName="userName" [(ngModel)]="params.username" placeholder='姓 名'>
           <p *ngIf="registerErrors['userName']">{{registerErrors['userName']}}</p>
         </div>
         <div class="input_box" [class.error]="registerErrors['password']">
           <label>
             <ion-icon name="ios-lock-outline"> </ion-icon>
           </label>
-          <input type="password" formControlName="password" placeholder='密 码'>
+          <input type="password" formControlName="password" [(ngModel)]="params.password" placeholder='密 码'>
           <p *ngIf="registerErrors['password']">{{registerErrors['password']}}</p>
         </div>
         <div class="input_box" [class.error]="registerErrors['rePassword']">
@@ -54,7 +54,7 @@
             <label>
               <ion-icon name="ios-phone-portrait"></ion-icon>
             </label>
-            <input type="text" formControlName="parentNum" placeholder='推荐人手机号码（非必填）'>
+            <input type="text" formControlName="parentNum" [(ngModel)]="params.parentNum" placeholder='推荐人手机号码（非必填）'>
             <p *ngIf="registerErrors['parentNum']">{{registerErrors['parentNum']}}</p>
         </div>
       </form>

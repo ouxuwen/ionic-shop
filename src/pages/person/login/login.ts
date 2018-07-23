@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController ,App} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, App, ToastController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from "../../../validators/validators";
@@ -42,6 +42,11 @@ export class LoginPage {
       'required': "请再次输入密码"
     },
   };
+
+  params: any = {
+    user_name: '',
+    password: ''
+  }
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -50,16 +55,17 @@ export class LoginPage {
     public personService: PersonService,
     public storage: Storage,
     public appCtrl: App,
+    private toastCtrl: ToastController
   ) {
+
   }
 
   ngOnInit() {
     this.initForm();
-
   }
 
   ionViewDidLoad() {
-    console.log('login',this.navCtrl)
+    console.log('login', this.navCtrl);
   }
 
   // 初始化表单控件
@@ -90,21 +96,15 @@ export class LoginPage {
 
   login() {
     if (this.loginForm.invalid) return;
-    let params = {
-      user_name: this.loginForm.controls['mobileNum'].value,
-      password: this.loginForm.controls['password'].value
-    }
-    this.personService.login(params).subscribe(res => {
-      if(res['code'] ==1){
-        this.storage.set("userInfo", res['data']).then((res)=>{
+
+    this.personService.login(this.params).subscribe(res => {
+      if (res['code'] == 1) {
+        this.storage.set("userInfo", res['data']).then((res) => {
           this.navCtrl.setRoot("TabsPage");
         });
-      }else{
-        this.navCtrl.setRoot("BusinessLicensePage",{'notLogin':1});
+      } else {
+        this.navCtrl.setRoot("BusinessLicensePage", { 'notLogin': 1 });
       }
-      
-
-
     })
 
   }

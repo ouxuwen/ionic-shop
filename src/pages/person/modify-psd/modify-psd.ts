@@ -39,6 +39,10 @@ export class ModifyPsdPage {
       'notMatch':"两次输入不一致"
     },
   };
+ params:any = {
+    old_password:'',
+    new_password:''
+  }
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -87,12 +91,8 @@ export class ModifyPsdPage {
     if(this.modPsdForm.invalid || this.modPsdForm.controls.password.value != this.modPsdForm.controls.rePassword.value){
       return;
     }
-    let params = {
-      old_password:this.modPsdForm.controls.oldPsd.value,
-      new_password:this.modPsdForm.controls.password.value
-    }
-    this.personService.modifyPassword(params).subscribe(res =>{
 
+    this.personService.modifyPassword(this.params).subscribe(res =>{
       this.alertCtrl.create({
         title: '温馨提示',
         message: '修改成功！',

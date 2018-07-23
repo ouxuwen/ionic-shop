@@ -1,4 +1,4 @@
-import { HttpClient, HttpRequest } from '@angular/common/http';
+import { Http, Response, URLSearchParams, RequestOptions } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable, TimeoutError, Subscription } from "rxjs";
 import { LoadingController, AlertController, NavController, App } from 'ionic-angular';
@@ -18,27 +18,22 @@ export class BaseHttpProvider {
   token: any;
   navCtrl: NavController;
   constructor(
-    public http: HttpClient,
+    public http: Http,
     public loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
     public storage: Storage,
     public appCtrl: App,
   ) {
     let current = this.appCtrl.getActiveNavs()[0];
-    console.log(this.appCtrl.getActiveNavs())
+
     if (current.parent) {
       this.navCtrl = current.parent
     } else {
       this.navCtrl = current;
     }
-
-    console.log(this.appCtrl.getActiveNavs())
-
   }
 
-  getToken() {
-    this.token = this.storage.get("token");
-  }
+
 
   errorHandler(res, params) {
     if (res.code === 0) {
@@ -56,7 +51,7 @@ export class BaseHttpProvider {
       });
       alert.present();
 
-      this.storage.remove('userInfo').then(()=>{
+      this.storage.remove('userInfo').then(() => {
         this.navCtrl.setRoot("LoginPage");
       });
     } else if (res.code === 403) {
@@ -77,29 +72,31 @@ export class BaseHttpProvider {
     }
   }
 
-  request(api, options,needLoading): Observable<Response> {
+  request(api, options, needLoading): Observable<Response> {
 
     let loading = this.loadingCtrl.create({
       spinner: "crescent",
       content: "加载中..."
     });
     return Observable.create(observer => {
-      if(needLoading)loading.present();
-      this.http.request("POST", this.url + api, options).subscribe(
+      if (needLoading) loading.present();
+      options['method'] = 'POST';
+      this.http.request(this.url + api, options).map(res => res.json()).subscribe(
         res => {
-          if(needLoading)loading.dismiss();
+          console.log(res)
+          if (needLoading) loading.dismiss();
           if (res['code'] != 1) {
             this.errorHandler(res, options.body);
           } else {
             observer.next(res);
           }
-          if((res['code'] == 403)){
+          if ((res['code'] == 403)) {
             observer.next(res);
           }
 
         },
         err => {
-          if(needLoading)loading.dismiss();
+          if (needLoading) loading.dismiss();
           let alert = this.alertCtrl.create({
             title: '温馨提示',
             subTitle: "网络故障，请稍后再试......",
@@ -113,7 +110,7 @@ export class BaseHttpProvider {
     })
   }
 
-  post(api: string, body: any = null,needLoading:boolean = true): Observable<Response> {
+  post(api: string, body: any = null, needLoading: boolean = true): Observable<Response> {
 
     let observer = Observable.create(obser => {
       this.storage.get('userInfo').then(userInfo => {
@@ -134,7 +131,7 @@ export class BaseHttpProvider {
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
           }
-        },needLoading).subscribe(res => {
+        }, needLoading).subscribe(res => {
           obser.next(res)
         }, err => {
           obser.error(err)
@@ -147,21 +144,21 @@ export class BaseHttpProvider {
 
   }
 
-  postJson(api: string, body: any = null,needLoading:boolean = true): Observable<Response> {
+  postJson(api: string, body: any = null, needLoading: boolean = true): Observable<Response> {
 
     let observer = Observable.create(obser => {
       this.storage.get('userInfo').then(userInfo => {
         let token = userInfo && userInfo.token ? userInfo.token : ''; //? this.token : "6ed20604fe946101be88e205ed5dbfa7"
         console.log(userInfo)
         const params = { token, ...body };
-        
+
         this.request(api, {
           //params:params,
-          body: {data:JSON.stringify(params)},
+          body: { data: JSON.stringify(params) },
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',
           }
-        },needLoading).subscribe(res => {
+        }, needLoading).subscribe(res => {
           obser.next(res)
         }, err => {
           obser.error(err)

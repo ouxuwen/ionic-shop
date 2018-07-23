@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,AlertController} from 'ionic-angular';
 import { OrderService } from '../../../providers/order';
 /**
  * Generated class for the OrderCommentPage page.
@@ -23,7 +23,7 @@ export class OrderCommentPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public orderService: OrderService,
-
+    public alertCtrl: AlertController,
   ) {
     this.orderDetail = this.navParams.get('orderDetail');
     console.log( this.orderDetail)
@@ -52,7 +52,19 @@ export class OrderCommentPage {
       goodsEvaluate:JSON.stringify(this.goodsEvaluate)
     }
     this.orderService.addGoodsEvaluate(params).subscribe(res => {
-
+      let alert = this.alertCtrl.create({
+        title: '温馨提示',
+        message: '提交评价成功！',
+        buttons: [
+          {
+            text: '确定',
+            role:'cancel',
+            handler: () => {
+                this.navCtrl.pop()
+            }
+          }
+        ]
+      }).present();
     })
   }
 

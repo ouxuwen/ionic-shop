@@ -126,6 +126,7 @@ page-order-detail {
     }
     p {
       float: right;
+      white-space: nowrap;
     }
   }
   .price_list {
@@ -234,6 +235,7 @@ page-order-detail {
       border-radius: 12.5px;
       float: right;
       margin-right: 15px;
+      white-space: nowrap;
     }
   }
 }

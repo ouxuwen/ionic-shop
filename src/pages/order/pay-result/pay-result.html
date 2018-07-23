@@ -4,15 +4,11 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>支 付 结 果</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
 
 <ion-content>
-
+  <div class="pay_success" *ngIf="paySuccess">
+    <img src="assets/imgs/pay_success.png" alt="">
+    <p>订单支付成功！</p>
+    <div>查看订单</div>
+  </div>
 </ion-content>

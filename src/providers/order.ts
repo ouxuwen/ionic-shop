@@ -27,6 +27,11 @@ export class OrderService {
     return this.base.post('/app/Order/orderDetail', data);
   }
 
+  //
+  orderDetailByNo(data) {
+    return this.base.post('/app/Order/orderDetailByNo', data);
+  }
+
   //物流详情页
   orderExpress(data) {
     return this.base.post('/app/Order/orderExpress', data);
@@ -72,5 +77,9 @@ export class OrderService {
   //pay
   mobileAlipay(data){
     return this.base.post('/app/pay/mobileAlipay', data);
+  }
+
+  getPayValueByNo(data){
+    return this.base.post('/app/pay/getPayValueByNo', data);
   }
 }

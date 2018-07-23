@@ -74,6 +74,7 @@ export class CheckOutPage {
   pay() { }
 
   orderInfo() {
+    this.goodsCount = 0;
     let params = this.tag == 'cart' ?
       {
         tag: this.tag,

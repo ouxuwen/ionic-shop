@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, App } from 'ionic-angular';
 import { OrderService } from '../../../providers/order';
 import { Storage } from '@ionic/storage';
 /**
@@ -22,36 +22,59 @@ export class OrderDetailPage {
   traces: any;
   tracesStatus = true;
   orderId: any;
-  appInfo:any;
+  appInfo: any;
+  outTradeNo: any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public orderService: OrderService,
     public alertCtrl: AlertController,
     public storage: Storage,
+    public appCtrl: App
   ) {
     this.orderId = this.navParams.get('orderId');
-    this.storage.get('appInfo').then(res =>{
+    this.outTradeNo = this.navParams.get('no');
+    this.storage.get('appInfo').then(res => {
       this.appInfo = res;
     });
   }
 
   init() {
-    this.orderService.orderDetail({ orderId: this.orderId }).subscribe(res => {
-      let data = res['data']
-      this.orderDetail = data.order;
-      this.expressCode = data.express_code;
-      this.expressName = data.express_name;
+    this.goodsCount = 0;
+    if (this.orderId) {
+      this.orderService.orderDetail({ orderId: this.orderId }).subscribe(res => {
+        let data = res['data']
+        this.orderDetail = data.order;
+        this.expressCode = data.express_code;
+        this.expressName = data.express_name;
 
-      if (this.expressCode) {
-        this.getExpressDetail(data.order.goods_packet_list[0].express_id);
-      }
-      if (this.orderDetail) {
-        this.orderDetail.order_goods.forEach(el => {
-          this.goodsCount += Number(el.num);
-        })
-      }
-    })
+        if (this.expressCode) {
+          this.getExpressDetail(data.order.goods_packet_list[0].express_id);
+        }
+        if (this.orderDetail) {
+          data.order.order_goods.forEach(el => {
+            this.goodsCount += Number(el.num);
+          })
+        }
+      })
+    } else {
+      this.orderService.orderDetailByNo({ no: this.outTradeNo }).subscribe(res => {
+        let data = res['data']
+        this.orderDetail = data.order;
+        this.expressCode = data.express_code;
+        this.expressName = data.express_name;
+
+        if (this.expressCode) {
+          this.getExpressDetail(data.order.goods_packet_list[0].express_id);
+        }
+        if (this.orderDetail) {
+          this.orderDetail.order_goods.forEach(el => {
+            this.goodsCount += Number(el.num);
+          })
+        }
+      })
+    }
+
   }
 
   ionViewDidEnter() {
@@ -111,24 +134,27 @@ export class OrderDetailPage {
   }
 
   // 去支付
-   orderPay(e){
+  orderPay(e) {
     this.orderService.orderPay({
       'id': e.order_id,
       'out_trade_no': e.out_trade_no
     }).subscribe(res => {
-      this.navCtrl.push('PayPage',{
-        'order_id':e.order_id,
-        'money':e.pay_money,
-        'out_trade_no':res['data'],
-        'payMethod':'REALIPAY',
-        'no':e.order_no
+      this.navCtrl.push('PayPage', {
+        'order_id': e.order_id,
+        'money': e.pay_money,
+        'out_trade_no': res['data'],
+        'payMethod': 'REALIPAY',
+        'no': e.order_no
       })
     })
-   
+
   }
 
   back() {
-    this.navCtrl.pop();
+    if (this.orderId) { this.navCtrl.pop(); }
+    else {
+      this.navCtrl.popToRoot();
+    }
   }
 
   // 评论
@@ -136,7 +162,7 @@ export class OrderDetailPage {
     this.navCtrl.push('OrderCommentPage', { 'orderDetail': this.orderDetail });
   }
 
-  refundDetail(){
+  refundDetail() {
 
   }
 

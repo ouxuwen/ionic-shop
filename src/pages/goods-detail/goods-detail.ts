@@ -131,7 +131,7 @@ export class GoodsDetailPage {
     setTimeout(() => {
       this.navCtrl.push('ImgTextDetailPage', { "navIndex": 2, 'description': this.goodsDetail['description'] })
       infiniteScroll.complete();
-    }, 500);
+    }, 300);
   }
 
   // 商品详情

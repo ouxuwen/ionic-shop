@@ -50,20 +50,23 @@ export class OrderPage {
     }
     this.orderService.myOrderList(params).subscribe(res => {
       let data = res['data']['data'];
-      if (refresher) {
-        this.orderList.concat(data);
-        refresher.complete();
-      } else {
-        this.orderList = data;
-      }
-      this.orderList.map(el => {
+      let totalCount = res['data'].total_count;
+      data.map(el => {
         let count = 0;
         el.order_item_list.forEach(go => {
           count += Number(go.num);
         })
         el['goods_count'] = count;
       })
-      if (data.length < 15) {
+      if (refresher) {
+        this.orderList = this.orderList.concat(data);
+        refresher.complete();
+      } else {
+        this.orderList = data;
+      }
+      
+      console.log(this.orderList.length)
+      if (data.length <14) {
         this.canLoadMore = false;
       }
     })
@@ -133,7 +136,7 @@ export class OrderPage {
 
   // 上拉
   doInfinite(refresher) {
-    if (!this.canLoadMore) return;
+    if (!this.canLoadMore) {refresher.complete();return;};
     this.pageNo++;
     this.getOrder(refresher);
   }

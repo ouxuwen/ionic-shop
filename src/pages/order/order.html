@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>订单管理</ion-title>
+    <ion-title>订 单 管 理</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -36,13 +36,14 @@
   </ion-toolbar>
   <div class="order_list" *ngIf="orderList">
     <div class="list_item" *ngFor="let order of orderList">
-      <p>订单编号：{{order.order_no}} <span>{{order.status_name}}</span>
+      <p>订单编号：{{order.order_no}}
+        <span>{{order.status_name}}</span>
         <ion-icon *ngIf="order.order_status != 1 && order.order_status != 2" class="delete" name="ios-trash" (click)="deleteOrderConfirm(order.order_id)"></ion-icon>
       </p>
       <ion-list>
         <ion-item *ngFor="let ele of order.order_item_list">
           <ion-label (click)='openDetail($event,order)'>
-            <image tappable  [src]="ele.picture.pic_cover_mid" alt=""></image>
+            <image tappable [src]="ele.picture.pic_cover_mid" alt=""></image>
             <div>
               <p class="name" tappable>{{ele.goods_name}}</p>
               <p class="type">规格：{{ele.sku_name}}</p>
@@ -55,29 +56,37 @@
         </ion-item>
       </ion-list>
       <div class="price">
-        共 <span>{{order.goods_count}}</span> 件商品,合计 <span> ¥{{order.pay_money}} </span> <i>  (含运费)</i>
+        共
+        <span>{{order.goods_count}}</span> 件商品,合计
+        <span> ¥{{order.pay_money}} </span>
+        <i> (含运费)</i>
       </div>
       <div class="status" *ngIf="order.order_status == 0">
-        <span tappable  (click)="deleteOrderConfirm(order.order_id)">取消订单</span> <span  tappable (click)="orderPay(order)">去 付 款</span>
+        <span tappable (click)="deleteOrderConfirm(order.order_id)">取消订单</span>
+        <span tappable (click)="orderPay(order)">去 付 款</span>
       </div>
       <div class="status" *ngIf="order.order_status == 1 ">
-        <span tappable  (click)="deleteOrderConfirm(order.order_id)">取消订单</span>
+        <span tappable (click)="deleteOrderConfirm(order.order_id)">取消订单</span>
       </div>
-      <div class="status" *ngIf="order.order_status == 2"  >
-          <span tappable (click)='openDetail($event,order)' >退 货</span> <span tappable (click)='openDetail($event,order)'>查看物流</span>
+      <div class="status" *ngIf="order.order_status == 2">
+        <span tappable (click)='openDetail($event,order)'>退 货</span>
+        <span tappable (click)='openDetail($event,order)'>查看物流</span>
       </div>
       <div class="status" *ngIf="order.order_status == 3">
-          <span tappable  (click)="deleteOrderConfirm(order.order_id)">删除订单</span>  <span *ngIf="order.is_evaluate!=1" tappable (click)="evaluate(order)">去评价</span>
-        </div>
+        <span tappable (click)="deleteOrderConfirm(order.order_id)">删除订单</span>
+        <span *ngIf="order.is_evaluate!=1" tappable (click)="evaluate(order)">去评价</span>
+      </div>
       <div class="status" *ngIf="order.order_status == 5">
-        <span tappable  (click)="deleteOrderConfirm(order.order_id)">删除订单</span>
+        <span tappable (click)="deleteOrderConfirm(order.order_id)">删除订单</span>
       </div>
       <div class="status" *ngIf="order.order_status == 4 ">
-        <span tappable  (click)="deleteOrderConfirm(order.order_id)">删除订单</span>
+        <span tappable (click)="deleteOrderConfirm(order.order_id)">删除订单</span>
       </div>
     </div>
   </div>
+  <p class="no_more" *ngIf="!canLoadMore && orderList.length!=0">没有数据啦~</p>
+  <p class="no_more" *ngIf="!canLoadMore && orderList.length!=0">亲，没有订单数据哦~</p>
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
-      <ion-infinite-scroll-content></ion-infinite-scroll-content>
-    </ion-infinite-scroll>
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

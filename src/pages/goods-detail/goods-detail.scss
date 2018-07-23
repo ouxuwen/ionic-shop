@@ -14,12 +14,14 @@ page-goods-detail {
     border-bottom: 1px solid #eeeeee;
     padding: 5px 10px;
     p {
+      white-space: nowrap;
       &.name {
         text-overflow: ellipsis;
         font-size: 16px;
         color: #333;
       }
       &.note {
+        
         margin: 5px;
         span {
           display: inline-block;

@@ -58,37 +58,47 @@ export class PayPage {
 
   alipayHandler(sign) {
     cordova.plugins.alipay.payment(sign,(res) => {
-      alert(JSON.stringify(res))
+      //alert(JSON.stringify(res))
       let message = '';
       if(res.resultStatus == 9000){
         this.paySuccess = true;
-        message = "支付成功！";
+        this.navCtrl.push('PayResultPage',{
+          paySuccess:this.paySuccess,
+          no:this.outTradeNo,
+          orderId:this.orderId,
+          money:this.payMoney
+        })
 
       }else{
         this.paySuccess = false;
-        message = "支付失败！";
+        this.showResult();
       }
-      this.showResult(message,()=>{
-       if(this.paySuccess) {this.navCtrl.push('PayResultPage',{
-          paySuccess:this.paySuccess,
-        })}
-      });
+      
 
     }, (err) => {
       this.paySuccess = false;
-      this.showResult(err.memo);
+      this.showResult();
     })
   }
 
-  showResult(message,handler?){
+  showResult(){
     let alert = this.alertCtrl.create({
-      title: '温馨提示',
-      message: message,
+      title: '支付情况',
+      message: '支付遇到了问题？',
       buttons: [
         {
-          text: '确定',
+          text: '取消',
+          role:'cancel'
+        },
+        {
+          text: '已完成支付',
           handler: () => {
-            handler()
+            this.navCtrl.push('PayResultPage',{
+              paySuccess:this.paySuccess,
+              no:this.outTradeNo,
+              orderId:this.orderId,
+              money:this.payMoney
+            })
           }
         }
       ]

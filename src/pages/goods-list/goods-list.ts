@@ -73,7 +73,7 @@ export class GoodsListPage {
     this.goodsService.goodsList(params).subscribe(res => {
       if(refresher)refresher.complete();
       let data = res['data'];
-      if (data.goods_list.lenght < 15) {
+      if (data.goods_list.lenght < 14) {
         this.canLoadMore = false;
       } else {
         this.canLoadMore = true;

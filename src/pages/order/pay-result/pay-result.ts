@@ -16,8 +16,8 @@ import { OrderService } from '../../../providers/order';
 export class PayResultPage {
   paySuccess: any;
   outTradeNo: any;
-  orderId:any;
-  payMoney:any;
+  orderId: any;
+  payMoney: any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -28,39 +28,40 @@ export class PayResultPage {
     this.outTradeNo = this.navParams.get('no');
     this.orderId = this.navParams.get('orderId');
     this.payMoney = this.navParams.get('money');
-    
+
     console.log(this.paySuccess)
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PayResultPage');
-    if(!this.paySuccess){
+    if (!this.paySuccess) {
       this.getPayValueByNo()
+    } else {
+      this.navCtrl.remove(this.navCtrl.length() - 2, 1);
     }
   }
 
   orderDetail() {
-    this.appCtrl.getRootNav().push('OrderDetailPage', { 'no': this.outTradeNo });
+
+    this.navCtrl.push('OrderDetailPage', { 'no': this.outTradeNo }).then(() => {
+      this.navCtrl.remove(0, this.navCtrl.length()).then(() => {
+        if (this.paySuccess) {
+          this.navCtrl.insert(0, "OrderPage", { "status": 1 });
+        } else {
+          this.navCtrl.insert(0, "OrderPage", { "status": 0 });
+        }
+      });
+    });
   }
 
-  getPayValueByNo(){
-    this.orderService.getPayValueByNo({'out_trade_no':this.outTradeNo}).subscribe(res =>{
+  getPayValueByNo() {
+    this.orderService.getPayValueByNo({ 'out_trade_no': this.outTradeNo }).subscribe(res => {
       this.paySuccess = true;
     })
   }
 
-  repay(){
-    this.orderService.orderPay({
-      'id': this.orderId,
-      'out_trade_no': this.outTradeNo
-    }).subscribe(res => {
-      this.navCtrl.push('PayPage',{
-        'order_id':this.orderId,
-        'money':this.payMoney,
-        'out_trade_no':res['data'],
-        'payMethod':'REALIPAY',
-      })
-    })
+  repay() {
+    this.navCtrl.pop();
   }
 
 }

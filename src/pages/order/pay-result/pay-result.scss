@@ -20,9 +20,41 @@ page-pay-result {
     }
     div{
       padding:5px 10px;
-      border:0.5px solid #f56c6c;
+      border:1px solid #f56c6c;
       color:#f56c6c;
       border-radius: 4px;
+    }
+  }
+
+  .pay_failed{
+    height: 100%;
+    display: flex;
+    width: 100;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img{
+      width:160px;
+      height: 160px;
+
+    }
+    p{
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      color:#969696;
+      margin: 20px ;
+    }
+    div{
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-around;
+      span{
+        padding:5px 10px;
+        border:1px solid #f56c6c;
+        color:#f56c6c;
+        border-radius: 4px;
+      }
     }
   }
 }

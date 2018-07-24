@@ -62,11 +62,11 @@
         <i> (含运费)</i>
       </div>
       <div class="status" *ngIf="order.order_status == 0">
-        <span tappable (click)="deleteOrderConfirm(order.order_id)">取消订单</span>
+        <span tappable (click)="deleteOrderConfirm(order.order_id)">删除订单</span>
         <span tappable (click)="orderPay(order)">去 付 款</span>
       </div>
       <div class="status" *ngIf="order.order_status == 1 ">
-        <span tappable (click)="deleteOrderConfirm(order.order_id)">取消订单</span>
+        <span tappable (click)='openDetail($event,order)'>退 款</span>
       </div>
       <div class="status" *ngIf="order.order_status == 2">
         <span tappable (click)='openDetail($event,order)'>退 货</span>
@@ -85,7 +85,7 @@
     </div>
   </div>
   <p class="no_more" *ngIf="!canLoadMore && orderList.length!=0">没有数据啦~</p>
-  <p class="no_more" *ngIf="!canLoadMore && orderList.length!=0">亲，没有订单数据哦~</p>
+  <p class="no_more" *ngIf="!canLoadMore && orderList.length==0">亲，没有订单数据哦~</p>
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
   </ion-infinite-scroll>

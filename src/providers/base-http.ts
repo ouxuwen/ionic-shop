@@ -80,7 +80,7 @@ export class BaseHttpProvider {
     });
     return Observable.create(observer => {
       if (needLoading) loading.present();
-      options['method'] = 'POST';
+
       this.http.request(this.url + api, options).map(res => res.json()).subscribe(
         res => {
           console.log(res)
@@ -127,6 +127,7 @@ export class BaseHttpProvider {
         }
         this.request(api, {
           //params:params,
+          'method':'POST',
           body: params.toString(),
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -150,14 +151,23 @@ export class BaseHttpProvider {
       this.storage.get('userInfo').then(userInfo => {
         let token = userInfo && userInfo.token ? userInfo.token : ''; //? this.token : "6ed20604fe946101be88e205ed5dbfa7"
         console.log(userInfo)
-        const params = { token, ...body };
-
+        let params = new FormData();
+        if (body) {
+          for (const n in body) {
+            if (body.hasOwnProperty(n)) {
+              params.append(n, body[n]);
+            }
+          }
+        }
+        api = api+'?token='+token
         this.request(api, {
           //params:params,
-          body: { data: JSON.stringify(params) },
-          headers: {
-            'Content-Type': 'application/json; charset=UTF-8',
-          }
+          method:'POST',
+          body: params,
+          // headers: new Headers({
+          //   'Content-Type': '; charset=UTF-8'
+          // })
+         // withCredentials:true
         }, needLoading).subscribe(res => {
           obser.next(res)
         }, err => {

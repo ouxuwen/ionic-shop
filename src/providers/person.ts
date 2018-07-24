@@ -81,7 +81,7 @@ export class PersonService {
 
   // 修改用户名
   modifyProfile(data){
-    return this.base.post('/app/member/modifyProfile', data);
+    return this.base.postJson('/app/member/modifyProfile', data);
   }
 
 

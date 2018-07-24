@@ -123,8 +123,11 @@ export class GoodsDetailPage {
 
 
   goToCart() {
-    //  this.navCtrl.popToRoot();
-    this.navCtrl.setRoot('ShoppingCarPage');
+    this.navCtrl.popToRoot();
+    // this.navCtrl.setRoot('ShoppingCarPage');
+    this.navCtrl.parent.select(2);
+    //console.log(this.navCtrl.parent);
+
   }
 
   doInfinite(infiniteScroll) {

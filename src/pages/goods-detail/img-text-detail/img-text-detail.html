@@ -11,7 +11,7 @@
 </ion-header>
 
 <ion-content>
-  <ng-container *ngIf="commentList">
+
     <div class="detail_nav">
       <span tappable (click)="back()">商 品</span>
       <span tappable [class.active]="navIndex == 2" (click)="changeIndex(2)">详 情</span>
@@ -20,6 +20,7 @@
     <div *ngIf="navIndex == 2" class="img_text" [innerHtml]='htmlContent'>
 
     </div>
+    <ng-container *ngIf="commentList">
     <div *ngIf="navIndex == 3" class="comment">
       <div class="j_tab_menu">
         <ul class="clear">

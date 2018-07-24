@@ -151,8 +151,9 @@ export class OrderDetailPage {
   }
 
   back() {
-    if (this.orderId) { this.navCtrl.pop(); }
-    else {
+    if (this.orderId) {
+      this.navCtrl.pop();
+    }else {
       this.navCtrl.popToRoot();
     }
   }
@@ -162,8 +163,9 @@ export class OrderDetailPage {
     this.navCtrl.push('OrderCommentPage', { 'orderDetail': this.orderDetail });
   }
 
-  refundDetail() {
-
+  refundDetail(e, goods_id) {
+    e.stopPropagation();
+    this.navCtrl.push('RefundDetailPage', {'order_goods_id': goods_id, 'order_id': this.orderDetail.order_id, 'order_status': this.orderDetail.order_status });
   }
 
 }

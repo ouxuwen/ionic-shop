@@ -30,7 +30,7 @@ page-img-text-detail {
     padding-top:48px;
     background: #fff;
     .j_tab_menu{
-      padding:10px;
+      padding-top:10px;
       border-bottom: 1px solid #f5f5f5;
       li{
         float: left;
@@ -39,6 +39,8 @@ page-img-text-detail {
         color:#FF8161;
         border:1px solid #FF8161;
         border-radius: 15px;
+        white-space: nowrap;
+        margin-bottom: 10px;
         &.selected{
           color:#fff;
           background: #FF8161;

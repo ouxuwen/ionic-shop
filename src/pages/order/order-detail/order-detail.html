@@ -111,7 +111,6 @@
     </div>
     <div class="btn_group" *ngIf="orderDetail.order_status == -1">
         <span tappable (click)="deleteOrder()">查看退款进度</span>
-        <span tappable (click)="evaluate()">取消退款</span>
       </div>
     <div class="btn_group" *ngIf="orderDetail.order_status == 4 || orderDetail.order_status == 5">
       <span tappable (click)="deleteOrder()">删除订单</span>

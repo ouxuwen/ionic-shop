@@ -38,6 +38,15 @@ export class PayPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PayPage');
+    if(Number(this.payMoney)<=0){
+      this.paySuccess = true;
+      this.navCtrl.push('PayResultPage',{
+        paySuccess:this.paySuccess,
+        no:this.outTradeNo,
+        orderId:this.orderId,
+        money:this.payMoney
+      })
+    }
   }
 
   pay() {
@@ -73,7 +82,7 @@ export class PayPage {
         this.paySuccess = false;
         this.showResult();
       }
-      
+
 
     }, (err) => {
       this.paySuccess = false;
@@ -87,7 +96,7 @@ export class PayPage {
       message: '支付遇到了问题？',
       buttons: [
         {
-          text: '取消',
+          text: '继续支付',
           role:'cancel'
         },
         {
@@ -105,8 +114,5 @@ export class PayPage {
     }).present();
   }
 
-  canGoBack(){
-    if(this.paySuccess){return false;}
-    else{return true}
-  }
+
 }

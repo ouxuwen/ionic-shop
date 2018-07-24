@@ -23,7 +23,9 @@ export class ModifyProfilePage {
     destinationType: this.camera.DestinationType.DATA_URL,
     encodingType: this.camera.EncodingType.JPEG,
     mediaType: this.camera.MediaType.PICTURE,
-    sourceType: 1
+    sourceType: 1,
+    targetWidth:200,
+    targetHeight:200
   }
   constructor(
     public navCtrl: NavController,

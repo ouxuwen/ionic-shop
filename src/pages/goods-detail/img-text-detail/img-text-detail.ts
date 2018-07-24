@@ -45,6 +45,9 @@ export class ImgTextDetailPage {
 
   changeIndex(i){
     this.navIndex = i;
+    if(this.navIndex == 3){
+      this.getGoodsComments();
+    }
   }
 
   back(){

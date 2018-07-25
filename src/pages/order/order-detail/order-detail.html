@@ -96,7 +96,7 @@
       </p>
     </div>
     <div class="btn_group" *ngIf="orderDetail.order_status == 0">
-      <span tappable (click)="deleteOrder()">关闭订单</span>
+      <span tappable (click)="closeOrderConfirm()">关闭订单</span>
       <span  tappable (click)="orderPay(orderDetail)">去 付 款</span>
     </div>
     <div class="btn_group" *ngIf="orderDetail.order_status == 1">
@@ -106,15 +106,18 @@
       <span tappable (click)="orderTakeDelivery()">确认收货</span>
     </div>
     <div class="btn_group" *ngIf="orderDetail.order_status == 3">
-      <span tappable (click)="deleteOrder()">删除订单</span>
+      <span tappable (click)="closeOrderConfirm()">关闭订单</span>
       <span *ngIf="orderDetail.is_evaluate!=1" tappable (click)="evaluate()">去 评 价</span>
     </div>
     <div class="btn_group" *ngIf="orderDetail.order_status == -1">
         <span tappable (click)="deleteOrder()">查看退款进度</span>
       </div>
-    <div class="btn_group" *ngIf="orderDetail.order_status == 4 || orderDetail.order_status == 5">
-      <span tappable (click)="deleteOrder()">删除订单</span>
+    <div class="btn_group" *ngIf="orderDetail.order_status == 4 ">
+      <span tappable (click)="closeOrderConfirm()">关闭订单</span>
     </div>
+    <div class="btn_group" *ngIf=" orderDetail.order_status == 5">
+        <span tappable (click)="deleteOrder()">删除订单</span>
+      </div>
     <section class="interval"></section>
     <div class="service">
       <button ion-button icon-start small>

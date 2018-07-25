@@ -5,14 +5,43 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>my-team</ion-title>
+    <ion-title>我的二级分销员</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content>
+  <div class="summery">
+    <img src="assets/imgs/team2.png" alt="">
+    <div>
+      <div>
+        <p>分销员人数</p>
+        <p>{{teamCount}}</p>
+      </div>
+      <div>
+        <p>已获得分销积分</p>
+        <p>{{teamPoint}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="team_list">
+    <ion-list *ngIf="teamList">
+      <ion-item *ngFor="let item of teamList">
+        <ion-avatar item-start>
+          <img [src]="item.user_headimg?item.user_headimg:'assets/imgs/profile_icon.png'">
+        </ion-avatar>
+        <h3>{{item.nick_name}}</h3>
+        <p class="time">注册时间：{{item.reg_time*1000 | date:"yyyy-MM-dd hh:mm:ss"}}</p>
 
+        <div item-end>
+          <div class="pay">总共消费：¥ {{item.money}}</div>
+          <div class="point">获得积分：{{item.point}}</div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

@@ -64,6 +64,10 @@ export class OrderService {
   deleteOrder(data) {
     return this.base.post('/app/Order/deleteOrder', data);
   }
+  // 关闭订单
+  orderClose(data) {
+    return this.base.post('/app/Order/orderClose', data);
+  }
   // 订单后期支付页面
   orderPay(data) {
     return this.base.post('/app/Order/orderPay', data);

@@ -64,7 +64,7 @@ export class OrderPage {
       } else {
         this.orderList = data;
       }
-      
+
       console.log(this.orderList.length)
       if (data.length <14) {
         this.canLoadMore = false;
@@ -109,6 +109,36 @@ export class OrderPage {
     })
   }
 
+
+  closeOrderConfirm(id) {
+    let alert = this.alertCtrl.create({
+      title: '温馨提示',
+      message: '亲，你确定要关闭吗?',
+      buttons: [
+        {
+          text: '取消',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: '确定',
+          handler: () => {
+            this.closeOrder(id);
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+  closeOrder(id) {
+    this.orderService.orderClose({'order_id':id}).subscribe(res =>{
+      this.getOrder();
+    })
+  }
+
   // //退款
   // refund(id){
   //   this.orderService.deleteOrder({'order_id':id}).subscribe(res =>{
@@ -130,8 +160,8 @@ export class OrderPage {
         'no':e.order_no
       })
     })
-   
-   
+
+
   }
 
   // 上拉

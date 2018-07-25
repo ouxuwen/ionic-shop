@@ -2,12 +2,12 @@ const DEPLOY = "debug";
 
 const FETCH = {
   "production": {
-    urlPrefix: 'http://j3b8fj.natappfree.cc/ionic-shop/index.php',
-    imgPrefix: 'http://j3b8fj.natappfree.cc/ionic-shop/'
+    urlPrefix: 'http://127.0.0.1/ionic-shop/index.php',
+    imgPrefix: 'http://127.0.0.1/ionic-shop/'
   },
   "debug": {
-    urlPrefix: 'http://j3b8fj.natappfree.cc/ionic-shop/index.php',
-    imgPrefix: 'http://j3b8fj.natappfree.cc/ionic-shop/'
+    urlPrefix: 'http://127.0.0.1/ionic-shop/index.php',
+    imgPrefix: 'http://127.0.0.1/ionic-shop/'
   }
 }
 

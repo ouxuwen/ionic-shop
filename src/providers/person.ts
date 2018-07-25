@@ -84,5 +84,19 @@ export class PersonService {
     return this.base.postJson('/app/member/modifyProfile', data);
   }
 
+  // 分销总消费
+  getLevelPoint(data){
+    return this.base.post('/app/member/getLevelPoint', data);
+  }
+
+  // 获得分销1级
+  getLevelOne(data){
+    return this.base.post('/app/member/getLevelOne', data);
+  }
+
+  // 获得分销2级
+  getLevelTwo(data){
+    return this.base.post('/app/member/getLevelTwo', data);
+  }
 
 }

@@ -168,4 +168,34 @@ export class OrderDetailPage {
     this.navCtrl.push('RefundDetailPage', {'order_goods_id': goods_id, 'order_id': this.orderDetail.order_id, 'order_status': this.orderDetail.order_status });
   }
 
+
+
+  closeOrderConfirm(id) {
+    let alert = this.alertCtrl.create({
+      title: '温馨提示',
+      message: '亲，你确定要关闭吗?',
+      buttons: [
+        {
+          text: '取消',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: '确定',
+          handler: () => {
+            this.closeOrder();
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+  closeOrder() {
+    this.orderService.orderClose({'order_id':this.orderId}).subscribe(res =>{
+      this.navCtrl.pop();
+    })
+  }
 }

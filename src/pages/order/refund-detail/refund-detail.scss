@@ -1,3 +1,91 @@
 page-refund-detail {
+  .refund_detail{
+    color:#488aff;
+    padding:10px;
+    font-size: 14px;
+    margin-bottom:10px;
+    border-bottom: 1px solid #f2f2f2;
+    p{
+      line-height: 25px;
+    }
+    span{
+      float: right;
+      color:#f56c6c;
+      font-size: 16px;
+    }
+    div{
+      color:#707070;
+    }
 
+  }
+  .traces {
+    padding: 0 15px;
+    >p {
+      text-align: center;
+      color: #707070;
+    }
+    .time_line {
+      padding-left: 100px;
+      .line_item {
+        position: relative;
+        padding-bottom: 15px;
+        .line_text {
+          position: relative;
+          top: -3px;
+          height: 100px;
+          p {
+            line-height: 30px;
+            font-size: 16px;
+            font-weight:blod;
+            color: #707070;
+            &.active{
+              color: #488aff;
+            }
+          }
+          span{
+            line-height: 20px;
+            font-size: 12px;
+            color: #969696;
+          }
+        }
+
+        .line_point {
+          position: absolute;
+          top: 0;
+          left: -70px;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          text-align: center;
+          line-height: 44px;
+          font-size: 28px;
+          font-weight: bold;
+          color:#969696;
+          border: 3px solid #ddd;
+          background: #fff;
+          z-index: 10;
+          &.active{
+            border-color: #488aff;
+            color:#488aff;
+          }
+        }
+        .line_line {
+          position: absolute;
+          top: 0;
+          width: 3px;
+          background: #ddd;
+          left: -47px;
+          height: 100%;
+          &.active{
+            background: #488aff;
+          }
+        }
+        &:last-child {
+          .line_line {
+            display: none;
+          }
+        }
+      }
+    }
+  }
 }

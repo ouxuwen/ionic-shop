@@ -86,4 +86,9 @@ export class OrderService {
   getPayValueByNo(data){
     return this.base.post('/app/pay/getPayValueByNo', data);
   }
+
+  // 取消退款
+  cancleRefund(data){
+    return this.base.post('/app/pay/cancleOrder', data);
+  }
 }

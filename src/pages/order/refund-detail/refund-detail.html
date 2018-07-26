@@ -7,12 +7,67 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>refund-detail</ion-title>
+    <ion-title>退 款 进 度</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <ng-container *ngIf="refundDetail">
+    <div>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <image [src]="refundDetail.order_refund.picture_info.pic_cover_mid"></image>
+        </ion-thumbnail>
+        <h2>{{refundDetail.order_refund.goods_name}}</h2>
+        <p>退款时间：{{refundDetail.order_refund.refund_time*1000 | date:"yyyy-MM-dd hh:mm:ss"}}</p>
+      </ion-item>
+    </div>
+    <div class="refund_detail">
+      <p>
+        退款金额：
+        <span>
+          ¥ {{refundDetail.order_refund.refund_require_money}}
+        </span>
+      </p>
+      <p>退款原因： </p>
+      <div>
+        {{refundDetail.order_refund.refund_reason}}
+      </div>
+    </div>
+    <div class="refund_process" padding>
+      <div class="traces">
+        <div class="time_line">
+          <div class="line_item">
+            <div class="line_text">
+              <p [class.active]="refundDetail.order_refund.refund_status>2">{{refundDetail.order_refund.refund_info[0].action}}</p>
+              <span>{{refundDetail.order_refund.refund_info[0].action_time*1000 | date:"yyyy-MM-dd hh:mm:ss"}}</span>
+            </div>
+            <div class="line_point" [class.active]="refundDetail.order_refund.refund_status>2">1</div>
+            <div class="line_line" [class.active]="refundDetail.order_refund.refund_status>2"></div>
+          </div>
+          <div class="line_item">
+            <div class="line_text">
+              <p *ngIf="refundDetail.order_refund.refund_info[1]" class="active">{{refundDetail.order_refund.refund_info[1].action}}</p>
+              <p *ngIf="!refundDetail.order_refund.refund_info[1]" [class.active]="refundDetail.order_refund.refund_status>3">等待卖家确认退款</p>
+              <span *ngIf="refundDetail.order_refund.refund_info[1]">{{refundDetail.order_refund.refund_info[1].action_time*1000 | date:"yyyy-MM-dd hh:mm:ss"}}</span>
+            </div>
+            <div class="line_point" [class.active]="refundDetail.order_refund.refund_status>3">2</div>
+            <div class="line_line" [class.active]="refundDetail.order_refund.refund_status>3"></div>
+          </div>
+          <div class="line_item">
+            <div class="line_text">
+              <p *ngIf="refundDetail.order_refund.refund_info[2]" class="active">{{refundDetail.order_refund.refund_info[2].action}}</p>
+              <p *ngIf="!refundDetail.order_refund.refund_info[2]" [class.active]="refundDetail.order_refund.refund_status>4">退款已成功</p>
+              <span *ngIf="refundDetail.order_refund.refund_info[2]">{{refundDetail.order_refund.refund_info[2].action_time*1000 | date:"yyyy-MM-dd hh:mm:ss"}}</span>
+            </div>
+            <div class="line_point" [class.active]="refundDetail.order_refund.refund_status>4">3</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button ion-button full tappable *ngIf="refundDetail.order_refund.refund_status==1" (click)="cancelRefund()">取消退款</button>
+  </ng-container>
 
 </ion-content>

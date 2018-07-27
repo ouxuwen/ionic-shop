@@ -130,8 +130,9 @@ export class RegisterPage {
     if (this.registerErrors['mobileNum']) {
       return;
     }
-    this.isWaiting = true;
+
     this.personService.getCaptcha({ mobile: this.params.mobile }).subscribe(res => {
+      this.isWaiting = true;
       this.toastCtrl.create({
         message: "验证码发送成功",
         duration: 1000,

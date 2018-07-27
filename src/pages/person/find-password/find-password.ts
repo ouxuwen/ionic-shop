@@ -109,6 +109,7 @@ export class FindPasswordPage {
         duration: 1000,
         position: 'middle',
       }).present();
+      this.navCtrl.pop();
     })
   }
 
@@ -117,8 +118,9 @@ export class FindPasswordPage {
     if (this.findPsdErrors['mobileNum']) {
       return;
     }
-    this.isWaiting = true;
+
     this.personService.getFindCaptcha({ mobile: this.params.mobile }).subscribe(res => {
+      this.isWaiting = true;
       this.toastCtrl.create({
         message: "验证码发送成功",
         duration: 1000,

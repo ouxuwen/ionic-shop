@@ -96,6 +96,7 @@ export class BaseHttpProvider {
 
         },
         err => {
+          console.log(err)
           if (needLoading) loading.dismiss();
           let alert = this.alertCtrl.create({
             title: '温馨提示',
@@ -131,7 +132,9 @@ export class BaseHttpProvider {
           body: params.toString(),
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-          }
+          },
+          withCredentials:true
+
         }, needLoading).subscribe(res => {
           obser.next(res)
         }, err => {

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from "../../../validators/validators";
 import { PersonService } from "../../../providers/person";
@@ -21,6 +21,7 @@ export class RegisterPage {
   captchaText: any = "获取验证码";
   isWaiting: boolean = false; //等验证码
   waitTime: any = 60;
+  timer: any;
   registerErrors = {
     'mobileNum': '',
     'password': '',
@@ -51,9 +52,9 @@ export class RegisterPage {
       'phone': "手机号码格式有误"
     }
   };
-  params:any = {
+  params: any = {
     username: "",
-    mobile:"",
+    mobile: "",
     password: "",
     send_param: "",
     parentNum: ""
@@ -63,7 +64,8 @@ export class RegisterPage {
     public navParams: NavParams,
     public formBuilder: FormBuilder,
     public personService: PersonService,
-    public storage:Storage
+    public storage: Storage,
+    public toastCtrl: ToastController,
   ) {
   }
 
@@ -116,7 +118,7 @@ export class RegisterPage {
 
     this.personService.register(this.params).subscribe(res => {
 
-      this.storage.set('userInfo',{uid:res['data'].uid,...this.params});
+      this.storage.set('userInfo', { uid: res['data'].uid, ...this.params });
       this.navCtrl.setRoot("BusinessLicensePage");
     })
 
@@ -124,17 +126,35 @@ export class RegisterPage {
 
   sendCaptcha() {
     if (this.isWaiting) return;
+
+    if (this.registerErrors['mobileNum']) {
+      return;
+    }
     this.isWaiting = true;
-    let timer = setInterval(() => {
+    this.personService.getCaptcha({ mobile: this.params.mobile }).subscribe(res => {
+      this.toastCtrl.create({
+        message: "验证码发送成功",
+        duration: 1000,
+        position: 'middle',
+      }).present();
+      this.startTime();
+    })
+  }
+
+  startTime() {
+    this.timer = setInterval(() => {
       this.waitTime--;
       this.captchaText = `${this.waitTime}s`;
-
       if (this.waitTime <= 0) {
         this.isWaiting = false;
         this.captchaText = "获取验证码";
         this.waitTime = 60;
-        clearInterval(timer)
+        clearInterval(this.timer)
       }
     }, 1000)
+  }
+
+  ionViewDidLevea() {
+    this.timer && clearInterval(this.timer)
   }
 }

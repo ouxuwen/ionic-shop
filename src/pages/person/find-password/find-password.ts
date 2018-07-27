@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from "../../../validators/validators";
+import { PersonService } from "../../../providers/person";
 /**
  * Generated class for the FindPasswordPage page.
  *
@@ -17,14 +18,20 @@ import { Validators } from "../../../validators/validators";
 export class FindPasswordPage {
 
   findPsdForm: any;
-  captchaText:any = "获取验证码";
-  isWaiting:boolean = false; //等验证码
-  waitTime:any = 60;
+  captchaText: any = "获取验证码";
+  isWaiting: boolean = false; //等验证码
+  waitTime: any = 60;
+  timer: any;
+  params: any = {
+    mobile: "",
+    password: "",
+    send_param: ""
+  }
   findPsdErrors = {
     'mobileNum': '',
     'password': '',
-    'phoneCode':'',
-    'rePassword':''
+    'phoneCode': '',
+    'rePassword': ''
   };
   validationMessages: any = {
     'password': {
@@ -42,13 +49,16 @@ export class FindPasswordPage {
     },
     'rePassword': {
       'required': "请再次输入密码",
-      'notMatch':"两次输入不一致"
+      'notMatch': "两次输入不一致"
     },
   };
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public formBuilder: FormBuilder) {
+    public formBuilder: FormBuilder,
+    public toastCtrl: ToastController,
+    public personService: PersonService,
+  ) {
   }
 
   ionViewDidLoad() {
@@ -56,12 +66,12 @@ export class FindPasswordPage {
   }
 
 
-  ngOnInit(){
+  ngOnInit() {
     this.initForm();
   }
 
-   // 初始化表单控件
-   initForm() {
+  // 初始化表单控件
+  initForm() {
     this.findPsdForm = this.formBuilder.group({
       mobileNum: ["", [Validators.required, Validators.phone]],
       password: ["", [Validators.required]],
@@ -87,27 +97,51 @@ export class FindPasswordPage {
 
   }
 
-  back(){
+  back() {
     this.navCtrl.pop();
   }
 
-  findPassword(){
-
+  findPassword() {
+    if (this.findPsdForm.invalid || this.findPsdForm.controls.password.value != this.findPsdForm.controls.rePassword.value) return;
+    this.personService.findPassword(this.params).subscribe(res => {
+      this.toastCtrl.create({
+        message: "修改密码成功!",
+        duration: 1000,
+        position: 'middle',
+      }).present();
+    })
   }
 
-  sendCaptcha(){
-    if(this.isWaiting)return;
+  sendCaptcha() {
+    if (this.isWaiting) return;
+    if (this.findPsdErrors['mobileNum']) {
+      return;
+    }
     this.isWaiting = true;
-    let timer = setInterval(()=>{
+    this.personService.getFindCaptcha({ mobile: this.params.mobile }).subscribe(res => {
+      this.toastCtrl.create({
+        message: "验证码发送成功",
+        duration: 1000,
+        position: 'middle',
+      }).present();
+      this.startTime();
+    })
+  }
+
+  startTime() {
+    this.timer = setInterval(() => {
       this.waitTime--;
       this.captchaText = `${this.waitTime}s`;
-
-      if( this.waitTime<=0){
+      if (this.waitTime <= 0) {
         this.isWaiting = false;
         this.captchaText = "获取验证码";
-        this.waitTime=60;
-        clearInterval(timer)
+        this.waitTime = 60;
+        clearInterval(this.timer)
       }
-    },1000)
+    }, 1000)
+  }
+
+  ionViewDidLevea() {
+    this.timer && clearInterval(this.timer)
   }
 }

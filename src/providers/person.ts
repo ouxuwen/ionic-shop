@@ -16,6 +16,20 @@ export class PersonService {
   register(data) {
     return this.base.post('/app/login/register_login', data);
   }
+
+  // 获取验证码
+  getCaptcha(data){
+    return this.base.post('/app/login/getCaptcha', data);
+  }
+  // 找回密码获取验证码
+  getFindCaptcha(data){
+    return this.base.post('/app/login/getFindCaptcha', data);
+  }
+  //找回密码
+  findPassword(data){
+    return this.base.post('/app/login/findPassword', data);
+  }
+
   //上传license
   uploadLicense(data) {
     return this.base.post('/app/login/addLicense', data);

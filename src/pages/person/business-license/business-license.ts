@@ -20,11 +20,13 @@ export class BusinessLicensePage {
   isUpload: boolean = false;
   notLogin:any;
   options: CameraOptions = {
-    quality: 50,
+    quality: 30,
     destinationType: this.camera.DestinationType.DATA_URL,
     encodingType: this.camera.EncodingType.JPEG,
     mediaType: this.camera.MediaType.PICTURE,
-    sourceType: 1
+    sourceType: 1,
+    targetWidth:300,
+    targetHeight:300
   }
   userInfo: any;
   constructor(
@@ -37,14 +39,14 @@ export class BusinessLicensePage {
     private alertCtrl: AlertController,
   ) {
     this.notLogin = this.navParams.get('notLogin') ;
-   
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad BusinessLicensePage');
     this.checkStatus();
-  
-   
+
+
   }
 
   ionViewDidEnter() {
@@ -63,17 +65,17 @@ export class BusinessLicensePage {
           this.licenseImg = this.userInfo.other_info;
           console.log(this.notLogin)
           if(this.notLogin){
-          
+
             return;
           }
           this.personService.login({user_name:this.userInfo.user_name,password:this.userInfo.password}).subscribe(res => {
-           
+
             if(res['code']==1){
               this.storage.set("userInfo", res['data']).then(res=>{
                 this.navCtrl.setRoot("TabsPage");
               });
             }
-           
+
           })
         }
       } else {

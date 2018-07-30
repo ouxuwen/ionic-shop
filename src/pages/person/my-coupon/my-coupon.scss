@@ -1,10 +1,20 @@
 page-my-coupon {
   li{
-    background:  linear-gradient(to right,  #656564, rgb(134, 134, 134));
+    background:  linear-gradient(to right,  #c2c2c2, rgb(134, 134, 134));
     &.state1{
       background:  linear-gradient(to right,  rgb(255, 51, 0), #FF5100);
     }
     &.state2{
+      img{
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        left: 20%;
+        top:50%;
+        transform: translateY(-50%);
+      }
+    }
+    &.state3{
       img{
         position: absolute;
         width: 100px;

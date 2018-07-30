@@ -133,7 +133,7 @@ export class BaseHttpProvider {
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
           },
-          withCredentials:true
+         // withCredentials:true
 
         }, needLoading).subscribe(res => {
           obser.next(res)

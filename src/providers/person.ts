@@ -32,7 +32,7 @@ export class PersonService {
 
   //上传license
   uploadLicense(data) {
-    return this.base.post('/app/login/addLicense', data);
+    return this.base.postJson('/app/login/addLicense', data);
   }
   //个人资料
   personalData(data) {

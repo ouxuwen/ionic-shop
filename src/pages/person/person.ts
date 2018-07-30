@@ -109,8 +109,9 @@ export class PersonPage {
   }
 
   logout() {
+    console.log(this.navCtrl.parent.parent)
     this.storage.remove('userInfo').then(()=>{
-      this.navCtrl.setRoot('LoginPage')
+        this.navCtrl.parent.parent.setRoot('LoginPage')
     })
   }
 }

@@ -43,6 +43,7 @@ export class CheckOutPage {
   showCoupon = '';
   showExpress = '';
   num = 0;
+  pointConfig:any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -93,6 +94,7 @@ export class CheckOutPage {
       this.couponList = data.coupon_list;
       this.expressCompanyList = data.express_company_list;
       this.cartData = data.itemlist;
+      this.pointConfig = data['point_config'];
       if (this.couponList.length>0) {
         this.selectCoupon = this.couponList[0].coupon_id;
         this.showCoupon = this.couponList[0].coupon_name;
@@ -134,11 +136,18 @@ export class CheckOutPage {
     })
   }
 
+  // 添加地址
+  addAddress() {
+    this.navCtrl.push('AddAddressPage', {
+      enterType: 'add'
+    })
+  }
+
   // 使用积分
   pointChange() {
     if (this.usePoint) {
       this.integral = this.memberAccount.point;
-      let maxCut = (this.goodsTotal + this.express - this.couponCut) * 20;
+      let maxCut = (this.goodsTotal + this.express - this.couponCut) * this.pointConfig.convert_rate;
       console.log(this.goodsTotal,this.express,this.couponCut);
       if (this.integral > maxCut) {
         this.integral = maxCut;
@@ -151,7 +160,7 @@ export class CheckOutPage {
     } else {
       this.integral = 0;
     }
-    this.pointCut = this.integral / 20;
+    this.pointCut = this.integral * this.pointConfig.convert_rate;
     this.calcTotalPrice();
   }
 
@@ -203,6 +212,7 @@ export class CheckOutPage {
       shipping_company_id: this.selectExpress,// 物流公司
       tag: this.tag,//'cart' 从购物车 'buy_now' 立即购买
     }
+    if(!this.addressDefault)return;
 
     this.orderService.createOrder(params).subscribe(res => {
       this.navCtrl.push('PayPage',{

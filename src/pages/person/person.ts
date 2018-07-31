@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController,ToastController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { PersonService } from '../../providers/person';
 
@@ -23,7 +23,8 @@ export class PersonPage {
     public navParams: NavParams,
     public modalCtrl: ModalController,
     public storage: Storage,
-    public personService:PersonService
+    public personService:PersonService,
+    public toastCtrl: ToastController
   ) {
 
   }
@@ -78,7 +79,7 @@ export class PersonPage {
   }
 
   goFeedback() {
-    this.navCtrl.push('FeedbackPage');
+    this.navCtrl.push('FeedbackPage',{'member_name':this.userInfo.member_info.user_info.nick_name});
   }
 
   myOrder(i?){
@@ -112,6 +113,22 @@ export class PersonPage {
     console.log(this.navCtrl.parent.parent)
     this.storage.remove('userInfo').then(()=>{
         this.navCtrl.parent.parent.setRoot('LoginPage')
+    })
+  }
+
+  // 签到、
+  sign(){
+    if(this.userInfo.isSign>0){
+      return;
+    }
+    this.personService.signIn({}).subscribe(res=>{
+      this.toastCtrl.create({
+        message: '签到成功！',
+        duration: 1500,
+        position: 'middle',
+        cssClass: 'toast-success'
+      }).present();
+      this.getPersonData();
     })
   }
 }

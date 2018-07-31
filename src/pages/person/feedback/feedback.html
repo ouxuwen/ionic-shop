@@ -5,19 +5,27 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
     <ion-title>客 服 反 馈</ion-title>
     <ion-buttons end>
-        <button ion-button icon-only (click)="addAddress()">
+        <button ion-button icon-only (click)="feedBackList()">
               <ion-icon name="md-chatboxes"></ion-icon>
             </button>
       </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
 
-<ion-content>
+<ion-content padding>
+  <ion-input class="feedback_box" type="text" [(ngModel)]="title" placeholder=" 主 题"></ion-input>
+
+  <ion-textarea col='5' class="feedback_box" type="text" [(ngModel)]="feedBack" placeholder=" 请填写您的宝贵意见"></ion-textarea>
+
+  <button style="margin-top:50px;"  ion-button full tappable  (click)="confirm()">提交咨询</button>
+  <div class="flex_box" (click)="feedBackList()">
+     咨询记录
+     <ion-icon name="md-arrow-forward"></ion-icon>
+  </div>
+
 
 </ion-content>

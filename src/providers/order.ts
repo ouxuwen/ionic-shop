@@ -74,21 +74,21 @@ export class OrderService {
   }
 
   //评论
-  addGoodsEvaluate(data){
+  addGoodsEvaluate(data) {
     return this.base.post('/app/Order/addGoodsEvaluate', data);
   }
 
   //pay
-  mobileAlipay(data){
+  mobileAlipay(data) {
     return this.base.post('/app/pay/mobileAlipay', data);
   }
 
-  getPayValueByNo(data){
+  getPayValueByNo(data) {
     return this.base.post('/app/pay/getPayValueByNo', data);
   }
 
   // 取消退款
-  cancleRefund(data){
+  cancleRefund(data) {
     return this.base.post('/app/pay/cancleOrder', data);
   }
 }

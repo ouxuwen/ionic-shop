@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the AboutStorePage page.
@@ -14,8 +15,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'about-store.html',
 })
 export class AboutStorePage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  appInfo:any;
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public storage: Storage
+  ) {
+    this.storage.get('appInfo').then(res=>{
+      this.appInfo = res;
+    });
   }
 
   ionViewDidLoad() {

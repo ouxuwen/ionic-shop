@@ -7,12 +7,31 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>关 于 店 铺</ion-title>
+    <ion-title *ngIf="appInfo">{{appInfo.title}}</ion-title>
+    <ion-title *ngIf="!appInfo">公 司 简 介</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ng-container *ngIf="appInfo">
+    <img class="logo" [src]="appInfo.logo" alt="">
 
+    <div class="desc">
+      <p class="title">公司简介</p>
+      {{appInfo.web_desc}}
+    </div>
+    <div class="contact">
+      <p class="title">联系方式</p>
+      <p>QQ :{{appInfo.web_qq}}</p>
+      <p>微信 :{{appInfo.web_weixin}}</p>
+      <p>电话 :{{appInfo.web_phone}}</p>
+    </div>
+    <div class="address">
+      <p class="title">公司地址</p>
+      {{ appInfo.web_address }}
+    </div>
+
+  </ng-container>
 </ion-content>

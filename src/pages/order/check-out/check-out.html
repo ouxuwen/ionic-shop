@@ -30,7 +30,7 @@
       </p>
     </div>
   </div>
-  <div class="no_address" *ngIf="!addressDefault">
+  <div class="no_address" *ngIf="!addressDefault" (click)="addAddress()">
     <ion-icon name="ios-add"></ion-icon>
     添加收货地址
   </div>
@@ -68,7 +68,7 @@
 
   <ng-container *ngIf="memberAccount">
     <div class="rule" *ngIf="memberAccount.point>0" tappable>
-      <ion-checkbox [(ngModel)]="usePoint" (ngModelChange)="pointChange()"></ion-checkbox>使用积分:
+      <ion-checkbox [(ngModel)]="usePoint" [disabled]="pointConfig.is_open != 1" (ngModelChange)="pointChange()"></ion-checkbox>使用积分:
       <span class="price">¥ {{pointCut}}</span>
       <span>可用积分：{{memberAccount.point}}
         <i *ngIf='integral!=0'>{{integral}}</i>

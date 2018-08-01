@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController ,AlertController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController ,AlertController,ToastController} from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Storage } from '@ionic/storage';
 import { PersonService } from '../../../providers/person';
@@ -37,6 +37,7 @@ export class BusinessLicensePage {
     private storage: Storage,
     private personService: PersonService,
     private alertCtrl: AlertController,
+    public toastCtrl: ToastController
   ) {
     this.notLogin = this.navParams.get('notLogin') ;
 
@@ -136,6 +137,12 @@ export class BusinessLicensePage {
     }
     this.personService.uploadLicense(params).subscribe(res => {
       this.isUpload = true;
+      this.toastCtrl.create({
+        message: '上传成功，请等待审核',
+        duration: 2500,
+        position: 'middle',
+        cssClass: 'toast-success'
+      }).present()
       this.userInfo['license'] = this.licenseImg;
       this.storage.set("userInfo", this.userInfo);
     })

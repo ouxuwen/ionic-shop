@@ -1,0 +1,221 @@
+page-camera-order-checkout {
+  .no_address{
+    display: flex;
+    height: 100px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    color:#aaa;
+    ion-icon{
+      font-size: 40px;
+      margin-right:15px;
+    }
+    font-size: 20px
+  }
+  .order_address{
+    padding:10px;
+    background: #fff;
+    padding-bottom: 0;
+    border:5px solid transparent;
+    border-left-color: rgb(255, 60, 0);
+    .header{
+      height: 20px;
+      line-height: 20px;
+      .tel{
+        margin-left: 20px;
+      }
+    }
+    .body{
+      padding:5px 0;
+      line-height: 20px;
+      border-bottom:1px solid #eee;
+    }
+    .footer{
+      font-size: 12px;
+      padding-top:10px;
+      .auto{
+        display:inline-block;
+        padding:3px 5px;
+        border:1px solid rgb(255, 60, 0);;
+        border-radius: 2px;
+        color:rgb(255, 60, 0);
+      }
+      p{
+        float: right;
+        span{
+
+          font-size: 12px;
+          color:rgb(0, 132, 255);
+          padding:10px;
+        }
+      }
+    }
+  }
+  .line{
+    img{
+      width:100%;
+      height: auto;
+    }
+  }
+  .goods_list{
+    .g_label{
+      img{
+        width:20px;
+        height: 20px;
+        vertical-align: middle;
+        margin-right: 10px;
+      }
+      padding:8px 10px;
+    }
+    ion-item{
+      position: relative;
+      background: #f9f9f9;
+      ion-label{
+        display: flex;
+        pointer-events: inherit;
+        max-width: none;
+        font-size: 12px;
+        margin: 0;
+        img{
+          width:  60px;
+          height: 60px;
+          margin-left: 5px;
+          z-index: 100;
+        }
+        >div{
+          padding-left: 5px;
+          p{
+            text-overflow: ellipsis;
+
+            &.price{
+              color:red;
+            }
+            &.name{
+              color:#333;
+              z-index: 100;
+              max-width: 200px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+            &.type{
+              color:rgb(0, 153, 255);
+            }
+          }
+        }
+      }
+
+      .nums{
+        position: absolute;
+        right:15px;
+        bottom:15px;
+        font-size: 12px;
+      }
+    }
+  }
+  .check_out{
+    height: 49px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left:0;
+    display: flex;
+    box-shadow:0px -1px 3px #a5a5a5;
+    background: #fff;
+    >div{
+      flex:1;
+      align-items: center;
+      line-height: 49px;
+      height: 49px;
+      padding:0 10px;
+      white-space: nowrap;
+      span{
+        font-size: 12px;
+        float: left;
+      }
+      i{
+        font-size: 8px;
+        color:#707070;
+        font-style: normal;
+      }
+      b{
+        font-size: 14px;
+        color:red;
+      }
+    }
+    >p{
+      width:120px;
+      height: 49px;
+      line-height: 49px;
+      background: #FF5100;
+      color:#fff;
+      text-align: center;
+      font-size: 16px;
+      white-space: nowrap;
+      span{
+        font-size: 12px;
+      }
+    }
+  }
+  .list-ios{
+    margin-bottom:0;
+  }
+
+  .total{
+    padding: 10px;
+    span{
+      color:#FF5100;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    p{
+      float: right;
+      white-space: nowrap;
+    }
+  }
+  .rule {
+    line-height: 44px;
+    height: 44px;
+    background: #fff;
+    padding: 0 10px;
+    border-top:1px solid #f2f2f2;
+    font-size: 12px;
+    white-space: nowrap;
+    .price{
+      float: none;
+      color:#FF5100;
+      font-size: 14px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    ion-checkbox{
+      transform: translateY(5px);
+      margin-right: 10px;
+    }
+    .r {
+      font-size: 26px;
+      margin-top: 9px;
+      color: #666;
+    }
+    span{
+      float: right;
+      margin-right: 15px;
+      i{
+        color:#FF5100;
+        font-style: normal;
+      }
+    }
+  }
+  .last{
+    border-top:1px solid #f2f2f2;
+    margin-bottom: 50px;
+    padding:0 10px;
+  }
+  coustom-action{
+    ion-label{
+      span{
+        color:#FF5100;
+      }
+    }
+  }
+}

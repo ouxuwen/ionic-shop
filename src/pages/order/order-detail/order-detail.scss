@@ -97,6 +97,9 @@ page-order-detail {
               overflow: hidden;
               text-overflow: ellipsis;
             }
+            &.type{
+              color:#488aff;
+            }
           }
         }
       }

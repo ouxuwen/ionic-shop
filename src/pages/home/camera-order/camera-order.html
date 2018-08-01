@@ -1,0 +1,30 @@
+<!--
+  Generated template for the CameraOrderPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>camera-order</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div class="container">
+    <h1>上传订单照片</h1>
+    <div class="img_box">
+      <img *ngIf="orderImg" [src]="orderImg" alt="">
+      <ion-icon *ngIf="!orderImg" name="ios-add" tappable (click)="select()"></ion-icon>
+      <ion-icon class="isUpload" *ngIf="isUpload" name="ios-time-outline"></ion-icon>
+    </div>
+
+    <div class="btn_group">
+      <button ion-button full tappable (click)="select()">{{orderImg?"重新选择":"选 择"}}</button>
+      <button ion-button full tappable (click)="upload()">下一步</button>
+    </div>
+  </div>
+</ion-content>

@@ -173,4 +173,9 @@ export class HomePage {
   article(){
     this.navCtrl.push('NoticeListPage');
   }
+
+  // 拍照下单
+  cameraOrder(){
+    this.navCtrl.push('CameraOrderPage');
+  }
 }

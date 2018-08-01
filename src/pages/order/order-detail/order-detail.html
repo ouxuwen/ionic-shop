@@ -14,13 +14,15 @@
 
 
 <ion-content>
+
+  <div class="order_status">
+    <img src="assets/imgs/51.png" alt="">
+    <div>订单详情</div>
+    <ion-icon name="ios-arrow-dropleft-circle" (click)="back()"></ion-icon>
+    <p *ngIf="orderDetail"> {{orderDetail.status_name}}</p>
+    <p *ngIf="orderDetail && orderDetail.order_status == 99">等待商家确定总价</p>
+  </div>
   <ng-container *ngIf="orderDetail">
-    <div class="order_status">
-      <img src="assets/imgs/51.png" alt="">
-      <div>订单详情</div>
-      <ion-icon name="ios-arrow-dropleft-circle" (click)="back()"></ion-icon>
-      <p> {{orderDetail.status_name}}</p>
-    </div>
     <div class="g_label">
       <img src="assets/imgs/order1.png"> 订单信息：
     </div>
@@ -58,14 +60,15 @@
             <image [src]="ele.picture_info.pic_cover_mid" alt="" tappable (click)='openDetail($event,ele.goods_id)'></image>
             <div tappable (click)='openDetail($event,ele.goods_id)'>
               <p class="name" tappable>{{ele.goods_name}}</p>
-              <p class="type">规格：{{ele.sku_name}}</p>
-              <p class="price">价格：¥ {{ele.price}}</p>
+              <p *ngIf="orderDetail.order_type==1" class="type">规格：{{ele.sku_name}}</p>
+              <p *ngIf="orderDetail.order_type==1" class="price">价格：¥ {{ele.price}}</p>
+              <p *ngIf="orderDetail.order_type==3" class="type">查看详情</p>
             </div>
-            <div class="refund"  tappable (click)="refund($event,ele.order_goods_id)" *ngIf="(orderDetail.order_status == 1 || orderDetail.order_status == 2) && !ele.status_name">
+            <div class="refund" tappable (click)="refund($event,ele.order_goods_id)" *ngIf="(orderDetail.order_status == 1 || orderDetail.order_status == 2) && !ele.status_name">
               退款/退货
             </div>
-            <div class="refund"  tappable *ngIf="ele.status_name"  (click)="refundDetail($event,ele.order_goods_id)">
-                {{ele.status_name}}
+            <div class="refund" tappable *ngIf="ele.status_name" (click)="refundDetail($event,ele.order_goods_id)">
+              {{ele.status_name}}
             </div>
             <div class="nums">
               数量：{{ele.num}}
@@ -97,7 +100,7 @@
     </div>
     <div class="btn_group" *ngIf="orderDetail.order_status == 0">
       <span tappable (click)="closeOrderConfirm()">关闭订单</span>
-      <span  tappable (click)="orderPay(orderDetail)">去 付 款</span>
+      <span tappable (click)="orderPay(orderDetail)">去 付 款</span>
     </div>
     <div class="btn_group" *ngIf="orderDetail.order_status == 1">
       <span tappable (click)="orderTakeDelivery()">确认收货</span>
@@ -110,13 +113,16 @@
       <span *ngIf="orderDetail.is_evaluate!=1" tappable (click)="evaluate()">去 评 价</span>
     </div>
     <div class="btn_group" *ngIf="orderDetail.order_status == -1">
-        <span tappable >点击上方查看退款进度</span>
-      </div>
+      <span tappable>点击上方查看退款进度</span>
+    </div>
     <div class="btn_group" *ngIf="orderDetail.order_status == 4 ">
       <span tappable (click)="closeOrderConfirm()">关闭订单</span>
     </div>
     <div class="btn_group" *ngIf=" orderDetail.order_status == 5">
-        <span tappable (click)="deleteOrder()">删除订单</span>
+      <span tappable (click)="deleteOrder()">删除订单</span>
+    </div>
+    <div class="btn_group" *ngIf="orderDetail.order_status == 99 ">
+        <span tappable (click)="closeOrderConfirm()">关闭订单</span>
       </div>
     <section class="interval"></section>
     <div class="service">

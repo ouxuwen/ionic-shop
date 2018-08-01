@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, App } from 'ionic-angular';
 import { OrderService } from '../../../providers/order';
 import { Storage } from '@ionic/storage';
+import { PhotoViewer } from '@ionic-native/photo-viewer';
 /**
  * Generated class for the OrderDetailPage page.
  *
@@ -30,7 +31,8 @@ export class OrderDetailPage {
     public orderService: OrderService,
     public alertCtrl: AlertController,
     public storage: Storage,
-    public appCtrl: App
+    public appCtrl: App,
+    private photoViewer: PhotoViewer
   ) {
     this.orderId = this.navParams.get('orderId');
     this.outTradeNo = this.navParams.get('no');
@@ -83,9 +85,14 @@ export class OrderDetailPage {
 
   openDetail($event, id) {
     event.stopPropagation();
-    this.navCtrl.push('GoodsDetailPage', {
-      goods_id: id
-    })
+    if(this.orderDetail.order_type == 3){
+      this.photoViewer.show(this.orderDetail.order_goods[0].memo, '订单图片');
+    }else{
+      this.navCtrl.push('GoodsDetailPage', {
+        goods_id: id
+      })
+    }
+
   }
 
   getExpressDetail(id) {

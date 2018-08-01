@@ -91,4 +91,14 @@ export class OrderService {
   cancleRefund(data) {
     return this.base.post('/app/pay/cancleOrder', data);
   }
+
+  // 拍照下单
+  cameraOrder(data){
+    return this.base.postJson('/app/order/cameraOrder', data);
+  }
+
+  // 拍照下单详情
+  cameraOrderInfo(data){
+    return this.base.post('/app/order/cameraOrderInfo', data);
+  }
 }

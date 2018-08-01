@@ -1,0 +1,113 @@
+<!--
+  Generated template for the CameraOrderCheckoutPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>camera-order-checkout</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <div class="order_address" *ngIf="addressDefault" (click)="selectAddress()">
+        <p class="header">
+          <span class="name">{{addressDefault.consigner}}</span>
+          <span class="tel">{{addressDefault.mobile}}</span>
+        </p>
+        <p class="body">
+          <span [innerHtml]="addressDefault.address_info"></span>
+          <span>{{addressDefault.address}}</span>
+        </p>
+        <div class="footer">
+          <span class="auto">
+            默认收货地址
+          </span>
+          <p>
+            <span (click)="editAddress(addressDefault)">编辑</span>
+          </p>
+        </div>
+      </div>
+      <div class="no_address" *ngIf="!addressDefault" (click)="addAddress()">
+        <ion-icon name="ios-add"></ion-icon>
+        添加收货地址
+      </div>
+      <div class="line">
+        <img src="assets/imgs/line.jpg" alt="">
+      </div>
+      <div class="goods_list">
+        <p class="g_label">
+          <img src="assets/imgs/goods.jpg">订单商品：</p>
+        <ion-list *ngIf="cartData">
+          <ion-item *ngFor="let ele of cartData" (click)='openDetail()'>
+            <ion-label>
+              <image tappable  [src]="ele.picture_info.pic_cover_mid" alt=""></image>
+              <div>
+                <p class="name" tappable >{{ele.goods_name}}</p>
+                <p class="type">点击查看详情</p>
+
+              </div>
+              <div class="nums">
+                数量：{{ele.num}}
+              </div>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+
+      <div class="total">
+        商品总价：
+        <span *ngIf="orderDetail"> ¥ {{orderDetail.count_money}}</span>
+        <p>商品总数：
+          <span>{{goodsCount}}</span>
+        </p>
+      </div>
+
+      <div class="rule" *ngIf="expressCompanyList" tappable (click)="hideExpress=false">
+        选择物流：
+        <span class="price">¥ {{express}}</span>
+        <ion-icon class="r" name="ios-arrow-forward-outline"></ion-icon>
+        <span>{{showExpress}}</span>
+
+      </div>
+      <div class="rule " tappable>
+        注意：拍照订单提交后，需要等待商家确认订单价格后方可支付！
+
+
+      </div>
+
+      <div class="last">
+        <ion-textarea col="5" [(ngModel)]="leavemessage" placeholder="订单备注">
+
+        </ion-textarea>
+      </div>
+
+
+      <div class="check_out">
+        <div>
+          <span>
+            <i>含运费 </i> 总价:
+            <b>¥ {{totalPrice}}</b>
+          </span>
+        </div>
+        <p (click)="createOrder()">
+          提交订单
+        </p>
+      </div>
+
+      <coustom-action [(isHide)]="hideExpress" title="选择物流公司">
+        <ion-list radio-group [(ngModel)]="selectExpress" (ngModelChange)="getExpress($event)">
+          <ion-item *ngFor="let item of expressCompanyList">
+            <ion-label>{{item.company_name}}, 运费：
+              <span>¥ {{item.express_fee}}</span>
+            </ion-label>
+            <ion-radio [value]="item.co_id"></ion-radio>
+          </ion-item>
+
+        </ion-list>
+      </coustom-action>
+</ion-content>

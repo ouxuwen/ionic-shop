@@ -82,6 +82,10 @@
       <div class="status" *ngIf="order.order_status == 4 ">
         <span tappable (click)="closeOrderConfirm(order.order_id)">关闭订单</span>
       </div>
+      <div class="status" *ngIf="order.order_status == 99 ">
+        <span tappable (click)="closeOrderConfirm(order.order_id)">关闭订单</span>
+        <span tappable (click)="openDetail($event,order)">等待商家确定总价</span>
+      </div>
     </div>
   </div>
   <p class="no_more" *ngIf="!canLoadMore && orderList.length!=0">没有数据啦~</p>

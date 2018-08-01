@@ -18,7 +18,7 @@ import { PersonService } from '../providers/person';
 import { OrderService } from '../providers/order';
 import { CartService } from '../providers/cartService';
 import { ComponentsModule } from '../components/components.module';
-
+import { PhotoViewer } from '@ionic-native/photo-viewer';
 @NgModule({
   declarations: [
     MyApp,
@@ -55,7 +55,7 @@ import { ComponentsModule } from '../components/components.module';
     OrderService,
     Nav,
     CartService,
-
+    PhotoViewer
   ]
 })
 export class AppModule { }

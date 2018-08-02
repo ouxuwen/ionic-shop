@@ -147,7 +147,7 @@ export class CheckOutPage {
   pointChange() {
     if (this.usePoint) {
       this.integral = this.memberAccount.point;
-      let maxCut = (this.goodsTotal + this.express - this.couponCut) * this.pointConfig.convert_rate;
+      let maxCut = (this.goodsTotal + this.express - this.couponCut) / this.pointConfig.convert_rate;
       console.log(this.goodsTotal,this.express,this.couponCut);
       if (this.integral > maxCut) {
         this.integral = maxCut;

@@ -35,8 +35,8 @@ export class PersonService {
     return this.base.postJson('/app/login/addLicense', data);
   }
   //个人资料
-  personalData(data) {
-    return this.base.post('/app/member/personalData', data);
+  personalData(data,bol = false) {
+    return this.base.post('/app/member/personalData', data ,bol);
   }
   //分销资料
   memberIndexFx(data) {

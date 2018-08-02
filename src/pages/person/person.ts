@@ -50,7 +50,11 @@ export class PersonPage {
   }
 
   getPersonData(){
-    this.personService.personalData({}).subscribe(res=>{
+    let bol;
+    if(!this.userInfo){
+      bol = true;
+    }
+    this.personService.personalData({},bol).subscribe(res=>{
       this.userInfo = res['data'];
 
     })

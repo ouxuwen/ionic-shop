@@ -39,6 +39,9 @@ export class GoodsDetailPage {
   tag = '';
   evaluatesCount:any;
   appInfo:any;
+  isGlasses:boolean = false; //是否是镜片
+  specList:any;
+  selectSku:any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -110,7 +113,6 @@ export class GoodsDetailPage {
       if (el.attr_value_items_format === ev.zhu.value + ';' + ev.qiu.value) {
         this.skuId = el.sku_id;
         this.skuName = el.sku_name
-        console.log(this.skuId)
       }
     })
 
@@ -151,6 +153,7 @@ export class GoodsDetailPage {
       this.evaluatesCount = data['evaluates_count'];
       //镜片类型
       if (this.goodsDetail.goods_attribute_id == 1) {
+        this.isGlasses = true;
         this.roleList.zhu = [];
         this.roleList.qiu = [];
         this.goodsDetail.spec_list.forEach(el => {
@@ -168,7 +171,17 @@ export class GoodsDetailPage {
             });
           }
         })
+      }else{
+        this.isGlasses = false;
+        this.specList = this.goodsDetail.spec_list;
+        this.selectSku = [];
+        this.specList.forEach((ele,index)=>{
+          this.selectSku[index] = ele.value[0].spec_id +':'+ ele.value[0].spec_value_id;
+        })
+        this.calcSku();
+        console.log(this.selectSku)
       }
+
       this.setHistory(this.goodsDetail);
     })
   }
@@ -176,6 +189,15 @@ export class GoodsDetailPage {
   //添加购物车
   addCart() {
     this.tag = 'cart';
+    if(this.skuId == 999){
+      this.toastCtrl.create({
+        message: "亲，拍照订单不能直接拍的哦~",
+        duration: 2500,
+        position: 'middle',
+        cssClass: 'toast-error'
+      }).present()
+      return;
+    }
     if (!this.skuId) {
       this.hideDetail = false;
       return;
@@ -252,6 +274,15 @@ export class GoodsDetailPage {
   //立即购买
   buyNow() {
     this.tag = 'buy_now';
+    if(this.skuId == 999){
+      this.toastCtrl.create({
+        message: "亲，拍照订单不能直接拍的哦~",
+        duration: 1500,
+        position: 'middle',
+        cssClass: 'toast-error'
+      }).present()
+      return;
+    }
     if (!this.skuId) {
       this.hideDetail = false;
       return;
@@ -259,6 +290,7 @@ export class GoodsDetailPage {
     if (this.numVals < 1) {
       return;
     }
+
     this.navCtrl.push('CheckOutPage', {
       'tag':this.tag,
       'goodsTotal': this.numVals * Number(this.goodsDetail.promotion_price),
@@ -273,6 +305,15 @@ export class GoodsDetailPage {
     }else{
       this.buyNow();
     }
+  }
+
+  calcSku(){
+    let result = this.skuList.filter(ele =>{
+      return ele.attr_value_items_format == this.selectSku.join(';');
+    })
+    this.skuId = result[0].sku_id;
+    console.log('sku:',this.skuId)
+    console.log('num:',this.numVals)
   }
 
 

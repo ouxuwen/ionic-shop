@@ -76,8 +76,22 @@
     <div class="goods" [class.show]="navIndex == 1">
       <div class="rule" *ngIf="goodsDetail.goods_attribute_id==1" tappable (click)="choose($event)">
         选择规格：
-        <choose-model id='choose' [selectList]='roleList' (selectResult)="getRoleResult($event)" [defaultValue]="selectValue"></choose-model>
-        <ion-icon class="r" name="ios-arrow-forward-outline"></ion-icon>
+        <ng-container>
+          <choose-model id='choose' [selectList]='roleList' (selectResult)="getRoleResult($event)" [defaultValue]="selectValue"></choose-model>
+          <ion-icon class="r" name="ios-arrow-forward-outline"></ion-icon>
+        </ng-container>
+      </div>
+      <div class="rule_box" *ngIf="!isGlasses">
+        选择规格：
+          <div class="spec_item" *ngFor="let item of specList;let i = index">
+            <p>{{item.spec_name}}</p>
+            <div class="sitem_list">
+              <label class="sitem_item" *ngFor="let ele of item.value;" [class.selected]="selectSku[i] == ele.spec_id+':'+ele.spec_value_id">
+                {{ele.spec_value_name }}{{i}}
+                <input type="radio" [value]="ele.spec_id+':'+ele.spec_value_id" [(ngModel)]="selectSku[i]" (ngModelChange)="calcSku()">
+              </label>
+            </div>
+          </div>
       </div>
       <div class="rule">
         购买数量：
@@ -120,9 +134,21 @@
       <div class="goods" [class.show]="navIndex == 1">
         <div class="rule" *ngIf="goodsDetail.goods_attribute_id==1" tappable (click)="choose($event)">
           选择规格：
-          <choose-model id='choose' [selectList]='roleList' (selectResult)="getRoleResult($event)" [defaultValue]="selectValue"></choose-model>
-          <ion-icon class="r" name="ios-arrow-forward-outline"></ion-icon>
+            <choose-model id='choose' [selectList]='roleList' (selectResult)="getRoleResult($event)" [defaultValue]="selectValue"></choose-model>
+            <ion-icon class="r" name="ios-arrow-forward-outline"></ion-icon>
         </div>
+        <div class="rule_box" *ngIf="!isGlasses">
+            选择规格：
+              <div class="spec_item" *ngFor="let item of specList;let i = index">
+                <p>{{item.spec_name}}</p>
+                <div class="sitem_list">
+                  <label class="sitem_item" *ngFor="let ele of item.value;" [class.selected]="selectSku[i] == ele.spec_id+':'+ele.spec_value_id">
+                    {{ele.spec_value_name }}{{i}}
+                    <input type="radio" [value]="ele.spec_id+':'+ele.spec_value_id" [(ngModel)]="selectSku[i]" (ngModelChange)="calcSku()">
+                  </label>
+                </div>
+              </div>
+          </div>
         <div class="rule">
           购买数量：
           <number-input [min]='1' [max]='9999' [(numVal)]='numVals' (numValChange)="log($event)"></number-input>

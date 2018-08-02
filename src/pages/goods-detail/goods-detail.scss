@@ -21,7 +21,7 @@ page-goods-detail {
         color: #333;
       }
       &.note {
-        
+
         margin: 5px;
         span {
           display: inline-block;
@@ -111,7 +111,37 @@ page-goods-detail {
         color: #666;
       }
     }
+    .rule_box{
+      background: #fff;
+      margin-top: 10px;
+      padding: 5px 10px;
+      .spec_item{
+        .sitem_list{
+          .sitem_item{
+            float: left;
+            padding:4px 8px;
+            font-size: 12px;
+            border:1px solid #eee;
+            margin-right: 10px;
+            margin-top: 5px;
+            input{
+              display: none;
+            }
+            &.selected{
+              border-color: #209FFF;
+              color:#209FFF;
+            }
+          }
+          &:after{
+            content:'';
+            clear: both;
+            display: block;
+          }
+        }
+      }
+    }
   }
+
   ion-infinite-scroll {
     background: #eee;
   }

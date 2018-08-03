@@ -19,6 +19,8 @@ import { OrderService } from '../providers/order';
 import { CartService } from '../providers/cartService';
 import { ComponentsModule } from '../components/components.module';
 import { PhotoViewer } from '@ionic-native/photo-viewer';
+import { QQSDK } from '@ionic-native/qqsdk';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -55,7 +57,8 @@ import { PhotoViewer } from '@ionic-native/photo-viewer';
     OrderService,
     Nav,
     CartService,
-    PhotoViewer
+    PhotoViewer,
+    QQSDK
   ]
 })
 export class AppModule { }

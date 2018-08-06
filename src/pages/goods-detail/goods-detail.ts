@@ -290,7 +290,6 @@ export class GoodsDetailPage {
     if (this.numVals < 1) {
       return;
     }
-
     this.navCtrl.push('CheckOutPage', {
       'tag':this.tag,
       'goodsTotal': this.numVals * Number(this.goodsDetail.promotion_price),
@@ -300,7 +299,6 @@ export class GoodsDetailPage {
   }
 
   actionConfirm(){
-
     if(!this.skuId){
       this.toastCtrl.create({
         message: "亲，请选择规格~",

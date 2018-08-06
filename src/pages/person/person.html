@@ -7,99 +7,96 @@
 
 
 <ion-content>
-  <ng-container *ngIf="userInfo">
-    <div class="person_box">
-      <img src="assets/imgs/settingBg.png" alt="">
-      <div class="bg_container">
-        <div class="avator">
-          <img tappable (click)="modifyProfile()" [src]="userInfo.member_img!=0?userInfo.member_img:'assets/imgs/profile_icon.png'"
-            alt="">
-          <div>
-            <div class="name" tappable (click)="modifyProfile()">{{userInfo.member_info.user_info.nick_name}}
-              <img src="assets/imgs/edit.png" alt="">
-            </div>
-            <div class="tel ">{{userInfo.member_info.user_info.user_tel}}</div>
-            <div class="level">{{userInfo.member_info.level_name}} </div>
-            <p class="sign" *ngIf="userInfo.integralconfig.sign_integral" (click)="sign()">
-              <img src="assets/imgs/sign.png" alt="">{{userInfo.isSign==0?'签到送积分':'已签到'}}</p>
+  <div class="person_box">
+    <img src="assets/imgs/settingBg.png" alt="">
+    <div class="bg_container">
+      <div class="avator">
+        <img tappable (click)="modifyProfile()" *ngIf="userInfo" [src]="userInfo.member_img!=0?userInfo.member_img:'assets/imgs/profile_icon.png'"
+          alt="">
+        <div>
+          <div class="name" tappable (click)="modifyProfile()" *ngIf="userInfo">{{userInfo.member_info.user_info.nick_name}}
+            <img src="assets/imgs/edit.png" alt="">
           </div>
+          <div class="tel " *ngIf="userInfo">{{userInfo.member_info.user_info.user_tel}}</div>
+          <div class="level" *ngIf="userInfo">{{userInfo.member_info.level_name}} </div>
+          <p class="sign" *ngIf="userInfo.integralconfig.sign_integral" (click)="sign()">
+            <img src="assets/imgs/sign.png" alt="">{{userInfo.isSign==0?'签到送积分':'已签到'}}</p>
         </div>
-        <div class="fav">
-          <div (click)="myFav()">
-            我的收藏
-            <p>{{userInfo.goods_collection_list.total_count}}</p>
-          </div>
-          <div (click)="myHistory()">
-            我的足迹
-            <p>{{historyGoods.length}}</p>
-          </div>
+      </div>
+      <div class="fav">
+        <div (click)="myFav()">
+          我的收藏
+          <p *ngIf="userInfo">{{userInfo.goods_collection_list.total_count}}</p>
+        </div>
+        <div (click)="myHistory()">
+          我的足迹
+          <p>{{historyGoods.length}}</p>
         </div>
       </div>
     </div>
-    <div class="order">
-      <div class="my" (click)="myOrder('all')">
-        我的订单
-        <span class="all_order">
-          所有订单
-          <ion-icon name="ios-arrow-forward-outline"></ion-icon>
-        </span>
+  </div>
+  <div class="order">
+    <div class="my" (click)="myOrder('all')">
+      我的订单
+      <span class="all_order">
+        所有订单
+        <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+      </span>
+    </div>
+    <div class="order_list">
+      <div (click)="myOrder('0')">
+        <i class="icon-profile-pending_payment"></i>
+        <div>待付款</div>
+        <ion-badge color='danger' *ngIf="userInfo&&userInfo.unpaidOrder!=0">{{userInfo.unpaidOrder}}</ion-badge>
       </div>
-      <div class="order_list">
-        <div (click)="myOrder('0')">
-          <i class="icon-profile-pending_payment"></i>
-          <div>待付款</div>
-          <ion-badge color='danger' *ngIf="userInfo.unpaidOrder!=0">{{userInfo.unpaidOrder}}</ion-badge>
-        </div>
-        <div (click)="myOrder('1')">
-          <i class="icon-profile-confirm_booking"></i>
-          <div>待发货</div>
-          <ion-badge *ngIf="userInfo.shipmentPendingOrder!=0" color='danger'>{{userInfo.shipmentPendingOrder}}</ion-badge>
-        </div>
-        <div (click)="myOrder('2')">
-          <i class="icon-profile-past_booking"></i>
-          <div>待收货</div>
-          <ion-badge *ngIf="userInfo.goodsNotReceivedOrder!=0" color='danger'>{{userInfo.goodsNotReceivedOrder}}</ion-badge>
-        </div>
+      <div (click)="myOrder('1')">
+        <i class="icon-profile-confirm_booking"></i>
+        <div>待发货</div>
+        <ion-badge *ngIf="userInfo&&userInfo.shipmentPendingOrder!=0" color='danger'>{{userInfo.shipmentPendingOrder}}</ion-badge>
+      </div>
+      <div (click)="myOrder('2')">
+        <i class="icon-profile-past_booking"></i>
+        <div>待收货</div>
+        <ion-badge *ngIf="userInfo&&userInfo.goodsNotReceivedOrder!=0" color='danger'>{{userInfo.goodsNotReceivedOrder}}</ion-badge>
       </div>
     </div>
-    <div class="function_list">
-      <ul>
-        <li tappable (click)="myTeam()">
-          <img src="assets/imgs/team.png" alt=""> 我的分销中心
-          <ion-icon name="ios-arrow-forward-outline"></ion-icon>
-        </li>
-        <li tappable (click)="modifyPsd()">
-          <img src="assets/imgs/mp.png" alt=""> 修改密码
-          <ion-icon name="ios-arrow-forward-outline"></ion-icon>
-        </li>
-        <li tappable (click)="goMyScore()">
-          <img src="assets/imgs/wd-012-03.png" alt=""> 我的积分
+  </div>
+  <div class="function_list">
+    <ul>
+      <li tappable (click)="myTeam()">
+        <img src="assets/imgs/team.png" alt=""> 我的分销中心
+        <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+      </li>
+      <li tappable (click)="modifyPsd()">
+        <img src="assets/imgs/mp.png" alt=""> 修改密码
+        <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+      </li>
+      <li tappable (click)="goMyScore()">
+        <img src="assets/imgs/wd-012-03.png" alt=""> 我的积分
 
-          <ion-icon name="ios-arrow-forward-outline"></ion-icon>
-          <span>{{userInfo.member_info.point}}</span>
-        </li>
-        <li tappable (click)="goMyCoupon()">
-          <img src="assets/imgs/wd-012-02.png" alt=""> 我的优惠券
-          <ion-icon name="ios-arrow-forward-outline"></ion-icon>
-          <ion-badge color='danger'>{{userInfo.member_info.coupon_count}}</ion-badge>
-        </li>
-        <li tappable (click)="goMyAddress()">
-          <img src="assets/imgs/wd-012-05.png" alt=""> 我的收货地址
-          <ion-icon name="ios-arrow-forward-outline"></ion-icon>
-        </li>
-        <li tappable (click)="goFeedback()">
-          <img src="assets/imgs/wd-012-07.png" alt=""> 客服反馈
-          <ion-icon name="ios-arrow-forward-outline"></ion-icon>
-        </li>
-        <li tappable (click)="goAboutStore()">
-          <img src="assets/imgs/wd-012-1.png" alt=""> 关于店铺
-          <ion-icon name="ios-arrow-forward-outline"></ion-icon>
-        </li>
-      </ul>
-    </div>
-
-    <div padding style="margin-bottom: 50px;">
-      <button color="danger" ion-button full tappable (click)="logout()">安全退出</button>
-    </div>
-  </ng-container>
+        <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+        <span *ngIf="userInfo">{{userInfo.member_info.point}}</span>
+      </li>
+      <li tappable (click)="goMyCoupon()">
+        <img src="assets/imgs/wd-012-02.png" alt=""> 我的优惠券
+        <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+        <ion-badge color='danger' *ngIf="userInfo">{{userInfo.member_info.coupon_count}}</ion-badge>
+      </li>
+      <li tappable (click)="goMyAddress()">
+        <img src="assets/imgs/wd-012-05.png" alt=""> 我的收货地址
+        <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+      </li>
+      <li tappable (click)="goFeedback()">
+        <img src="assets/imgs/wd-012-07.png" alt=""> 客服反馈
+        <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+      </li>
+      <li tappable (click)="goAboutStore()">
+        <img src="assets/imgs/wd-012-1.png" alt=""> 关于店铺
+        <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+      </li>
+    </ul>
+  </div>
+  <div padding style="margin-bottom: 50px;">
+    <button color="danger" ion-button full tappable (click)="logout()">安全退出</button>
+  </div>
 </ion-content>

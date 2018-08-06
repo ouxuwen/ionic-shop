@@ -45,7 +45,6 @@ export class PersonPage {
       if(res){
         this.historyGoods = res;
       }
-
     })
   }
 
@@ -56,13 +55,11 @@ export class PersonPage {
     }
     this.personService.personalData({},bol).subscribe(res=>{
       this.userInfo = res['data'];
-
     })
   }
 
   memberIndexFx() {
     this.personService.memberIndexFx({}).subscribe(res=>{
-
     })
   }
 

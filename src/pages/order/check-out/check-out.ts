@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { OrderService } from '../../../providers/order';
 /**
  * Generated class for the CheckOutPage page.
@@ -21,7 +21,7 @@ export class CheckOutPage {
   leavemessage = ''; // 留言
   pay_type // 支付方式
   shipping_company_id // 物流公司
-  cartData: any ;
+  cartData: any;
   totalPrice = 0;
   tagList: any; //购物车id集合 or goodsList
   tag: string; //'cart' 从购物车 'buy_now' 立即购买
@@ -43,11 +43,12 @@ export class CheckOutPage {
   showCoupon = '';
   showExpress = '';
   num = 0;
-  pointConfig:any;
+  pointConfig: any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public orderService: OrderService
+    public orderService: OrderService,
+    public alertCtrl: AlertController
   ) {
 
     this.init()
@@ -72,7 +73,6 @@ export class CheckOutPage {
     console.log('ionViewDidLoad CheckOutPage');
   }
 
-  pay() { }
 
   orderInfo() {
     this.goodsCount = 0;
@@ -95,7 +95,7 @@ export class CheckOutPage {
       this.expressCompanyList = data.express_company_list;
       this.cartData = data.itemlist;
       this.pointConfig = data['point_config'];
-      if (this.couponList.length>0) {
+      if (this.couponList.length > 0) {
         this.selectCoupon = this.couponList[0].coupon_id;
         this.showCoupon = this.couponList[0].coupon_name;
       } else {
@@ -112,6 +112,7 @@ export class CheckOutPage {
     })
   }
 
+  // 使用默认地址
   getDefaultExpress() {
     this.expressCompanyList.forEach(el => {
       if (el.is_default) {
@@ -148,7 +149,7 @@ export class CheckOutPage {
     if (this.usePoint) {
       this.integral = this.memberAccount.point;
       let maxCut = (this.goodsTotal + this.express - this.couponCut) / this.pointConfig.convert_rate;
-      console.log(this.goodsTotal,this.express,this.couponCut);
+      console.log(this.goodsTotal, this.express, this.couponCut);
       if (this.integral > maxCut) {
         this.integral = maxCut;
       }
@@ -201,7 +202,7 @@ export class CheckOutPage {
     }
   }
 
-
+  //创建订单
   createOrder() {
     let params = {
       use_coupon: this.selectCoupon, // 优惠券
@@ -212,19 +213,35 @@ export class CheckOutPage {
       shipping_company_id: this.selectExpress,// 物流公司
       tag: this.tag,//'cart' 从购物车 'buy_now' 立即购买
     }
-    if(!this.addressDefault)return;
+    if (!this.addressDefault) {
+      this.alertCtrl.create({
+        title: '温馨提示',
+        message: '请添加收货地址',
+        buttons: [
+          {
+            text: '确 定',
+            handler: () => {
+              this.navCtrl.push('AddAddressPage', {
+                enterType: 'add'
+              })
+            }
+          }
+        ]
+      }).present();
+      return;
+    }
 
     this.orderService.createOrder(params).subscribe(res => {
-      this.navCtrl.push('PayPage',{
-        out_trade_no:res['data'],
-        money:this.totalPrice
+      this.navCtrl.push('PayPage', {
+        out_trade_no: res['data'],
+        money: this.totalPrice
       })
       console.log(res)
     })
   }
 
-   //商品详情
-   openDetail(event, id) {
+  //商品详情
+  openDetail(event, id) {
     event.stopPropagation();
     this.navCtrl.push('GoodsDetailPage', {
       goods_id: id

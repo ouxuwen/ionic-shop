@@ -1,4 +1,4 @@
-import { Component,ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicApp, Platform, Nav, Keyboard, ToastController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -7,6 +7,8 @@ import { WelcomePage } from '../pages/welcome/welcome';
 import { LoginPage } from '../pages/person/login/login';
 import { Storage } from '@ionic/storage';
 import { BusinessLicensePage } from '../pages/person/business-license/business-license';
+import { JPush } from "@jiguang-ionic/jpush";
+import { Device } from "@ionic-native/device";
 
 @Component({
   templateUrl: 'app.html'
@@ -23,6 +25,8 @@ export class MyApp {
     private toastCtrl: ToastController,
     public keyboard: Keyboard,
     private ionicApp: IonicApp,
+    public device: Device,
+    public jpush: JPush,
   ) {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -30,6 +34,8 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.registerBackButtonAction();
+      this.jpush.init();
+      this.jpush.setDebugMode(true);
     });
     this.storage.get("notFirstEnter").then(res => {
       if (res) {

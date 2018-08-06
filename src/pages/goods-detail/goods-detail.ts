@@ -300,6 +300,16 @@ export class GoodsDetailPage {
   }
 
   actionConfirm(){
+
+    if(!this.skuId){
+      this.toastCtrl.create({
+        message: "亲，请选择规格~",
+        duration: 1500,
+        position: 'middle',
+        cssClass: 'toast-error'
+      }).present();
+      return;
+    }
     if(this.tag == 'cart'){
       this.addCart()
     }else{

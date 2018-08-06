@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 import { GoodsService } from '../../providers/goods';
 import { PersonService } from '../../providers/person';
 import { Storage } from '@ionic/storage';
+import { JPush } from "@jiguang-ionic/jpush";
+import { Device } from "@ionic-native/device";
 
 /**
  * Generated class for the HomePage page.
@@ -38,15 +40,95 @@ export class HomePage {
   couponList: any = [];
   notice: any;
   hideNotice:boolean = false;
+
+
+  // Jpush
+  public registrationId: string;
+
+  devicePlatform: string;
+  sequence: number = 0;
+
+  tagResultHandler (result) {
+    var sequence: number = result.sequence;
+    var tags: Array<string> = result.tags == null ? [] : result.tags;
+    alert(
+      "Success!" + "\nSequence: " + sequence + "\nTags: " + tags.toString()
+    );
+  };
+
+  aliasResultHandler (result) {
+    var sequence: number = result.sequence;
+    var alias: string = result.alias;
+    alert("Success!" + "\nSequence: " + sequence + "\nAlias: " + alias);
+  };
+
+  errorHandler (err) {
+    var sequence: number = err.sequence;
+    var code = err.code;
+    alert("Error!" + "\nSequence: " + sequence + "\nCode: " + code);
+  };
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public goodsService: GoodsService,
     public storage: Storage,
     public personService: PersonService,
-    public toastCtrl: ToastController
+    public toastCtrl: ToastController,
+    public jpush: JPush,
+    device: Device
+
   ) {
     this.init();
+    this.devicePlatform = device.platform;
+
+    document.addEventListener(
+      "jpush.receiveNotification",
+      (event: any) => {
+        var content;
+        if (this.devicePlatform == "Android") {
+          content = event.alert;
+        } else {
+          content = event.aps.alert;
+        }
+        alert("Receive notification: " + JSON.stringify(event));
+      },
+      false
+    );
+
+    document.addEventListener(
+      "jpush.openNotification",
+      (event: any) => {
+        var content;
+        if (this.devicePlatform == "Android") {
+          content = event.alert;
+        } else {
+          // iOS
+          if (event.aps == undefined) {
+            // 本地通知
+            content = event.content;
+          } else {
+            // APNS
+            content = event.aps.alert;
+          }
+        }
+        alert("open notification: " + JSON.stringify(event));
+      },
+      false
+    );
+
+    document.addEventListener(
+      "jpush.receiveLocalNotification",
+      (event: any) => {
+        // iOS(*,9) Only , iOS(10,*) 将在 jpush.openNotification 和 jpush.receiveNotification 中触发。
+        var content;
+        if (this.devicePlatform == "Android") {
+        } else {
+          content = event.content;
+        }
+        alert("receive local notification: " + JSON.stringify(event));
+      },
+      false
+    );
   }
 
   ionViewDidLoad() {
@@ -82,27 +164,13 @@ export class HomePage {
       this.storage.set('appInfo', this.appInfo);
       console.log(res);
     })
-
-
-
   }
 
-
-
-  ionViewDidEnter() {
-
-
-  }
-  ionViewWillLeave() {
-
-  }
 
   // 下拉刷新
   doRefresh(refresher) {
-
     this.refreshing = true;
     this.init(refresher);
-
   }
 
   ngAfterViewInit() {
@@ -178,4 +246,5 @@ export class HomePage {
   cameraOrder(){
     this.navCtrl.push('CameraOrderPage');
   }
+
 }

@@ -85,7 +85,6 @@
     <allow-navigation href="http://192.168.1.121:8101" />
     <allow-navigation href="http://192.168.1.3:8100" />
     <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
-    <plugin name="cordova-plugin-device" spec="^2.0.1" />
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.16" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
@@ -101,4 +100,12 @@
     <engine name="browser" spec="5.0.3" />
     <engine name="ios" spec="4.5.4" />
     <engine name="android" spec="6.2.3" />
+    <plugin name="cordova-plugin-wechat" spec="^2.0.0">
+        <variable name="WECHATAPPID" value="wx6e31aa765fcb436b" />
+    </plugin>
+    <plugin name="cordova-plugin-jcore" spec="^1.1.12" />
+    <plugin name="jpush-phonegap-plugin" spec="^3.3.2">
+        <variable name="APP_KEY" value="77e19a1a09f29f2ff636af35" />
+    </plugin>
+    <plugin name="cordova-plugin-device" spec="^2.0.2" />
 </widget>

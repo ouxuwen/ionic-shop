@@ -20,6 +20,8 @@ import { CartService } from '../providers/cartService';
 import { ComponentsModule } from '../components/components.module';
 import { PhotoViewer } from '@ionic-native/photo-viewer';
 import { QQSDK } from '@ionic-native/qqsdk';
+import { JPush } from '@jiguang-ionic/jpush';
+import { Device } from "@ionic-native/device";
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import { QQSDK } from '@ionic-native/qqsdk';
     Nav,
     CartService,
     PhotoViewer,
-    QQSDK
+    QQSDK,
+    JPush,
+    Device
   ]
 })
 export class AppModule { }

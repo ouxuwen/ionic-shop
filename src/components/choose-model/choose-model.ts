@@ -4,7 +4,7 @@ import { PickerController } from 'ionic-angular';
 
 @Component({
   selector: 'choose-model',
-  template: `<span>柱镜：{{selectValue.zhu.text}}</span><span>球镜：{{selectValue.qiu.text }}</span>`,
+  template: `<span>柱镜：{{selectValue.zhu.text}}</span>   <span>球镜：{{selectValue.qiu.text }}</span>`,
   styles: ['span { font-size:inherit; line-height: inherit; color:inherit; margin:0;}']
 })
 

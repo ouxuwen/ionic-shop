@@ -40,9 +40,10 @@ page-order-detail {
     padding-bottom: 0;
     color: #707070;
     .header {
-      height: 24px;
-      line-height: 24px;
+      height: 25px;
+      line-height: 25px;
       font-size: 12px;
+      white-space: nowrap;
       span {
         float: right;
       }

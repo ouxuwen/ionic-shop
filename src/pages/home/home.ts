@@ -163,6 +163,11 @@ export class HomePage {
 
       this.storage.set('appInfo', this.appInfo);
       console.log(res);
+    },err =>{
+      if (refresher) {
+        this.refreshing = false;
+        refresher.complete();
+      }
     })
   }
 

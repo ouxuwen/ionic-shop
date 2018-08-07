@@ -215,7 +215,8 @@ export class GoodsDetailPage {
       'select_skuName': this.skuName,
       'price': this.goodsDetail.price,
       'cost_price': this.goodsDetail.cost_price,
-      'picture': this.goodsDetail.picture
+      'picture': this.goodsDetail.picture,
+
     }
     this.goodsService.addCart({
       cart_detail: JSON.stringify(params)

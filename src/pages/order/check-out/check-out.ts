@@ -162,6 +162,7 @@ export class CheckOutPage {
       this.integral = 0;
     }
     this.pointCut = this.integral * this.pointConfig.convert_rate;
+    this.pointCut = Number(this.pointCut.toFixed(2));
     this.calcTotalPrice();
   }
 

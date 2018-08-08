@@ -69,6 +69,7 @@ export class ShoppingCarPage {
   // 修改数量
   changeNum(i, num) {
     this.cartData[i].num += num;
+    console.log(this.cartData[i])
     if(this.cartData[i].num <1){
       this.cartData[i].num = 1;
       return;
@@ -83,6 +84,7 @@ export class ShoppingCarPage {
 
     }
     let num = parseInt(this.cartData[i].num);
+    console.log(this.cartData[i])
     this.goodsService.cartAdjustNum({
       cartid: this.cartData[i].cart_id,
       num: num
@@ -155,10 +157,10 @@ export class ShoppingCarPage {
       this.cartList = data.list;
       this.cartData = this.cartList['0,'];
       this.cartData&&this.cartData.map(ele => {
-        if (ele.goods_attribute_id == 1) {
-          let sku = ele.sku_name.split(' ');
-          ele.sku_name = `柱：${sku[0]} 球：${sku[1]}`
-        }
+        // if (ele.goods_attribute_id == 1) {
+        //   let sku = ele.sku_name.split(' ');
+        //   ele.sku_name = `柱：${sku[0]} 球：${sku[1]}`
+        // }
         ele.isChecked = true;
       })
       this.calculatePrice();

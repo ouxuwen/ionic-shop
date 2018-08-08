@@ -19,7 +19,7 @@ import { CartService } from '../../providers/cartService';
 
 })
 export class GoodsDetailPage {
-  selectValue: any;
+  selectValue: any = {"qiu":{"text":"0.00","value":"0.00","columnIndex":0},"zhu":{"text":"0.00","value":"0.00","columnIndex":1}};
   goodsId: any;
   navIndex: number = 1;
   numVals: number = 1;
@@ -40,7 +40,7 @@ export class GoodsDetailPage {
   evaluatesCount:any;
   appInfo:any;
   isGlasses:boolean = false; //是否是镜片
-  specList:any;
+  specList:any = [];
   selectSku:any;
   constructor(
     public navCtrl: NavController,
@@ -107,14 +107,14 @@ export class GoodsDetailPage {
   }
 
   getRoleResult(ev) {
-    console.log(ev);
-    this.selectValue = ev;
-    this.skuList.forEach(el => {
-      if (el.attr_value_items_format === ev.zhu.value + ';' + ev.qiu.value) {
-        this.skuId = el.sku_id;
-        this.skuName = el.sku_name
-      }
-    })
+    console.log(JSON.stringify(ev));
+    // this.selectValue = ev;
+    // this.skuList.forEach(el => {
+    //   if (el.attr_value_items_format === ev.zhu.value + ';' + ev.qiu.value) {
+    //     this.skuId = el.sku_id;
+    //     this.skuName = el.sku_name
+    //   }
+    // })
 
   }
 
@@ -127,8 +127,9 @@ export class GoodsDetailPage {
   goToCart() {
     this.navCtrl.popToRoot();
     // this.navCtrl.setRoot('ShoppingCarPage');
+
     this.navCtrl.parent.select(2);
-    //console.log(this.navCtrl.parent);
+    console.log(this.navCtrl.parent);
 
   }
 
@@ -156,32 +157,49 @@ export class GoodsDetailPage {
         this.isGlasses = true;
         this.roleList.zhu = [];
         this.roleList.qiu = [];
-        this.goodsDetail.spec_list.forEach(el => {
-          if (el.spec_id == 2) {
-            el.value.forEach(element => {
-              this.roleList.zhu.push({
-                text: element.spec_value_name, value: element.spec_id + ':' + element.spec_value_id
-              })
-            });
-          } else {
-            el.value.forEach(element => {
-              this.roleList.qiu.push({
-                text: element.spec_value_name, value: element.spec_id + ':' + element.spec_value_id
-              })
-            });
-          }
+        // 原本打算镜片规格也用传统方法设置，但是数量太多了导致爆炸。
+        // this.goodsDetail.spec_list.forEach(el => {
+        //   if (el.spec_id == 2) {
+        //     el.value.forEach(element => {
+        //       this.roleList.zhu.push({
+        //         text: element.spec_value_name, value: element.spec_id + ':' + element.spec_value_id
+        //       })
+        //     });
+        //   } else {
+        //     el.value.forEach(element => {
+        //       this.roleList.qiu.push({
+        //         text: element.spec_value_name, value: element.spec_id + ':' + element.spec_value_id
+        //       })
+        //     });
+        //   }
+        // });
+        this.goodsDetail.zhu.split(',').forEach(el=>{
+          this.roleList.zhu.push({
+            text: el, value: el
+          })
+        })
+        this.goodsDetail.qiu.split(',').forEach(el=>{
+          this.roleList.qiu.push({
+            text: el, value: el
+          })
         })
       }else{
         this.isGlasses = false;
-        this.specList = this.goodsDetail.spec_list;
-        this.selectSku = [];
-        this.specList.forEach((ele,index)=>{
-          this.selectSku[index] = ele.value[0].spec_id +':'+ ele.value[0].spec_value_id;
-        })
-        this.calcSku();
-        console.log(this.selectSku)
+        // this.specList = this.goodsDetail.spec_list;
+        // this.selectSku = [];
+        // this.specList.forEach((ele,index)=>{
+        //   this.selectSku[index] = ele.value[0].spec_id +':'+ ele.value[0].spec_value_id;
+        // })
+        // this.calcSku();
+        // console.log(this.selectSku)
       }
-
+      this.specList = this.goodsDetail.spec_list;
+      this.selectSku = [];
+      this.specList.forEach((ele,index)=>{
+        this.selectSku[index] = ele.value[0].spec_id +':'+ ele.value[0].spec_value_id;
+      })
+      this.calcSku();
+      console.log(this.selectSku)
       this.setHistory(this.goodsDetail);
     })
   }
@@ -216,7 +234,11 @@ export class GoodsDetailPage {
       'price': this.goodsDetail.price,
       'cost_price': this.goodsDetail.cost_price,
       'picture': this.goodsDetail.picture,
-
+    }
+    //眼镜类型增加镜片参数
+    if(this.isGlasses){
+      params['zhu'] = this.selectValue.zhu.value;
+      params['qiu'] = this.selectValue.qiu.value;
     }
     this.goodsService.addCart({
       cart_detail: JSON.stringify(params)
@@ -291,12 +313,17 @@ export class GoodsDetailPage {
     if (this.numVals < 1) {
       return;
     }
-    this.navCtrl.push('CheckOutPage', {
+    let params = {
       'tag':this.tag,
       'goodsTotal': this.numVals * Number(this.goodsDetail.promotion_price),
       'goodsList': [this.skuId],
       'num': this.numVals
-    })
+    };
+    if(this.isGlasses){
+      params['zhu'] = this.selectValue.zhu.value;
+      params['qiu'] = this.selectValue.qiu.value;
+    }
+    this.navCtrl.push('CheckOutPage', params)
   }
 
   actionConfirm(){

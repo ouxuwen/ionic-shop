@@ -44,6 +44,9 @@ export class CheckOutPage {
   showExpress = '';
   num = 0;
   pointConfig: any;
+  qiu:string;
+  zhu:string;
+  additional:any;   //附加参数
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -60,8 +63,9 @@ export class CheckOutPage {
     this.goodsTotal = this.navParams.get('goodsTotal');
     this.num = this.navParams.get('num');
     this.tagList = this.navParams.get('cartList') ? this.navParams.get('cartList') : this.navParams.get('goodsList');
-
-
+    // 眼镜参数
+    this.qiu = this.navParams.get('qiu');
+    this.zhu = this.navParams.get('zhu');
   }
 
   ionViewDidEnter() {
@@ -85,6 +89,10 @@ export class CheckOutPage {
         sku_id: this.tagList,
         num: this.num
       }
+    if(this.qiu &&　this.zhu){
+      params['qiu'] = this.qiu;
+      params['zhu'] = this.zhu;
+    }
     this.orderService.orderInfo(params).subscribe(res => {
       let data = res['data']
       this.orderDetail = data;
@@ -102,8 +110,17 @@ export class CheckOutPage {
         this.showCoupon = '没有可用的优惠券';
       }
       this.goods_sku_list = data.goods_sku_list;
+      this.additional = [];
       this.cartData.forEach(el => {
         this.goodsCount += Number(el.num);
+        if(el.qiu && el.zhu){
+          this.additional.push({
+            sku_id:el.sku_id,
+            qiu:el.qiu,
+            zhu:el.zhu,
+            num:el.num
+          })
+        }
       })
       this.getDefaultExpress();
       this.getCoupon();
@@ -213,7 +230,9 @@ export class CheckOutPage {
       pay_type: 1,// 支付方式
       shipping_company_id: this.selectExpress,// 物流公司
       tag: this.tag,//'cart' 从购物车 'buy_now' 立即购买
+      additional: JSON.stringify(this.additional)
     }
+
     if (!this.addressDefault) {
       this.alertCtrl.create({
         title: '温馨提示',

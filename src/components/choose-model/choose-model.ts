@@ -4,7 +4,7 @@ import { PickerController } from 'ionic-angular';
 
 @Component({
   selector: 'choose-model',
-  template: `<span>柱镜：{{selectValue.zhu.text}}</span>   <span>球镜：{{selectValue.qiu.text }}</span>`,
+  template: `<span>柱镜：{{selectValue.zhu.text}}</span> / <span>球镜：{{selectValue.qiu.text }}</span>`,
   styles: ['span { font-size:inherit; line-height: inherit; color:inherit; margin:0;}']
 })
 
@@ -50,19 +50,19 @@ export class ChooseModelComponent {
       ],
       columns: [
         {
-          name: 'qiu',
-          align: 'center',
-          selectedIndex:this.defaultValue? this.defaultValue.qiu.index:0,
-          options: this.selectList.qiu,
-          prefix: "球 镜："
-        },
-        {
           name: 'zhu',
           align: 'center',
           selectedIndex: this.defaultValue? this.defaultValue.zhu.index:0,
           options: this.selectList.zhu,
           prefix: "柱 镜："
         },
+        {
+          name: 'qiu',
+          align: 'center',
+          selectedIndex:this.defaultValue? this.defaultValue.qiu.index:0,
+          options: this.selectList.qiu,
+          prefix: "球 镜："
+        }
       ]
     });
     picker.present();
@@ -81,7 +81,6 @@ export class ChooseModelComponent {
 
     //是否有默认选中值，有则滑到默认值，没有=>是否有placeholder,有则显示placeholder text,没有则默认选中第一个
     if( this.defaultValue ){
-
       this.selectValue = this.defaultValue ;
     }
   }

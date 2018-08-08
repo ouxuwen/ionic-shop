@@ -46,7 +46,8 @@
           <image tappable (click)='openDetail($event,ele.goods_id)' [src]="ele.picture_info.pic_cover_mid" alt=""></image>
           <div>
             <p class="name" tappable (click)='openDetail($event,ele.goods_id)'>{{ele.goods_name}}</p>
-            <p class="type">规格：{{ele.sku_name}}</p>
+            <p class="type" *ngIf="ele.qiu">柱镜：{{ele.zhu}}  /  球镜：{{ele.qiu}}</p>
+            <p class="type" *ngIf="ele.sku_name">规格：{{ele.sku_name}}</p>
             <p class="price">价格：¥ {{ele.price}}</p>
           </div>
           <div class="nums">

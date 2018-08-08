@@ -3,6 +3,10 @@ page-goods-detail {
     height: 100vw;
     ion-slide {
       overflow: hidden;
+      img{
+        width:100%;
+
+      }
     }
   }
   a{
@@ -124,12 +128,24 @@ page-goods-detail {
             border:1px solid #eee;
             margin-right: 10px;
             margin-top: 5px;
+            position: relative;
             input{
+              display: none;
+            }
+            img{
+              width:11px;
+              height: 10px;
+              position: absolute;
+              bottom: 0;
+              right: 0;
               display: none;
             }
             &.selected{
               border-color: #209FFF;
               color:#209FFF;
+              img{
+                display: block;
+              }
             }
           }
           &:after{

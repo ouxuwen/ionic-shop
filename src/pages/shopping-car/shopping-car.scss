@@ -13,7 +13,7 @@ page-shopping-car {
     flex-direction:column;
     ion-icon{
       font-size: 120px;
-      
+
     }
   }
   .good_list{
@@ -26,15 +26,14 @@ page-shopping-car {
         img{
           width:  60px;
           height: 60px;
-          margin-left: 5px;
+          margin:0 5px;
           z-index: 100;
         }
         >div{
           z-index: 100;
-          
           p{
             text-overflow: ellipsis;
-           
+
             &.price{
               color:red;
             }
@@ -63,12 +62,13 @@ page-shopping-car {
       .num{
         position: absolute;
         right:10px;
-        bottom:10px;
+        bottom:6px;
         display: flex;
         align-items: center;
         border:1px solid #ccc;
         ion-input{
           width:50px;
+          position: relative;
           input{
             margin:0;
             text-align: center;

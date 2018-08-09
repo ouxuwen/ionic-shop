@@ -220,11 +220,15 @@ page-home {
         }
         p{
           text-align: center;
+          color:#707070;
         }
     }
     .hot{
       p{
         text-align: center;
+        font-size: 12px;
+
+        color:#707070;
       }
         img{
             width:100%;
@@ -232,6 +236,7 @@ page-home {
         }
         .price{
           color:#ef2933;
+          font-size: 12px;
         }
         ion-grid{
             padding:0;
@@ -332,5 +337,49 @@ page-home {
         font-size: 26px;
       }
     }
+  }
+  .more_goods{
+    background: #EFF4FA;
+    &:after{
+      content:'';
+      clear: both;
+      display: block;
+    }
+    .goods_item{
+      background: #fff;
+      margin:2vw;
+      width:46vw;
+      box-sizing: border-box;
+      padding:10px;
+      float: left;
+      img{
+        width:100%;
+      }
+      p{
+        line-height: 20px;
+      }
+      p.name{
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        color:#707070;
+        font-size: 12px;
+      }
+      p.price{
+        color:#969696;
+        font-size: 12px;
+
+        span:first-child{
+          color:#FF5100;
+          font-size: 14px;
+        }
+        span:last-child{
+          float: right;
+          text-decoration: line-through;
+        }
+
+      }
+    }
+
   }
 }

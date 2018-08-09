@@ -195,7 +195,7 @@ export class GoodsDetailPage {
       }
       this.specList = this.goodsDetail.spec_list;
       this.selectSku = [];
-      this.specList.forEach((ele,index)=>{
+      this.specList && this.specList.forEach((ele,index)=>{
         this.selectSku[index] = ele.value[0].spec_id +':'+ ele.value[0].spec_value_id;
       })
       this.calcSku();
@@ -206,7 +206,7 @@ export class GoodsDetailPage {
 
   //添加购物车
   addCart() {
-    this.tag = 'cart';
+
     if(this.skuId == 999){
       this.toastCtrl.create({
         message: "亲，拍照订单不能直接拍的哦~",
@@ -216,10 +216,7 @@ export class GoodsDetailPage {
       }).present()
       return;
     }
-    if (!this.skuId) {
-      this.hideDetail = false;
-      return;
-    }
+
     if (this.numVals < 1) {
       return;
     }
@@ -296,7 +293,7 @@ export class GoodsDetailPage {
 
   //立即购买
   buyNow() {
-    this.tag = 'buy_now';
+
     if(this.skuId == 999){
       this.toastCtrl.create({
         message: "亲，拍照订单不能直接拍的哦~",
@@ -306,10 +303,7 @@ export class GoodsDetailPage {
       }).present()
       return;
     }
-    if (!this.skuId) {
-      this.hideDetail = false;
-      return;
-    }
+
     if (this.numVals < 1) {
       return;
     }

@@ -40,8 +40,11 @@ export class HomePage {
   couponList: any = [];
   notice: any;
   hideNotice:boolean = false;
-
-
+  pageNo:number = 1;
+  canLoadMore:boolean = true;
+  goodsList:any;
+  index_adv_one:any;
+  index_adv_two:any;
   // Jpush
   public registrationId: string;
 
@@ -149,7 +152,7 @@ export class HomePage {
         this.refreshing = false;
         refresher.complete();
       }
-
+      this.getGoodsList();
       let data = res['data'];
       this.promoList = data.discount_list;
       this.appInfo = data.web_info;
@@ -160,15 +163,17 @@ export class HomePage {
       this.couponList = data.coupon_list;
       this.notice = data.notice;
       this.bannerList = data.plat_adv_list.adv_list;
-
+      this.index_adv_one = data.index_adv_one.adv_list[0].adv_image;
+      this.index_adv_two = data.index_adv_two.adv_list[0].adv_image;
+      console.log(this.index_adv_one,this.index_adv_two)
       this.storage.set('appInfo', this.appInfo);
-      console.log(res);
     },err =>{
       if (refresher) {
         this.refreshing = false;
         refresher.complete();
       }
-    })
+    });
+
   }
 
 
@@ -252,4 +257,28 @@ export class HomePage {
     this.navCtrl.push('CameraOrderPage');
   }
 
+  getGoodsList(refresher?) {
+    let params = {
+      page: this.pageNo,
+    }
+    this.goodsService.goodsList(params).subscribe(res => {
+      if(refresher)refresher.complete();
+      let data = res['data'];
+      if (data.goods_list.lenght < 14) {
+        this.canLoadMore = false;
+      } else {
+        this.canLoadMore = true;
+      }
+      if (refresher){ this.goodsList = this.goodsList.concat(data.goods_list.data);}
+      else this.goodsList = data.goods_list.data;
+    })
+  }
+
+  // 上拉
+  doInfinite(refresher) {
+    if (!this.canLoadMore) return;
+    this.pageNo++;
+    this.getGoodsList(refresher);
+
+  }
 }

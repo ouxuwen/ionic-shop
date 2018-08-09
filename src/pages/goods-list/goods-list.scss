@@ -71,7 +71,7 @@ page-goods-list {
             &.star{
               ion-icon{
                 color:#FFCE44;
-                font-size: 16px;
+                font-size: 12px;
               }
               span{
                 color: #999;
@@ -82,11 +82,11 @@ page-goods-list {
             &.price{
               span:first-child{
                 color: red;
-                font-size: 18px;
+                font-size: 16px;
               }
               span:last-child{
                 color: #999;
-                font-size: 14px;
+                font-size: 12px;
                 text-decoration: line-through;
                 margin-left: 20px;
               }

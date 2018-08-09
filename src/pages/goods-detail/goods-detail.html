@@ -118,10 +118,10 @@
         <p>购物车</p>
         <ion-badge color="danger" *ngIf="cartInfo.carcount>0">{{cartInfo.num}}</ion-badge>
       </div>
-      <div class="buy_now" (click)="buyNow()">
+      <div class="buy_now" (click)="hideDetail=false;tag='buy_now'">
         立即购买
       </div>
-      <div class="add_cart" tappable (click)="addCart()">
+      <div class="add_cart" tappable (click)="hideDetail=false;tag='cart'">
         加入购物车
       </div>
     </footer>

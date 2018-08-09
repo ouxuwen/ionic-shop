@@ -28,7 +28,7 @@
       <p>
         退款金额：
         <span>
-          ¥ {{refundDetail.order_refund.refund_require_money}}
+          ¥ {{refundDetail.refund_money}}
         </span>
       </p>
       <p>退款原因： </p>
@@ -44,8 +44,8 @@
               <p [class.active]="refundDetail.order_refund.refund_status>2">{{refundDetail.order_refund.refund_info[0].action}}</p>
               <span>{{refundDetail.order_refund.refund_info[0].action_time*1000 | date:"yyyy-MM-dd hh:mm:ss"}}</span>
             </div>
-            <div class="line_point" [class.active]="refundDetail.order_refund.refund_status>2">1</div>
-            <div class="line_line" [class.active]="refundDetail.order_refund.refund_status>2"></div>
+            <div class="line_point" [class.active]="refundDetail.order_refund.refund_status>0">1</div>
+            <div class="line_line" [class.active]="refundDetail.order_refund.refund_status>0"></div>
           </div>
           <div class="line_item">
             <div class="line_text">
@@ -53,16 +53,16 @@
               <p *ngIf="!refundDetail.order_refund.refund_info[1]" [class.active]="refundDetail.order_refund.refund_status>3">等待卖家确认退款</p>
               <span *ngIf="refundDetail.order_refund.refund_info[1]">{{refundDetail.order_refund.refund_info[1].action_time*1000 | date:"yyyy-MM-dd hh:mm:ss"}}</span>
             </div>
-            <div class="line_point" [class.active]="refundDetail.order_refund.refund_status>3">2</div>
-            <div class="line_line" [class.active]="refundDetail.order_refund.refund_status>3"></div>
+            <div class="line_point" [class.active]="refundDetail.order_refund.refund_status>1">2</div>
+            <div class="line_line" [class.active]="refundDetail.order_refund.refund_status>1"></div>
           </div>
           <div class="line_item">
             <div class="line_text">
               <p *ngIf="refundDetail.order_refund.refund_info[2]" class="active">{{refundDetail.order_refund.refund_info[2].action}}</p>
-              <p *ngIf="!refundDetail.order_refund.refund_info[2]" [class.active]="refundDetail.order_refund.refund_status>4">退款已成功</p>
+              <p *ngIf="!refundDetail.order_refund.refund_info[2]" [class.active]="refundDetail.order_refund.refund_status>2">退款已成功</p>
               <span *ngIf="refundDetail.order_refund.refund_info[2]">{{refundDetail.order_refund.refund_info[2].action_time*1000 | date:"yyyy-MM-dd hh:mm:ss"}}</span>
             </div>
-            <div class="line_point" [class.active]="refundDetail.order_refund.refund_status>4">3</div>
+            <div class="line_point" [class.active]="refundDetail.order_refund.refund_status>2">3</div>
           </div>
         </div>
       </div>

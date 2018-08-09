@@ -24,15 +24,15 @@
       <ion-segment-button value="" (click)="reset()">
         综 合
       </ion-segment-button>
-      <ion-segment-button value="ng.sales" (click)="sort=sort=='asc'&& order=='ng.sales'?'desc':'asc';getGoodsList()">
+      <ion-segment-button value="ng.sales" (click)="sort=sort=='asc'&& order=='ng.sales'?'desc':'asc';page=1;getGoodsList()">
         销 量
         <ion-icon [name]="sort=='asc' && order=='ng.sales' ?'md-arrow-up':'md-arrow-down'"></ion-icon>
       </ion-segment-button>
-      <ion-segment-button value="ng.is_new" (click)="sort=sort=='asc'&& order=='ng.is_new'?'desc':'asc';getGoodsList()">
+      <ion-segment-button value="ng.is_new" (click)="sort=sort=='asc'&& order=='ng.is_new'?'desc':'asc';page=1;getGoodsList()">
         新 品
         <ion-icon [name]="sort=='asc' && order=='ng.is_new' ?'md-arrow-up':'md-arrow-down'"></ion-icon>
       </ion-segment-button>
-      <ion-segment-button value="ng.price" (click)="sort=sort=='asc'&& order=='ng.price'?'desc':'asc';getGoodsList()">
+      <ion-segment-button value="ng.price" (click)="sort=sort=='asc'&& order=='ng.price'?'desc':'asc';page=1;getGoodsList()">
         价 格
         <ion-icon [name]="sort=='asc' && order=='ng.price' ?'md-arrow-up':'md-arrow-down'"></ion-icon>
       </ion-segment-button>

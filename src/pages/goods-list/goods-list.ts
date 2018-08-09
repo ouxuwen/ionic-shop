@@ -78,7 +78,7 @@ export class GoodsListPage {
       } else {
         this.canLoadMore = true;
       }
-      if (this.pageNo > 1) this.goodsList = this.goodsList.concat(data.goods_list.data);
+      if (refresher){ this.goodsList = this.goodsList.concat(data.goods_list.data);}
       else this.goodsList = data.goods_list.data;
     })
   }
@@ -110,7 +110,7 @@ export class GoodsListPage {
   doInfinite(refresher) {
     if (!this.canLoadMore) return;
     this.pageNo++;
-    this.getGoodsList();
+    this.getGoodsList(refresher);
 
   }
 

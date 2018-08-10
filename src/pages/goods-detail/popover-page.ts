@@ -24,10 +24,10 @@ export class PopoverPage {
   options: QQShareOptions = {
     client: this.qq.ClientType.QQ,
     scene: this.qq.Scene.QQ,
-    title: 'This is a title for cordova-plugin-qqsdk',
-    url: 'https://cordova.apache.org/',
-    image: 'http://6t73q2.natappfree.cc/dj/images/avatar.png',
-    description: 'This is  Cordova QQ share description',
+    title: '唯视光学',
+    url: 'http://www.szweishi.com/',
+    image: 'http://www.szweishi.com/images/drawable-xxxhdpi-icon.png',
+    description: '唯视光学在线眼镜商城',
   };
 
   share() {
@@ -44,12 +44,12 @@ export class PopoverPage {
   wechat() {
     Wechat.share({
       message: {
-        title: "Hi, there",
-        description: "This is description.",
-        thumb: "http://6t73q2.natappfree.cc/dj/images/avatar.png",
+        title: "唯视光学",
+        description: "唯视光学在线眼镜商城",
+        thumb: "http://www.szweishi.com/images/drawable-xxxhdpi-icon.png",
         media: {
           type: Wechat.Type.WEBPAGE,
-          webpageUrl: "https://cordova.apache.org/"
+          webpageUrl: "http://www.szweishi.com/"
         }
       },
       scene: Wechat.Scene.TIMELINE   // share to Timeline

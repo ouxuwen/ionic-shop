@@ -87,7 +87,8 @@
   </div>
   <div class="rule" *ngIf="expressCompanyList" tappable (click)="hideExpress=false">
     选择物流：
-    <span class="price">¥ {{express}}</span>
+    <span class="price" >¥ {{express}}</span>
+    <span class="price" *ngIf="promotionFullMail?.is_open==1">满{{promotionFullMail?.full_mail_money}}包邮</span>
     <ion-icon class="r" name="ios-arrow-forward-outline"></ion-icon>
     <span>{{showExpress}}</span>
 

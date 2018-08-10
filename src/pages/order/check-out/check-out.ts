@@ -47,6 +47,7 @@ export class CheckOutPage {
   qiu:string;
   zhu:string;
   additional:any;   //附加参数
+  promotionFullMail:any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -103,6 +104,7 @@ export class CheckOutPage {
       this.expressCompanyList = data.express_company_list;
       this.cartData = data.itemlist;
       this.pointConfig = data['point_config'];
+      this.promotionFullMail = data.promotion_full_mail;
       if (this.couponList.length > 0) {
         this.selectCoupon = this.couponList[0].coupon_id;
         this.showCoupon = this.couponList[0].coupon_name;
@@ -214,8 +216,14 @@ export class CheckOutPage {
   }
 
   calcTotalPrice() {
+    let orderRealMoney = Number(this.goodsTotal) + Number(this.pointCut) - Number(this.couponCut);
+    // 超过包邮额包邮
+    if( this.promotionFullMail && this.promotionFullMail.is_open &&  orderRealMoney >= Number(this.promotionFullMail.full_mail_money)){
+      this.express = 0;
+    }
     this.totalPrice = Number(this.goodsTotal) + Number(this.express) + Number(this.pointCut) - Number(this.couponCut);
-    if (this.totalPrice < 0) {
+    this.totalPrice = Number(this.totalPrice.toFixed(2));
+    if (this.totalPrice <= 0 ) {
       this.totalPrice = 0;
     }
   }

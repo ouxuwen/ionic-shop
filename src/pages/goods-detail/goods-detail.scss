@@ -33,10 +33,14 @@ page-goods-detail {
           color: #fff;
           font-size: 10px;
           &:first-child {
-            background: #19A15E;
+            border: 1px solid #19A15E;
+            border-radius: 2px;
+            color: #19A15E;
           }
           &:nth-child(2) {
-            background: #4B8BF5;
+            border: 1px solid #4B8BF5;
+            border-radius: 2px;
+            color: #4B8BF5;
             margin-left: 10px;
           }
           &:nth-child(3),
@@ -45,6 +49,11 @@ page-goods-detail {
             border-radius: 2px;
             color: #F5564B;
             margin-left: 10px;
+          }
+          &.dj{
+            border: 1px solid #F5564B;
+            background: #F5564B;
+            color: #fff;
           }
         }
       }

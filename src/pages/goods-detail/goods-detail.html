@@ -43,6 +43,10 @@
         <span>正品保证</span>
         <span>支持售后</span>
       </p>
+      <p class="note" *ngIf="goodsDetail?.baoyou_name">
+        <span class="dj">{{goodsDetail.baoyou_name}}</span>
+
+      </p>
     </div>
     <div class="detail_nav">
       <span class="active" (click)="hideDetail = false">商 品</span>

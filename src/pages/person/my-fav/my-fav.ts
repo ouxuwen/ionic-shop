@@ -46,8 +46,7 @@ export class MyFavPage {
       if (refresher) {
         this.goodsList.concat(res['data']['data']);
         refresher.complate();
-      }
-      else {
+      } else {
         this.goodsList = res['data']['data'];
 
       }

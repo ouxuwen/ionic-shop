@@ -5,9 +5,10 @@ import { ImgLazyLoadComponent } from './img-lazy-load/img-lazy-load';
 import { NumberInputComponent } from './number-input/number-input';
 import { ChooseModelComponent } from './choose-model/choose-model';
 import { CoustomActionComponent } from './coustom-action/coustom-action'
+import { StarComponent } from './star/star'
 @NgModule({
-  declarations: [ImgLazyLoadComponent, NumberInputComponent, ChooseModelComponent,CoustomActionComponent],
+  declarations: [ImgLazyLoadComponent, NumberInputComponent, ChooseModelComponent,CoustomActionComponent,StarComponent],
   imports: [IonicModule, CommonModule],
-  exports: [ImgLazyLoadComponent, NumberInputComponent, ChooseModelComponent,CoustomActionComponent]
+  exports: [ImgLazyLoadComponent, NumberInputComponent, ChooseModelComponent,CoustomActionComponent,StarComponent]
 })
 export class ComponentsModule { }

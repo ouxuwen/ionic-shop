@@ -152,7 +152,7 @@ export class HomePage {
         this.refreshing = false;
         refresher.complete();
       }
-      this.getGoodsList();
+      this.getGoodsList("",false);
       let data = res['data'];
       this.promoList = data.discount_list;
       this.appInfo = data.web_info;
@@ -257,11 +257,18 @@ export class HomePage {
     this.navCtrl.push('CameraOrderPage');
   }
 
-  getGoodsList(refresher?) {
+  // 加工
+  machining(){
+    this.navCtrl.push("NoticeContentPage",{
+      "article_id":1
+    })
+  }
+
+  getGoodsList(refresher?,bol?) {
     let params = {
       page: this.pageNo,
     }
-    this.goodsService.goodsList(params).subscribe(res => {
+    this.goodsService.goodsList(params,bol).subscribe(res => {
       if(refresher)refresher.complete();
       let data = res['data'];
       if (data.goods_list.lenght < 14) {
@@ -270,7 +277,7 @@ export class HomePage {
         this.canLoadMore = true;
       }
       if (refresher){ this.goodsList = this.goodsList.concat(data.goods_list.data);}
-      else this.goodsList = data.goods_list.data;
+      else {this.goodsList = data.goods_list.data;}
     })
   }
 

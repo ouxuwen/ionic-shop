@@ -51,8 +51,8 @@ export class GoodsService {
     * 创建时间：2017年2月24日 16:55:05
     * $category_id, $brand_id, $min_price, $max_price, $page, $page_size, $order, $attr_array, $spec_array
     */
-  goodsList(data) {
-    return this.base.post('/app/Goods/goodsList', data);
+  goodsList(data,bol = true) {
+    return this.base.post('/app/Goods/goodsList', data ,bol);
   }
 
   /**

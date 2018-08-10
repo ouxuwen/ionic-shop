@@ -66,4 +66,10 @@ export class MyTeamPage {
     this.getTeam(refresher);
   }
 
+  rule(){
+    this.navCtrl.push("NoticeContentPage",{
+      "article_id":2
+    })
+  }
+
 }

@@ -89,7 +89,7 @@ export class OrderService {
 
   // 取消退款
   cancleRefund(data) {
-    return this.base.post('/app/pay/cancleOrder', data);
+    return this.base.post('/app/order/cancleOrder', data);
   }
 
   // 拍照下单

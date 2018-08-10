@@ -7,16 +7,16 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>资 讯 详 情</ion-title>
+    <ion-title>{{articleDetail?.title}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <h2 class="stitle">{{articleDetail.title}}</h2>
-  <p class="time">{{articleDetail.create_time*1000 | date:"yyyy-MM-dd hh:mm:ss"}}</p>
-  <div class="content" [innerHtml]="articleDetail.content">
+  <h2 class="stitle">{{articleDetail?.title}}</h2>
+  <p class="time">{{articleDetail?.create_time*1000 | date:"yyyy-MM-dd hh:mm:ss"}}</p>
+  <div class="content" [innerHtml]="articleDetail?.content">
 
   </div>
 </ion-content>

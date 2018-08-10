@@ -35,12 +35,11 @@
             <span>¥ {{item.market_price}}</span>
           </p>
           <p class="star">
-            <ion-icon name="ios-star"></ion-icon>
-            <ion-icon name="ios-star"></ion-icon>
-            <ion-icon name="ios-star"></ion-icon>
-            <ion-icon name="ios-star"></ion-icon>
-            <ion-icon name="ios-star"></ion-icon>
-            <span> 100% 好评</span>
+            <star [stars]="item.star/item.evaluates"></star>
+            <span> {{item.evaluates}} 评论</span>
+            <span> {{item.sales}} 购买 </span>
+            <span> {{item.clicks}} 点击 </span>
+            <span> {{item.collects}} 收藏 </span>
           </p>
           <ion-icon name="md-cart"></ion-icon>
         </div>

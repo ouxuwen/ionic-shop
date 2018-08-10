@@ -33,12 +33,9 @@
         <span>已售 ：{{goodsDetail.sales}}</span>
       </p>
       <p class="star">
-        <ion-icon name="ios-star"></ion-icon>
-        <ion-icon name="ios-star"></ion-icon>
-        <ion-icon name="ios-star"></ion-icon>
-        <ion-icon name="ios-star"></ion-icon>
-        <ion-icon name="ios-star"></ion-icon>
-        <span> 100% 好评</span>
+          <star [stars]="goodsDetail.star/goodsDetail.evaluates"></star>
+          <span>点击： {{goodsDetail.clicks}}  </span>
+          <span>收藏： {{goodsDetail.collects}}  </span>
       </p>
       <p class="note">
         <span>闪电发货</span>

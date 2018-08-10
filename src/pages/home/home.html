@@ -36,7 +36,7 @@
           <img src="assets/imgs/camera.png" alt="">
           <p>拍照</p>
         </ion-col>
-        <ion-col col-3>
+        <ion-col col-3 (click)="machining()">
           <img src="assets/imgs/glasses.png" alt="">
           <p>加工</p>
         </ion-col>
@@ -145,7 +145,7 @@
   <!-- 精品汇 -->
   <div class="special">
     <img src="assets/imgs/weipinhui.jpg" alt="">
-    <image *ngIf="index_adv_one" [src]="index_adv_one" alt=""></image>
+    <image class="maxh" *ngIf="index_adv_one" [src]="index_adv_one" alt=""></image>
     <div class="special-box">
       <ion-grid>
         <ion-row>
@@ -185,7 +185,7 @@
   <!-- 热门汇 -->
   <div class="hot">
     <img src="assets/imgs/remenhui.jpg" alt="">
-    <image *ngIf="index_adv_two" [src]="index_adv_two" alt=""></image>
+    <image  class="maxh" *ngIf="index_adv_two" [src]="index_adv_two" alt=""></image>
     <ion-grid>
       <ion-row>
         <ion-col col-4 *ngFor="let item of hotList1" tappable (click)="openGoodsDetail(item.goods_id)">

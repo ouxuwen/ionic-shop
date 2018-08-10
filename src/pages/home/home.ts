@@ -93,7 +93,7 @@ export class HomePage {
         } else {
           content = event.aps.alert;
         }
-        alert("Receive notification: " + JSON.stringify(event));
+        // alert("Receive notification: " + JSON.stringify(event));
       },
       false
     );
@@ -114,7 +114,7 @@ export class HomePage {
             content = event.aps.alert;
           }
         }
-        alert("open notification: " + JSON.stringify(event));
+        // alert("open notification: " + JSON.stringify(event));
       },
       false
     );
@@ -128,7 +128,7 @@ export class HomePage {
         } else {
           content = event.content;
         }
-        alert("receive local notification: " + JSON.stringify(event));
+        // alert("receive local notification: " + JSON.stringify(event));
       },
       false
     );

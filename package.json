@@ -34,6 +34,7 @@
     "com-sarriaroman-photoviewer": "^1.1.18",
     "cordova-android": "6.2.3",
     "cordova-browser": "5.0.3",
+    "cordova-hot-code-push-plugin": "^1.5.3",
     "cordova-ios": "4.5.4",
     "cordova-plugin-alipay": "git+https://github.com/ejiyuan/cordova-plugin-alipay.git",
     "cordova-plugin-camera": "^2.4.1",
@@ -81,7 +82,8 @@
       "cordova-plugin-jcore": {},
       "jpush-phonegap-plugin": {
         "APP_KEY": "77e19a1a09f29f2ff636af35"
-      }
+      },
+      "cordova-hot-code-push-plugin": {}
     },
     "platforms": [
       "browser",

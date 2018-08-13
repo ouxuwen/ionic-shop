@@ -383,10 +383,10 @@ page-home {
 
   }
   .maxh{
-    max-height:20vw;
-    overflow:hidden;
     img{
-      height: 100%;
+      width: 100%;
+      height: auto;
+      max-height:20vw;
     }
   }
 }

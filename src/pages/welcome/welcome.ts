@@ -17,18 +17,18 @@ export class WelcomePage {
 
   slides = [
     {
-      title: "Welcome to the App!",
-      description: "The <b>Ionic Component Documentation</b> showcases a number of useful components that are included out of the box with Ionic.",
+      title: "唯视光学",
+      description: "欢迎来到唯视光学眼镜商城,超多精彩，超多优惠!",
       image: "assets/imgs/guidepage01.png",
     },
     {
-      title: "What is Weishi?",
-      description: "<b>Ionic Framework</b> is an open source SDK that enables developers to build high quality mobile apps with web technologies like HTML, CSS, and JavaScript.",
+      title: "在线支付，购物更方便！",
+      description: "支持支付宝等支付方式",
       image: "assets/imgs/guidepage02.png",
     },
     {
-      title: "What is Weishi Cloud?",
-      description: "The <b>Ionic Cloud</b> is a cloud platform for managing and scaling Ionic apps with integrated services like push notifications, native builds, user auth, and live updating.",
+      title: "蔡司、依视路、明月...",
+      description: "镜片种类丰富，各种大牌镜片品牌，任君挑选！",
       image: "assets/imgs/guidepage03.png",
     }
   ];

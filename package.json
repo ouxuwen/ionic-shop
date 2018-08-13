@@ -45,7 +45,6 @@
     "cordova-plugin-jcore": "^1.1.12",
     "cordova-plugin-qqsdk": "^0.9.4",
     "cordova-plugin-splashscreen": "^5.0.2",
-    "cordova-plugin-wechat": "^2.0.0",
     "cordova-plugin-whitelist": "^1.3.3",
     "ion-multi-picker": "^2.1.2",
     "ionic-angular": "3.9.2",
@@ -80,10 +79,7 @@
       "jpush-phonegap-plugin": {
         "APP_KEY": "77e19a1a09f29f2ff636af35"
       },
-      "cordova-hot-code-push-plugin": {},
-      "cordova-plugin-wechat": {
-        "WECHATAPPID": "wx7523eff679942016"
-      }
+      "cordova-hot-code-push-plugin": {}
     },
     "platforms": [
       "browser",

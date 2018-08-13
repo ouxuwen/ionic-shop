@@ -49,7 +49,7 @@ export class RefundDetailPage {
 
   cancelRefund() {
     this.orderService.cancleRefund({ order_goods_id: this.orderGoodsId, order_id: this.orderId }).subscribe(res => {
-      let alert = this.alertCtrl.create({
+      this.alertCtrl.create({
         title: '温馨提示',
         message: '取消成功！',
         buttons: [

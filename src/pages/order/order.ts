@@ -81,7 +81,7 @@ export class OrderPage {
   }
 
   deleteOrderConfirm(id) {
-    let alert = this.alertCtrl.create({
+    this.alertCtrl.create({
       title: '温馨提示',
       message: '亲，你确定要删除吗?',
       buttons: [
@@ -99,8 +99,7 @@ export class OrderPage {
           }
         }
       ]
-    });
-    alert.present();
+    }).present();
   }
 
   deleteOrder(id) {
@@ -111,7 +110,7 @@ export class OrderPage {
 
 
   closeOrderConfirm(id) {
-    let alert = this.alertCtrl.create({
+    this.alertCtrl.create({
       title: '温馨提示',
       message: '亲，你确定要关闭吗?',
       buttons: [
@@ -129,8 +128,7 @@ export class OrderPage {
           }
         }
       ]
-    });
-    alert.present();
+    }).present();
   }
 
   closeOrder(id) {

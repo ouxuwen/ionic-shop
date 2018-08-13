@@ -52,7 +52,7 @@ export class OrderCommentPage {
       goodsEvaluate:JSON.stringify(this.goodsEvaluate)
     }
     this.orderService.addGoodsEvaluate(params).subscribe(res => {
-      let alert = this.alertCtrl.create({
+      this.alertCtrl.create({
         title: '温馨提示',
         message: '提交评价成功！',
         buttons: [

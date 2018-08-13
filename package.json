@@ -76,14 +76,14 @@
       "cordova-plugin-qqsdk": {
         "QQ_APP_ID": "1107401157"
       },
-      "cordova-plugin-wechat": {
-        "WECHATAPPID": "wx6e31aa765fcb436b"
-      },
       "cordova-plugin-jcore": {},
       "jpush-phonegap-plugin": {
         "APP_KEY": "77e19a1a09f29f2ff636af35"
       },
-      "cordova-hot-code-push-plugin": {}
+      "cordova-hot-code-push-plugin": {},
+      "cordova-plugin-wechat": {
+        "WECHATAPPID": "wx7523eff679942016"
+      }
     },
     "platforms": [
       "browser",

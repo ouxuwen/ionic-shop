@@ -91,7 +91,7 @@ export class PayPage {
   }
 
   showResult(){
-    let alert = this.alertCtrl.create({
+    this.alertCtrl.create({
       title: '支付情况',
       message: '支付遇到了问题？',
       buttons: [

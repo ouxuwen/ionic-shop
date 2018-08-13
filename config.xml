@@ -101,9 +101,6 @@
     <plugin name="cordova-plugin-qqsdk" spec="^0.9.4">
         <variable name="QQ_APP_ID" value="1107401157" />
     </plugin>
-    <plugin name="cordova-plugin-wechat" spec="^2.0.0">
-        <variable name="WECHATAPPID" value="wx6e31aa765fcb436b" />
-    </plugin>
     <plugin name="cordova-plugin-jcore" spec="^1.1.12" />
     <plugin name="jpush-phonegap-plugin" spec="^3.3.2">
         <variable name="APP_KEY" value="77e19a1a09f29f2ff636af35" />
@@ -113,4 +110,7 @@
     <engine name="browser" spec="5.0.3" />
     <engine name="ios" spec="4.5.4" />
     <engine name="android" spec="6.2.3" />
+    <plugin name="cordova-plugin-wechat" spec="^2.0.0">
+        <variable name="WECHATAPPID" value="wx7523eff679942016" />
+    </plugin>
 </widget>

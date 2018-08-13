@@ -95,7 +95,7 @@ export class ShoppingCarPage {
 
   // 删除确认
   deleteCartConfirm(cartid, itemSliding?) {
-    let alert = this.alertCtrl.create({
+    this.alertCtrl.create({
       title: '温馨提示',
       message: '亲，你确定要删除吗?',
       buttons: [
@@ -113,8 +113,7 @@ export class ShoppingCarPage {
           }
         }
       ]
-    });
-    alert.present();
+    }).present();
   }
 
   // 删除购物车

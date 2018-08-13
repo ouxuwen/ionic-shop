@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { IonicPage, NavController, NavParams, PopoverController, LoadingController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, PopoverController, AlertController, ToastController } from 'ionic-angular';
 import { GoodsService } from '../../providers/goods';
 import { QQSDK, QQShareOptions } from '@ionic-native/qqsdk';
 declare var Wechat: any;
@@ -14,7 +14,8 @@ declare var Wechat: any;
 export class PopoverPage {
   constructor(
     private navParams: NavParams,
-    private qq: QQSDK
+    private qq: QQSDK,
+    private alertCtrl: AlertController,
   ) {
 
   }
@@ -33,10 +34,21 @@ export class PopoverPage {
   share() {
     this.qq.shareNews(this.options)
       .then(() => {
-        alert('shareImage success');
+        this.alertCtrl.create({
+          title: '温馨提示',
+          subTitle: "分享成功！",
+          buttons: ['确 定']
+        }).present();
+
       })
       .catch(error => {
-        alert("error:" + error);
+
+        this.alertCtrl.create({
+          title: '温馨提示',
+          subTitle: "分享失败：" + error,
+          buttons: ['确 定']
+        }).present();
+
       });
   }
 
@@ -54,9 +66,17 @@ export class PopoverPage {
       },
       scene: Wechat.Scene.TIMELINE   // share to Timeline
     }, () => {
-      alert("Success");
+      this.alertCtrl.create({
+        title: '温馨提示',
+        subTitle: "分享成功！",
+        buttons: ['确 定']
+      }).present();
     }, (reason) => {
-      alert("Failed: " + reason);
+      this.alertCtrl.create({
+        title: '温馨提示',
+        subTitle: "分享失败：" + reason,
+        buttons: ['确 定']
+      }).present();
     });
   }
 }

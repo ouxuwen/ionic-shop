@@ -62,7 +62,7 @@ export class OrderRefundPage {
   // 申请退款
   orderGoodsRefundAskfor() {
     if (!this.refundReason) {
-      let alert = this.alertCtrl.create({
+      this.alertCtrl.create({
         title: '温馨提示',
         message: '亲，请填写完整信息',
         buttons: [
@@ -85,7 +85,7 @@ export class OrderRefundPage {
     }
     this.orderService.orderGoodsRefundAskfor(params).subscribe(res => {
       this.penning = true;
-      let alert = this.alertCtrl.create({
+      this.alertCtrl.create({
         title: '温馨提示',
         message: '退款申请成功！',
         buttons: [
@@ -104,7 +104,7 @@ export class OrderRefundPage {
   // 退货
   orderGoodsRefundExpress() {
     if (!this.refundReason || !this.refundShippingNo || !this.refundExpressCompany) {
-      let alert = this.alertCtrl.create({
+      this.alertCtrl.create({
         title: '温馨提示',
         message: '亲，请填写完整信息',
         buttons: [
@@ -129,7 +129,7 @@ export class OrderRefundPage {
     }
     this.orderService.orderGoodsRefundExpress(params).subscribe(res => {
       this.penning = true;
-      let alert = this.alertCtrl.create({
+      this.alertCtrl.create({
         title: '温馨提示',
         message: '退款申请成功！',
         buttons: [

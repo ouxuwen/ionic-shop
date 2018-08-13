@@ -38,7 +38,7 @@ export class MyHistoryPage {
   delete() {
     this.goodsList ='';
     this.storage.remove("historyGoods").then(res => {
-      let alert = this.alertCtrl.create({
+      this.alertCtrl.create({
         title: '温馨提示',
         message: '清除成功！',
         buttons: [

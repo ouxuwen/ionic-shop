@@ -49,7 +49,7 @@ export class AddressManagementPage {
 
   // 删除
   deleteAddress(id) {
-    let alert = this.alertCtrl.create({
+    this.alertCtrl.create({
       title: '温馨提示',
       message: '亲，你确定要删除吗?',
       buttons: [

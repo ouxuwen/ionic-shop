@@ -37,19 +37,17 @@ export class BaseHttpProvider {
 
   errorHandler(res, params) {
     if (res.code === 0) {
-      let alert = this.alertCtrl.create({
+      this.alertCtrl.create({
         title: '温馨提示',
         subTitle: res.message,
         buttons: ['确 定']
-      });
-      alert.present();
+      }).present();
     } else if (res.code === 401) {
-      let alert = this.alertCtrl.create({
+      this.alertCtrl.create({
         title: '温馨提示',
         subTitle: res.message,
         buttons: ['确 定']
-      });
-      alert.present();
+      }).present();
 
       this.storage.remove('userInfo').then(() => {
         this.navCtrl.setRoot("LoginPage");
@@ -61,12 +59,11 @@ export class BaseHttpProvider {
         let arr = el.split('=');
         pObj[arr[0]] = arr[1];
       })
-      let alert = this.alertCtrl.create({
+      this.alertCtrl.create({
         title: '温馨提示',
         subTitle: res.message,
         buttons: ['确 定']
-      });
-      alert.present();
+      }).present();
       this.storage.set('userInfo', { ...res.data.userInfo, ...pObj })
 
     }
@@ -98,12 +95,11 @@ export class BaseHttpProvider {
         err => {
           console.log(err)
           if (needLoading) loading.dismiss();
-          let alert = this.alertCtrl.create({
+          this.alertCtrl.create({
             title: '温馨提示',
             subTitle: "网络故障，请稍后再试......",
             buttons: ['确 定']
-          });
-          alert.present();
+          }).present();
           observer.error(err);
         },
         () => {

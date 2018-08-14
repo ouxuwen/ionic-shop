@@ -79,6 +79,10 @@ export class GoodsDetailPage {
 
   }
 
+  ionViewDidLeave(){
+    this.hideDetail = true;
+  }
+
   presentPopover(ev) {
 
     let popover = this.popoverCtrl.create(PopoverPage, {});

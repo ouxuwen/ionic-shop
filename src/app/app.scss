@@ -15,3 +15,7 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 @import "../style/index";
+
+.platform-ios{ .enwrap {  padding-top: 118px;   } }
+
+.platform-ios11{ .enwrap {  padding-top: 98px;   } }

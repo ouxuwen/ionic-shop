@@ -17,19 +17,19 @@ export class WelcomePage {
 
   slides = [
     {
-      title: "唯视光学",
+      title: "唯视光学眼镜商城",
       description: "欢迎来到唯视光学眼镜商城,超多精彩，超多优惠!",
-      image: "assets/imgs/guidepage01.png",
+      image: "assets/imgs/guidepage03.png",
     },
     {
       title: "在线支付，购物更方便！",
-      description: "支持支付宝等支付方式",
-      image: "assets/imgs/guidepage02.png",
+      description: "在线分销赚积分，积分可用于直接购物！",
+      image: "assets/imgs/guidepage01.png",
     },
     {
       title: "蔡司、依视路、明月...",
       description: "镜片种类丰富，各种大牌镜片品牌，任君挑选！",
-      image: "assets/imgs/guidepage03.png",
+      image: "assets/imgs/guidepage02.png",
     }
   ];
   constructor(

@@ -28,7 +28,7 @@ export class PayPage {
     public alertCtrl: AlertController
 
   ) {
-    console.log(this.navParams)
+   // console.log(this.navParams)
     this.no = this.navParams.get('no');
     this.payMoney = this.navParams.get('money');
     this.orderId = this.navParams.get('order_id');

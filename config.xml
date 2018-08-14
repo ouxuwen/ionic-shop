@@ -21,7 +21,7 @@
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="ShowSplashScreenSpinner" value="false" />
     <chcp>
-        <config-file url="http://r7miit.natappfree.cc/www/chcp.json" />
+        <config-file url=" http://ywqkv4.natappfree.cc/www/chcp.json" />
     </chcp>
     <platform name="android">
         <allow-intent href="market:*" />
@@ -107,10 +107,10 @@
     </plugin>
     <plugin name="cordova-plugin-device" spec="^2.0.2" />
     <plugin name="cordova-hot-code-push-plugin" spec="^1.5.3" />
-    <engine name="browser" spec="5.0.3" />
-    <engine name="ios" spec="4.5.4" />
-    <engine name="android" spec="6.2.3" />
     <plugin name="cordova-plugin-wechat" spec="^2.0.0">
         <variable name="WECHATAPPID" value="wx7523eff679942016" />
     </plugin>
+    <engine name="browser" spec="5.0.3" />
+    <engine name="ios" spec="4.5.4" />
+    <engine name="android" spec="6.2.3" />
 </widget>

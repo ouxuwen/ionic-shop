@@ -230,6 +230,7 @@ export class CheckOutPage {
 
   //创建订单
   createOrder() {
+
     let params = {
       use_coupon: this.selectCoupon, // 优惠券
       integral: -this.integral,// 积分
@@ -238,7 +239,7 @@ export class CheckOutPage {
       pay_type: 1,// 支付方式
       shipping_company_id: this.selectExpress,// 物流公司
       tag: this.tag,//'cart' 从购物车 'buy_now' 立即购买
-      additional: JSON.stringify(this.additional)
+      additional:this.additional.length == 0?'': JSON.stringify(this.additional)
     }
 
     if (!this.addressDefault) {
@@ -260,9 +261,12 @@ export class CheckOutPage {
     }
 
     this.orderService.createOrder(params).subscribe(res => {
+      let length = this.navCtrl.length();
       this.navCtrl.push('PayPage', {
         out_trade_no: res['data'],
         money: this.totalPrice
+      }).then(res =>{
+        this.navCtrl.remove(length-1,1)
       })
       console.log(res)
     })

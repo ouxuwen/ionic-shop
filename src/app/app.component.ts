@@ -36,6 +36,7 @@ export class MyApp {
       this.registerBackButtonAction();
       this.jpush.init();
       this.jpush.setDebugMode(true);
+      this.init();
     });
     this.storage.get("notFirstEnter").then(res => {
       if (res) {
@@ -52,7 +53,6 @@ export class MyApp {
         })
       } else {
         this.rootPage = WelcomePage;
-
       }
     })
   }
@@ -97,6 +97,16 @@ export class MyApp {
       setTimeout(() => {
         this.backButtonPressed = false;
       }, 2000);//2秒内没有再次点击返回则将触发标志标记为false
+    }
+  }
+
+  init() {
+    if (this.platform.versions().ios) {
+      if (this.platform.versions().ios.num < 11) {
+        this.statusBar.overlaysWebView(true);
+      } else {
+        this.statusBar.overlaysWebView(false);
+      }
     }
   }
 

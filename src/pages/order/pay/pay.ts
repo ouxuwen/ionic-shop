@@ -21,6 +21,7 @@ export class PayPage {
   orderId: number;
   outTradeNo: number;
   paySuccess:boolean = false;
+  type
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -33,6 +34,7 @@ export class PayPage {
     this.payMoney = this.navParams.get('money');
     this.orderId = this.navParams.get('order_id');
     this.outTradeNo = this.navParams.get('out_trade_no');
+    this.type = this.navParams.get('type');
     //this.payMethod = this.navParams.get('payMethod') ? this.navParams.get('payMethod') : 'ALIPAY';
   }
 
@@ -45,7 +47,8 @@ export class PayPage {
         paySuccess:this.paySuccess,
         no:this.outTradeNo,
         orderId:this.orderId,
-        money:this.payMoney
+        money:this.payMoney,
+        type:this.type
       }).then(res =>{
         this.navCtrl.remove(length-2,1)
       })
@@ -78,7 +81,8 @@ export class PayPage {
           paySuccess:this.paySuccess,
           no:this.outTradeNo,
           orderId:this.orderId,
-          money:this.payMoney
+          money:this.payMoney,
+          type:this.type
         })
 
       }else{
@@ -109,7 +113,8 @@ export class PayPage {
               paySuccess:this.paySuccess,
               no:this.outTradeNo,
               orderId:this.orderId,
-              money:this.payMoney
+              money:this.payMoney,
+              type:this.type
             })
           }
         }

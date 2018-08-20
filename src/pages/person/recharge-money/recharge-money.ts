@@ -24,6 +24,8 @@ export class RechargeMoneyPage {
     public personService:PersonService,
     public goodsService: GoodsService,
   ) {
+    this.getRechargeList();
+    this.getPayNo();
   }
 
   ionViewDidLoad() {
@@ -33,6 +35,7 @@ export class RechargeMoneyPage {
   getRechargeList(){
     this.personService.getRechargeList().subscribe(res=>{
       this.rechargeList = res['data'];
+     if(res['data'].length>0 ) this.selectValue = res['data'][0].money;
     })
   }
 
@@ -46,17 +49,19 @@ export class RechargeMoneyPage {
 
   recharge(){
     let params = {
-      recharge_money:0,
+      recharge_money:this.selectValue,
       out_trade_no:this.outTradeNo
     }
     this.personService.createRechargeOrder(params).subscribe(res =>{
-
+      this.navCtrl.push("PayPage",{
+        'out_trade_no':this.outTradeNo,
+        'money':this.selectValue,
+        'type':'recharge'
+      })
     })
   }
 
-  changeRecharge(){
 
-  }
 
 
 }

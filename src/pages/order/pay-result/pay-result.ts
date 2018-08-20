@@ -18,6 +18,7 @@ export class PayResultPage {
   outTradeNo: any;
   orderId: any;
   payMoney: any;
+  type
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -28,7 +29,7 @@ export class PayResultPage {
     this.outTradeNo = this.navParams.get('no');
     this.orderId = this.navParams.get('orderId');
     this.payMoney = this.navParams.get('money');
-
+    this.type = this.navParams.get('type');
     console.log(this.paySuccess)
   }
 
@@ -42,16 +43,20 @@ export class PayResultPage {
   }
 
   orderDetail() {
-
-    this.navCtrl.push('OrderDetailPage', { 'no': this.outTradeNo }).then(() => {
-      this.navCtrl.remove(0, this.navCtrl.length()).then(() => {
-        if (this.paySuccess) {
-          this.navCtrl.insert(0, "OrderPage", { "status": 1 });
-        } else {
-          this.navCtrl.insert(0, "OrderPage", { "status": 0 });
-        }
+    if (this.type == 'recharge') {
+      let length = this.navCtrl.length();
+      this.navCtrl.remove(2, 2);
+    } else {
+      this.navCtrl.push('OrderDetailPage', { 'no': this.outTradeNo }).then(() => {
+        this.navCtrl.remove(0, this.navCtrl.length()).then(() => {
+          if (this.paySuccess) {
+            this.navCtrl.insert(0, "OrderPage", { "status": 1 });
+          } else {
+            this.navCtrl.insert(0, "OrderPage", { "status": 0 });
+          }
+        });
       });
-    });
+    }
   }
 
   getPayValueByNo() {

@@ -144,12 +144,12 @@ export class PersonService {
 
   // 用户充值余额
   recharge() {
-    return this.base.post('/app/member/balanceWithdraw', {});
+    return this.base.post('/app/member/recharge', {});
   }
 
   // 创建充值订单
   createRechargeOrder(data) {
-    return this.base.post('/app/member/balance', data);
+    return this.base.post('/app/member/createRechargeOrder', data);
   }
 
   // 获取套餐列表

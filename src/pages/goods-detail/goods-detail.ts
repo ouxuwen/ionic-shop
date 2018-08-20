@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, PopoverController, LoadingController, ToastController } from 'ionic-angular';
 import { GoodsService } from '../../providers/goods';
+import { OrderService } from '../../providers/order';
 import { PopoverPage } from './popover-page';
 import { PersonService } from '../../providers/person';
 import { Storage } from '@ionic/storage';
@@ -51,7 +52,8 @@ export class GoodsDetailPage {
     public toastCtrl: ToastController,
     public personService: PersonService,
     public storage: Storage,
-    public cartService:CartService
+    public cartService:CartService,
+    public orderService:OrderService
   ) {
     this.storage.get('appInfo').then(res =>{
       this.appInfo = res;
@@ -311,17 +313,35 @@ export class GoodsDetailPage {
     if (this.numVals < 1) {
       return;
     }
-    let params = {
-      'tag':this.tag,
-      'goodsTotal': this.numVals * Number(this.goodsDetail.promotion_price),
-      'goodsList': [this.skuId],
-      'num': this.numVals
-    };
-    if(this.isGlasses){
-      params['zhu'] = this.selectValue.zhu.value;
-      params['qiu'] = this.selectValue.qiu.value;
+    //虚拟商品
+    if(this.goodsDetail.goods_type == 0){
+      let params = {
+        "goods_sku_list":this.goodsDetail.sku_list[0].sku_id + ":" +this.numVals,
+
+      };
+      this.orderService.virtualOrderCreate(params).subscribe(res =>{
+        this.navCtrl.push('PayPage', {
+          'out_trade_no':res['data'],
+          'money':this.goodsDetail.promotion_price,
+        })
+      })
+
+
+    }else{
+       //实物商品
+      let params = {
+        'tag':this.tag,
+        'goodsTotal': this.numVals * Number(this.goodsDetail.promotion_price),
+        'goodsList': [this.skuId],
+        'num': this.numVals
+      };
+      if(this.isGlasses){
+        params['zhu'] = this.selectValue.zhu.value;
+        params['qiu'] = this.selectValue.qiu.value;
+      }
+      this.navCtrl.push('CheckOutPage', params)
     }
-    this.navCtrl.push('CheckOutPage', params)
+
   }
 
   actionConfirm(){

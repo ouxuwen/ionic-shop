@@ -63,6 +63,10 @@ export class PersonPage {
     })
   }
 
+  goMyBalance(){
+    this.navCtrl.push('MyBalancePage');
+  }
+
   goMyScore() {
     this.navCtrl.push('MyScorePage');
   }

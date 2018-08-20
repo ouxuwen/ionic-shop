@@ -48,6 +48,9 @@ export class CheckOutPage {
   zhu:string;
   additional:any;   //附加参数
   promotionFullMail:any;
+  useBalance:boolean = true;
+  balance:number;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -126,6 +129,7 @@ export class CheckOutPage {
       })
       this.getDefaultExpress();
       this.getCoupon();
+      this.balanceChange();
       this.pointChange();
 
     })
@@ -162,12 +166,34 @@ export class CheckOutPage {
       enterType: 'add'
     })
   }
+  // 使用余额
+  balanceChange(){
+    if (this.usePoint) {
+      this.balance = this.memberAccount.balance;
+      let maxCut = this.goodsTotal + this.express - this.couponCut;
+      console.log(this.goodsTotal, this.express, this.couponCut);
+      if (this.balance > maxCut) {
+        this.balance = maxCut;
+      }
+      if (maxCut < 0) {
+        this.balance = 0;
+      }
+      this.balance = -this.balance;
+
+    } else {
+      this.balance = 0;
+    }
+    this.balance = Number(this.balance.toFixed(2));
+    this.calcTotalPrice();
+  }
+
+
 
   // 使用积分
   pointChange() {
     if (this.usePoint) {
       this.integral = this.memberAccount.point;
-      let maxCut = (this.goodsTotal + this.express - this.couponCut) / this.pointConfig.convert_rate;
+      let maxCut = (this.goodsTotal + this.express + this.balance - this.couponCut) / this.pointConfig.convert_rate;
       console.log(this.goodsTotal, this.express, this.couponCut);
       if (this.integral > maxCut) {
         this.integral = maxCut;
@@ -197,6 +223,8 @@ export class CheckOutPage {
       this.couponCut = 0;
       this.showCoupon = '不使用优惠券';
     }
+    // calculate the max balance angain
+    this.balanceChange();
     // calculate the max point angain
     this.pointChange();
     // calculate the total price angain
@@ -211,17 +239,18 @@ export class CheckOutPage {
         this.showExpress = el.company_name;
       }
     });
+    this.balanceChange();
     this.pointChange();
     this.calcTotalPrice();
   }
 
   calcTotalPrice() {
-    let orderRealMoney = Number(this.goodsTotal) + Number(this.pointCut) - Number(this.couponCut);
+    let orderRealMoney = Number(this.goodsTotal) + this.balance + Number(this.pointCut) - Number(this.couponCut);
     // 超过包邮额包邮
     if( this.promotionFullMail && this.promotionFullMail.is_open &&  orderRealMoney >= Number(this.promotionFullMail.full_mail_money)){
       this.express = 0;
     }
-    this.totalPrice = Number(this.goodsTotal) + Number(this.express) + Number(this.pointCut) - Number(this.couponCut);
+    this.totalPrice = Number(this.goodsTotal)  + this.balance + Number(this.express) + Number(this.pointCut) - Number(this.couponCut);
     this.totalPrice = Number(this.totalPrice.toFixed(2));
     if (this.totalPrice <= 0 ) {
       this.totalPrice = 0;
@@ -234,6 +263,7 @@ export class CheckOutPage {
     let params = {
       use_coupon: this.selectCoupon, // 优惠券
       integral: -this.integral,// 积分
+      account_balance: -this.balance,// 积分
       goods_sku_list: this.goods_sku_list, // 商品列表
       leavemessage: this.leavemessage,// 留言
       pay_type: 1,// 支付方式
@@ -266,7 +296,10 @@ export class CheckOutPage {
         out_trade_no: res['data'],
         money: this.totalPrice
       }).then(res =>{
-        this.navCtrl.remove(length-1,1)
+        if(this.totalPrice>0){
+          this.navCtrl.remove(length-1,1)
+        }
+
       })
       console.log(res)
     })

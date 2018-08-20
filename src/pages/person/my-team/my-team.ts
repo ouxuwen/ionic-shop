@@ -21,6 +21,7 @@ export class MyTeamPage {
   pageNo = 1;
   pageSize = 15;
   canLoadMore:boolean = true;
+  regType="返现"; //分销设置
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -40,6 +41,7 @@ export class MyTeamPage {
       let data = res['data'];
       this.teamCount = data.num;
       this.teamPoint = data.point;
+      this.regType = data.reg_type=="money"?"返现":"积分"
     })
   }
 

@@ -101,4 +101,9 @@ export class OrderService {
   cameraOrderInfo(data){
     return this.base.post('/app/order/cameraOrderInfo', data);
   }
+
+  //虚拟订单
+  virtualOrderCreate(data){
+    return this.base.post('/app/order/virtualOrderCreate', data);
+  }
 }

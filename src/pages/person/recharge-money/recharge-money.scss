@@ -1,0 +1,43 @@
+page-recharge-money {
+  .rule_box{
+    background: #fff;
+    margin-top: 10px;
+    padding: 5px 10px;
+    .spec_item{
+      .sitem_list{
+        .sitem_item{
+          float: left;
+          padding:4px 8px;
+          font-size: 12px;
+          border:1px solid #eee;
+          margin-right: 10px;
+          margin-top: 5px;
+          position: relative;
+          input{
+            display: none;
+          }
+          img{
+            width:11px;
+            height: 10px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            display: none;
+          }
+          &.selected{
+            border-color: #209FFF;
+            color:#209FFF;
+            img{
+              display: block;
+            }
+          }
+        }
+        &:after{
+          content:'';
+          clear: both;
+          display: block;
+        }
+      }
+    }
+  }
+}

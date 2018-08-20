@@ -40,11 +40,14 @@ export class PayPage {
     console.log('ionViewDidLoad PayPage');
     if(Number(this.payMoney)<=0){
       this.paySuccess = true;
+      let length = this.navCtrl.length();
       this.navCtrl.push('PayResultPage',{
         paySuccess:this.paySuccess,
         no:this.outTradeNo,
         orderId:this.orderId,
         money:this.payMoney
+      }).then(res =>{
+        this.navCtrl.remove(length-2,1)
       })
     }
   }

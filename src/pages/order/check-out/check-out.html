@@ -68,6 +68,13 @@
 
 
   <ng-container *ngIf="memberAccount">
+    <div class="rule" *ngIf="memberAccount.balance>0" tappable>
+        <ion-checkbox [(ngModel)]="useBalance"  (ngModelChange)="balanceChange()"></ion-checkbox>使用余额:
+        <span class="price">¥ {{balance}}</span>
+        <span>可用余额：{{memberAccount.balance}}
+          <i *ngIf='balance!=0'>{{balance}}</i>
+        </span>
+    </div>
     <div class="rule" *ngIf="memberAccount.point>0" tappable>
       <ion-checkbox [(ngModel)]="usePoint" [disabled]="pointConfig.is_open != 1" (ngModelChange)="pointChange()"></ion-checkbox>使用积分:
       <span class="price">¥ {{pointCut}}</span>
@@ -88,7 +95,7 @@
   <div class="rule" *ngIf="expressCompanyList" tappable (click)="hideExpress=false">
     选择物流：
     <span class="price" >¥ {{express}}</span>
-    <span class="price" *ngIf="promotionFullMail?.is_open==1">满{{promotionFullMail?.full_mail_money}}包邮</span>
+    <span class="price" style="font-size: 10px;color:#969696;" *ngIf="promotionFullMail?.is_open==1">(满{{promotionFullMail?.full_mail_money}}包邮)</span>
     <ion-icon class="r" name="ios-arrow-forward-outline"></ion-icon>
     <span>{{showExpress}}</span>
 

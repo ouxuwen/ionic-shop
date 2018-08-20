@@ -35,8 +35,8 @@ export class PersonService {
     return this.base.postJson('/app/login/addLicense', data);
   }
   //个人资料
-  personalData(data,bol = false) {
-    return this.base.post('/app/member/personalData', data ,bol);
+  personalData(data, bol = false) {
+    return this.base.post('/app/member/personalData', data, bol);
   }
   //分销资料
   memberIndexFx(data) {
@@ -126,5 +126,36 @@ export class PersonService {
   consultList() {
     return this.base.post('/app/member/consultList', {});
   }
+
+  // 会员余额流水
+  balanceWater() {
+    return this.base.post('/app/member/balanceWater', {});
+  }
+
+  // 余额提现记录
+  balanceWithdraw() {
+    return this.base.post('/app/member/balanceWithdraw', {});
+  }
+
+  // 余额
+  balance() {
+    return this.base.post('/app/member/balance', {});
+  }
+
+  // 用户充值余额
+  recharge() {
+    return this.base.post('/app/member/balanceWithdraw', {});
+  }
+
+  // 创建充值订单
+  createRechargeOrder(data) {
+    return this.base.post('/app/member/balance', data);
+  }
+
+  // 获取套餐列表
+  getRechargeList(){
+    return this.base.post('/app/member/getRechargeList',{});
+  }
+
 
 }

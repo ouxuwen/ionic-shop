@@ -25,7 +25,7 @@
         <p>{{teamCount}}</p>
       </div>
       <div>
-        <p>已获得分销积分</p>
+        <p>已获得分销{{regType}}</p>
         <p>{{teamPoint}}</p>
       </div>
     </div>
@@ -37,11 +37,11 @@
           <img [src]="item.user_headimg?item.user_headimg:'assets/imgs/profile_icon.png'">
         </ion-avatar>
         <h3>{{item.nick_name}}</h3>
-        <p class="time">注册时间：{{item.reg_time*1000 | date:"yyyy-MM-dd hh:mm:ss"}}</p>
+        <p class="time">注册时间：{{item.reg_time*1000 | date:"yyyy-MM-dd"}}</p>
 
         <div item-end>
-          <div class="pay">总共消费：¥ {{item.money}}</div>
-          <div class="point">获得积分：{{item.point}}</div>
+          <div class="pay">总共消费：¥ {{item.money | number:'1.0-0'}}</div>
+          <div class="point">获得{{regType}}：{{item.point}}</div>
         </div>
       </ion-item>
     </ion-list>

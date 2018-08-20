@@ -67,9 +67,10 @@
         <img src="assets/imgs/team.png" alt=""> 我的分销中心
         <ion-icon name="ios-arrow-forward-outline"></ion-icon>
       </li>
-      <li tappable (click)="modifyPsd()">
-        <img src="assets/imgs/mp.png" alt=""> 修改密码
+      <li tappable (click)="goMyBalance()">
+        <img src="assets/imgs/balance.png" alt=""> 账户余额
         <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+        <span >¥ {{userInfo?.member_info.balance}}</span>
       </li>
       <li tappable (click)="goMyScore()">
         <img src="assets/imgs/wd-012-03.png" alt=""> 我的积分
@@ -81,6 +82,10 @@
         <img src="assets/imgs/wd-012-02.png" alt=""> 我的优惠券
         <ion-icon name="ios-arrow-forward-outline"></ion-icon>
         <ion-badge color='danger'>{{userInfo?.member_info?.coupon_count}}</ion-badge>
+      </li>
+      <li tappable (click)="modifyPsd()">
+        <img src="assets/imgs/mp.png" alt=""> 修改密码
+        <ion-icon name="ios-arrow-forward-outline"></ion-icon>
       </li>
       <li tappable (click)="goMyAddress()">
         <img src="assets/imgs/wd-012-05.png" alt=""> 我的收货地址

@@ -25,11 +25,10 @@ export class RechargeMoneyPage {
     public goodsService: GoodsService,
   ) {
     this.getRechargeList();
-    this.getPayNo();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RechargeMoneyPage');
+  ionViewDidEnter() {
+    this.getPayNo();
   }
 
   getRechargeList(){
@@ -39,13 +38,12 @@ export class RechargeMoneyPage {
     })
   }
 
-
   getPayNo(){
     this.personService.recharge().subscribe(res=>{
       this.outTradeNo = res['data'];
+
     })
   }
-
 
   recharge(){
     let params = {

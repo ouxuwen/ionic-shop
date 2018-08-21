@@ -3,7 +3,7 @@
     <name>唯视光学</name>
     <description>An app for selling glasses.</description>
     <author email="mo22398291@163.com" href="http://www.szweishi.com/">Moses.mo</author>
-    <content original-src="index.html" src="http://192.168.1.102:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />

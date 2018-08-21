@@ -16,14 +16,19 @@
 <ion-content>
   <div class="rule_box" *ngIf="rechargeList?.length>0">
     <h3>选择充值套餐：</h3>
-    <div class="spec_list clear">
-      <label class="sitem_item" *ngFor="let item of rechargeList;let i = index" [class.selected]="selectValue == item.money">
-        充 {{item.money}}
-        <span *ngIf="item.give"> 送{{item.give}}</span>
-        <input type="radio" [value]="item.money" [(ngModel)]="selectValue">
-        <img src="assets/imgs/icon_ok.png" alt="">
-      </label>
-    </div>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4 *ngFor="let item of rechargeList;let i = index">
+          <label   [class.selected]="selectValue == item.money">
+            充 {{item.money}}
+            <span *ngIf="item.give"> 送{{item.give}}</span>
+            <input type="radio" [value]="item.money" [(ngModel)]="selectValue">
+            <img src="assets/imgs/icon_ok.png" alt="">
+          </label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
 </ion-content>
 

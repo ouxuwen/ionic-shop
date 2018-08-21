@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController,ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, ToastController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { PersonService } from '../../providers/person';
 
@@ -16,14 +16,14 @@ import { PersonService } from '../../providers/person';
   templateUrl: 'person.html',
 })
 export class PersonPage {
-  userInfo:any;
-  historyGoods=[];
+  userInfo: any;
+  historyGoods = [];
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public modalCtrl: ModalController,
     public storage: Storage,
-    public personService:PersonService,
+    public personService: PersonService,
     public toastCtrl: ToastController
   ) {
 
@@ -39,31 +39,40 @@ export class PersonPage {
     this.getHistory()
   }
 
-  getHistory(){
-    this.storage.get("historyGoods").then(res=>{
+  getHistory() {
+    this.storage.get("historyGoods").then(res => {
       this.historyGoods = [];
-      if(res){
+      if (res) {
         this.historyGoods = res;
       }
     })
   }
 
-  getPersonData(){
+  getPersonData(refresher?) {
     let bol;
-    if(!this.userInfo){
+    if (!this.userInfo) {
       bol = true;
     }
-    this.personService.personalData({},bol).subscribe(res=>{
+    this.personService.personalData({}, bol).subscribe(res => {
+      if (refresher) {
+        this.refreshing = false;
+        refresher.complete();
+      }
       this.userInfo = res['data'];
+    },err=>{
+      if (refresher) {
+        this.refreshing = false;
+        refresher.complete();
+      }
     })
   }
 
   memberIndexFx() {
-    this.personService.memberIndexFx({}).subscribe(res=>{
+    this.personService.memberIndexFx({}).subscribe(res => {
     })
   }
 
-  goMyBalance(){
+  goMyBalance() {
     this.navCtrl.push('MyBalancePage');
   }
 
@@ -84,49 +93,49 @@ export class PersonPage {
   }
 
   goFeedback() {
-    this.navCtrl.push('FeedbackPage',{'member_name':this.userInfo.member_info.user_info.nick_name});
+    this.navCtrl.push('FeedbackPage', { 'member_name': this.userInfo.member_info.user_info.nick_name });
   }
 
-  myOrder(i?){
-    this.navCtrl.push('OrderPage',{status:i});
+  myOrder(i?) {
+    this.navCtrl.push('OrderPage', { status: i });
   }
 
-  modifyPsd(){
+  modifyPsd() {
     this.navCtrl.push('ModifyPsdPage');
   }
 
-  myTeam(){
+  myTeam() {
     this.navCtrl.push('MyTeamPage');
   }
 
-  myFav(){
+  myFav() {
     this.navCtrl.push('MyFavPage');
   }
 
-  myHistory(){
+  myHistory() {
     this.navCtrl.push('MyHistoryPage');
   }
 
-  modifyProfile(){
-    this.navCtrl.push('ModifyProfilePage',{
-      'userInfo':this.userInfo.member_info.user_info.nick_name,
-      'memberImg':this.userInfo.member_img
+  modifyProfile() {
+    this.navCtrl.push('ModifyProfilePage', {
+      'userInfo': this.userInfo.member_info.user_info.nick_name,
+      'memberImg': this.userInfo.member_img
     });
   }
 
   logout() {
     console.log(this.navCtrl.parent.parent)
-    this.storage.remove('userInfo').then(()=>{
-        this.navCtrl.parent.parent.setRoot('LoginPage')
+    this.storage.remove('userInfo').then(() => {
+      this.navCtrl.parent.parent.setRoot('LoginPage')
     })
   }
 
   // 签到、
-  sign(){
-    if(this.userInfo.isSign>0){
+  sign() {
+    if (this.userInfo.isSign > 0) {
       return;
     }
-    this.personService.signIn({}).subscribe(res=>{
+    this.personService.signIn({}).subscribe(res => {
       this.toastCtrl.create({
         message: '签到成功！',
         duration: 1500,
@@ -135,5 +144,11 @@ export class PersonPage {
       }).present();
       this.getPersonData();
     })
+  }
+  refreshing: boolean = false;
+  // 下拉刷新
+  doRefresh(refresher) {
+    this.refreshing = true;
+    this.getPersonData(refresher);
   }
 }

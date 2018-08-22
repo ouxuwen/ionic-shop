@@ -45,6 +45,7 @@ export class HomePage {
   goodsList:any;
   index_adv_one:any;
   index_adv_two:any;
+  index_adv_three:any;
   // Jpush
   public registrationId: string;
 
@@ -165,7 +166,11 @@ export class HomePage {
       this.bannerList = data.plat_adv_list.adv_list;
       this.index_adv_one = data.index_adv_one.adv_list[0].adv_image;
       this.index_adv_two = data.index_adv_two.adv_list[0].adv_image;
-      console.log(this.index_adv_one,this.index_adv_two)
+      if(!refresher){
+        this.index_adv_three = data.index_adv_three.adv_list[0].adv_image;
+      }
+
+      console.log(this.index_adv_one,this.index_adv_three);
       this.storage.set('appInfo', this.appInfo);
     },err =>{
       if (refresher) {

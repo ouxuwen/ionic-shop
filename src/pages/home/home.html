@@ -228,9 +228,10 @@
   </ion-infinite-scroll>
 
 
-  <div class="notice" [class.hide]="hideNotice">
+  <div class="notice" [class.hide]="!index_adv_three">
     <div class="content">
-      <ion-icon name="ios-close-circle" (click)="hideNotice = true"></ion-icon>
+      <img [src]="index_adv_three" alt="">
+      <ion-icon name="ios-close-circle" (click)="index_adv_three = ''"></ion-icon>
     </div>
   </div>
 </ion-content>

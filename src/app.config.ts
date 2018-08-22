@@ -6,8 +6,8 @@ const FETCH = {
     imgPrefix: 'http://mh3xpu.natappfree.cc/ionic-shop/'
   },
   "debug": {
-    urlPrefix: 'http://mh3xpu.natappfree.cc/ionic-shop/index.php',
-    imgPrefix: 'http://mh3xpu.natappfree.cc/ionic-shop/'
+    urlPrefix: 'http://127.0.0.1:8080/ionic-shop/index.php',
+    imgPrefix: 'http://127.0.0.1:8080/ionic-shop/'
   }
 }
 

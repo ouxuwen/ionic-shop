@@ -324,10 +324,14 @@ page-home {
     }
     .content{
       width: 230px;
-      height: 300px;
-      background: #ffffff;
+
+      background: transparent;
       border-radius: 5px;
       position: relative;
+      img{
+        width:100%;
+        height: auto;
+      }
       ion-icon{
         position: absolute;
         bottom:-40px;

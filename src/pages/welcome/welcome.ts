@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+declare var window:any;
 /**
  * Generated class for the WelcomePage page.
  *
@@ -23,12 +24,12 @@ export class WelcomePage {
     },
     {
       title: "在线支付，购物更方便！",
-      description: "在线分销赚积分，积分可用于直接购物！",
+      description: "在线分销赚返现！消费赚积分，积分可用于直接购物！",
       image: "assets/imgs/guidepage01.png",
     },
     {
       title: "蔡司、依视路、明月...",
-      description: "镜片种类丰富，各种大牌镜片品牌，任君挑选！",
+      description: "镜片种类丰富，各种大牌镜片品牌，价格实惠，任君挑选！",
       image: "assets/imgs/guidepage02.png",
     }
   ];
@@ -43,6 +44,9 @@ export class WelcomePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad WelcomePage');
+    if(window.Chatra){
+      window.Chatra('hide')
+    }
   }
 
   skip() {

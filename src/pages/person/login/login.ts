@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from "../../../validators/validators";
 import { PersonService } from '../../../providers/person';
+declare var window:any;
 /**
  * Generated class for the LoginPage page.
  *
@@ -68,6 +69,12 @@ export class LoginPage {
     console.log('login', this.navCtrl);
   }
 
+  ionViewDidEnter(){
+    if(window.Chatra){
+      window.Chatra('show')
+    }
+  }
+
   // 初始化表单控件
   initForm() {
     this.loginForm = this.formBuilder.group({
@@ -96,7 +103,6 @@ export class LoginPage {
 
   login() {
     if (this.loginForm.invalid) return;
-
     this.personService.login(this.params).subscribe(res => {
       if (res['code'] == 1) {
         this.storage.set("userInfo", res['data']).then((res) => {
@@ -104,6 +110,13 @@ export class LoginPage {
         });
       } else {
         this.navCtrl.setRoot("BusinessLicensePage", { 'notLogin': 1 });
+      }
+      localStorage.setItem("chatInfo",JSON.stringify({"user_name":res['data'].userInfo.user_name,"phone":this.params.user_name}));
+      if(window.Chatra){
+        window.Chatra('updateIntegrationData', {
+          name: res['data'].userInfo.user_name,
+          "phone":this.params.user_name
+        });
       }
     })
 

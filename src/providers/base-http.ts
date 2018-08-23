@@ -52,6 +52,7 @@ export class BaseHttpProvider {
       this.storage.remove('userInfo').then(() => {
         this.navCtrl.setRoot("LoginPage");
       });
+      localStorage.removeItem('chatInfo');
     } else if (res.code === 403) {
 
       let pObj = {}

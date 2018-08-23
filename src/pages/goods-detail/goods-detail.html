@@ -109,9 +109,9 @@
         <p>收藏</p>
       </div>
       <div class="service">
-        <a target="_blank" [href]="'http://wpa.qq.com/msgrd?v=3&uin='+appInfo.web_qq+'&site=qq&menu=yes'">
-          <ion-icon name="ios-chatbubbles"></ion-icon>
-          <p>客服</p>
+        <a target="_blank" [href]="'tel:'+appInfo.web_phone">
+          <ion-icon name="md-call"></ion-icon>
+          <p>电话</p>
         </a>
       </div>
       <div class="cart" tappable (click)="goToCart()">

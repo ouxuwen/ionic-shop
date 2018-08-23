@@ -5,7 +5,7 @@ import { PersonService } from '../../providers/person';
 import { Storage } from '@ionic/storage';
 import { JPush } from "@jiguang-ionic/jpush";
 import { Device } from "@ionic-native/device";
-
+declare var window:any;
 /**
  * Generated class for the HomePage page.
  *
@@ -144,6 +144,12 @@ export class HomePage {
       }
       this.formatTime(this.promoTime);
     }, 1000);
+  }
+
+  ionViewDidEnter(){
+    if(window.Chatra){
+      window.Chatra('show')
+    }
   }
 
   init(refresher?) {

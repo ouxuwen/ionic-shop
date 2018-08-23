@@ -128,6 +128,7 @@ export class PersonPage {
     this.storage.remove('userInfo').then(() => {
       this.navCtrl.parent.parent.setRoot('LoginPage')
     })
+    localStorage.removeItem('chatInfo');
   }
 
   // 签到、

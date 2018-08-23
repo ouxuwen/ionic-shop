@@ -43,11 +43,6 @@
         console.log(chatInfo)
         chatInfo = JSON.parse(chatInfo);
         if (Chatra) {
-          // Chatra('setIntegrationData', {
-          //   // main properties
-          //   name: chatInfo['user_name'],
-          //   phone: chatInfo['phone']
-          // });
           Chatra('updateIntegrationData', {
             name: chatInfo['user_name'],
             phone: chatInfo['phone']
@@ -79,9 +74,9 @@
 <script>
   window.onload = function () {
     var indexbtn = document.getElementById("chatra");
-    indexbtn.addEventListener('touchstart', touch, false);
-    indexbtn.addEventListener('touchmove', touch, false);
-    indexbtn.addEventListener('touchend', touch, false);
+    indexbtn && indexbtn.addEventListener('touchstart', touch, false);
+    indexbtn && indexbtn.addEventListener('touchmove', touch, false);
+    indexbtn && indexbtn.addEventListener('touchend', touch, false);
     var x, y;
     function touch(event) {
       var event = event || window.event;

@@ -19,3 +19,44 @@
 .platform-ios{ .enwrap {  padding-top: 118px;   } }
 
 .platform-ios11{ .enwrap {  padding-top: 98px;   } }
+
+
+.platform-ios11{
+    .search-bars{    
+    padding-top: 40px  !important;; 
+    box-sizing: content-box; 
+    } 
+    .input-bar{
+        top:45px  !important;
+    }
+    .order_status{
+        padding-top:40px;
+        div{
+            top:40px;
+        }
+    }
+    ion-icon{
+        top:50px;
+    }
+
+}
+
+.platform-ios{ 
+    .search-bars{  
+    padding-top: 20px !important;
+    box-sizing: content-box;  
+    
+    } 
+    .input-bar{
+    top:25px  !important;;
+    }
+    .order_status{
+        padding-top:20px;
+        div{
+            top:20px;
+        }
+        ion-icon{
+            top:30px;
+        }
+    }
+}

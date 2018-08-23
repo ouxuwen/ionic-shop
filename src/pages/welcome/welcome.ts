@@ -44,9 +44,9 @@ export class WelcomePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad WelcomePage');
-    if(window.Chatra){
-      window.Chatra('hide')
-    }
+    // if(window.Chatra){
+    //   window.Chatra('hide')
+    // }
   }
 
   skip() {

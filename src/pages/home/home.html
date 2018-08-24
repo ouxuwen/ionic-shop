@@ -9,15 +9,15 @@
   <div class="input-bar" (click)="openGoodsList()" [style.background]="'rgba(255,255,255,'+(1-headerOpacity/2)+')'">
     <ion-icon name="search" [style.color]="'rgb('+headerOpacity*255+','+headerOpacity*255+','+headerOpacity*255+')'"></ion-icon>
     <span [style.color]="'rgb('+(headerOpacity*55+200)+','+(headerOpacity*55+200)+','+(headerOpacity*55+200)+')'">请输入你想搜索的 商品 / 品牌</span>
-    <ion-icon class="message" (click)="openMessage($event)" name="ios-chatbubbles" [style.color]="'rgba(255,255,255,'+(1-headerOpacity/2)+')'"></ion-icon>
+    <ion-icon class="message" (click)="openMessage($event)" name="ios-chatbubbles" ></ion-icon>
   </div>
 </ion-header>
 <ion-content [class.refreshing]="refreshing">
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content pullingIcon="md-arrow-down" pullingText="下拉刷新..." refreshingSpinner="ios" refreshingText="正在刷新..."></ion-refresher-content>
   </ion-refresher>
-  <ion-slides autoplay pager control='true' loop="true" style="height: auto;">
-    <ion-slide *ngFor="let image of bannerList">
+  <ion-slides autoplay pager control='true' loop="true" style="height: auto;min-height: 100px;">
+    <ion-slide *ngFor="let image of bannerList" >
       <image [src]="image.adv_image"></image>
     </ion-slide>
   </ion-slides>
@@ -39,7 +39,7 @@
         </ion-col>
         <ion-col col-3 (click)="machining()">
           <img src="assets/imgs/glasses.png" alt="">
-          <p>来架加工</p>
+          <p>充值余额</p>
         </ion-col>
       </ion-row>
     </ion-grid>

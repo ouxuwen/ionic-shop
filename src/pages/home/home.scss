@@ -35,12 +35,12 @@ page-home {
                 color:#aaa;
             }
             .message{
-              background: #ffffff;
+              color:#fff;
               position: absolute;
               top:5px;
               right:0;
-              transform: translateX(-150%);
-
+              transform: translateX(150%);
+              font-size: 25px;
             }
         }
         .refresh{

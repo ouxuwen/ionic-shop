@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 import { FormBuilder } from '@angular/forms';
 import { Validators } from "../../../validators/validators";
 import { PersonService } from "../../../providers/person";
+import { Storage } from '@ionic/storage';
 /**
  * Generated class for the FindPasswordPage page.
  *
@@ -16,7 +17,7 @@ import { PersonService } from "../../../providers/person";
   templateUrl: 'find-password.html',
 })
 export class FindPasswordPage {
-
+  appInfo:any;
   findPsdForm: any;
   captchaText: any = "获取验证码";
   isWaiting: boolean = false; //等验证码
@@ -58,11 +59,15 @@ export class FindPasswordPage {
     public formBuilder: FormBuilder,
     public toastCtrl: ToastController,
     public personService: PersonService,
+    public storage: Storage,
   ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FindPasswordPage');
+    this.storage.get('appInfo').then(res=>{
+      this.appInfo = res;
+    })
   }
 
 

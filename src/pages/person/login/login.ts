@@ -20,7 +20,7 @@ declare var window:any;
 export class LoginPage {
 
   loginForm: any;
-
+  appInfo:any;
   loginErrors = {
     'mobileNum': '',
     'password': '',
@@ -67,6 +67,9 @@ export class LoginPage {
 
   ionViewDidLoad() {
     console.log('login', this.navCtrl);
+    this.storage.get('appInfo').then(res=>{
+      this.appInfo = res;
+    })
   }
 
   ionViewDidEnter(){

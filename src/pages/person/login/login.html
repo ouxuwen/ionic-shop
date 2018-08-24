@@ -37,13 +37,11 @@
     </div>
   </div>
   <div class="cfooter">
-    唯视光学眼镜商城©
+    {{appInfo?.title+"©"}}
     <p>
       联系电话：
-      <a href="tel:0755-82254165">0755-82254165</a>/
-      <a href="tel:13682614186">13682614186</a>
+      <a [href]="'tel:'+appInfo?.web_phone">{{appInfo?.web_phone}}</a>
     </p>
-
   </div>
 </ion-content>
 

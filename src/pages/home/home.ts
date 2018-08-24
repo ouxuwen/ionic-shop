@@ -144,6 +144,8 @@ export class HomePage {
       }
       this.formatTime(this.promoTime);
     }, 1000);
+
+
   }
 
   ionViewDidEnter(){
@@ -180,7 +182,7 @@ export class HomePage {
       this.getGoodsList("",false);
       let data = res['data'];
       this.promoList = data.discount_list;
-      this.appInfo = data.web_info;
+      //this.appInfo = data.web_info;
       this.recommendList = data.goods_recommend_list;
       this.hotList1 = data.goods_hot_list.slice(0, 3);
       this.hotList2 = data.goods_hot_list.slice(3, 6);
@@ -195,7 +197,7 @@ export class HomePage {
       }
 
       console.log(this.index_adv_one,this.index_adv_three);
-      this.storage.set('appInfo', this.appInfo);
+     // this.storage.set('appInfo', this.appInfo);
     },err =>{
       if (refresher) {
         this.refreshing = false;
@@ -288,9 +290,7 @@ export class HomePage {
 
   // 加工
   machining(){
-    this.navCtrl.push("NoticeContentPage",{
-      "article_id":1
-    })
+    this.navCtrl.push("RechargeMoneyPage")
   }
 
   getGoodsList(refresher?,bol?) {

@@ -22,10 +22,10 @@
 
 
 .platform-ios11{
-    .search-bars{    
-    padding-top: 40px  !important;; 
-    box-sizing: content-box; 
-    } 
+    .search-bars{
+    padding-top: 40px  !important;;
+    box-sizing: content-box;
+    }
     .input-bar{
         top:45px  !important;
     }
@@ -39,14 +39,27 @@
         top:50px;
     }
 
+    .button-ios{
+      margin-bottom: 20px;
+    }
+    page-shopping-car .check_out{
+      bottom:78px;
+    }
+    page-goods-detail .footer{
+      bottom:30px;
+    }
+    page-check-out .check_out{
+      bottom:30px;
+    }
+
 }
 
-.platform-ios{ 
-    .search-bars{  
+.platform-ios{
+    .search-bars{
     padding-top: 20px !important;
-    box-sizing: content-box;  
-    
-    } 
+    box-sizing: content-box;
+
+    }
     .input-bar{
     top:25px  !important;;
     }

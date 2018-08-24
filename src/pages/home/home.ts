@@ -147,8 +147,26 @@ export class HomePage {
   }
 
   ionViewDidEnter(){
+    // this.toastCtrl.create({
+    //   message: "enter",
+    //   duration: 3000,
+    //   position: 'bottom'
+    // }).present()
     if(window.Chatra){
-      window.Chatra('show')
+      // this.toastCtrl.create({
+      //   message:document.getElementById('chatra').getAttribute('style'),
+      //   duration: 3000,
+      //   position: 'bottom'
+      // }).present()
+      window.Chatra('show');
+      window.Chatra('setButtonPosition', 'rm');
+    }else{
+      this.toastCtrl.create({
+        message: "连接在线客服失败，请稍后再试",
+        duration: 3000,
+        position: 'middle',
+        cssClass: 'toast-error'
+      }).present()
     }
   }
 
@@ -298,5 +316,14 @@ export class HomePage {
     this.pageNo++;
     this.getGoodsList(refresher);
 
+  }
+
+  openMessage(e){
+    e.stopPropagation();
+    if(window.Chatra){
+      window.Chatra('show');
+      window.Chatra('setButtonPosition', 'rm');
+      window.Chatra('openChat')
+    }
   }
 }

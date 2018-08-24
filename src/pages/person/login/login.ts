@@ -71,7 +71,7 @@ export class LoginPage {
 
   ionViewDidEnter(){
     if(window.Chatra){
-      window.Chatra('show')
+      window.Chatra('hide')
     }
   }
 
@@ -117,6 +117,7 @@ export class LoginPage {
           name: res['data'].userInfo.user_name,
           "phone":this.params.user_name
         });
+        window.Chatra('show');
       }
     })
 

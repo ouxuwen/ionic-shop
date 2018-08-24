@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>唯视光学App</title>
-  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="initial-scale=1, width=device-width, height=device-height, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
 
@@ -40,15 +40,12 @@
     (function (d, w) {
       var chatInfo = localStorage.getItem("chatInfo");
       if (chatInfo) {
-        console.log(chatInfo)
         chatInfo = JSON.parse(chatInfo);
         if (Chatra) {
           Chatra('updateIntegrationData', {
             name: chatInfo['user_name'],
             phone: chatInfo['phone']
           });
-
-          console.log(Chatra)
         }
       }
     })(document, window);

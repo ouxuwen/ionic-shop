@@ -3,7 +3,7 @@ page-home {
         &:after{
             display: none;
         }
-        
+
         .search-bars{
             top:0;
             width:100%;
@@ -16,9 +16,8 @@ page-home {
             position: absolute;
             top:5px;
             height:35px;
-            width:90%;
-            margin-left: 50%;
-            transform: translateX(-50%);
+            width:80%;
+            margin-left: 5%;
             background: #ffffff;
             border-radius:35px;
             padding:5px;
@@ -34,6 +33,14 @@ page-home {
                 top:-3px;
                 left:5px;
                 color:#aaa;
+            }
+            .message{
+              background: #ffffff;
+              position: absolute;
+              top:5px;
+              right:0;
+              transform: translateX(-150%);
+
             }
         }
         .refresh{

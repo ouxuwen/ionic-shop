@@ -9,7 +9,7 @@
   <div class="input-bar" (click)="openGoodsList()" [style.background]="'rgba(255,255,255,'+(1-headerOpacity/2)+')'">
     <ion-icon name="search" [style.color]="'rgb('+headerOpacity*255+','+headerOpacity*255+','+headerOpacity*255+')'"></ion-icon>
     <span [style.color]="'rgb('+(headerOpacity*55+200)+','+(headerOpacity*55+200)+','+(headerOpacity*55+200)+')'">请输入你想搜索的 商品 / 品牌</span>
-    <ion-icon class="message" (click)="openMessage($event)" name="md-text" [style.color]="'rgba(255,255,255,'+(1-headerOpacity/2)+')'"></ion-icon>
+    <ion-icon class="message" (click)="openMessage($event)" name="ios-chatbubbles" [style.color]="'rgba(255,255,255,'+(1-headerOpacity/2)+')'"></ion-icon>
   </div>
 </ion-header>
 <ion-content [class.refreshing]="refreshing">

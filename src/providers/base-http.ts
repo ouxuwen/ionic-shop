@@ -25,8 +25,9 @@ export class BaseHttpProvider {
     public appCtrl: App,
   ) {
     let current = this.appCtrl.getActiveNavs()[0];
+    console.log(this.appCtrl.getActiveNavs())
+    if (current.parent) {
 
-    if (current&&current.parent) {
       this.navCtrl = current.parent
     } else {
       this.navCtrl = current;

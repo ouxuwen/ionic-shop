@@ -20,6 +20,25 @@
 
 .platform-ios11{ .enwrap {  padding-top: 98px;   } }
 
+.platform-ios{
+    .search-bars{
+    padding-top: 20px !important;
+    box-sizing: content-box;
+
+    }
+    .input-bar{
+    top:25px  !important;;
+    }
+    .order_status{
+        padding-top:20px;
+        div{
+            top:20px;
+        }
+        ion-icon{
+            top:30px;
+        }
+    }
+}
 
 .platform-ios11{
     .search-bars{
@@ -55,22 +74,3 @@
 
 }
 
-.platform-ios{
-    .search-bars{
-    padding-top: 20px !important;
-    box-sizing: content-box;
-
-    }
-    .input-bar{
-    top:25px  !important;;
-    }
-    .order_status{
-        padding-top:20px;
-        div{
-            top:20px;
-        }
-        ion-icon{
-            top:30px;
-        }
-    }
-}

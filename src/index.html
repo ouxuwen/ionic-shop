@@ -42,6 +42,7 @@
       if (chatInfo) {
         chatInfo = JSON.parse(chatInfo);
         if (Chatra) {
+          console.log("Chatra is loaded")
           Chatra('updateIntegrationData', {
             name: chatInfo['user_name'],
             phone: chatInfo['phone']

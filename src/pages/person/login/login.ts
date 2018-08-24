@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from "../../../validators/validators";
 import { PersonService } from '../../../providers/person';
+import { GoodsService } from '../../../providers/goods';
 declare var window:any;
 /**
  * Generated class for the LoginPage page.
@@ -56,13 +57,17 @@ export class LoginPage {
     public personService: PersonService,
     public storage: Storage,
     public appCtrl: App,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    public goodsService:GoodsService
   ) {
 
   }
 
   ngOnInit() {
     this.initForm();
+    this.goodsService.getAppInfo().subscribe(res=>{
+      this.storage.set('appInfo', res['data']);
+    })
   }
 
   ionViewDidLoad() {

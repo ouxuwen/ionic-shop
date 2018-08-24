@@ -155,11 +155,11 @@ export class HomePage {
     //   position: 'bottom'
     // }).present()
     if(window.Chatra){
-      // this.toastCtrl.create({
-      //   message:document.getElementById('chatra').getAttribute('style'),
-      //   duration: 3000,
-      //   position: 'bottom'
-      // }).present()
+      this.toastCtrl.create({
+        message:document.getElementById('chatra').getAttribute('style'),
+        duration: 3000,
+        position: 'bottom'
+      }).present()
       window.Chatra('show');
       window.Chatra('setButtonPosition', 'rm');
     }else{

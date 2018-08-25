@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.weishi" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>唯视光学</name>
+    <name>世镜台</name>
     <description>An app for selling glasses.</description>
     <author email="mo22398291@163.com" href="http://www.szweishi.com/">Moses.mo</author>
     <content src="index.html" />

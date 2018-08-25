@@ -1,16 +1,9 @@
 page-home {
     ion-header{
-        .search-bars{
-            top:0;
-            width:100%;
-            height: 45px;
-            padding:5px 10px;
-            background: linear-gradient(to right,  #347eff, #1ea3ff);
-            opacity: 0;
-        }
+        
         .input-bar{
-            position: absolute;
-            top:10px;
+            position: relative;
+            
             height:35px;
             width:80%;
             left: 5%;

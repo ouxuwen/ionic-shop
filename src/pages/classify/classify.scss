@@ -1,20 +1,13 @@
 page-classify {
     ion-header{
         
-        .search-bars{
-            top:0;
-            width:100%;
-            height: 45px;
-            padding:5px 10px;
-            background: linear-gradient(to right,  #347eff, #1ea3ff);
-        }
+        
         .input-bar{
-            position: absolute;
-            top:50%;
+            position: relative;
             height:35px;
             width:90%;
             margin-left: 50%;
-            transform: translate(-50%,-50%);
+            transform: translateX(-50%);
             background: #ffffff;
             border-radius:35px;
             padding:5px;

@@ -109,10 +109,10 @@
     <plugin name="cordova-plugin-device" spec="^2.0.2" />
     <plugin name="cordova-hot-code-push-plugin" spec="^1.5.3" />
     <allow-navigation href="http://192.168.1.102:8100" />
-    <engine name="browser" spec="5.0.3" />
-    <engine name="ios" spec="4.5.4" />
-    <engine name="android" spec="6.2.3" />
     <plugin name="cordova-plugin-wechat" spec="^2.1.0">
         <variable name="WECHATAPPID" value="wx7523eff679942016" />
     </plugin>
+    <engine name="browser" spec="5.0.3" />
+    <engine name="android" spec="6.2.3" />
+    <engine name="ios" spec="4.5.5" />
 </widget>

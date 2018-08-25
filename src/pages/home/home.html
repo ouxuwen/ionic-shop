@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar>
-    <div class="search-bars" [class.refresh]="refreshing" style="opacity:0" [style.opacity]="headerOpacity"></div>
+
     <div class="input-bar" (click)="openGoodsList()" [style.background]="'rgba(255,255,255,'+(1-headerOpacity/2)+')'">
       <ion-icon name="search" [style.color]="'rgb('+headerOpacity*255+','+headerOpacity*255+','+headerOpacity*255+')'"></ion-icon>
       <span [style.color]="'rgb('+(headerOpacity*55+200)+','+(headerOpacity*55+200)+','+(headerOpacity*55+200)+')'">请输入你想搜索的 商品 / 品牌</span>

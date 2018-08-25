@@ -35,7 +35,7 @@
     "cordova-android": "6.2.3",
     "cordova-browser": "5.0.3",
     "cordova-hot-code-push-plugin": "^1.5.3",
-    "cordova-ios": "4.5.4",
+    "cordova-ios": "4.5.5",
     "cordova-plugin-alipay": "git+https://github.com/ejiyuan/cordova-plugin-alipay.git",
     "cordova-plugin-camera": "^2.4.1",
     "cordova-plugin-compat": "^1.2.0",
@@ -87,8 +87,8 @@
     },
     "platforms": [
       "browser",
-      "ios",
-      "android"
+      "android",
+      "ios"
     ]
   }
 }

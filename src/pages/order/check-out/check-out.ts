@@ -168,7 +168,7 @@ export class CheckOutPage {
   }
   // 使用余额
   balanceChange(){
-    if (this.usePoint) {
+    if (this.useBalance) {
       this.balance = this.memberAccount.balance;
       let maxCut = this.goodsTotal + this.express - this.couponCut;
       console.log(this.goodsTotal, this.express, this.couponCut);

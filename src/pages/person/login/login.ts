@@ -4,6 +4,8 @@ import { Storage } from '@ionic/storage';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from "../../../validators/validators";
 import { PersonService } from '../../../providers/person';
+import { GoodsService } from '../../../providers/goods';
+declare var window:any;
 /**
  * Generated class for the LoginPage page.
  *
@@ -19,7 +21,7 @@ import { PersonService } from '../../../providers/person';
 export class LoginPage {
 
   loginForm: any;
-
+  appInfo:any;
   loginErrors = {
     'mobileNum': '',
     'password': '',
@@ -55,17 +57,30 @@ export class LoginPage {
     public personService: PersonService,
     public storage: Storage,
     public appCtrl: App,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    public goodsService:GoodsService
   ) {
 
   }
 
   ngOnInit() {
     this.initForm();
+    this.goodsService.getAppInfo().subscribe(res=>{
+      this.storage.set('appInfo', res['data']);
+    })
   }
 
   ionViewDidLoad() {
     console.log('login', this.navCtrl);
+    this.storage.get('appInfo').then(res=>{
+      this.appInfo = res;
+    })
+  }
+
+  ionViewDidEnter(){
+    if(window.Chatra){
+      window.Chatra('hide')
+    }
   }
 
   // 初始化表单控件
@@ -96,7 +111,6 @@ export class LoginPage {
 
   login() {
     if (this.loginForm.invalid) return;
-
     this.personService.login(this.params).subscribe(res => {
       if (res['code'] == 1) {
         this.storage.set("userInfo", res['data']).then((res) => {
@@ -104,6 +118,14 @@ export class LoginPage {
         });
       } else {
         this.navCtrl.setRoot("BusinessLicensePage", { 'notLogin': 1 });
+      }
+      localStorage.setItem("chatInfo",JSON.stringify({"user_name":res['data'].userInfo.user_name,"phone":this.params.user_name}));
+      if(window.Chatra){
+        window.Chatra('updateIntegrationData', {
+          name: res['data'].userInfo.user_name,
+          "phone":this.params.user_name
+        });
+        window.Chatra('show');
       }
     })
 

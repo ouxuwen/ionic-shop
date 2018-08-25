@@ -7,6 +7,9 @@
 
 
 <ion-content>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="md-arrow-down" pullingText="下拉刷新..." refreshingSpinner="ios" refreshingText="正在刷新..."></ion-refresher-content>
+      </ion-refresher>
   <div class="person_box">
     <img src="assets/imgs/settingBg.png" alt="">
     <div class="bg_container">
@@ -101,7 +104,7 @@
       </li>
     </ul>
   </div>
-  <div padding style="margin-bottom: 50px;">
+  <div padding style="margin-bottom: 70px;">
     <button color="danger" ion-button full tappable (click)="logout()">安全退出</button>
   </div>
 </ion-content>

@@ -5,7 +5,7 @@ import { PersonService } from '../../providers/person';
 import { Storage } from '@ionic/storage';
 import { JPush } from "@jiguang-ionic/jpush";
 import { Device } from "@ionic-native/device";
-
+declare var window:any;
 /**
  * Generated class for the HomePage page.
  *
@@ -45,6 +45,7 @@ export class HomePage {
   goodsList:any;
   index_adv_one:any;
   index_adv_two:any;
+  index_adv_three:any;
   // Jpush
   public registrationId: string;
 
@@ -143,6 +144,32 @@ export class HomePage {
       }
       this.formatTime(this.promoTime);
     }, 1000);
+
+
+  }
+
+  ionViewDidEnter(){
+    // this.toastCtrl.create({
+    //   message: "enter",
+    //   duration: 3000,
+    //   position: 'bottom'
+    // }).present()
+    if(window.Chatra){
+      this.toastCtrl.create({
+        message:document.getElementById('chatra').getAttribute('style'),
+        duration: 3000,
+        position: 'bottom'
+      }).present()
+      window.Chatra('show');
+      window.Chatra('setButtonPosition', 'rm');
+    }else{
+      this.toastCtrl.create({
+        message: "连接在线客服失败，请稍后再试",
+        duration: 3000,
+        position: 'middle',
+        cssClass: 'toast-error'
+      }).present()
+    }
   }
 
   init(refresher?) {
@@ -155,7 +182,7 @@ export class HomePage {
       this.getGoodsList("",false);
       let data = res['data'];
       this.promoList = data.discount_list;
-      this.appInfo = data.web_info;
+      //this.appInfo = data.web_info;
       this.recommendList = data.goods_recommend_list;
       this.hotList1 = data.goods_hot_list.slice(0, 3);
       this.hotList2 = data.goods_hot_list.slice(3, 6);
@@ -165,8 +192,12 @@ export class HomePage {
       this.bannerList = data.plat_adv_list.adv_list;
       this.index_adv_one = data.index_adv_one.adv_list[0].adv_image;
       this.index_adv_two = data.index_adv_two.adv_list[0].adv_image;
-      console.log(this.index_adv_one,this.index_adv_two)
-      this.storage.set('appInfo', this.appInfo);
+      if(!refresher){
+        this.index_adv_three = data.index_adv_three.adv_list[0].adv_image;
+      }
+
+      console.log(this.index_adv_one,this.index_adv_three);
+     // this.storage.set('appInfo', this.appInfo);
     },err =>{
       if (refresher) {
         this.refreshing = false;
@@ -259,9 +290,7 @@ export class HomePage {
 
   // 加工
   machining(){
-    this.navCtrl.push("NoticeContentPage",{
-      "article_id":1
-    })
+    this.navCtrl.push("RechargeMoneyPage")
   }
 
   getGoodsList(refresher?,bol?) {
@@ -287,5 +316,14 @@ export class HomePage {
     this.pageNo++;
     this.getGoodsList(refresher);
 
+  }
+
+  openMessage(e){
+    e.stopPropagation();
+    if(window.Chatra){
+      window.Chatra('show');
+      window.Chatra('setButtonPosition', 'rm');
+      window.Chatra('openChat')
+    }
   }
 }

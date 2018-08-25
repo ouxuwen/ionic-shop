@@ -77,6 +77,9 @@ export class PayPage {
       let message = '';
       if(res.resultStatus == 9000){
         this.paySuccess = true;
+        this.orderService.checkPayStatus({"out_trade_no":this.outTradeNo,"detail":JSON.stringify(res)}).subscribe(()=>{
+
+        })
         this.navCtrl.push('PayResultPage',{
           paySuccess:this.paySuccess,
           no:this.outTradeNo,

@@ -25,8 +25,9 @@ export class BaseHttpProvider {
     public appCtrl: App,
   ) {
     let current = this.appCtrl.getActiveNavs()[0];
-
+    console.log(this.appCtrl.getActiveNavs())
     if (current.parent) {
+
       this.navCtrl = current.parent
     } else {
       this.navCtrl = current;
@@ -52,6 +53,7 @@ export class BaseHttpProvider {
       this.storage.remove('userInfo').then(() => {
         this.navCtrl.setRoot("LoginPage");
       });
+      localStorage.removeItem('chatInfo');
     } else if (res.code === 403) {
 
       let pObj = {}

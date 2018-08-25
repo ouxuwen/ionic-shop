@@ -9,7 +9,7 @@ import { Storage } from '@ionic/storage';
 import { BusinessLicensePage } from '../pages/person/business-license/business-license';
 import { JPush } from "@jiguang-ionic/jpush";
 import { Device } from "@ionic-native/device";
-
+//import { GoodsService } from '../providers/goods';
 @Component({
   templateUrl: 'app.html'
 })
@@ -27,6 +27,7 @@ export class MyApp {
     private ionicApp: IonicApp,
     public device: Device,
     public jpush: JPush,
+    //public goodsService:GoodsService
   ) {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -108,6 +109,10 @@ export class MyApp {
         this.statusBar.overlaysWebView(false);
       }
     }
+
+    // this.goodsService.getAppInfo().subscribe(res=>{
+    //   this.storage.set('appInfo', res['data']);
+    // })
   }
 
 

@@ -5,8 +5,11 @@ page-order-detail {
   }
   .order_status {
     position: relative;
+    background: url('../assets/imgs/51.png') 0 0  no-repeat;
+    background-size: cover;
     img {
       width: 100%;
+      opacity: 0;
     }
     color: #fff;
     ion-icon{

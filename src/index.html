@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
   <meta charset="UTF-8">
-  <title>Ionic App</title>
-  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>唯视光学App</title>
+  <meta name="viewport" content="initial-scale=1, width=device-width, height=device-height, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
 
@@ -27,9 +28,31 @@
     }
   </script>-->
 
-  <link href="build/main.css" rel="stylesheet">
 
+  <link href="build/main.css" rel="stylesheet">
+  <script>
+    (function (d, w, c) {
+      w.ChatraID = 'QSQAxFRARgGKBZEQk';
+    })(document, window, 'Chatra');
+  </script>
+  <script src="assets/js/chatra.js"></script>
+  <script>
+    (function (d, w) {
+      var chatInfo = localStorage.getItem("chatInfo");
+      if (chatInfo) {
+        chatInfo = JSON.parse(chatInfo);
+        if (Chatra) {
+          console.log("Chatra is loaded")
+          Chatra('updateIntegrationData', {
+            name: chatInfo['user_name'],
+            phone: chatInfo['phone']
+          });
+        }
+      }
+    })(document, window);
+  </script>
 </head>
+
 <body>
 
   <!-- Ionic's root component and where the app will load -->
@@ -45,4 +68,39 @@
   <!-- The main bundle js is generated during the build process -->
   <script src="build/main.js"></script>
 </body>
+
+<script>
+  window.onload = function () {
+    var indexbtn = document.getElementById("chatra");
+    indexbtn && indexbtn.addEventListener('touchstart', touch, false);
+    indexbtn && indexbtn.addEventListener('touchmove', touch, false);
+    indexbtn && indexbtn.addEventListener('touchend', touch, false);
+    var x, y;
+    function touch(event) {
+      var event = event || window.event;
+      switch (event.type) {
+        case "touchstart":
+          console.log(event.changedTouches[0]);
+          x = parseInt(event.touches[0].clientX);
+          y = parseInt(event.touches[0].clientY);
+          break;
+        case "touchend":
+          console.log(event.changedTouches[0]);
+          y = parseInt(event.changedTouches[0].clientY);
+          x = parseInt(event.changedTouches[0].clientX);
+          indexbtn.style.top = y - 10 + "px";//50是原始宽度一半，
+         // indexbtn.style.left = x - 30 + "px";//50是原始高度一半，
+          break;
+        case "touchmove":
+          event.preventDefault();
+          y = parseInt(event.touches[0].clientY);
+          x = parseInt(event.touches[0].clientX);
+          indexbtn.style.top = y - 10 + "px";
+         // indexbtn.style.left = x - 30 + "px";
+          break;
+      }
+    }
+  }
+</script>
+
 </html>

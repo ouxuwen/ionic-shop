@@ -106,4 +106,9 @@ export class OrderService {
   virtualOrderCreate(data){
     return this.base.post('/app/order/virtualOrderCreate', data);
   }
+
+  //主动查询支付状态
+  checkPayStatus(data){
+    return this.base.post('/app/pay/checkMobilePay', data,false);
+  }
 }

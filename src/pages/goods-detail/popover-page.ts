@@ -18,20 +18,20 @@ export class PopoverPage {
   options: QQShareOptions = {
     client: this.qq.ClientType.QQ,
     scene: this.qq.Scene.QQ,
-    title: '唯视光学',
-    url: 'http://www.szweishi.com/',
-    image: 'http://www.szweishi.com/images/icon.png',
-    description: '唯视光学在线眼镜商城',
+    title: '世镜台',
+    url: 'http://www.shijingtai.cn/',
+    image: 'http://www.shijingtai.cn/images/icon.png',
+    description: '世镜台在线眼镜商城',
   };
 
   wechatOptions = {
     message: {
-      title: "唯视光学",
-      description: "唯视光学在线眼镜商城",
-      thumb: "http://www.szweishi.com/images/icon.png",
+      title: "世镜台",
+      description: "世镜台在线眼镜商城",
+      thumb: "http://www.shijingtai.cn/images/icon.png",
       media: {
         type: Wechat.Type.WEBPAGE,
-        webpageUrl: "http://www.szweishi.com/"
+        webpageUrl: "http://www.shijingtai.cn/"
       }
     },
     scene: Wechat.Scene.TIMELINE   // share to Timeline

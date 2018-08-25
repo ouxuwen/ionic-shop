@@ -33,7 +33,11 @@
   <script>
     (function (d, w, c) {
       w.ChatraID = 'QSQAxFRARgGKBZEQk';
+      w.ChatraSetup = {
+        chatHeight: 500
+      };
     })(document, window, 'Chatra');
+
   </script>
   <script src="assets/js/chatra.js"></script>
   <script>
@@ -47,9 +51,11 @@
             name: chatInfo['user_name'],
             phone: chatInfo['phone']
           });
+          Chatra('setChatHeight', 500)
         }
       }
     })(document, window);
+
   </script>
 </head>
 
@@ -76,6 +82,7 @@
     indexbtn && indexbtn.addEventListener('touchmove', touch, false);
     indexbtn && indexbtn.addEventListener('touchend', touch, false);
     var x, y;
+
     function touch(event) {
       var event = event || window.event;
       switch (event.type) {
@@ -88,19 +95,20 @@
           console.log(event.changedTouches[0]);
           y = parseInt(event.changedTouches[0].clientY);
           x = parseInt(event.changedTouches[0].clientX);
-          indexbtn.style.top = y - 10 + "px";//50是原始宽度一半，
-         // indexbtn.style.left = x - 30 + "px";//50是原始高度一半，
+          indexbtn.style.top = y - 10 + "px"; //50是原始宽度一半，
+          // indexbtn.style.left = x - 30 + "px";//50是原始高度一半，
           break;
         case "touchmove":
           event.preventDefault();
           y = parseInt(event.touches[0].clientY);
           x = parseInt(event.touches[0].clientX);
           indexbtn.style.top = y - 10 + "px";
-         // indexbtn.style.left = x - 30 + "px";
+          // indexbtn.style.left = x - 30 + "px";
           break;
       }
     }
   }
+
 </script>
 
 </html>

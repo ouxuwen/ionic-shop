@@ -8,8 +8,12 @@
 
   <ion-navbar>
     <ion-title>购 物 车</ion-title>
-    <!-- <span class="manger_btn" *ngIf="!isEditing" (click)="edit()">编辑</span>
-    <span class="manger_btn" *ngIf="isEditing"  (click)="editDone()">完成</span> -->
+    <ion-buttons end>
+      <button ion-button icon-only (click)="message()">
+        <ion-icon name="ios-chatbubbles"></ion-icon>
+      </button>
+    </ion-buttons>
+
   </ion-navbar>
 
 </ion-header>
@@ -51,20 +55,20 @@
       </ion-item-sliding>
     </ion-list>
   </div>
-  <div class="check_out" *ngIf="cartData">
-    <div>
-      <p>
-        <ion-checkbox [(ngModel)]="checkedAll" (ngModelChange)="allChange($event)"></ion-checkbox>
-        全选
-      </p>
-      <span>
-        <i>不含运费 </i> 总价:
-        <b>¥ {{totalPrice}}</b>
-      </span>
-    </div>
-    <p (click)="checkOut()">
-      结 算
-      <span>({{selectNum}})</span>
-    </p>
-  </div>
 </ion-content>
+<ion-footer class="check_out" *ngIf="cartData">
+  <div>
+    <p>
+      <ion-checkbox [(ngModel)]="checkedAll" (ngModelChange)="allChange($event)"></ion-checkbox>
+      全选
+    </p>
+    <span>
+      <i>不含运费 </i> 总价:
+      <b>¥ {{totalPrice}}</b>
+    </span>
+  </div>
+  <p (click)="checkOut()">
+    结 算
+    <span>({{selectNum}})</span>
+  </p>
+</ion-footer>

@@ -112,7 +112,8 @@ page-goods-detail {
   .goods {
     border-top: 1px solid transparent;
     background: #eee;
-    padding-bottom: 60px;
+    border-bottom: 10px solid #eee;
+    margin-bottom: 60px;
     .rule {
       line-height: 44px;
       height: 44px;

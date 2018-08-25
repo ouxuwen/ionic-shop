@@ -1,9 +1,5 @@
 page-home {
     ion-header{
-        &:after{
-            display: none;
-        }
-
         .search-bars{
             top:0;
             width:100%;
@@ -14,10 +10,10 @@ page-home {
         }
         .input-bar{
             position: absolute;
-            top:5px;
+            top:10px;
             height:35px;
             width:80%;
-            margin-left: 5%;
+            left: 5%;
             background: #ffffff;
             border-radius:35px;
             padding:5px;
@@ -48,15 +44,7 @@ page-home {
           opacity: 1;
         }
     }
-    .refresher-active{
-      top:0 !important;
-    }
-    .fixed-content,.scroll-content{
-        margin-top:0 !important;
-    }
-    .refreshing{
-      margin-top:44px !important;
-    }
+   
     .has-refresher > .scroll-content{
         border-top:none;
     }

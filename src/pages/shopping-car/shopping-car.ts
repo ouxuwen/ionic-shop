@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ItemSliding, ToastController, AlertController } from 'ionic-angular';
 import { GoodsService } from '../../providers/goods';
 import { Storage } from '@ionic/storage';
-
+declare var window:any;
 
 /**
  * Generated class for the ShoppingCarPage page.
@@ -211,4 +211,11 @@ export class ShoppingCarPage {
     this.navCtrl.push("CheckOutPage",{'cartData':checkedList,'tag':'cart','cartList':cartList,'goodsTotal': Number(this.totalPrice)})
   }
 
+
+  message(){
+    if (window.Chatra) {
+      window.Chatra('show');
+      window.Chatra('openChat')
+    }
+  }
 }

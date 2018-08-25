@@ -21,56 +21,25 @@
 .platform-ios11{ .enwrap {  padding-top: 98px;   } }
 
 .platform-ios{
-    .search-bars{
-    padding-top: 20px !important;
-    box-sizing: content-box;
-
-    }
-    .input-bar{
-    top:25px  !important;;
-    }
+   
     .order_status{
-        padding-top:20px;
+        padding-top:30px;
         div{
-            top:20px;
-        }
-        ion-icon{
             top:30px;
         }
-    }
-}
-
-.platform-ios11{
-    .search-bars{
-    padding-top: 40px  !important;;
-    box-sizing: content-box;
-    }
-    .input-bar{
-        top:45px  !important;
-    }
-    .order_status{
-        padding-top:40px;
-        div{
+        ion-icon{
             top:40px;
         }
-        ion-icon{
-          top:50px;
-      }
     }
-
-
-    .button-ios{
-      margin-bottom: 20px;
-    }
-    page-shopping-car .check_out{
-      bottom:78px;
-    }
-    page-goods-detail .footer{
-      bottom:30px;
-    }
-    page-check-out .check_out{
-      bottom:30px;
-    }
-
+    
+    
 }
+
+page-shopping-car {
+    ion-footer{
+        bottom: 50px;
+    }
+}
+
+
 

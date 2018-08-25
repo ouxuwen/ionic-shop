@@ -6,6 +6,7 @@ import { PopoverPage } from './popover-page';
 import { PersonService } from '../../providers/person';
 import { Storage } from '@ionic/storage';
 import { CartService } from '../../providers/cartService';
+declare var window:any;
 /**
  * Generated class for the GoodsDetailPage page.
  *
@@ -371,7 +372,12 @@ export class GoodsDetailPage {
   }
 
 
-
+  message(){
+    if (window.Chatra) {
+      window.Chatra('show');
+      window.Chatra('openChat')
+    }
+  }
 
 }
 

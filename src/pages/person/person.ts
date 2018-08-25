@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, ToastController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { PersonService } from '../../providers/person';
-
+declare var window:any;
 /**
  * Generated class for the PersonPage page.
  *
@@ -151,5 +151,13 @@ export class PersonPage {
   doRefresh(refresher) {
     this.refreshing = true;
     this.getPersonData(refresher);
+  }
+
+  
+  message(){
+    if (window.Chatra) {
+      window.Chatra('show');
+      window.Chatra('openChat')
+    }
   }
 }

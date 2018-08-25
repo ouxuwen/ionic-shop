@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { OrderService } from '../../providers/order';
+declare var window:any;
 /**
  * Generated class for the OrderPage page.
  *
@@ -172,5 +173,12 @@ export class OrderPage {
    // 评论
    evaluate(e) {
     this.navCtrl.push('OrderCommentPage', { 'orderDetail':e });
+  }
+
+  message(){
+    if (window.Chatra) {
+      window.Chatra('show');
+      window.Chatra('openChat')
+    }
   }
 }

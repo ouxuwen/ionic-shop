@@ -1,66 +1,77 @@
-.toolbar-background-ios,.toolbar-background-md{
+.toolbar-background-ios,
+.toolbar-background-md {
   background: linear-gradient(to right, #347eff, #1ea3ff);
-
-}
-.toolbar-title-ios,.toolbar-title-md{
-  color:#ffffff;
 }
 
-.bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default,
-.bar-button-default-md, .bar-button-default.bar-button-md-default, .bar-button-clear-md-default{
-  color:#ffffff;
+.toolbar-title-ios,
+.toolbar-title-md {
+  color: #ffffff;
 }
-.loading-ios .spinner-crescent circle,.loading-md .spinner-crescent circle{
+
+.bar-button-default-ios,
+.bar-button-default.bar-button-ios-default,
+.bar-button-clear-ios-default,
+.bar-button-default-md,
+.bar-button-default.bar-button-md-default,
+.bar-button-clear-md-default {
+  color: #ffffff;
+}
+
+.loading-ios .spinner-crescent circle,
+.loading-md .spinner-crescent circle {
   stroke: #347eff;
 }
-.spinner-crescent circle{
 
-}
-.loading-content{
-  color:#347eff;
+.spinner-crescent circle {}
+
+.loading-content {
+  color: #347eff;
 }
 
-.toast-ios .toast-wrapper,.toast-md .toast-wrapper{
-  background:rgba(0, 0, 0, 0.6);
+.toast-ios .toast-wrapper,
+.toast-md .toast-wrapper {
+  background: rgba(0, 0, 0, 0.6);
 }
-.toast-success{
-  .toast-wrapper{
+
+.toast-success {
+  .toast-wrapper {
     transform: translateY(70px);
     background-color: #efffe7;
-
-    .toast-message{
+    .toast-message {
       color: #00a81c;
       text-align: center;
     }
-
   }
 }
-.toast-error{
-  .toast-wrapper{
+
+.toast-error {
+  .toast-wrapper {
     transform: translateY(70px);
     background-color: #fef0f0;
-
-    .toast-message{
+    .toast-message {
       color: #f56c6c;
     }
-
   }
 }
-.button-ios{
-  margin-bottom: 0;
-}
 
-#chatra{
-  &:after{
-    content:"";
+#chatra {
+  &:after {
+    content: "";
     position: absolute;
     width: 20px;
     height: 20px;
     background: #f0f0f0;
     border-radius: 50%;
-    box-shadow: 0 0 3px rgba(0,0,0,0.5), 0 0 10px rgba(0,0,0,0.3);
-    top:-20px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5), 0 0 10px rgba(0, 0, 0, 0.3);
+    top: -20px;
     left: 20px;
+  }
+}
 
+#chatra.chatra--mobile-widget.chatra--expanded:not(.chatra--transparent) {
+  height: 90% !important;
+  margin-top: 10% !important;
+  &:after {
+    display: none;
   }
 }

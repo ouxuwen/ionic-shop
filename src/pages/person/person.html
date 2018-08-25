@@ -4,23 +4,32 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-
+<ion-header>
+  <ion-navbar>
+    <ion-title>个 人 中 心</ion-title>
+    <ion-buttons start>
+        <button ion-button icon-only (click)="message()">
+          <ion-icon name="ios-chatbubbles"></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
 
 <ion-content>
-    <ion-refresher (ionRefresh)="doRefresh($event)">
-        <ion-refresher-content pullingIcon="md-arrow-down" pullingText="下拉刷新..." refreshingSpinner="ios" refreshingText="正在刷新..."></ion-refresher-content>
-      </ion-refresher>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="md-arrow-down" pullingText="下拉刷新..." refreshingSpinner="ios" refreshingText="正在刷新..."></ion-refresher-content>
+  </ion-refresher>
   <div class="person_box">
-    <img src="assets/imgs/settingBg.png" alt="">
+    <img src="assets/imgs/settingBg2.png" alt="">
     <div class="bg_container">
       <div class="avator">
-        <img tappable (click)="modifyProfile()"  [src]="userInfo?.member_img!=0?userInfo?.member_img:'assets/imgs/profile_icon.png'"
+        <img tappable (click)="modifyProfile()" [src]="userInfo?.member_img!=0?userInfo?.member_img:'assets/imgs/profile_icon.png'"
           alt="">
         <div>
           <div class="name" tappable (click)="modifyProfile()" *ngIf="userInfo">{{userInfo.member_info.user_info.nick_name}}
             <img src="assets/imgs/edit.png" alt="">
           </div>
-          <div class="tel " >{{userInfo?.member_info?.user_info.user_tel}}</div>
+          <div class="tel ">{{userInfo?.member_info?.user_info.user_tel}}</div>
           <div class="level">{{userInfo?.member_info?.level_name}} </div>
           <p class="sign" *ngIf="userInfo?.integralconfig?.sign_integral" (click)="sign()">
             <img src="assets/imgs/sign.png" alt="">{{userInfo?.isSign==0?'签到送积分':'已签到'}}</p>
@@ -73,13 +82,13 @@
       <li tappable (click)="goMyBalance()">
         <img src="assets/imgs/balance.png" alt=""> 账户余额
         <ion-icon name="ios-arrow-forward-outline"></ion-icon>
-        <span >¥ {{userInfo?.member_info.balance}}</span>
+        <span>¥ {{userInfo?.member_info.balance}}</span>
       </li>
       <li tappable (click)="goMyScore()">
         <img src="assets/imgs/wd-012-03.png" alt=""> 我的积分
 
         <ion-icon name="ios-arrow-forward-outline"></ion-icon>
-        <span >{{userInfo?.member_info.point}}</span>
+        <span>{{userInfo?.member_info.point}}</span>
       </li>
       <li tappable (click)="goMyCoupon()">
         <img src="assets/imgs/wd-012-02.png" alt=""> 我的优惠券
@@ -104,7 +113,7 @@
       </li>
     </ul>
   </div>
-  <div padding style="margin-bottom: 70px;">
+  <div padding style="margin-bottom: 100px;">
     <button color="danger" ion-button full tappable (click)="logout()">安全退出</button>
   </div>
 </ion-content>

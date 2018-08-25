@@ -1,8 +1,6 @@
 page-classify {
     ion-header{
-        &:after{
-            display: none;
-        }
+        
         .search-bars{
             top:0;
             width:100%;
@@ -12,11 +10,11 @@ page-classify {
         }
         .input-bar{
             position: absolute;
-            top:5px;
+            top:50%;
             height:35px;
             width:90%;
             margin-left: 50%;
-            transform: translateX(-50%);
+            transform: translate(-50%,-50%);
             background: #ffffff;
             border-radius:35px;
             padding:5px;

@@ -5,7 +5,7 @@ import { PersonService } from '../../providers/person';
 import { Storage } from '@ionic/storage';
 import { JPush } from "@jiguang-ionic/jpush";
 import { Device } from "@ionic-native/device";
-declare var window:any;
+declare var window: any;
 /**
  * Generated class for the HomePage page.
  *
@@ -39,20 +39,20 @@ export class HomePage {
   recommendList: any = [];
   couponList: any = [];
   notice: any;
-  hideNotice:boolean = false;
-  pageNo:number = 1;
-  canLoadMore:boolean = true;
-  goodsList:any;
-  index_adv_one:any;
-  index_adv_two:any;
-  index_adv_three:any;
+  hideNotice: boolean = false;
+  pageNo: number = 1;
+  canLoadMore: boolean = true;
+  goodsList: any;
+  index_adv_one: any;
+  index_adv_two: any;
+  index_adv_three: any;
   // Jpush
   public registrationId: string;
 
   devicePlatform: string;
   sequence: number = 0;
 
-  tagResultHandler (result) {
+  tagResultHandler(result) {
     var sequence: number = result.sequence;
     var tags: Array<string> = result.tags == null ? [] : result.tags;
     alert(
@@ -60,13 +60,13 @@ export class HomePage {
     );
   };
 
-  aliasResultHandler (result) {
+  aliasResultHandler(result) {
     var sequence: number = result.sequence;
     var alias: string = result.alias;
     alert("Success!" + "\nSequence: " + sequence + "\nAlias: " + alias);
   };
 
-  errorHandler (err) {
+  errorHandler(err) {
     var sequence: number = err.sequence;
     var code = err.code;
     alert("Error!" + "\nSequence: " + sequence + "\nCode: " + code);
@@ -148,21 +148,21 @@ export class HomePage {
 
   }
 
-  ionViewDidEnter(){
+  ionViewDidEnter() {
     // this.toastCtrl.create({
     //   message: "enter",
     //   duration: 3000,
     //   position: 'bottom'
     // }).present()
-    if(window.Chatra){
-      this.toastCtrl.create({
-        message:document.getElementById('chatra').getAttribute('style'),
-        duration: 3000,
-        position: 'bottom'
-      }).present()
+    if (window.Chatra) {
+      // this.toastCtrl.create({
+      //   message:document.getElementById('chatra').getAttribute('style'),
+      //   duration: 3000,
+      //   position: 'bottom'
+      // }).present()
       window.Chatra('show');
-      window.Chatra('setButtonPosition', 'rm');
-    }else{
+      //window.Chatra('setButtonPosition', 'rm');
+    } else {
       this.toastCtrl.create({
         message: "连接在线客服失败，请稍后再试",
         duration: 3000,
@@ -170,6 +170,8 @@ export class HomePage {
         cssClass: 'toast-error'
       }).present()
     }
+
+    //this.changeColor();
   }
 
   init(refresher?) {
@@ -179,7 +181,7 @@ export class HomePage {
         this.refreshing = false;
         refresher.complete();
       }
-      this.getGoodsList("",false);
+      this.getGoodsList("", false);
       let data = res['data'];
       this.promoList = data.discount_list;
       //this.appInfo = data.web_info;
@@ -192,13 +194,13 @@ export class HomePage {
       this.bannerList = data.plat_adv_list.adv_list;
       this.index_adv_one = data.index_adv_one.adv_list[0].adv_image;
       this.index_adv_two = data.index_adv_two.adv_list[0].adv_image;
-      if(!refresher){
+      if (!refresher) {
         this.index_adv_three = data.index_adv_three.adv_list[0].adv_image;
       }
 
-      console.log(this.index_adv_one,this.index_adv_three);
-     // this.storage.set('appInfo', this.appInfo);
-    },err =>{
+      console.log(this.index_adv_one, this.index_adv_three);
+      // this.storage.set('appInfo', this.appInfo);
+    }, err => {
       if (refresher) {
         this.refreshing = false;
         refresher.complete();
@@ -217,22 +219,34 @@ export class HomePage {
   ngAfterViewInit() {
     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
     //Add 'implements AfterViewInit' to the class.
-    this.scrollEvent();
+    //this.scrollEvent();
 
   }
 
   // 注册滚动事件
-  scrollEvent() {
-    this.fixContent = document.querySelector("page-home ion-refresher");
-    this.header = document.querySelector("page-home ion-header");
-    this.scrollContent = document.querySelector("page-home .scroll-content");
-    this.scrollContent.addEventListener("scroll", (e) => {
-      this.headerOpacity = this.scrollContent.scrollTop / 90;
-      if (this.headerOpacity > 1) {
-        this.headerOpacity = 1;
-      }
-    })
-  }
+  // scrollEvent() {
+  //   this.fixContent = document.querySelector("page-home ion-refresher");
+  //   this.header = document.querySelector("page-home ion-header");
+  //   this.scrollContent = document.querySelector("page-home .scroll-content");
+  //   this.scrollContent.addEventListener("scroll", (e) => {
+  //     this.headerOpacity = this.scrollContent.scrollTop / 90;
+  //     if (this.headerOpacity > 1) {
+  //       this.headerOpacity = 1;
+  //     }
+  //   })
+  // }
+
+
+  // changeColor() {
+  //   this.fixContent = document.querySelector("page-home ion-refresher");
+  //   this.header = document.querySelector("page-home ion-header");
+  //   this.scrollContent = document.querySelector("page-home .scroll-content");
+  //   this.headerOpacity = this.scrollContent.scrollTop / 90;
+  //   console.log("enter",this.headerOpacity )
+  //   if (this.headerOpacity > 1) {
+  //     this.headerOpacity = 1;
+  //   }
+  // }
 
   // 匹配倒计时
   formatTime(value) {
@@ -279,34 +293,34 @@ export class HomePage {
   }
 
   // 资讯中心
-  article(){
+  article() {
     this.navCtrl.push('NoticeListPage');
   }
 
   // 拍照下单
-  cameraOrder(){
+  cameraOrder() {
     this.navCtrl.push('CameraOrderPage');
   }
 
   // 加工
-  machining(){
+  machining() {
     this.navCtrl.push("RechargeMoneyPage")
   }
 
-  getGoodsList(refresher?,bol?) {
+  getGoodsList(refresher?, bol?) {
     let params = {
       page: this.pageNo,
     }
-    this.goodsService.goodsList(params,bol).subscribe(res => {
-      if(refresher)refresher.complete();
+    this.goodsService.goodsList(params, bol).subscribe(res => {
+      if (refresher) refresher.complete();
       let data = res['data'];
       if (data.goods_list.lenght < 14) {
         this.canLoadMore = false;
       } else {
         this.canLoadMore = true;
       }
-      if (refresher){ this.goodsList = this.goodsList.concat(data.goods_list.data);}
-      else {this.goodsList = data.goods_list.data;}
+      if (refresher) { this.goodsList = this.goodsList.concat(data.goods_list.data); }
+      else { this.goodsList = data.goods_list.data; }
     })
   }
 
@@ -318,11 +332,10 @@ export class HomePage {
 
   }
 
-  openMessage(e){
+  openMessage(e) {
     e.stopPropagation();
-    if(window.Chatra){
+    if (window.Chatra) {
       window.Chatra('show');
-      window.Chatra('setButtonPosition', 'rm');
       window.Chatra('openChat')
     }
   }

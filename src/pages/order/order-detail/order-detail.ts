@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController, App } from 'ionic
 import { OrderService } from '../../../providers/order';
 import { Storage } from '@ionic/storage';
 import { PhotoViewer } from '@ionic-native/photo-viewer';
+declare var window:any;
 /**
  * Generated class for the OrderDetailPage page.
  *
@@ -203,5 +204,12 @@ export class OrderDetailPage {
     this.orderService.orderClose({'order_id':this.orderId}).subscribe(res =>{
       this.navCtrl.pop();
     })
+  }
+
+  message(){
+    if (window.Chatra) {
+      window.Chatra('show');
+      window.Chatra('openChat')
+    }
   }
 }

@@ -113,7 +113,12 @@
   </div>
 
 
-  <div class="check_out">
+
+  
+
+</ion-content>
+<ion-footer  class="check_out">
+
     <div>
       <span>
         <i>含运费 </i> 总价:
@@ -123,31 +128,30 @@
     <p (click)="createOrder()">
       提交订单
     </p>
-  </div>
-  <coustom-action [(isHide)]="hideCoupon" title="选择优惠券">
-    <ion-list radio-group [(ngModel)]="selectCoupon" (ngModelChange)="getCoupon()">
-      <ion-item *ngFor="let coupon of couponList">
-        <ion-label>{{coupon.coupon_name}}
-          <span>¥ -{{coupon.money}}</span>
-        </ion-label>
-        <ion-radio [value]="coupon.coupon_id"></ion-radio>
-      </ion-item>
-      <ion-item>
-        <ion-label>不使用优惠券</ion-label>
-        <ion-radio value=""></ion-radio>
-      </ion-item>
-    </ion-list>
-  </coustom-action>
-  <coustom-action [(isHide)]="hideExpress" title="选择物流公司">
-    <ion-list radio-group [(ngModel)]="selectExpress" (ngModelChange)="getExpress($event)">
-      <ion-item *ngFor="let item of expressCompanyList">
-        <ion-label>{{item.company_name}}, 运费：
-          <span>¥ {{item.express_fee}}</span>
-        </ion-label>
-        <ion-radio [value]="item.co_id"></ion-radio>
-      </ion-item>
 
-    </ion-list>
-  </coustom-action>
+</ion-footer>
+<coustom-action [(isHide)]="hideCoupon" title="选择优惠券">
+  <ion-list radio-group [(ngModel)]="selectCoupon" (ngModelChange)="getCoupon()">
+    <ion-item *ngFor="let coupon of couponList">
+      <ion-label>{{coupon?.coupon_name}}
+        <span>¥ -{{coupon?.money}}</span>
+      </ion-label>
+      <ion-radio [value]="coupon?.coupon_id"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>不使用优惠券</ion-label>
+      <ion-radio value=""></ion-radio>
+    </ion-item>
+  </ion-list>
+</coustom-action>
+<coustom-action [(isHide)]="hideExpress" title="选择物流公司">
+  <ion-list radio-group [(ngModel)]="selectExpress" (ngModelChange)="getExpress($event)">
+    <ion-item *ngFor="let item of expressCompanyList">
+      <ion-label>{{item?.company_name}}, 运费：
+        <span>¥ {{item?.express_fee}}</span>
+      </ion-label>
+      <ion-radio [value]="item?.co_id"></ion-radio>
+    </ion-item>
 
-</ion-content>
+  </ion-list>
+</coustom-action>

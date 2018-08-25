@@ -5,6 +5,7 @@
     <author email="mo22398291@163.com" href="http://www.szweishi.com/">Moses.mo</author>
     <content src="index.html" />
     <access origin="*" />
+    <allow-navigation href="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />

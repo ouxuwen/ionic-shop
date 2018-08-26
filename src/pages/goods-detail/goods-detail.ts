@@ -70,7 +70,7 @@ export class GoodsDetailPage {
         historyGoods = res;
       }
       historyGoods = historyGoods.filter(el=>{
-        return !el.goods_id == goods.goods_id;
+        return el.goods_id != goods.goods_id;
       })
       historyGoods.unshift(goods);
       this.storage.set('historyGoods',historyGoods);

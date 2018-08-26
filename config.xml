@@ -3,7 +3,7 @@
     <name>世镜台</name>
     <description>世镜台眼镜批发商城</description>
     <author email="mo22398291@163.com" href="http://www.shijingtai.cn/">Moses.mo</author>
-    <content original-src="index.html" src="http://192.168.1.4:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="*" />
     <allow-intent href="http://*/*" />
@@ -112,8 +112,8 @@
     <plugin name="cordova-plugin-wechat" spec="^2.1.0">
         <variable name="WECHATAPPID" value="wx7523eff679942016" />
     </plugin>
-    <allow-navigation href="http://192.168.1.4:8100" />
     <engine name="browser" spec="5.0.3" />
     <engine name="android" spec="6.2.3" />
     <engine name="ios" spec="4.5.5" />
+    <allow-navigation href="http://192.168.1.4:8100" />
 </widget>

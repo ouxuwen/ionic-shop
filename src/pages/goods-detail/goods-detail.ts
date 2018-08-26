@@ -73,6 +73,9 @@ export class GoodsDetailPage {
         return el.goods_id != goods.goods_id;
       })
       historyGoods.unshift(goods);
+      if(historyGoods.length>20){
+        historyGoods.length = 20;
+      }
       this.storage.set('historyGoods',historyGoods);
     })
   }

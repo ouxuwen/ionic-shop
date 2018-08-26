@@ -68,7 +68,7 @@ export class ShoppingCarPage {
 
   // 修改数量
   changeNum(i, num) {
-    this.cartData[i].num += num;
+    this.cartData[i].num = Number(this.cartData[i].num) +Number(num) ;
     console.log(this.cartData[i])
     if(this.cartData[i].num <1){
       this.cartData[i].num = 1;
@@ -79,10 +79,10 @@ export class ShoppingCarPage {
 
   // 修改商品数量
   cartAdjustNum(i) {
-    if(this.cartData[i].num <1 || !this.cartData[i].num ){
+    if(this.cartData[i].num <1 || !this.cartData[i].num || typeof(this.cartData[i].num)!= 'number' ){
       this.cartData[i].num = 1;
-
     }
+
     let num = parseInt(this.cartData[i].num);
     console.log(this.cartData[i])
     this.goodsService.cartAdjustNum({

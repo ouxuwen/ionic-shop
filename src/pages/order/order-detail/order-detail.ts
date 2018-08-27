@@ -87,11 +87,12 @@ export class OrderDetailPage {
   openDetail($event, id) {
     event.stopPropagation();
     if(this.orderDetail.order_type == 3){
-      this.photoViewer.show(this.orderDetail.order_goods[0].memo, '订单图片',{
+      let options:any = {
         share: true, // default is false
-      //  closeButton: false, // iOS only: default is true
-      //  copyToReference: true // iOS only: default is false
-        });
+        closeButton: false, // iOS only: default is true
+        copyToReference: true // iOS only: default is false
+        }
+      this.photoViewer.show(this.orderDetail.order_goods[0].memo, '订单图片',options);
     }else{
       this.navCtrl.push('GoodsDetailPage', {
         goods_id: id

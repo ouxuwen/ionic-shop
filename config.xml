@@ -94,10 +94,6 @@
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.16" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-plugin-camera" spec="~2.4.1" />
-    <plugin name="cordova-plugin-alipay" spec="~0.0.1">
-        <variable name="APP_ID" value="2016080500174369" />
-        <variable name="SANDBOX_MODE" value="true" />
-    </plugin>
     <plugin name="com-sarriaroman-photoviewer" spec="~1.1.18" />
     <plugin name="cordova-plugin-qqsdk" spec="^0.9.4">
         <variable name="QQ_APP_ID" value="1107401157" />
@@ -116,4 +112,8 @@
     <engine name="browser" spec="5.0.3" />
     <engine name="android" spec="6.2.3" />
     <engine name="ios" spec="4.5.5" />
+    <plugin name="cordova-plugin-alipay" spec="https://github.com/ejiyuan/cordova-plugin-alipay.git">
+        <variable name="APP_ID" value="2018082661136617" />
+        <variable name="SANDBOX_MODE" value="false" />
+    </plugin>
 </widget>

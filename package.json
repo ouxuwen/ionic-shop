@@ -68,10 +68,6 @@
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-camera": {},
-      "cordova-plugin-alipay": {
-        "APP_ID": "2016080500174369",
-        "SANDBOX_MODE": "true"
-      },
       "com-sarriaroman-photoviewer": {},
       "cordova-plugin-qqsdk": {
         "QQ_APP_ID": "1107401157"
@@ -83,6 +79,10 @@
       "cordova-hot-code-push-plugin": {},
       "cordova-plugin-wechat": {
         "WECHATAPPID": "wx7523eff679942016"
+      },
+      "cordova-plugin-alipay": {
+        "APP_ID": "2018082661136617",
+        "SANDBOX_MODE": "false"
       }
     },
     "platforms": [

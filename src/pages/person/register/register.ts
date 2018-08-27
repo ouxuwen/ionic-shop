@@ -118,7 +118,7 @@ export class RegisterPage {
 
     this.personService.register(this.params).subscribe(res => {
 
-      this.storage.set('userInfo', { uid: res['data'].uid, ...this.params });
+      this.storage.set('userInfo', { uid: res['data']['userInfo'].uid, ...this.params });
       this.navCtrl.setRoot("BusinessLicensePage");
     })
 

@@ -170,7 +170,11 @@ export class CameraOrderCheckoutPage {
   //商品详情
   openDetail() {
 
-    this.photoViewer.show(this.orderImg, '订单图片');
+    this.photoViewer.show(this.orderImg, '订单图片',{
+      share: true, // default is false
+    //  closeButton: false, // iOS only: default is true
+    //  copyToReference: true // iOS only: default is false
+      });
   }
 
 }

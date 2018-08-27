@@ -20,7 +20,7 @@
     <div>订单详情</div>
     <ion-icon name="ios-arrow-dropleft-circle" (click)="back()"></ion-icon>
     <p *ngIf="orderDetail"> {{orderDetail.status_name}}</p>
-    <p *ngIf="orderDetail && orderDetail.order_status == 99">等待商家确定总价</p>
+    <!-- <p *ngIf="orderDetail && orderDetail.order_status == 99">等待商家确定总价</p> -->
   </div>
   <ng-container *ngIf="orderDetail">
     <div class="g_label">

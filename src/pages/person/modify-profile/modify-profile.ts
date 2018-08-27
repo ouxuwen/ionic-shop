@@ -19,7 +19,7 @@ export class ModifyProfilePage {
   defaultImg = 'assets/imgs/avtar.png'
   userImg = '';
   options: CameraOptions = {
-    quality: 50,
+    quality: 20,
     destinationType: this.camera.DestinationType.DATA_URL,
     encodingType: this.camera.EncodingType.JPEG,
     mediaType: this.camera.MediaType.PICTURE,

@@ -339,4 +339,18 @@ export class HomePage {
       window.Chatra('openChat',[true])
     }
   }
+
+  //广告跳转
+  goAdv(urls){
+    let arr = urls.split('?');
+    let url = arr[0];
+    let fin = {};
+    if(arr[1]){
+      let params = arr[1].split('&');
+      params.forEach(element => {
+        fin[element[0]] = element[1];
+      });
+    }
+    this.navCtrl.push(url,fin);
+  }
 }

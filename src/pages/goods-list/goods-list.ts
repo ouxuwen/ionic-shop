@@ -84,9 +84,9 @@ export class GoodsListPage {
   }
 
   reset() {
-    this.keyWrods = ''; //关键字
+    //this.keyWrods = ''; //关键字
     this.controlType = ''; //标签
-    this.categoryId = ''; // 商品分类
+    //this.categoryId = ''; // 商品分类
     this.brandId = ''; // 品牌
     this.order = ''; // 商品排序分类
     this.sort = 'desc'; // 商品排序分类 asc升序

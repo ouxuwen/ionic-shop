@@ -20,7 +20,7 @@
   </ion-refresher>
   <ion-slides autoplay pager control='true' loop="true" style="height: auto;min-height: 100px;">
     <ion-slide *ngFor="let image of bannerList">
-      <image [src]="image.adv_image"></image>
+      <image [src]="image.adv_image" (click)="goAdv(image.adv_url)"></image>
     </ion-slide>
   </ion-slides>
   <!-- 功能 -->

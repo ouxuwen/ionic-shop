@@ -153,11 +153,15 @@ export class PersonPage {
     this.getPersonData(refresher);
   }
 
-  
+
   message(){
     if (window.Chatra) {
       window.Chatra('show');
       window.Chatra('openChat')
     }
+  }
+
+  setting(){
+    this.navCtrl.push('SettingPage');
   }
 }

@@ -22,7 +22,7 @@
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="ShowSplashScreenSpinner" value="false" />
     <chcp>
-        <config-file url=" http://ywqkv4.natappfree.cc/www/chcp.json" />
+        <config-file url=" http://shijingtai.cn/www/chcp.json" />
     </chcp>
     <platform name="android">
         <allow-intent href="market:*" />

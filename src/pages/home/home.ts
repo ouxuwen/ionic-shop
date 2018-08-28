@@ -336,7 +336,7 @@ export class HomePage {
     e.stopPropagation();
     if (window.Chatra) {
       window.Chatra('show');
-      window.Chatra('openChat',[true])
+      window.Chatra('openChat',true)
     }
   }
 

@@ -378,7 +378,7 @@ export class GoodsDetailPage {
   message(){
     if (window.Chatra) {
       window.Chatra('show');
-      window.Chatra('openChat')
+      window.Chatra('openChat',true)
     }
   }
 

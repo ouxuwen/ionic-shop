@@ -33,7 +33,7 @@ export class CheckOutPage {
   memberAccount: any;
   couponList = [];
   expressCompanyList: any = [];
-  usePoint: boolean = true;
+  usePoint: boolean = false;
   hideCoupon: boolean = true;
   hideExpress: boolean = true;
   pointCut: number = 0;
@@ -212,7 +212,7 @@ export class CheckOutPage {
     }
     this.pointCut = this.integral * this.pointConfig.convert_rate;
     this.pointCut = Number(this.pointCut.toFixed(2));
-    this.balanceChange();
+    // this.balanceChange();
     this.calcTotalPrice();
   }
 

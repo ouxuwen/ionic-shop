@@ -66,7 +66,6 @@ export class BusinessLicensePage {
           this.licenseImg = this.userInfo.other_info;
           console.log(this.notLogin)
           if(this.notLogin){
-
             return;
           }
           this.personService.login({user_name:this.userInfo.user_name,password:this.userInfo.password}).subscribe(res => {
@@ -143,7 +142,7 @@ export class BusinessLicensePage {
         position: 'middle',
         cssClass: 'toast-success'
       }).present()
-      this.userInfo['license'] = this.licenseImg;
+      this.userInfo['other_info'] = this.licenseImg;
       this.storage.set("userInfo", this.userInfo);
     })
   }

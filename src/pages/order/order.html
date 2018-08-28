@@ -68,18 +68,17 @@
         <i> (含运费)</i>
       </div>
       <div class="status" *ngIf="order.order_status == 0">
-        <span tappable (click)="closeOrderConfirm(order.order_id)">关闭订单</span>
+        <!-- <span tappable (click)="closeOrderConfirm(order.order_id)">关闭订单</span> -->
         <span tappable (click)="orderPay(order)">去 付 款</span>
       </div>
       <div class="status" *ngIf="order.order_status == 1 ">
-        <span tappable (click)='openDetail($event,order)'>退 款</span>
+        <span tappable (click)='openDetail($event,order)'>订单详情</span>
       </div>
       <div class="status" *ngIf="order.order_status == 2">
-        <span tappable (click)='openDetail($event,order)'>退 货</span>
         <span tappable (click)='openDetail($event,order)'>查看物流</span>
       </div>
       <div class="status" *ngIf="order.order_status == 3">
-        <span tappable (click)="closeOrderConfirm(order.order_id)">关闭订单</span>
+        <!-- <span tappable (click)="closeOrderConfirm(order.order_id)">关闭订单</span> -->
         <span *ngIf="order.is_evaluate!=1" tappable (click)="evaluate(order)">去评价</span>
       </div>
       <div class="status" *ngIf="order.order_status == 5">

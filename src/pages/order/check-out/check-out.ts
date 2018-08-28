@@ -245,7 +245,7 @@ export class CheckOutPage {
   }
 
   calcTotalPrice() {
-    let orderRealMoney = Number(this.goodsTotal) + this.balance + Number(this.pointCut) - Number(this.couponCut);
+    let orderRealMoney = Number(this.goodsTotal) + Number(this.pointCut) - Number(this.couponCut);
     // 超过包邮额包邮
     if( this.promotionFullMail && this.promotionFullMail.is_open &&  orderRealMoney >= Number(this.promotionFullMail.full_mail_money)){
       this.express = 0;

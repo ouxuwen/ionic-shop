@@ -4,6 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { Validators } from "../../../validators/validators";
 import { PersonService } from "../../../providers/person";
 import { Storage } from '@ionic/storage';
+declare var window:any;
 /**
  * Generated class for the RegisterPage page.
  *
@@ -120,6 +121,14 @@ export class RegisterPage {
 
       this.storage.set('userInfo', { uid: res['data']['userInfo'].uid, ...this.params });
       this.navCtrl.setRoot("BusinessLicensePage");
+
+      localStorage.setItem("chatInfo",JSON.stringify({"user_name":this.params.username,"phone":this.params.mobile}));
+      if(window.Chatra){
+        window.Chatra('updateIntegrationData', {
+          name: this.params.username,
+          "phone":this.params.mobile
+        });
+      }
     })
 
   }

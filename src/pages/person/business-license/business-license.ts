@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ActionSheetController ,AlertContro
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Storage } from '@ionic/storage';
 import { PersonService } from '../../../providers/person';
+declare var window:any;
 /**
  * Generated class for the BusinessLicensePage page.
  *
@@ -29,6 +30,7 @@ export class BusinessLicensePage {
 
   }
   userInfo: any;
+  appInfo:any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -46,7 +48,9 @@ export class BusinessLicensePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad BusinessLicensePage');
     this.checkStatus();
-
+    this.storage.get('appInfo').then(res => {
+      this.appInfo = res;
+    });
 
   }
 
@@ -69,7 +73,6 @@ export class BusinessLicensePage {
             return;
           }
           this.personService.login({user_name:this.userInfo.user_name,password:this.userInfo.password}).subscribe(res => {
-
             if(res['code']==1){
               this.storage.set("userInfo", res['data']).then(res=>{
                 this.navCtrl.setRoot("TabsPage");
@@ -155,5 +158,12 @@ export class BusinessLicensePage {
 
     });
 
+  }
+
+  message(){
+    if (window.Chatra) {
+      window.Chatra('show');
+      window.Chatra('openChat',true)
+    }
   }
 }

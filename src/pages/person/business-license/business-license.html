@@ -22,6 +22,20 @@
           <button ion-button full tappable (click)="select()">{{licenseImg?"重新选择":"选 择"}}</button>
           <button ion-button full tappable (click)="upload()">上 传</button>
       </div>
+      <div class="service">
+        <!-- <button ion-button icon-start small>
+          <ion-icon name="md-ionitron"></ion-icon>
+          <a target="_blank" [href]="'http://wpa.qq.com/msgrd?v=3&uin='+appInfo.web_qq+'&site=qq&menu=yes'">联系客服</a>
+        </button> -->
+        <button ion-button icon-start small (click)="message()">
+            <ion-icon name="md-ionitron"></ion-icon>
+            联系客服
+        </button>
+        <button ion-button icon-start small>
+          <ion-icon name="md-call"></ion-icon>
+          <a [href]="'tel:'+appInfo?.web_phone">拨打电话{{appInfo?.web_phone}}</a>
+        </button>
+      </div>
 
     </div>
 

@@ -16,10 +16,13 @@ export class ImgLazyLoadComponent {
 
   ngOnInit() {
     let img = new Image();
-    if(this.src){
+    if (this.src) {
       if (this.src.indexOf('http') > -1) {
         img.src = this.src;
-      } else {
+      } else if (this.src.indexOf('base64,') > -1) {
+        img.src = this.src;
+      }
+      else {
         img.src = URL.imgPrefix + this.src;
       }
 

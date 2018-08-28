@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ActionSheetController ,AlertContro
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Storage } from '@ionic/storage';
 import { PersonService } from '../../../providers/person';
+
 declare var window:any;
 /**
  * Generated class for the BusinessLicensePage page.
@@ -145,7 +146,7 @@ export class BusinessLicensePage {
         position: 'middle',
         cssClass: 'toast-success'
       }).present()
-      this.userInfo['other_info'] = this.licenseImg;
+      this.userInfo['other_info'] = res['data'];
       this.storage.set("userInfo", this.userInfo);
     })
   }

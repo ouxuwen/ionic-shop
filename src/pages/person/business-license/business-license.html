@@ -14,7 +14,7 @@
       <h1>上传营业执照</h1>
 
       <div class="img_box">
-          <img *ngIf="licenseImg" [src]="licenseImg" alt="">
+          <image *ngIf="licenseImg" [src]="licenseImg" alt=""></image>
           <ion-icon *ngIf="!licenseImg" name="ios-add"  tappable (click)="select()"></ion-icon>
           <ion-icon class="isUpload" *ngIf="isUpload" name="ios-time-outline"></ion-icon>
       </div>

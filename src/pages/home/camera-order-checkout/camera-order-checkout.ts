@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { OrderService } from '../../../providers/order';
 import { PhotoViewer } from '@ionic-native/photo-viewer';
+
 /**
  * Generated class for the CameraOrderCheckoutPage page.
  *

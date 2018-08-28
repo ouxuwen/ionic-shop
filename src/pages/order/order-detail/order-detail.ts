@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController, App } from 'ionic
 import { OrderService } from '../../../providers/order';
 import { Storage } from '@ionic/storage';
 import { PhotoViewer } from '@ionic-native/photo-viewer';
+import { URL } from '../../../app.config';
 declare var window:any;
 /**
  * Generated class for the OrderDetailPage page.
@@ -92,7 +93,7 @@ export class OrderDetailPage {
         closeButton: false, // iOS only: default is true
         copyToReference: true // iOS only: default is false
         }
-      this.photoViewer.show(this.orderDetail.order_goods[0].memo, '订单图片',options);
+      this.photoViewer.show(URL['imgPrefix']+this.orderDetail.order_goods[0].memo, '订单图片',options);
     }else{
       this.navCtrl.push('GoodsDetailPage', {
         goods_id: id

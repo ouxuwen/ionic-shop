@@ -109,11 +109,11 @@
         <variable name="WECHATAPPID" value="wx7523eff679942016" />
     </plugin>
     <allow-navigation href="http://192.168.1.4:8100" />
+    <engine name="browser" spec="5.0.3" />
+    <engine name="android" spec="6.2.3" />
+    <engine name="ios" spec="4.5.5" />
     <plugin name="cordova-plugin-alipay" spec="https://github.com/ejiyuan/cordova-plugin-alipay.git">
         <variable name="APP_ID" value="2018082661136617" />
         <variable name="SANDBOX_MODE" value="false" />
     </plugin>
-    <engine name="browser" spec="5.0.3" />
-    <engine name="android" spec="6.2.3" />
-    <engine name="ios" spec="4.5.5" />
 </widget>

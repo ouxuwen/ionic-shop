@@ -107,6 +107,9 @@ export class CheckOutPage {
       this.expressCompanyList = data.express_company_list;
       this.cartData = data.itemlist;
       this.pointConfig = data['point_config'];
+      if(this.pointConfig.is_open != 1){
+        this.usePoint = false;
+      }
       this.promotionFullMail = data.promotion_full_mail;
       if (this.couponList.length > 0) {
         this.selectCoupon = this.couponList[0].coupon_id;
@@ -184,6 +187,7 @@ export class CheckOutPage {
       this.balance = 0;
     }
     this.balance = Number(this.balance.toFixed(2));
+    this.pointChange();
     this.calcTotalPrice();
   }
 
@@ -208,6 +212,7 @@ export class CheckOutPage {
     }
     this.pointCut = this.integral * this.pointConfig.convert_rate;
     this.pointCut = Number(this.pointCut.toFixed(2));
+    this.balanceChange();
     this.calcTotalPrice();
   }
 

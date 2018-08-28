@@ -46,7 +46,7 @@
           <image tappable (click)='openDetail($event,ele.goods_id)' [src]="ele.picture_info.pic_cover_mid" alt=""></image>
           <div>
             <p class="name" tappable (click)='openDetail($event,ele.goods_id)'>{{ele.goods_name}}</p>
-            <p class="type" *ngIf="ele.qiu">柱镜：{{ele.zhu}}  /  球镜：{{ele.qiu}}</p>
+            <p class="type" *ngIf="ele.qiu">柱镜：{{ele.zhu}} / 球镜：{{ele.qiu}}</p>
             <p class="type" *ngIf="ele.sku_name">规格：{{ele.sku_name}}</p>
             <p class="price">价格：¥ {{ele.price}}</p>
           </div>
@@ -69,13 +69,13 @@
 
   <ng-container *ngIf="memberAccount">
     <div class="rule" *ngIf="memberAccount.balance>0" tappable>
-        <ion-checkbox [(ngModel)]="useBalance"  (ngModelChange)="balanceChange()"></ion-checkbox>使用余额:
-        <span class="price">¥ {{balance}}</span>
-        <span>可用余额：{{memberAccount.balance}}
-          <i *ngIf='balance!=0'>{{balance}}</i>
-        </span>
+      <ion-checkbox [(ngModel)]="useBalance" (ngModelChange)="balanceChange()"></ion-checkbox>使用余额:
+      <span class="price">¥ {{balance}}</span>
+      <span>可用余额：{{memberAccount.balance}}
+        <i *ngIf='balance!=0'>{{balance}}</i>
+      </span>
     </div>
-    <div class="rule" *ngIf="memberAccount.point>0" tappable>
+    <div class="rule" *ngIf="memberAccount.point>0 && pointConfig.is_open == 1" tappable>
       <ion-checkbox [(ngModel)]="usePoint" [disabled]="pointConfig.is_open != 1" (ngModelChange)="pointChange()"></ion-checkbox>使用积分:
       <span class="price">¥ {{pointCut}}</span>
       <span>可用积分：{{memberAccount.point}}
@@ -94,7 +94,7 @@
   </div>
   <div class="rule" *ngIf="expressCompanyList" tappable (click)="hideExpress=false">
     选择物流：
-    <span class="price" >¥ {{express}}</span>
+    <span class="price">¥ {{express}}</span>
     <span class="price" style="font-size: 10px;color:#969696;" *ngIf="promotionFullMail?.is_open==1">(满{{promotionFullMail?.full_mail_money}}包邮)</span>
     <ion-icon class="r" name="ios-arrow-forward-outline"></ion-icon>
     <span>{{showExpress}}</span>
@@ -107,28 +107,26 @@
   </div> -->
 
   <div class="last">
-    <ion-textarea [(ngModel)]="leavemessage" placeholder="买家留言">
+    <ion-textarea [(ngModel)]="leavemessage" col="5" placeholder="买家留言">
 
     </ion-textarea>
   </div>
 
 
 
-  
+
 
 </ion-content>
-<ion-footer  class="check_out">
-
-    <div>
-      <span>
-        <i>含运费 </i> 总价:
-        <b>¥ {{totalPrice}}</b>
-      </span>
-    </div>
-    <p (click)="createOrder()">
-      提交订单
-    </p>
-
+<ion-footer class="check_out">
+  <div>
+    <span>
+      <i>含运费 </i> 总价:
+      <b>¥ {{totalPrice}}</b>
+    </span>
+  </div>
+  <p (click)="createOrder()">
+    提交订单
+  </p>
 </ion-footer>
 <coustom-action [(isHide)]="hideCoupon" title="选择优惠券">
   <ion-list radio-group [(ngModel)]="selectCoupon" (ngModelChange)="getCoupon()">

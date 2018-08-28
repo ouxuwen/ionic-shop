@@ -2,9 +2,16 @@ page-setting {
   .qrcode{
     text-align: center;
     margin-top:100px;
+    p{
+      font-size: 18px;
+    }
   }
   .service{
     text-align: center;
     padding:5px;
+    a{
+      color:#fff;
+      text-decoration: none;
+    }
   }
 }

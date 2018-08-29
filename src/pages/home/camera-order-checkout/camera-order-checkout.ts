@@ -158,7 +158,24 @@ export class CameraOrderCheckoutPage {
       tag: 'buy_now',//'cart' 从购物车 'buy_now' 立即购买
       order_img:this.orderImg
     }
-    if (!this.addressDefault) return;
+
+    if (!this.addressDefault) {
+      this.alertCtrl.create({
+        title: '温馨提示',
+        message: '请添加收货地址',
+        buttons: [
+          {
+            text: '确 定',
+            handler: () => {
+              this.navCtrl.push('AddAddressPage', {
+                enterType: 'add'
+              })
+            }
+          }
+        ]
+      }).present();
+      return;
+    }
 
     this.orderService.cameraOrder(params).subscribe(res => {
       this.navCtrl.push('OrderDetailPage', {

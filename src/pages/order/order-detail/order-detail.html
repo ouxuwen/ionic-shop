@@ -101,6 +101,9 @@
       <p>实付费用：
         <span>{{orderDetail.pay_money}}</span>
       </p>
+      <!-- <p *ngIf="orderDetail.seller_memo">卖家留言：
+        <span>{{orderDetail.seller_memo}}</span>
+      </p> -->
     </div>
     <div class="btn_group" *ngIf="orderDetail.order_status == 0">
       <span tappable (click)="closeOrderConfirm()">关闭订单</span>

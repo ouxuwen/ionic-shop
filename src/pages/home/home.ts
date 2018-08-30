@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController,AlertController} from 'ionic-angular';
 import { GoodsService } from '../../providers/goods';
 import { PersonService } from '../../providers/person';
 import { Storage } from '@ionic/storage';
@@ -79,7 +79,8 @@ export class HomePage {
     public personService: PersonService,
     public toastCtrl: ToastController,
     public jpush: JPush,
-    device: Device
+    device: Device,
+    public alertCtrl:AlertController
 
   ) {
     this.init();
@@ -199,6 +200,7 @@ export class HomePage {
       }
 
       console.log(this.index_adv_one, this.index_adv_three);
+      this.checkVersion();
       this.storage.set('appInfo', this.appInfo);
     }, err => {
       if (refresher) {
@@ -352,5 +354,26 @@ export class HomePage {
       });
     }
     this.navCtrl.push(url,fin);
+  }
+
+  checkVersion(){
+    if(this.appInfo.version && this.appInfo.version !== 0.01){
+      this.alertCtrl.create({
+        title: '温馨提示',
+        message: '亲，您的APP需要升级了',
+        buttons: [
+          {
+            text: '取消',
+            role: 'cancel'
+          },
+          {
+            text: '确定',
+            handler: () => {
+              window.open(this.appInfo.iosUrl)
+            }
+          }
+        ]
+      }).present();
+    }
   }
 }

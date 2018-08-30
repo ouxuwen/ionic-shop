@@ -233,7 +233,7 @@
 
   <div class="notice" [class.hide]="!index_adv_three?.adv_url">
     <div class="content">
-      <img [src]="index_adv_three.adv_image" alt="" (click)="goAdv(index_adv_three.adv_url)">
+      <img [src]="index_adv_three?.adv_image" alt="" (click)="goAdv(index_adv_three?.adv_url)">
       <ion-icon name="ios-close-circle" (click)="index_adv_three = ''"></ion-icon>
     </div>
   </div>

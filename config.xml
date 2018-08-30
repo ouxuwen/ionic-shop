@@ -22,7 +22,7 @@
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="ShowSplashScreenSpinner" value="false" />
     <chcp>
-        <config-file url="https://119.23.43.134/www/chcp.json" />
+        <config-file url="http://120.79.209.150/www/chcp.json" />
     </chcp>
     <platform name="android">
         <allow-intent href="market:*" />

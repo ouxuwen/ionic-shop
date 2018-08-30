@@ -195,7 +195,7 @@ export class HomePage {
       this.index_adv_one = data.index_adv_one.adv_list[0].adv_image;
       this.index_adv_two = data.index_adv_two.adv_list[0].adv_image;
       if (!refresher) {
-        this.index_adv_three = data.index_adv_three.adv_list[0].adv_image;
+        this.index_adv_three = data.index_adv_three.adv_list[0];
       }
 
       console.log(this.index_adv_one, this.index_adv_three);

@@ -81,8 +81,8 @@
         "WECHATAPPID": "wx7523eff679942016"
       },
       "cordova-plugin-alipay": {
-        "APP_ID": "2018082661136617",
-        "SANDBOX_MODE": "false"
+        "APP_ID": "2016080500174369",
+        "SANDBOX_MODE": "true"
       }
     },
     "platforms": [

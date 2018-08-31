@@ -1,6 +1,8 @@
+#### 项目介绍
 This is a ionic3 project create from  [Ionic](http://ionicframework.com/docs/) .
 
-## How to use this porject
+
+#### 安装教程
 
 1. intall the ionic-cli and cordova,run:
 
@@ -17,6 +19,8 @@ $ sudo npm install
 
 ```
 
+#### 使用说明
+
 3. Then, to run the porject, cd into `ionic-shop` and run:
 
 ```bash
@@ -30,4 +34,7 @@ $ ionic serve
 ```bash
 $ ionic cordova platform add android
 $ ionic cordova run android
-```
+
+5.Pay? Use the alipay-sandbox 使用支付宝沙箱版
+
+

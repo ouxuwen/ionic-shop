@@ -31,7 +31,7 @@ export class FindPasswordPage {
   findPsdErrors = {
     'mobileNum': '',
     'password': '',
-    'phoneCode': '',
+    'phoneCode': 952700,
     'rePassword': ''
   };
   validationMessages: any = {

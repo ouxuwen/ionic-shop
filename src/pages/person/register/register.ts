@@ -57,7 +57,7 @@ export class RegisterPage {
     username: "",
     mobile: "",
     password: "",
-    send_param: "",
+    send_param: 952700,
     parentNum: ""
   }
   constructor(

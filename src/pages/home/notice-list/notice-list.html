@@ -20,7 +20,7 @@
   <ion-list *ngIf="articleList">
     <ion-item *ngFor="let item of articleList" (click)="view(item)">
       <ion-thumbnail item-start>
-        <img [src]="item.image">
+        <image [src]="item.image"></image>
       </ion-thumbnail>
       <h2>{{item.title}}</h2>
       <p>{{item.create_time*1000 | date:"yyyy-MM-dd hh:mm:ss"}}</p>

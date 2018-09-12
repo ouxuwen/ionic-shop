@@ -46,8 +46,8 @@ export class LoginPage {
   };
 
   params: any = {
-    user_name: '',
-    password: ''
+    user_name: '18888888888',
+    password: '123456'
   }
   constructor(
     public navCtrl: NavController,

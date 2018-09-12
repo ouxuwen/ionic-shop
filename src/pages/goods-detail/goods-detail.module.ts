@@ -13,7 +13,7 @@ import { ComponentsModule } from '../../components/components.module';
   ],
 
   entryComponents: [
-    
+
   ]
 })
 export class GoodsDetailPageModule { }

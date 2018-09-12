@@ -34,7 +34,7 @@
     <ion-list *ngIf="teamList">
       <ion-item *ngFor="let item of teamList">
         <ion-avatar item-start>
-          <img [src]="item.user_headimg?item.user_headimg:'assets/imgs/profile_icon.png'">
+          <image [src]="item.user_headimg?item.user_headimg:'assets/imgs/profile_icon.png'"></image>
         </ion-avatar>
         <h3>{{item.nick_name}}</h3>
         <p class="time">注册时间：{{item.reg_time*1000 | date:"yyyy-MM-dd"}}</p>

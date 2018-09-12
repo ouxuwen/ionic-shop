@@ -17,7 +17,7 @@
   <div class="container">
     <h1>上传订单照片</h1>
     <div class="img_box">
-      <img *ngIf="orderImg" [src]="orderImg" alt="">
+      <image *ngIf="orderImg" [src]="orderImg" alt=""></image>
       <ion-icon *ngIf="!orderImg" name="ios-add" tappable (click)="select()"></ion-icon>
       <ion-icon class="isUpload" *ngIf="isUpload" name="ios-time-outline"></ion-icon>
     </div>

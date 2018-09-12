@@ -55,17 +55,10 @@
 }
 
 #chatra {
-  &:after {
-    content: "";
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: #f0f0f0;
-    border-radius: 50%;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5), 0 0 10px rgba(0, 0, 0, 0.3);
-    top: -20px;
-    left: 20px;
-  }
+  opacity: 0 !important;
+}
+#chatra.chatra--expanded{
+  opacity: 1 !important;
 }
 
 #chatra.chatra--mobile-widget.chatra--expanded:not(.chatra--transparent) {

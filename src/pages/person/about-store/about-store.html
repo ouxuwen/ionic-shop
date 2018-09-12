@@ -16,14 +16,14 @@
 
 <ion-content padding>
   <ng-container *ngIf="appInfo">
-    <img class="logo" [src]="appInfo.logo" alt="">
+    <image class="logo" [src]="appInfo.logo" alt=""></image>
 
     <div class="desc">
       <p class="title">公司简介</p>
       <span>
         {{appInfo.web_desc}}
       </span>
-     
+
     </div>
     <div class="contact">
       <p class="title">联系方式</p>
@@ -34,7 +34,7 @@
     <div class="address">
       <p class="title">公司地址</p>
       <span> {{ appInfo.web_address }}</span>
-     
+
     </div>
 
   </ng-container>

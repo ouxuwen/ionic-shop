@@ -28,7 +28,7 @@ export class WelcomePage {
       image: "assets/imgs/guidepage01.png",
     },
     {
-      title: "蔡司、依视路、明月...",
+      title: "嘻嘻...",
       description: "镜片种类丰富，各种大牌镜片品牌，价格实惠，任君挑选！",
       image: "assets/imgs/guidepage02.png",
     }

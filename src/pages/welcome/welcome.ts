@@ -19,7 +19,7 @@ export class WelcomePage {
   slides = [
     {
       title: "DEMO眼镜商城",
-      description: "欢迎来到DEMO眼镜商城,超多精彩，超多优惠!",
+      description: "欢迎来到DEMO商城,超多精彩，超多优惠!",
       image: "assets/imgs/guidepage03.png",
     },
     {
@@ -29,7 +29,7 @@ export class WelcomePage {
     },
     {
       title: "嘻嘻...",
-      description: "镜片种类丰富，各种大牌镜片品牌，价格实惠，任君挑选！",
+      description: "种类丰富，各种大牌品牌，价格实惠，任君挑选！",
       image: "assets/imgs/guidepage02.png",
     }
   ];

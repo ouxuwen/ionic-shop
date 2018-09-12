@@ -19,8 +19,8 @@ export class PopoverPage {
     client: this.qq.ClientType.QQ,
     scene: this.qq.Scene.QQ,
     title: 'DEMO',
-    url: 'http://www.shijingtai.cn/',
-    image: 'http://www.shijingtai.cn/images/icon.png',
+    url: 'http://www.baidu.com/',
+    image: 'http://www.baidu.com/images/icon.png',
     description: 'DEMO在线眼镜商城',
   };
 
@@ -28,10 +28,10 @@ export class PopoverPage {
     message: {
       title: "DEMO",
       description: "DEMO在线眼镜商城",
-      thumb: "http://www.shijingtai.cn/images/icon.png",
+      thumb: "http://www.baidu.com/images/icon.png",
       media: {
         type: Wechat.Type.WEBPAGE,
-        webpageUrl: "http://www.shijingtai.cn/"
+        webpageUrl: "http://www.baidu.com/"
       }
     },
     scene: Wechat.Scene.TIMELINE   // share to Timeline

@@ -66,6 +66,7 @@ export class LoginPage {
   ngOnInit() {
     this.initForm();
     this.goodsService.getAppInfo().subscribe(res=>{
+      this.appInfo = res['data'];
       this.storage.set('appInfo', res['data']);
     })
   }

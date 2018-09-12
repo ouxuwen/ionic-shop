@@ -120,7 +120,7 @@ export class RegisterPage {
     this.personService.register(this.params).subscribe(res => {
 
       this.storage.set('userInfo', { uid: res['data']['userInfo'].uid, ...this.params });
-      this.navCtrl.setRoot("BusinessLicensePage");
+      this.navCtrl.setRoot("TabsPage");
 
       localStorage.setItem("chatInfo",JSON.stringify({"user_name":this.params.username,"phone":this.params.mobile}));
       if(window.Chatra){

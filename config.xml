@@ -2,7 +2,7 @@
 <widget id="com.weishi" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>DEMO商城</name>
     <description>DEMO商城</description>
-    <author email="mo22398291@163.com" href="http://www.shijingtai.cn/">Moses.mo</author>
+    <author email="mo22398291@163.com" href="http://www.baidu.com/">Moses.mo</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="*" />
@@ -96,17 +96,17 @@
     <plugin name="cordova-plugin-camera" spec="~2.4.1" />
     <plugin name="com-sarriaroman-photoviewer" spec="~1.1.18" />
     <plugin name="cordova-plugin-qqsdk" spec="^0.9.4">
-        <variable name="QQ_APP_ID" value="1107401157" />
+        <variable name="QQ_APP_ID" value="" />
     </plugin>
     <plugin name="cordova-plugin-jcore" spec="^1.1.12" />
     <plugin name="jpush-phonegap-plugin" spec="^3.3.2">
-        <variable name="APP_KEY" value="77e19a1a09f29f2ff636af35" />
+        <variable name="APP_KEY" value="" />
     </plugin>
     <plugin name="cordova-plugin-device" spec="^2.0.2" />
     <plugin name="cordova-hot-code-push-plugin" spec="^1.5.3" />
     <allow-navigation href="http://192.168.1.102:8100" />
     <plugin name="cordova-plugin-wechat" spec="^2.1.0">
-        <variable name="WECHATAPPID" value="wx7523eff679942016" />
+        <variable name="WECHATAPPID" value="" />
     </plugin>
     <allow-navigation href="http://192.168.1.4:8100" />
     <engine name="browser" spec="5.0.3" />

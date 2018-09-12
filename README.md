@@ -7,6 +7,7 @@ This is a ionic3 project create from  [Ionic](http://ionicframework.com/docs/) .
 ![image](https://github.com/ouxuwen/ionic-shop/screenshots/screenshots2.jpg)
 ![image](https://github.com/ouxuwen/ionic-shop/screenshots/screenshots3.jpg)
 ![image](https://github.com/ouxuwen/ionic-shop/screenshots/screenshots4.jpg)
+![image](https://github.com/ouxuwen/ionic-shop/screenshots/screenshots5.jpg)
 
 #### 安装教程
 

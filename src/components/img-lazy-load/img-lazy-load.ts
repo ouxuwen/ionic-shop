@@ -25,7 +25,9 @@ export class ImgLazyLoadComponent {
         img.src = this.src;
       } else if (this.src.indexOf('base64,') > -1) {
         img.src = this.src;
-      } else {
+      } else if (this.src.indexOf('assets') == 0){
+        img.src = this.src;
+      }else {
         img.src = URL.imgPrefix + this.src;
       }
 

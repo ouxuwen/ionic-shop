@@ -18,8 +18,8 @@ export class WelcomePage {
 
   slides = [
     {
-      title: "世镜台眼镜商城",
-      description: "欢迎来到世镜台眼镜商城,超多精彩，超多优惠!",
+      title: "DEMO眼镜商城",
+      description: "欢迎来到DEMO眼镜商城,超多精彩，超多优惠!",
       image: "assets/imgs/guidepage03.png",
     },
     {

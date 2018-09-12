@@ -18,16 +18,16 @@ export class PopoverPage {
   options: QQShareOptions = {
     client: this.qq.ClientType.QQ,
     scene: this.qq.Scene.QQ,
-    title: '世镜台',
+    title: 'DEMO',
     url: 'http://www.shijingtai.cn/',
     image: 'http://www.shijingtai.cn/images/icon.png',
-    description: '世镜台在线眼镜商城',
+    description: 'DEMO在线眼镜商城',
   };
 
   wechatOptions = {
     message: {
-      title: "世镜台",
-      description: "世镜台在线眼镜商城",
+      title: "DEMO",
+      description: "DEMO在线眼镜商城",
       thumb: "http://www.shijingtai.cn/images/icon.png",
       media: {
         type: Wechat.Type.WEBPAGE,

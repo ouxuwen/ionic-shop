@@ -3,11 +3,11 @@ This is a ionic3 project create from  [Ionic](http://ionicframework.com/docs/) .
 
 ####  DEMO Link: [http://120.79.209.150/www](http://120.79.209.150/www) .
 
-![image](https://github.com/ouxuwen/ionic-shop/screenshots/screenshots1.jpg)
-![image](https://github.com/ouxuwen/ionic-shop/screenshots/screenshots2.jpg)
-![image](https://github.com/ouxuwen/ionic-shop/screenshots/screenshots3.jpg)
-![image](https://github.com/ouxuwen/ionic-shop/screenshots/screenshots4.jpg)
-![image](https://github.com/ouxuwen/ionic-shop/screenshots/screenshots5.jpg)
+![image](https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/screeshots1.jpg)
+![image](https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/screeshots2.jpg)
+![image](https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/screeshots3.jpg)
+![image](https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/screeshots4.jpg)
+![image](https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/screeshots5.jpg)
 
 #### 安装教程
 

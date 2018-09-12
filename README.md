@@ -1,6 +1,12 @@
 #### 项目介绍
 This is a ionic3 project create from  [Ionic](http://ionicframework.com/docs/) .
 
+####   [DEMO](http://120.79.209.150/www) .
+
+![image](https://github.com/ouxuwen/ionic-shop/screenshots/screenshots1.jpg)
+![image](https://github.com/ouxuwen/ionic-shop/screenshots/screenshots2.jpg)
+![image](https://github.com/ouxuwen/ionic-shop/screenshots/screenshots3.jpg)
+![image](https://github.com/ouxuwen/ionic-shop/screenshots/screenshots4.jpg)
 
 #### 安装教程
 

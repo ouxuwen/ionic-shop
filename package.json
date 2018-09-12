@@ -2,7 +2,7 @@
   "name": "weishi",
   "version": "0.0.1",
   "author": "moses.mo",
-  "homepage": "http://szweishi.com/",
+  "homepage": "http://baidu.com/",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",

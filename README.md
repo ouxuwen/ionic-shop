@@ -4,6 +4,10 @@ This is a ionic3 project create from  [Ionic](http://ionicframework.com/docs/) .
 ####  DEMO Link: [http://120.79.209.150/www](http://120.79.209.150/www) .
 
 <div style="vertical-align: top;">
+    <img src="https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/IMG_2233.GIF" width="300" alt="截图1"/>
+    <img src="https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/IMG_2234.GIF" width="300"  alt="截图2"/>
+</div>
+<div style="vertical-align: top;">
     <img src="https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/screeshots1.jpg" width="200" height="340" alt="截图1"/>
     <img src="https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/screeshots2.jpg" width="200" height="340"  alt="截图2"/>
     <img src="https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/screeshots3.jpg" width="200" height="340"  alt="截图3"/>

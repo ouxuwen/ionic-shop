@@ -15,7 +15,35 @@
   <!-- add to homescreen for ios -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <style>
+    div.sloading {
+      width: 200px;
+      height: 200px;
+      margin: 0 auto;
+      margin-top: 200px;
+      position: relative;
+    }
 
+    div.sloading span {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      position: absolute;
+    }
+
+    div.sloading g {
+      animation: loading linear 2s infinite;
+    }
+
+    @keyframes loading {
+      from {
+        transform: translate(100px, 100px) rotate(0deg);
+      }
+      to {
+        transform: translate(100px, 100px) rotate(360deg);
+      }
+    }
+  </style>
   <!-- cordova.js required for cordova apps (remove if not needed) -->
   <script src="cordova.js"></script>
 
@@ -30,6 +58,7 @@
 
 
   <link href="build/main.css" rel="stylesheet">
+
   <script>
     (function (d, w, c) {
       w.ChatraID = 'NocfZ25pLrzANdn8R';
@@ -58,12 +87,31 @@
     })(document, window);
 
   </script>
+
 </head>
 
 <body>
 
   <!-- Ionic's root component and where the app will load -->
-  <ion-app>Loading</ion-app>
+  <ion-app>
+    <div class="sloading">
+      <svg viewBox="-2 -2 204 204">
+        <g fill="none" stroke-width="2" transform="translate(100,100)">
+          <path d="M 0,-100 A 100,100 0 1 0 0,100" stroke="#44c4fa" />
+          <path d="M 0,100 A 100,100 1 0 0 100,0" stroke="url(#gradient)" />
+        </g>
+      </svg>
+      <span>Loading</span>
+      <svg width="0" height="0">
+        <defs>
+          <linearGradient id="gradient" x1="0" y1="1" x2="1" y2="0">
+            <stop stop-color="#44c4fa" />
+            <stop offset="100%" stop-color="#44c4fa" stop-opacity="0" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+  </ion-app>
 
   <!-- The polyfills js is generated during the build process -->
   <script src="build/polyfills.js"></script>

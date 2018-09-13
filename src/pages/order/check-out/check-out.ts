@@ -107,7 +107,9 @@ export class CheckOutPage {
       this.expressCompanyList = data.express_company_list;
       this.cartData = data.itemlist;
       this.pointConfig = data['point_config'];
-      if(this.pointConfig.is_open != 1){
+      if(this.pointConfig && this.pointConfig.is_open == 1){
+        this.usePoint = true;
+      }else{
         this.usePoint = false;
       }
       this.promotionFullMail = data.promotion_full_mail;
@@ -206,11 +208,12 @@ export class CheckOutPage {
         this.integral = 0;
       }
       this.integral = -this.integral;
-
+      this.pointCut = this.integral * this.pointConfig.convert_rate;
     } else {
       this.integral = 0;
+      this.pointCut = 0;
     }
-    this.pointCut = this.integral * this.pointConfig.convert_rate;
+
     this.pointCut = Number(this.pointCut.toFixed(2));
     // this.balanceChange();
     this.calcTotalPrice();
@@ -274,7 +277,7 @@ export class CheckOutPage {
       pay_type: 1,// 支付方式
       shipping_company_id: this.selectExpress,// 物流公司
       tag: this.tag,//'cart' 从购物车 'buy_now' 立即购买
-      additional:this.additional.length == 0?'': JSON.stringify(this.additional)
+      additional:this.additional && this.additional.length == 0?'': JSON.stringify(this.additional)
     }
 
     if (!this.addressDefault) {

@@ -8,14 +8,14 @@ This is a ionic3 project create from  [Ionic](http://ionicframework.com/docs/) .
     <img src="https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/IMG_2234.GIF" width="300"  alt="截图2"/>
 </div>
 <div style="vertical-align: top;">
-    <img src="https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/screeshots1.jpg" width="200" height="340" alt="截图1"/>
-    <img src="https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/screeshots2.jpg" width="200" height="340"  alt="截图2"/>
-    <img src="https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/screeshots3.jpg" width="200" height="340"  alt="截图3"/>
+    <img src="https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/screeshots1.jpg" width="200" height="370" alt="截图1"/>
+    <img src="https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/screeshots2.jpg" width="200" height="370"  alt="截图2"/>
+    <img src="https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/screeshots3.jpg" width="200" height="370"  alt="截图3"/>
 </div>
 <div style="vertical-align: top;">
-    <img src="https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/screeshots4.jpg" width="200" height="340" alt="截图4"/>
-    <img src="https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/screeshots5.jpg" width="200" height="340" alt="截图5"/>  
-    <img src="https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/screeshots6.jpg" width="200" height="340" alt="截图6"/>  
+    <img src="https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/screeshots4.jpg" width="200" height="370" alt="截图4"/>
+    <img src="https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/screeshots5.jpg" width="200" height="370" alt="截图5"/>  
+    <img src="https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/screeshots6.jpg" width="200" height="370" alt="截图6"/>  
 </div>
 
 

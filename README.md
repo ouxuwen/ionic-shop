@@ -3,11 +3,17 @@ This is a ionic3 project create from  [Ionic](http://ionicframework.com/docs/) .
 
 ####  DEMO Link: [http://120.79.209.150/www](http://120.79.209.150/www) .
 
-![image](https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/screeshots1.jpg)
-![image](https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/screeshots2.jpg)
-![image](https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/screeshots3.jpg)
-![image](https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/screeshots4.jpg)
-![image](https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/screeshots5.jpg)
+<div>
+    <img src="https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/screeshots1.jpg" width="150" alt="截图1"/>
+    <img src="https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/screeshots2.jpg" width="150"  alt="截图2"/>
+    <img src="https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/screeshots3.jpg" width="150"  alt="截图3"/>
+</div>
+<div>
+    <img src="https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/screeshots4.jpg" width="150" alt="截图4"/>
+    <img src="https://github.com/ouxuwen/ionic-shop/blob/master/screenshots/screeshots5.jpg" width="150"  alt="截图5"/>  
+</div>
+
+
 
 #### 安装教程
 

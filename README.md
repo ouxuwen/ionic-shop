@@ -54,7 +54,7 @@ $ ionic cordova platform add android
 $ ionic cordova run android
 
 5.Pay? Use the alipay-sandbox 使用支付宝沙箱版
-
+```
 #### 注意：
 可以先把 cordova-plugin-qqsdk cordova-plugin-wechat 这两个插件移除打包试试，他们都需要申请appid才行，ionic cordova plugin rm cordova-plugin-wechat ，ionic cordova plugin rm cordova-plugin-qqsdk
 
